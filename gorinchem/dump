@@ -1,0 +1,7 @@
+#!/bin/sh
+cd data
+mysqldump -ugormol -pBeaumont1 gorinchem > gorinchem.sql
+#tar czf gorinchem.tar.gz gorinchem.sql
+zip gorinchem.sql.zip gorinchem.sql
+
+

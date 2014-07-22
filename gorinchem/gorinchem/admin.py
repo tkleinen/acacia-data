@@ -1,0 +1,151 @@
+'''
+Created on Jun 1, 2014
+
+@author: theo
+'''
+from gorinchem.models import Network, Well, Photo, Screen, Datalogger, DataPoint
+
+from django.contrib import admin
+from django import forms
+from django.contrib.gis import admin as geo
+from django.contrib.gis.db import models
+from django.forms.widgets import Textarea
+
+USE_GOOGLE_TERRAIN_TILES = False
+
+from django.contrib.admin.widgets import AdminFileWidget
+from django.utils.translation import ugettext as _
+from django.utils.safestring import mark_safe
+
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+
+from gorinchem.models import UserProfile
+import actions
+
+class UserProfileInline(admin.StackedInline):
+    model = UserProfile
+    can_delete = False
+    verbose_name = 'profiel'
+    verbose_name_plural = 'profielen'
+
+# Define a new User admin
+class UserAdmin(UserAdmin):
+    inlines = (UserProfileInline, )
+
+class AdminImageWidget(AdminFileWidget):
+    def render(self, name, value, attrs=None):
+        output = []
+        if value and getattr(value, "url", None):
+            image_url = value.url
+            file_name=str(value)
+            output.append(u' <a href="%s" target="_blank"><img src="%s" alt="%s" height="256px"/></a>' % (image_url, image_url, file_name))
+        output.append(super(AdminFileWidget, self).render(name, value, attrs))
+        return mark_safe(u''.join(output))
+    
+class PhotoInline(admin.TabularInline):
+    model = Photo
+    fields = ('photo',)
+    extra = 0
+    classes = ('grp-collapse', 'grp-closed',)
+    
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'photo':
+            request = kwargs.pop("request", None)
+            kwargs['widget'] = AdminImageWidget
+            return db_field.formfield(**kwargs)
+        return super(PhotoInline,self).formfield_for_dbfield(db_field, **kwargs)
+        
+class PhotoAdmin(admin.ModelAdmin):
+    list_display=('well', 'thumb', )
+    search_fields = ['well__name', ]
+    list_filter = ('well',)
+    list_select_related = True
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'photo':
+            request = kwargs.pop("request", None)
+            kwargs['widget'] = AdminImageWidget
+            return db_field.formfield(**kwargs)
+        return super(PhotoAdmin,self).formfield_for_dbfield(db_field, **kwargs)
+
+class DataloggerAdmin(admin.ModelAdmin):
+    list_display=('serial', 'model', 'screen', 'refpnt', 'depth', 'date')
+    search_fields = ('serial', 'screen__well__name',)
+    list_filter = ('screen__well', 'date')
+
+class DataPointInline(admin.TabularInline):
+    model = DataPoint
+    
+class ScreenAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'top', 'bottom', 'num_standen')
+    search_fields = ('well__name',)
+    list_filter = ('well','well__network')
+    #inlines = [DataPointInline,]
+    
+class WellAdmin(geo.OSMGeoAdmin):
+    actions = [actions.make_thumbnails,]
+    inlines = [PhotoInline, ]
+    list_display = ('name','network','num_filters', 'num_photos', 'logger_names', 'straat', 'plaats')
+    #list_editable = ('location',)
+    #list_per_page = 4
+    ordering = ('network', 'name',)
+    list_filter = ('network', )
+    save_as = True
+    search_fields = ['name', 'nitg', 'plaats']
+    list_select_related = True
+    fieldsets = (
+                 ('Algemeen', {'classes': ('grp-collapse', 'grp-open'),
+                               'fields':('network', 'name', 'nitg', 'bro', 'maaiveld', 'refpnt', 'date', 'log')}),
+                 ('Locatie', {'classes': ('grp-collapse', 'grp-open'),
+                              'fields':(('straat', 'huisnummer'), ('postcode', 'plaats'),'location',)}),
+                )
+    if USE_GOOGLE_TERRAIN_TILES:
+      map_template = 'gis/admin/google.html'
+      extra_js = ['http://openstreetmap.org/openlayers/OpenStreetMap.js', 'http://maps.google.com/maps?file=api&amp;v=2&amp;key=%s' % settings.GOOGLE_MAPS_API_KEY]
+    else:
+      pass # defaults to OSMGeoAdmin presets of OpenStreetMap tiles
+
+    # Default GeoDjango OpenLayers map options
+    # Uncomment and modify as desired
+    # To learn more about this jargon visit:
+    # www.openlayers.org
+   
+    #default_lon = 0
+    #default_lat = 0
+    default_zoom = 12
+    #display_wkt = False
+    #display_srid = False
+    #extra_js = []
+    #num_zoom = 18
+    #max_zoom = False
+    #min_zoom = False
+    #units = False
+    #max_resolution = False
+    #max_extent = False
+    #modifiable = True
+    #mouse_position = True
+    #scale_text = True
+    #layerswitcher = True
+    scrollable = False
+    #admin_media_prefix = settings.ADMIN_MEDIA_PREFIX
+    map_width = 400
+    map_height = 325
+    #map_srid = 4326
+    #map_template = 'gis/admin/openlayers.html'
+    #openlayers_url = 'http://openlayers.org/api/2.6/OpenLayers.js'
+    #wms_url = 'http://labs.metacarta.com/wms/vmap0'
+    #wms_layer = 'basic'
+    #wms_name = 'OpenLayers WMS'
+    #debug = False
+    #widget = OpenLayersWidget
+
+admin.site.register(Well, WellAdmin)
+admin.site.register(Screen, ScreenAdmin)
+admin.site.register(Datalogger, DataloggerAdmin)
+admin.site.register(Photo,PhotoAdmin)
+admin.site.register(Network)
+
+# Re-register UserAdmin
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)
