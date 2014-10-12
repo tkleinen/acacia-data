@@ -1,0 +1,24 @@
+{% load staticfiles %}
+{% block content %}
+<div class = "container-fluid">
+<div class = "row-fluid">
+<div class = "col-md-6 text-center" >
+<img src="{% static image %}" width = 90%"/>
+</div>
+<div class = "col-md-6">
+<h2>Neerslagtekort</h2>
+De kaart toont het gebied van Noord-Holland, ingedeeld in drie meteorologische situaties op basis van het verschil tussen verdamping en neerslag. 
+De drie situaties zijn droog, gemiddeld en nat. <p/>
+<p>
+In een droog gebied is er relatief veel verdamping. Het gemiddelde neerslagtekort gedurende het groeiseizoen is 200 mm. 
+</p>
+<p>
+In een nat gebied is er minder verdamping, met een gemiddeld neerslagtekort van 150 mm in het groeiseizoen. 
+</p>
+<p>
+De juiste keuze van de neerslagcategorie is belangrijk, omdat de hoeveelheid neerslag invloed heeft op het berekende watertekort en de hiermee samenhangende wateropslagbehoefte. 
+</p>
+</div>
+</div>
+</div>
+{% endblock %}

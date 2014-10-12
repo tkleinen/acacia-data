@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load bootstrap_tags %}
+{% block extrastyle %}
+<style>
+.error-msg {
+  color: #a94442;
+}
+</style>
+{% endblock %}
+{% block script %}
+{{block.super}}
+<script type="text/javascript">
+function OnFocusInput (input,html) {
+	var f = document.getElementById("placeholder");
+	f.innerHTML=html; 
+}
+
+function OnBlurInput (input, html) {
+	var f = document.getElementById("placeholder");
+	f.innerHTML=html; 
+}
+
+$(document).ready(function() {
+	var selects = document.getElementsByTagName("select");
+	var toel = {{toelichting|safe}};
+	for (var i=0;i<selects.length;i++) {
+		s = selects[i];
+		s.onfocus = function(){OnFocusInput(this,toel[this.id]);};
+		//s.onblur = function(){OnBlurInput(this,toel["home"]);};
+	}
+});
+
+</script>
+{% endblock %}
+{% block content %}
+<div class = "container-fluid">
+<div class = "row-fluid">
+<div class = "col-md-3">
+<form action="" method="post">
+{% csrf_token %}
+	{{ form|as_bootstrap }}
+	<div class="form-actions">
+	     <button type="submit" class="btn btn-primary">Berekenen</button>
+	</div>
+</form>
+</div>
+<div class = "col-md-9">
+<div id="placeholder">
+{%if chart %}
+	<img src="{{chart}}"/>
+	<p><i>
+	In de figuur is de procentuele kans weergegeven dat het bassin volume toereikend is voor de watervoorziening van een bepaald oppervlak. 
+	Bij een opgegeven perceelsoppervlak wordt er een grafiek gegenereerd  waarop te zien is wat de slagingskansen zijn bij bepaalde bassin volumes. 
+	Bij het opgeven van een volume voor het bassin genereerd de tool een grafiek waarop er bij bepaalde perceelsoppervlak te zien is wat de slagingskansen zijn. 
+	Op de x-as zijn of de perceel oppervlakten of de bassin volumes weergegeven afhankelijk van de keuze om een oppervlakte of volume op te geven. Op de y-as zijn de  slagingskansen te zien.
+	</i></p> 
+{%endif%}
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

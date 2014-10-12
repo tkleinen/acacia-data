@@ -113,8 +113,8 @@ class NetworkView(DetailView):
                             'lat': pos.y,
                             'lon': pos.x,
                             'info': render_to_string('gorinchem/well_info.html', {'object': well, 
-#                                                                                  'chart': make_encoded_chart(well),
-                                                                                  'chart': well.chart,
+                                                                                  'chart': make_encoded_chart(well),
+#                                                                                  'chart': well.chart,
                                                                                   })
                             })
         context['content'] = json.dumps(content)

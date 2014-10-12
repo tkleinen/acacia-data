@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load l10n %}
+{% block extrastyle %}
+<style>
+
+body,html {
+	height: 100%;
+	margin: 0px;
+}
+.wrapper, .fill
+{
+	height: 100%;
+} 
+#map {
+	width: 100%;
+	height: 100%;
+}
+</style>
+{% endblock %}
+{% block script %}
+{{ block.super }}
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+function initialize() {
+	var mapOptions = {
+	        };
+	
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var url = 'http://acaciadata.com/files/public-docs/bollenbodem.kmz';
+    var kmlLayer = new google.maps.KmlLayer({url: url, map: map, preserveViewport: true, suppressInfoWindows: true});
+
+    var geocoder = new google.maps.Geocoder();
+	if (geocoder) {
+	   geocoder.geocode({ 'address': 'Noord-Holland' }, function (results, status) {
+	     if (status == google.maps.GeocoderStatus.OK) {
+	       map.fitBounds(results[0].geometry.viewport);
+	     }
+	   });
+	}
+
+	google.maps.event.addListener(kmlLayer, 'click', function(kmlEvent) {
+	    var text = kmlEvent.featureData.description;
+	    showInContentWindow(text);
+	  });
+
+	function showInContentWindow(text) {
+	  var sidediv = document.getElementById('side-window');
+	  sidediv.innerHTML = text;
+	}
+}
+$(function(){initialize();});
+</script>
+{% endblock %}
+{% block content %}
+<div class="container-fluid fill">
+<div class="row fill">
+<div class="side-window col-md-2">
+</div>
+<div class="col-md-10 fill">
+<div id="map"></div>
+</div>
+</div>
+</div>
+{% endblock content %}

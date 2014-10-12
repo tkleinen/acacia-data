@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% block extrastyle %}
+<style>
+.error-msg {
+  color: #a94442;
+}
+</style>
+{% endblock %}
+{% block script %}
+{{block.super}}
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static "js/themes/dark-blue.js" %}"></script>
+<script type="text/javascript">
+function OnFocusInput (input,html) {
+	var f = document.getElementById("placeholder");
+	f.innerHTML=html; 
+}
+
+function OnBlurInput (input, html) {
+	var f = document.getElementById("placeholder");
+	f.innerHTML=html; 
+}
+
+function ToggleDisplay(idon,idoff) {
+	var on = document.getElementById(idon); 		
+	var off = document.getElementById(idoff);
+	on.style.display = 'block';
+	off.style.display = 'none';
+}
+
+$(document).ready(function() {
+	var selects = document.getElementsByTagName("select");
+	var toel = {{toelichting|safe}};
+	for (var i=0;i<selects.length;i++) {
+		s = selects[i];
+		s.onfocus = function(){OnFocusInput(this,toel[this.id]);};
+		//s.onblur = function(){OnBlurInput(this,toel["home"]);};
+	}
+	var id1 = document.getElementById("id_reken_1");
+	id1.onfocus = function(){OnFocusInput(this,toel['id_reken']);};
+	id1.onchange = function(){ToggleDisplay("div_id_oppervlakte","div_id_volume");};
+	var id2 = document.getElementById("id_reken_2");
+	id2.onfocus = function(){OnFocusInput(this,toel['id_reken']);};
+	id2.onchange = function(){ToggleDisplay("div_id_volume","div_id_oppervlakte");};
+	if (id1.checked) {
+		ToggleDisplay("div_id_oppervlakte","div_id_volume");
+	}
+	else {
+		ToggleDisplay("div_id_volume","div_id_oppervlakte");
+	}
+		
+});
+
+$(function () {
+  var options = {{chart|safe}};
+  options.xAxis.labels.formatter = function() { return this.value;};
+  $('#chart').highcharts(options);
+});
+
+</script>
+{% endblock %}
+{% block content %}
+<div class = "container-fluid">
+<div class = "row-fluid">
+<div class = "col-md-3">
+<form action="" method="post">
+{% csrf_token %}
+	{{ form|as_bootstrap }}
+	<div class="form-actions">
+	     <button type="submit" class="btn btn-primary">Berekenen</button>
+	</div>
+</form>
+</div>
+<div class = "col-md-9">
+<div id="placeholder">
+{%if chart %}
+<div id="chart"></div>
+<h3>Toelichting</h3>
+	In de grafiek zijn de watertekorten weergegeven die horen bij de combinatie van het volume van het bassin en de oppervlakte van het perseel. Bij een opgegeven perceeloppervlak wordt een grafiek gegenereerd  waarop te zien is wat de watertekorten zijn bij bepaalde bassin volumes. 
+	Bij het opgeven van een volume voor het bassin genereert de tool een grafiek waarop er bij een bepaald perceelsoppervlak te zien is wat de watertekorten zijn. 
+	Op de x-as zijn of de perceeloppervlakten of de bassinvolumes weergegeven, afhankelijk van de keuze om een oppervlakte of volume op te geven. Op de y-as zijn de watertekorten te zien in mm. 
+{%endif%}
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

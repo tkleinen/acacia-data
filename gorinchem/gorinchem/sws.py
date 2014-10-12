@@ -5,7 +5,6 @@ Created on Jan 26, 2014
 '''
 import pandas as pd
 import logging
-from generator import Generator
 logger = logging.getLogger(__name__)
 
 class MonFileException(Exception):
@@ -17,7 +16,7 @@ class MonFileException(Exception):
         return repr(self.value)
 
 class Diver():
-
+    header = None
     def get_header(self,f):
         line = f.readline()
         if not line.startswith('Data file for DataLogger.'):
@@ -59,15 +58,23 @@ class Diver():
                 key = line[0:delim].strip()
                 value = line[delim+1:].strip()
                 section[key] = value
-        return sections
+        self.header = sections
+        return self.header
 
     def get_data(self,f,**kwargs):
-        sections = self.get_header(f)
+        self.header = self.get_header(f)
         names = ['DATE','TIME']
-        num = int(sections['Logger settings'].get('Number of channels'))
+        num = int(self.header['Logger settings'].get('Number of channels'))
         for i in range(1,num+1):
-            name = sections['Channel %d' % i].get('Identification')
+            name = self.header['Channel %d' % i].get('Identification')
             names.append(name)
         num=int(f.readline())
         data = pd.read_csv(f, header=0, index_col=0, names = names, delim_whitespace=True, parse_dates = {'date': [0,1]}, nrows=num-1)
         return data
+
+if __name__ == '__main__':
+    d = Diver()
+    with open(r'/home/theo/acaciadata.com/gorinchem/data/Delft MON files/Delft groundwater.MON') as f:
+        df = d.get_data(f)
+        print d.header
+        
