@@ -9,7 +9,7 @@ from acacia.data.views import ProjectDetailView
 
 class HomeView(ProjectDetailView):
     def get_object(self):
-        return get_object_or_404(Project,name='Texel')
+        return get_object_or_404(Project,pk=1)
     
 def home(request):
     return render_to_response('home.html')

@@ -13,7 +13,6 @@ from django.template.loader import render_to_string
 import settings
 from forms import ScenarioForm
 from models import Matrix
-    
 
 def home(request):
     return render_to_response('home.html')
@@ -37,7 +36,7 @@ def scenario_highchart(request):
     toelichting = { 
                    'id_bodem': render_to_string('bodem.html',{'image': "img/grondsoort2.png", 'url': '/grondsoort'}),    
                    'id_neerslag': render_to_string('neerslag.html',{'image': "img/neerslag.jpg"}),
-                   'id_kwaliteit': render_to_string('kwaliteit.html',{'image': 'img/zoetzout.jpg'}),
+                   'id_kwaliteit': render_to_string('kwaliteit.html',{'image': 'img/zzhhnk.jpeg'}),
                    'id_irrigatie': render_to_string('irrigatie.html',{'image': 'img/irri1.jpg'}),
                    'id_reken': render_to_string('rekenopties.html',{'image': None})
                    }
@@ -58,12 +57,12 @@ def getseries(scenario, matrix):
         labels = df.index
         index = (scenario.volume - matrix.kolmin) / dcol # naar beneden afronden
         data = df[df.columns[int(index)]].values
-        series = pd.Series(data,index=labels)
+        series = pd.Series(data,index=labels,name=matrix.code)
     else:
         labels = df.columns
         index = (scenario.oppervlakte*10000 - matrix.rijmin) / drow # Ha -> m2
         data = df.iloc[int(index)].values
-        series = pd.Series(data,index=labels)
+        series = pd.Series(data,index=labels,name=matrix.code)
     return series
 
 def getresult(scenario):
@@ -72,11 +71,13 @@ def getresult(scenario):
     return getseries(scenario, matrix)
 
 def getkosten(scenario):
-    code = 'drip' if scenario.irrigatie == 'd' else 'di'
-    matrix = get_object_or_404(Matrix,code=code)
-    return getseries(scenario, matrix)
-    
-# referentiewaarden voor neerslagtekort 
+    mbv = get_object_or_404(Matrix,code='bv')
+    bv = getseries(scenario, mbv)
+    mbvd = get_object_or_404(Matrix,code='bvd')
+    bvd = getseries(scenario, mbvd)
+    return pd.DataFrame({'bv':bv,'bvd': bvd})
+
+# referentiewaarden voor neerslagtekort voor droog, gemiddeld en nat 
 P_REF = {'d': 202, 'g': 192, 'n': 182}
 
 def make_highchart(scenario):
@@ -95,13 +96,13 @@ def make_highchart(scenario):
 #                    'pointFormat': '{series.name}: <b>{point.y:.1f} mm </b><br/>',
                     'crosshairs': [True,True],}, 
         'yAxis': [],
-        'legend': {'enabled': False},
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
         'plotOptions': {'line': {'marker': {'enabled': False}}},            
         'credits': {'enabled': False},
         }
 
-    options['yAxis'].append({'min': 0, 'title': {'text': 'Neerslagtekort (mm)'},})
-    options['yAxis'].append({'opposite': 1, 'title': {'text': 'Kosten (euro/m3)'},})
+    options['yAxis'].append({'min': 0, 'max': 250, 'alignTicks': False, 'title': {'text': 'Watertekort (mm)'},})
+    options['yAxis'].append({'opposite': 1, 'gridLineWidth': 0, 'title': {'text': 'Kosten (euro/m3)'},})
     
     data = getresult(scenario)
     x = data.index.values.astype('f8')
@@ -116,17 +117,32 @@ def make_highchart(scenario):
         options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
     
-    options['series'] = [{'name': 'Neerslagtekort','type': 'line','data': zip(x,y)},
-                         {'name': 'Referentie','type': 'line','data': zip(x,pref)}]
-    try:
-        cost = getkosten(scenario)
-        euros = cost.values
-        options['series'].append(
-                         {'name': 'Kosten','type': 'line','yAxis': 1, 'data': zip(x,euros),
-                          'tooltip': {'valueSuffix': ' euro/m3',
-                                    'shared': True,
-                                    'valueDecimals': 2}
-                         })
-    except:
-        pass
+    options['series'] = [{'name': 'Referentie','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
+                         {'name': 'Watertekort','type': 'line','data': zip(x,y)},]
+#    try:
+    cost = getkosten(scenario)
+    bv = cost['bv'].values
+    bvd = cost['bvd'].values
+    options['series'].append(
+                     {'name': 'Kosten bassin en verzamelleiding',
+                      'type': 'line',
+                      'yAxis': 1, 
+                      'data': zip(x,bv),
+#                          'color': '#33ADFF',
+                      'tooltip': {'valueSuffix': ' euro/m3',
+                                'shared': True,
+                                'valueDecimals': 2}
+                     })
+    options['series'].append(
+                     {'name': 'Totale kosten inclusief druppelsysteem',
+                      'type': 'line',
+                      'yAxis': 1, 
+                      'data': zip(x,bvd),
+#                          'color': '#33ADFF',
+                      'tooltip': {'valueSuffix': ' euro/m3',
+                                'shared': True,
+                                'valueDecimals': 2}
+                     })
+#    except:
+#        pass
     return json.dumps(options)
