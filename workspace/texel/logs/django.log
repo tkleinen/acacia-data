@@ -4,3 +4,183 @@ Not Found: /media/
 Not Found: /media/
 Not Found: /media/
 Not Found: /media/
+Not Found: /favicon.ico
+Internal Server Error: /admin/knmi/station/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 99, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 337, in resolve
+    for pattern in self.url_patterns:
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 365, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 360, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/workspace/texel/texel/urls.py", line 7, in <module>
+    admin.autodiscover()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/knmi/admin.py", line 9, in <module>
+    admin.site.register(Station,StationAdmin)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 92, in register
+    admin_class.validate(model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 106, in validate
+    validator.validate(cls, model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 25, in validate
+    getattr(self, m)(cls, model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 251, in validate_list_display
+    % (cls.__name__, idx, field, cls.__name__, model._meta.object_name))
+ImproperlyConfigured: StationAdmin.list_display[2], 'location__x' is not a callable or an attribute of 'StationAdmin' or found in the model 'Station'.
+Internal Server Error: /admin/knmi/station/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 99, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 337, in resolve
+    for pattern in self.url_patterns:
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 365, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 360, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/workspace/texel/texel/urls.py", line 7, in <module>
+    admin.autodiscover()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/knmi/admin.py", line 9, in <module>
+    admin.site.register(Station,StationAdmin)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 92, in register
+    admin_class.validate(model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 106, in validate
+    validator.validate(cls, model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 25, in validate
+    getattr(self, m)(cls, model)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/validation.py", line 251, in validate_list_display
+    % (cls.__name__, idx, field, cls.__name__, model._meta.object_name))
+ImproperlyConfigured: StationAdmin.list_display[2], 'location.x' is not a callable or an attribute of 'StationAdmin' or found in the model 'Station'.
+Internal Server Error: /admin/data/datasource/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 15, in upload_datasource
+    df.download()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 287, in download
+    sourcefile.file.save(name=filename, content=contentfile)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/files.py", line 95, in save
+    self.instance.save()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 545, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 569, in save_base
+    update_fields=update_fields)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/dispatch/dispatcher.py", line 185, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 561, in sourcefile_save
+    if date > instance.uploaded:
+TypeError: can't compare datetime.datetime to NoneType
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 798, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 771, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 756, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 601, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 375, in get_data
+    date = np.array([aware(d, timezone.utc) for d in data.index.to_pydatetime()])
+AttributeError: 'Int64Index' object has no attribute 'to_pydatetime'
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
