@@ -37,9 +37,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
-    'texel',
+    'bootstrap3',
+    'south',
+    'registration',
     'acacia',
     'acacia.data',
+    'acacia.data.knmi',
+    'texel',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,6 +53,11 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django.contrib.staticfiles.finders.FileSystemFinder',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -74,16 +83,12 @@ DATABASES = {
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
 }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'nl-nl'
 
 TIME_ZONE = 'UTC'
 
@@ -106,26 +111,23 @@ UPLOAD_DATAFILES = 'datafiles'
 UPLOAD_THUMBNAILS = 'thumbnails' 
 UPLOAD_IMAGES = 'images' 
 
-# TEMPLATE_DIRS = (
-#  '/home/theo/acaciadata.com/acacia/acacia/templates/',
-# )
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+# voor plaatjes website provincie: texel.acaciadata.com/img/management.png
+IMG_URL = '/img/'
+IMG_ROOT = os.path.join(os.path.dirname(BASE_DIR),'img')
 
 # Grapelli admin
 GRAPPELLI_ADMIN_TITLE='Beheer van Texel Online Datastore'
 
+# Celery stuff
+#BROKER_URL = 'django://'
+CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
+INSTALLED_APPS += ('kombu.transport.django','djcelery',)                  
+
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'
-
-# Celery stuff
-#BROKER_URL = 'redis://localhost:6379/0'
-#CELERY_RESULT_BACKEND='redis://localhost:6379/0'
-#INSTALLED_APPS += ('kombu.transport.django','djcelery',)                  
-
-# Celery stuff
-BROKER_URL = 'django://'
-CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
-INSTALLED_APPS += ('kombu.transport.django','djcelery',)                  
 
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 

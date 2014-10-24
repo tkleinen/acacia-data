@@ -1,0 +1,39 @@
+INFO 2014-10-21 19:14:59,947 acacia.data.models: Getting data for sourcefile kok-pb33
+INFO 2014-10-21 19:15:12,374 acacia.data.models: Got 15282 rows, 3 columns
+INFO 2014-10-21 19:35:53,540 acacia.data.models: Getting data for sourcefile kok-pb3
+INFO 2014-10-21 19:36:04,287 acacia.data.models: Got 15282 rows, 3 columns
+INFO 2014-10-21 19:37:14,291 acacia.data.models: Getting data for sourcefile kok-pb3
+INFO 2014-10-21 19:37:25,615 acacia.data.models: Got 15282 rows, 3 columns
+INFO 2014-10-21 19:38:24,149 acacia.data.models: Getting data for sourcefile kok_pb5_140709085650_P2381
+INFO 2014-10-21 19:38:35,232 acacia.data.models: Got 15279 rows, 2 columns
+INFO 2014-10-21 19:39:47,237 acacia.data.models: Getting data for sourcefile D8758_texel_baro
+INFO 2014-10-21 19:39:53,171 acacia.data.models: Got 8188 rows, 2 columns
+INFO 2014-10-22 05:46:23,936 acacia.data.models: Updating series kok-pb3 comp
+INFO 2014-10-22 05:51:19,162 acacia.data.models: Series kok-pb3 comp updated: 23469 points created, 0 updated, 0 skipped
+DEBUG 2014-10-22 05:51:19,164 acacia.data.models: Generating thumbnail for series kok-pb3 comp
+INFO 2014-10-22 05:51:28,348 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-comp.png
+INFO 2014-10-22 05:51:32,797 acacia.data.models: Deleting all 0 datapoints from series baro dagwaarden
+INFO 2014-10-22 05:51:32,806 acacia.data.models: Creating series baro dagwaarden
+INFO 2014-10-22 05:51:35,108 acacia.data.models: Series baro dagwaarden updated: 58 points created, 0 points skipped
+DEBUG 2014-10-22 05:51:35,109 acacia.data.models: Generating thumbnail for series baro dagwaarden
+INFO 2014-10-22 05:51:36,299 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/baro-dagwaarden.png
+INFO 2014-10-22 05:52:33,342 acacia.data.models: Deleting all 0 datapoints from series kok-pb3 dagwaarden
+INFO 2014-10-22 05:52:33,348 acacia.data.models: Creating series kok-pb3 dagwaarden
+INFO 2014-10-22 05:52:44,608 acacia.data.models: Series kok-pb3 dagwaarden updated: 15282 points created, 0 points skipped
+DEBUG 2014-10-22 05:52:44,609 acacia.data.models: Generating thumbnail for series kok-pb3 dagwaarden
+INFO 2014-10-22 05:52:49,169 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-dagwaarden.png
+INFO 2014-10-22 06:17:35,003 acacia.data.models: Deleting all 15282 datapoints from series kok-pb3 dagwaarden
+INFO 2014-10-22 06:17:35,141 acacia.data.models: Creating series kok-pb3 dagwaarden
+INFO 2014-10-22 06:17:39,357 acacia.data.models: Series kok-pb3 dagwaarden updated: 107 points created, 0 points skipped
+DEBUG 2014-10-22 06:17:39,357 acacia.data.models: Generating thumbnail for series kok-pb3 dagwaarden
+INFO 2014-10-22 06:17:39,954 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-dagwaarden.png
+INFO 2014-10-22 06:18:09,429 acacia.data.models: Deleting all 23469 datapoints from series kok-pb3 comp
+INFO 2014-10-22 06:18:09,610 acacia.data.models: Creating series kok-pb3 comp
+INFO 2014-10-22 06:18:26,885 acacia.data.models: Series kok-pb3 comp updated: 23469 points created, 0 points skipped
+DEBUG 2014-10-22 06:18:26,886 acacia.data.models: Generating thumbnail for series kok-pb3 comp
+INFO 2014-10-22 06:18:34,291 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-comp.png
+INFO 2014-10-22 06:20:45,062 acacia.data.models: Deleting all 0 datapoints from series kok-pb3 dagcomp
+INFO 2014-10-22 06:20:45,071 acacia.data.models: Creating series kok-pb3 dagcomp
+INFO 2014-10-22 06:20:45,341 acacia.data.models: Series kok-pb3 dagcomp updated: 107 points created, 0 points skipped
+DEBUG 2014-10-22 06:20:45,341 acacia.data.models: Generating thumbnail for series kok-pb3 dagcomp
+INFO 2014-10-22 06:20:45,956 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-dagcomp.png

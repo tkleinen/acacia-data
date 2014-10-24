@@ -184,7 +184,7 @@ class Datalogger(models.Model):
 
     class Meta:
         ordering = ['serial',]
-        
+    
 class DataPoint(models.Model):
     screen = models.ForeignKey(Screen, verbose_name = 'filter')
     date = models.DateTimeField(verbose_name = 'datum')

@@ -13,3 +13,6 @@ class HomeView(ProjectDetailView):
     
 def home(request):
     return render_to_response('home.html')
+
+def divercomp(request):
+    pass

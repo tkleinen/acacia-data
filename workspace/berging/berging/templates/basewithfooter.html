@@ -16,7 +16,7 @@
 		#footer > .navbar {padding-top: 10px; min-height:32px !important;}
 		#header > .navbar {padding-top: 4px; min-height:32px !important;}
 		#header img {padding-bottom: 4px; padding-right: 4px;}
-		body > .wrapper {padding-top: 36px;}
+		body > .wrapper {padding-bottom: 42px; padding-top: 36px;}
  		.nav > .breadcrumb {float: left; margin-top: 8px; padding-bottom: 0px;}
  		body {margin: 32px;}
     </style>
@@ -42,5 +42,19 @@
     {% block content %}
     {% endblock content %}
 	</div> <!-- wrapper -->
+    {% block footer %}
+	<div id="footer" class="container">
+	    <nav class="navbar navbar-default navbar-fixed-bottom">
+	        <div class="navbar-inner navbar-content-center">
+    			{% block footer-text %}
+	            <p class="text-muted text-center credit">
+					<img src="{% static "img/boom.png" %}" height="24px"/>
+		            <a href="http://www.acaciawater.com">Acacia Water</a> • Jan van Beaumontstraat 1 • 2805 RN Gouda • The Netherlands • Tel: +31 (0)182 - 686424 • Mail: <a href="mailto:info@acaciawater.com">info@acaciawater.com</a>.
+	            </p>
+    			{% endblock footer-text %}
+	        </div>
+	    </nav>
+	</div>
+    {% endblock footer %}
   </body>
 </html>

@@ -6,6 +6,9 @@
 .error-msg {
   color: #a94442;
 }
+#chart {
+  height: 500px;
+}
 </style>
 {% endblock %}
 {% block script %}
@@ -79,9 +82,11 @@ $(function () {
 {%if chart %}
 <div id="chart"></div>
 <h3>Toelichting</h3>
-	In de grafiek zijn de watertekorten weergegeven die horen bij de combinatie van het volume van het bassin en de oppervlakte van het perseel. Bij een opgegeven perceeloppervlak wordt een grafiek gegenereerd  waarop te zien is wat de watertekorten zijn bij bepaalde bassin volumes. 
+	In de grafiek zijn de watertekorten weergegeven die horen bij de combinatie van het volume van het bassin en de oppervlakte van het perceel. 
+	Bij een opgegeven perceeloppervlak wordt een grafiek gegenereerd  waarop te zien is wat de watertekorten zijn bij bepaalde bassin volumes. 
 	Bij het opgeven van een volume voor het bassin genereert de tool een grafiek waarop er bij een bepaald perceelsoppervlak te zien is wat de watertekorten zijn. 
-	Op de x-as zijn of de perceeloppervlakten of de bassinvolumes weergegeven, afhankelijk van de keuze om een oppervlakte of volume op te geven. Op de y-as zijn de watertekorten te zien in mm. 
+	Op de x-as zijn of de perceeloppervlakten of de bassinvolumes weergegeven, afhankelijk van de keuze om een oppervlakte of volume op te geven. 
+	Op de linker y-as zijn de watertekorten te zien in mm, op de rechter y-as de totale kosten per m3. 
 {%endif%}
 </div>
 </div>
