@@ -445,3 +445,241 @@ INFO 2014-10-24 11:21:27,937 acacia.data.models: Got 528 rows, 22 columns
 INFO 2014-10-24 11:21:28,239 acacia.data.models: Series T updated: 528 points created, 0 points skipped
 DEBUG 2014-10-24 11:21:28,240 acacia.data.models: Generating thumbnail for series T
 INFO 2014-10-24 11:21:29,081 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-de-kooy-uurwaarden/series/t.png
+INFO 2014-10-24 11:53:19,273 acacia.data.models: Deleting thumbnail  for parameter HH
+INFO 2014-10-24 11:54:33,621 acacia.data.models: Downloading datasource Uurwaarden Meteostation de Kooy from http://www.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi?stns=235&start=20140101&vars=p:rh
+INFO 2014-10-24 11:54:48,199 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 11:54:56,093 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 11:54:56,227 acacia.data.models: Got 552 rows, 22 columns
+INFO 2014-10-24 11:54:58,531 acacia.data.models: File uurgegevens_knmi_meteo_235.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/uurwaarden-meteostation-de-kooy/uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 11:55:54,000 acacia.data.models: Deleting file  for datafile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 11:55:54,001 acacia.data.models: File  deleted
+INFO 2014-10-24 11:59:15,387 acacia.data.models: Downloading datasource Uurwaarden Meteostation de Kooy from http://www.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi?stns=235&start=20140101&vars=p:rh
+INFO 2014-10-24 11:59:21,139 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 11:59:21,175 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 11:59:21,255 acacia.data.models: Got 552 rows, 22 columns
+INFO 2014-10-24 11:59:21,266 acacia.data.models: File uurgegevens_knmi_meteo_235.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/uurwaarden-meteostation-de-kooy/uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:02:18,675 acacia.data.models: Downloading datasource Uurwaarden Meteostation de Kooy from http://www.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi?stns=235&start=2014010101&vars=p:rh
+INFO 2014-10-24 12:02:28,544 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:02:28,600 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:02:29,532 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:02:29,545 acacia.data.models: File uurgegevens_knmi_meteo_235.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/uurwaarden-meteostation-de-kooy/uurgegevens_knmi_meteo_235_1.txt
+INFO 2014-10-24 12:02:57,067 acacia.data.models: Deleting all 528 datapoints from series P
+INFO 2014-10-24 12:02:57,080 acacia.data.models: Creating series P
+INFO 2014-10-24 12:02:57,105 acacia.data.models: Getting data for datasource Uurwaarden Meteostation de Kooy
+INFO 2014-10-24 12:02:57,112 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:02:58,155 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:03:01,552 acacia.data.models: Series P updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 12:03:01,552 acacia.data.models: Generating thumbnail for series P
+INFO 2014-10-24 12:03:03,915 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-de-kooy/series/p.png
+INFO 2014-10-24 12:03:03,930 acacia.data.models: Deleting all 528 datapoints from series RH
+INFO 2014-10-24 12:03:03,937 acacia.data.models: Creating series RH
+INFO 2014-10-24 12:03:03,949 acacia.data.models: Getting data for datasource Uurwaarden Meteostation de Kooy
+INFO 2014-10-24 12:03:03,956 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:03:04,872 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:03:08,306 acacia.data.models: Series RH updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 12:03:08,307 acacia.data.models: Generating thumbnail for series RH
+INFO 2014-10-24 12:04:34,183 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-de-kooy/series/rh.png
+INFO 2014-10-24 12:04:34,196 acacia.data.models: Deleting all 528 datapoints from series T
+INFO 2014-10-24 12:04:34,206 acacia.data.models: Creating series T
+INFO 2014-10-24 12:04:34,219 acacia.data.models: Getting data for datasource Uurwaarden Meteostation de Kooy
+INFO 2014-10-24 12:04:34,224 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:04:35,158 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:04:38,739 acacia.data.models: Series T updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 12:04:38,739 acacia.data.models: Generating thumbnail for series T
+INFO 2014-10-24 12:04:42,601 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-de-kooy/series/t.png
+INFO 2014-10-24 12:19:58,067 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp
+INFO 2014-10-24 12:19:58,643 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:19:58,669 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:20:18,144 acacia.data.models: Got 296 rows, 6 columns
+INFO 2014-10-24 12:20:18,190 acacia.data.models: File daggegevens_knmi_meteo_242.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:20:51,641 acacia.data.models: Downloading datasource Dagwaarden Meteostation de Kooy from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=235&start=20140101&vars=prcp:pres
+INFO 2014-10-24 12:20:52,708 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:20:52,747 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:20:52,853 acacia.data.models: Got 296 rows, 11 columns
+INFO 2014-10-24 12:20:52,865 acacia.data.models: File daggegevens_knmi_meteo_235.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/dagwaarden-meteostation-de-kooy/daggegevens_knmi_meteo_235.txt
+INFO 2014-10-24 12:21:33,431 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp:pres
+INFO 2014-10-24 12:21:34,027 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:21:34,069 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:21:34,167 acacia.data.models: Got 296 rows, 11 columns
+INFO 2014-10-24 12:21:34,178 acacia.data.models: File daggegevens_knmi_meteo_242.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242_1.txt
+INFO 2014-10-24 12:21:42,400 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-vlieland/parameter/dr.png for parameter DR
+INFO 2014-10-24 12:21:42,403 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-vlieland/parameter/rhxh.png for parameter RHXH
+INFO 2014-10-24 12:21:42,404 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-vlieland/parameter/ev24.png for parameter EV24
+INFO 2014-10-24 12:21:42,405 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-vlieland/parameter/rh.png for parameter RH
+INFO 2014-10-24 12:21:42,406 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/meteostation-vlieland/parameter/rhx.png for parameter RHX
+INFO 2014-10-24 12:21:42,410 acacia.data.actions: 5 parameters deleted for datasource Dagwaarden Meteostation Vlieland 
+INFO 2014-10-24 12:21:42,411 acacia.data.models: Updating parameters for datasource Dagwaarden Meteostation Vlieland 
+INFO 2014-10-24 12:21:42,422 acacia.data.models: Update completed, got 10 parameters from 1 files
+WARNING 2014-10-24 12:21:42,429 acacia.data.models: parameter RHX created
+WARNING 2014-10-24 12:21:42,480 acacia.data.models: parameter DR created
+WARNING 2014-10-24 12:21:42,491 acacia.data.models: parameter RHXH created
+WARNING 2014-10-24 12:21:42,500 acacia.data.models: parameter PNH created
+WARNING 2014-10-24 12:21:42,508 acacia.data.models: parameter PXH created
+WARNING 2014-10-24 12:21:42,517 acacia.data.models: parameter PG created
+WARNING 2014-10-24 12:21:42,527 acacia.data.models: parameter EV24 created
+WARNING 2014-10-24 12:21:42,535 acacia.data.models: parameter PN created
+WARNING 2014-10-24 12:21:42,543 acacia.data.models: parameter PX created
+WARNING 2014-10-24 12:21:42,551 acacia.data.models: parameter RH created
+INFO 2014-10-24 12:21:42,554 acacia.data.models: 10 parameters created, 0 updated
+INFO 2014-10-24 12:23:06,755 acacia.data.models: Downloading datasource Neerslagstation De Cocksdorp  from http://www.knmi.nl/klimatologie/monv/reeksen/getdata_rr.cgi?stns=19&start=20140101
+INFO 2014-10-24 12:23:07,402 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:23:07,451 acacia.data.models: Getting data for sourcefile knmi_neerslag19.txt
+INFO 2014-10-24 12:23:07,542 acacia.data.models: Got 273 rows, 4 columns
+INFO 2014-10-24 12:23:07,553 acacia.data.models: File knmi_neerslag19.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/neerslagstation-de-cocksdorp/knmi_neerslag19.txt
+INFO 2014-10-24 12:23:31,478 acacia.data.models: Downloading datasource Regenradar Hoofdperceel  from http://opendap.nationaleregenradar.nl/thredds/dodsC/radar/TF2400_A/2000/01/01/RAD_TF2400_A_20000101000000.h5
+INFO 2014-10-24 12:23:34,969 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:23:34,987 acacia.data.models: Getting data for sourcefile rad_tf2400.csv
+INFO 2014-10-24 12:23:34,994 acacia.data.models: Got 296 rows, 1 columns
+INFO 2014-10-24 12:23:35,005 acacia.data.models: File rad_tf2400.csv saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/regenradar-hoofdperceel/rad_tf2400_1.csv
+INFO 2014-10-24 12:25:53,788 acacia.data.models: Downloading datasource Uurwaarden Meteostation Vlieland from http://www.knmi.nl/klimatologie/uurgegevens/getdata_uur.cgi?stns=242&start=2014010101&vars=p:rh
+INFO 2014-10-24 12:26:00,507 acacia.data.models: Download completed, got 1 file(s)
+INFO 2014-10-24 12:26:00,546 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:26:01,428 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:26:01,438 acacia.data.models: File uurgegevens_knmi_meteo_242.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/texel/hoofdperceel/datafiles/uurwaarden-meteostation-vlieland/uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:26:12,392 acacia.data.actions: 0 parameters deleted for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:26:12,393 acacia.data.models: Updating parameters for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:26:12,407 acacia.data.models: Update completed, got 21 parameters from 1 files
+WARNING 2014-10-24 12:26:12,414 acacia.data.models: parameter FF created
+WARNING 2014-10-24 12:26:12,421 acacia.data.models: parameter FX created
+WARNING 2014-10-24 12:26:12,430 acacia.data.models: parameter DD created
+WARNING 2014-10-24 12:26:12,436 acacia.data.models: parameter M created
+WARNING 2014-10-24 12:26:12,446 acacia.data.models: parameter O created
+WARNING 2014-10-24 12:26:12,456 acacia.data.models: parameter N created
+WARNING 2014-10-24 12:26:12,466 acacia.data.models: parameter WW created
+WARNING 2014-10-24 12:26:12,475 acacia.data.models: parameter P created
+WARNING 2014-10-24 12:26:12,483 acacia.data.models: parameter S created
+WARNING 2014-10-24 12:26:12,490 acacia.data.models: parameter R created
+WARNING 2014-10-24 12:26:12,498 acacia.data.models: parameter T10 created
+WARNING 2014-10-24 12:26:12,506 acacia.data.models: parameter T created
+WARNING 2014-10-24 12:26:12,515 acacia.data.models: parameter VV created
+WARNING 2014-10-24 12:26:12,523 acacia.data.models: parameter Y created
+WARNING 2014-10-24 12:26:12,530 acacia.data.models: parameter DR created
+WARNING 2014-10-24 12:26:12,537 acacia.data.models: parameter FH created
+WARNING 2014-10-24 12:26:12,545 acacia.data.models: parameter Q created
+WARNING 2014-10-24 12:26:12,552 acacia.data.models: parameter SQ created
+WARNING 2014-10-24 12:26:12,560 acacia.data.models: parameter U created
+WARNING 2014-10-24 12:26:12,569 acacia.data.models: parameter TD created
+WARNING 2014-10-24 12:26:12,576 acacia.data.models: parameter RH created
+INFO 2014-10-24 12:26:12,580 acacia.data.models: 21 parameters created, 0 updated
+INFO 2014-10-24 12:27:30,132 acacia.data.models: Deleting all 0 datapoints from series P
+INFO 2014-10-24 12:27:30,137 acacia.data.models: Creating series P
+INFO 2014-10-24 12:27:30,150 acacia.data.models: Getting data for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:27:30,155 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:27:31,113 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:27:34,634 acacia.data.models: Series P updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 12:27:34,634 acacia.data.models: Generating thumbnail for series P
+INFO 2014-10-24 12:27:37,226 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/p.png
+INFO 2014-10-24 12:27:47,384 acacia.data.models: Deleting all 0 datapoints from series RH
+INFO 2014-10-24 12:27:47,390 acacia.data.models: Creating series RH
+INFO 2014-10-24 12:27:47,403 acacia.data.models: Getting data for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:27:47,410 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:27:48,452 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:27:48,650 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
+DEBUG 2014-10-24 12:27:48,651 acacia.data.models: Generating thumbnail for series RH
+INFO 2014-10-24 12:27:48,654 acacia.data.models: Creating series RH
+INFO 2014-10-24 12:27:48,655 acacia.data.models: Getting data for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:27:48,660 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:27:49,548 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:27:49,744 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
+INFO 2014-10-24 12:27:50,001 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+INFO 2014-10-24 12:27:50,010 acacia.data.models: Deleting all 0 datapoints from series T
+INFO 2014-10-24 12:27:50,014 acacia.data.models: Creating series T
+INFO 2014-10-24 12:27:50,028 acacia.data.models: Getting data for datasource Uurwaarden Meteostation Vlieland
+INFO 2014-10-24 12:27:50,032 acacia.data.models: Getting data for sourcefile uurgegevens_knmi_meteo_242.txt
+INFO 2014-10-24 12:27:50,921 acacia.data.models: Got 7104 rows, 22 columns
+INFO 2014-10-24 12:27:54,306 acacia.data.models: Series T updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 12:27:54,306 acacia.data.models: Generating thumbnail for series T
+INFO 2014-10-24 12:27:57,044 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/t.png
+INFO 2014-10-24 12:35:49,267 acacia.data.models: Deleting all 58 datapoints from series baro uurwaarden
+INFO 2014-10-24 12:35:49,272 acacia.data.models: Creating series baro uurwaarden
+INFO 2014-10-24 12:37:40,028 acacia.data.models: Deleting all 0 datapoints from series baro uurwaarden
+INFO 2014-10-24 12:37:40,032 acacia.data.models: Creating series baro uurwaarden
+INFO 2014-10-24 12:37:42,944 acacia.data.models: Series baro uurwaarden updated: 1365 points created, 0 points skipped
+DEBUG 2014-10-24 12:37:42,945 acacia.data.models: Generating thumbnail for series baro uurwaarden
+INFO 2014-10-24 12:37:44,315 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/baro-uurwaarden.png
+INFO 2014-10-24 12:47:20,380 acacia.data.models: Deleting all 1365 datapoints from series baro uurwaarden
+INFO 2014-10-24 12:47:20,396 acacia.data.models: Creating series baro uurwaarden
+INFO 2014-10-24 12:47:23,158 acacia.data.models: Series baro uurwaarden updated: 1365 points created, 0 points skipped
+DEBUG 2014-10-24 12:47:23,158 acacia.data.models: Generating thumbnail for series baro uurwaarden
+INFO 2014-10-24 12:47:24,519 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/baro-uurwaarden.png
+INFO 2014-10-24 12:49:08,424 acacia.data.models: Deleting all 1365 datapoints from series baro uurwaarden
+INFO 2014-10-24 12:49:08,448 acacia.data.models: Creating series baro uurwaarden
+INFO 2014-10-24 12:49:12,139 acacia.data.models: Series baro uurwaarden updated: 1365 points created, 0 points skipped
+DEBUG 2014-10-24 12:49:12,139 acacia.data.models: Generating thumbnail for series baro uurwaarden
+INFO 2014-10-24 12:49:13,873 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/baro-uurwaarden.png
+INFO 2014-10-24 13:25:31,136 acacia.data.models: Deleting all 107 datapoints from series kok-pb3 uurwaarden
+INFO 2014-10-24 13:25:31,142 acacia.data.models: Creating series kok-pb3 uurwaarden
+INFO 2014-10-24 13:25:36,489 acacia.data.models: Series kok-pb3 uurwaarden updated: 2548 points created, 0 points skipped
+DEBUG 2014-10-24 13:25:36,490 acacia.data.models: Generating thumbnail for series kok-pb3 uurwaarden
+INFO 2014-10-24 13:25:37,692 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-uurwaarden.png
+INFO 2014-10-24 13:26:35,008 acacia.data.models: Deleting all 107 datapoints from series kok-pb3 uurcomp
+INFO 2014-10-24 13:26:35,012 acacia.data.models: Creating series kok-pb3 uurcomp
+INFO 2014-10-24 13:26:37,235 acacia.data.models: Series kok-pb3 uurcomp updated: 2548 points created, 0 points skipped
+DEBUG 2014-10-24 13:26:37,235 acacia.data.models: Generating thumbnail for series kok-pb3 uurcomp
+INFO 2014-10-24 13:26:38,466 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-uurcomp.png
+INFO 2014-10-24 13:36:08,601 acacia.data.models: Deleting all 0 datapoints from series Baro pb3 uurwaarden
+INFO 2014-10-24 13:36:08,605 acacia.data.models: Creating series Baro pb3 uurwaarden
+INFO 2014-10-24 13:36:14,331 acacia.data.models: Series Baro pb3 uurwaarden updated: 2548 points created, 0 points skipped
+DEBUG 2014-10-24 13:36:14,332 acacia.data.models: Generating thumbnail for series Baro pb3 uurwaarden
+INFO 2014-10-24 13:36:15,891 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/baro-pb3-uurwaarden.png
+INFO 2014-10-24 13:41:04,005 acacia.data.models: Deleting all 2548 datapoints from series kok-pb3 uurcomp
+INFO 2014-10-24 13:41:04,037 acacia.data.models: Creating series kok-pb3 uurcomp
+INFO 2014-10-24 13:41:06,637 acacia.data.models: Series kok-pb3 uurcomp updated: 2548 points created, 0 points skipped
+DEBUG 2014-10-24 13:41:06,638 acacia.data.models: Generating thumbnail for series kok-pb3 uurcomp
+INFO 2014-10-24 13:41:07,705 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-uurcomp.png
+DEBUG 2014-10-24 13:41:33,678 acacia.data.models: Generating thumbnail for series kok-pb3 uurcomp
+INFO 2014-10-24 13:41:34,929 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-uurcomp.png
+INFO 2014-10-24 13:55:55,846 acacia.data.models: Deleting all 8188 datapoints from series PRESSURE
+INFO 2014-10-24 13:55:55,968 acacia.data.models: Creating series PRESSURE
+INFO 2014-10-24 13:55:56,005 acacia.data.models: Getting data for datasource baro
+INFO 2014-10-24 13:55:56,012 acacia.data.models: Getting data for sourcefile D8758_texel_baro
+INFO 2014-10-24 13:56:01,814 acacia.data.models: Got 8188 rows, 2 columns
+INFO 2014-10-24 13:56:05,710 acacia.data.models: Series PRESSURE updated: 8188 points created, 0 points skipped
+DEBUG 2014-10-24 13:56:05,710 acacia.data.models: Generating thumbnail for series PRESSURE
+INFO 2014-10-24 13:56:08,402 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/baro/series/pressure.png
+INFO 2014-10-24 13:56:38,757 acacia.data.models: Deleting all 15282 datapoints from series PRESSURE
+INFO 2014-10-24 13:56:38,880 acacia.data.models: Creating series PRESSURE
+INFO 2014-10-24 13:56:38,895 acacia.data.models: Getting data for datasource kok-pb3
+INFO 2014-10-24 13:56:38,900 acacia.data.models: Getting data for sourcefile kok-pb3
+INFO 2014-10-24 13:56:49,876 acacia.data.models: Got 15282 rows, 3 columns
+INFO 2014-10-24 13:56:57,261 acacia.data.models: Series PRESSURE updated: 15282 points created, 0 points skipped
+DEBUG 2014-10-24 13:56:57,262 acacia.data.models: Generating thumbnail for series PRESSURE
+INFO 2014-10-24 13:57:02,506 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/kok-pb3/series/pressure.png
+INFO 2014-10-24 14:53:40,335 acacia.data.models: Deleting all 8188 datapoints from series PRESSURE
+INFO 2014-10-24 14:53:40,419 acacia.data.models: Creating series PRESSURE
+INFO 2014-10-24 14:53:40,438 acacia.data.models: Getting data for datasource baro
+INFO 2014-10-24 14:53:40,446 acacia.data.models: Getting data for sourcefile D8758_texel_baro
+INFO 2014-10-24 14:53:47,045 acacia.data.models: Got 8188 rows, 2 columns
+INFO 2014-10-24 14:53:48,076 acacia.data.models: Series PRESSURE updated: 1365 points created, 0 points skipped
+DEBUG 2014-10-24 14:53:48,077 acacia.data.models: Generating thumbnail for series PRESSURE
+INFO 2014-10-24 14:53:48,849 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/baro/series/pressure.png
+INFO 2014-10-24 14:53:48,862 acacia.data.models: Deleting all 15279 datapoints from series PRESSURE
+INFO 2014-10-24 14:53:48,977 acacia.data.models: Creating series PRESSURE
+INFO 2014-10-24 14:53:48,989 acacia.data.models: Getting data for datasource kok-pb5
+INFO 2014-10-24 14:53:48,996 acacia.data.models: Getting data for sourcefile kok_pb5_140709085650_P2381
+INFO 2014-10-24 14:53:59,728 acacia.data.models: Got 15279 rows, 2 columns
+INFO 2014-10-24 14:54:01,262 acacia.data.models: Series PRESSURE updated: 2547 points created, 0 points skipped
+DEBUG 2014-10-24 14:54:01,262 acacia.data.models: Generating thumbnail for series PRESSURE
+INFO 2014-10-24 14:54:02,357 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/kok-pb5/series/pressure.png
+INFO 2014-10-24 14:54:02,371 acacia.data.models: Deleting all 15282 datapoints from series PRESSURE
+INFO 2014-10-24 14:54:02,493 acacia.data.models: Creating series PRESSURE
+INFO 2014-10-24 14:54:02,505 acacia.data.models: Getting data for datasource kok-pb3
+INFO 2014-10-24 14:54:02,510 acacia.data.models: Getting data for sourcefile kok-pb3
+INFO 2014-10-24 14:54:13,096 acacia.data.models: Got 15282 rows, 3 columns
+INFO 2014-10-24 14:54:14,610 acacia.data.models: Series PRESSURE updated: 2548 points created, 0 points skipped
+DEBUG 2014-10-24 14:54:14,610 acacia.data.models: Generating thumbnail for series PRESSURE
+INFO 2014-10-24 14:54:15,826 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/kok-pb3/series/pressure.png
+INFO 2014-10-24 14:57:51,181 acacia.data.models: Updating series kok-pb3 comp
+INFO 2014-10-24 14:58:14,714 acacia.data.models: Series kok-pb3 comp updated: 2548 points created, 0 updated, 0 skipped
+DEBUG 2014-10-24 14:58:14,715 acacia.data.models: Generating thumbnail for series kok-pb3 comp
+INFO 2014-10-24 14:58:15,907 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb3-comp.png
+INFO 2014-10-24 14:59:37,498 acacia.data.models: Deleting all 0 datapoints from series kok-pb5 comp
+INFO 2014-10-24 14:59:37,503 acacia.data.models: Creating series kok-pb5 comp
+INFO 2014-10-24 14:59:39,824 acacia.data.models: Series kok-pb5 comp updated: 2547 points created, 0 points skipped
+DEBUG 2014-10-24 14:59:39,824 acacia.data.models: Generating thumbnail for series kok-pb5 comp
+INFO 2014-10-24 14:59:41,037 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/kok-pb5-comp.png
+INFO 2014-10-24 15:20:11,443 acacia.data.models: Deleting all 0 datapoints from series Vlieland druk
+INFO 2014-10-24 15:20:11,447 acacia.data.models: Creating series Vlieland druk
+INFO 2014-10-24 15:20:16,522 acacia.data.models: Series Vlieland druk updated: 7104 points created, 0 points skipped
+DEBUG 2014-10-24 15:20:16,524 acacia.data.models: Generating thumbnail for series Vlieland druk
+INFO 2014-10-24 15:20:19,167 acacia.data.models: Generated thumbnail proef-zoetwaterberging/texel/hoofdperceel/thumbnails/berekend/series/vlieland-druk.png
