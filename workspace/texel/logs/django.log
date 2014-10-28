@@ -115,3 +115,735 @@ Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarde
 Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
 Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
 Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 65, in handle
+    series_start = min([s.beforelast().date for s in series])
+AttributeError: 'NoneType' object has no attribute 'date'
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 66, in handle
+    series_start = min([s.beforelast().date for s in series])
+AttributeError: 'NoneType' object has no attribute 'date'
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 66, in handle
+    series_start = min([s.beforelast().date for s in series])
+AttributeError: 'NoneType' object has no attribute 'date'
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 69, in handle
+    series_start = bl.min()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/numpy/core/_methods.py", line 29, in _amin
+    return umr_minimum(a, axis, None, out, keepdims)
+TypeError: can't compare datetime.datetime to NoneType
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 69, in handle
+    series_start = bl.min()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/numpy/core/_methods.py", line 29, in _amin
+    return umr_minimum(a, axis, None, out, keepdims)
+TypeError: can't compare datetime.datetime to float
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 69, in handle
+    series_start = bl[~bl.isnan()].min()
+AttributeError: 'numpy.ndarray' object has no attribute 'isnan'
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 69, in handle
+    series_start = bl[~np.isnan(bl)].min()
+TypeError: ufunc 'isnan' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 105, in UpdateDatasource
+    update_datasource(pk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/local.py", line 167, in <lambda>
+    __call__ = lambda x, *a, **kw: x._get_current_object()(*a, **kw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/celery/app/task.py", line 420, in __call__
+    return self.run(*args, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/tasks.py", line 43, in update_datasource
+    command.execute(pk=pk,down=download,replace=replace,nocalc=nocalc)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/management/base.py", line 285, in execute
+    output = self.handle(*args, **options)
+  File "/home/theo/acaciadata.com/acacia/acacia/management/commands/update.py", line 73, in handle
+    self.stdout.write('Downloading datasource %s\n' % d.name)
+AttributeError: 'DataPoint' object has no attribute 'name'
+Internal Server Error: /data/update/10
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 107, in UpdateDatasource
+    return redirect(referer)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 78, in redirect
+    return redirect_class(resolve_url(to, *args, **kwargs))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 157, in resolve_url
+    if '/' not in to and '.' not in to:
+TypeError: argument of type 'NoneType' is not iterable
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Internal Server Error: /admin/data/datasource/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1411, in changelist_view
+    'selection_note': _('0 of %(cnt)s selected') % {'cnt': len(cl.result_list)},
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 77, in __len__
+    self._fetch_all()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 857, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 220, in iterator
+    for row in compiler.results_iter():
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 713, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 786, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 69, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/utils.py", line 99, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1054, "Unknown column 'data_datasource.timezone' in 'field list'")
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 801, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 774, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 759, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 604, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 377, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 32, in aware
+    return timezone.make_aware(d, tz or settings.TIME_ZONE)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 307, in make_aware
+    return value.replace(tzinfo=timezone)
+TypeError: tzinfo argument must be None or of a tzinfo subclass, not type 'unicode'
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 805, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 778, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 763, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 608, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 381, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 36, in aware
+    return timezone.make_aware(d, tz)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 304, in make_aware
+    return timezone.localize(value, is_dst=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pytz/tzinfo.py", line 327, in localize
+    raise NonExistentTimeError(dt)
+NonExistentTimeError: 2014-03-30 02:00:00
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 808, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 781, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 766, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 611, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 384, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 39, in aware
+    return timezone.make_aware(d, pytz.timezone('CET'))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 304, in make_aware
+    return timezone.localize(value, is_dst=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pytz/tzinfo.py", line 327, in localize
+    raise NonExistentTimeError(dt)
+NonExistentTimeError: 2014-03-30 02:00:00
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 808, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 781, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 766, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 611, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 384, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 39, in aware
+    return timezone.make_aware(d, pytz.timezone('CET'))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 304, in make_aware
+    return timezone.localize(value, is_dst=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pytz/tzinfo.py", line 327, in localize
+    raise NonExistentTimeError(dt)
+NonExistentTimeError: 2014-03-30 02:00:00
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 808, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 781, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 766, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 611, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 384, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 39, in aware
+    return timezone.make_aware(d, timezone.UTC)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 307, in make_aware
+    return value.replace(tzinfo=timezone)
+TypeError: tzinfo argument must be None or of a tzinfo subclass, not type 'type'
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /favicon.ico
+Not Found: /Texel
+Internal Server Error: /Texel
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 137, in get_response
+    response = response.render()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 80, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 56, in resolve_template
+    return loader.select_template(template)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 186, in select_template
+    raise TemplateDoesNotExist(', '.join(not_found))
+TemplateDoesNotExist: dashgroup.html
+Internal Server Error: /data/tabs/1/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 137, in get_response
+    response = response.render()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 82, in rendered_content
+    content = template.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 447, in render
+    six.reraise(*exc_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 433, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 532, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 452, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'home' with arguments '()' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Internal Server Error: /data/grafiek/2/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 137, in get_response
+    response = response.render()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 80, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 56, in resolve_template
+    return loader.select_template(template)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 180, in select_template
+    return get_template(template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 138, in get_template
+    template, origin = find_template(template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 127, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 43, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 49, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 149, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 278, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 215, in do_extends
+    nodelist = parser.parse()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 276, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 332, in invalid_block_tag
+    raise self.error(token, "Invalid block tag: '%s'" % command)
+TemplateSyntaxError: Invalid block tag: 'endblock'
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /favicon.ico
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/base.py", line 87, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/detail.py", line 111, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 94, in get_context_data
+    'info': render_to_string('data/projectlocatie_info.html', {'object': loc})
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 162, in render_to_string
+    t = get_template(template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 138, in get_template
+    template, origin = find_template(template_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 131, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: data/projectlocatie_info.html
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/
+Internal Server Error: /admin/data/series/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1347, in changelist_view
+    response = self.response_action(request, queryset=cl.get_queryset(request))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1084, in response_action
+    response = func(self, request, queryset)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/actions.py", line 70, in replace_series
+    s.replace()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 808, in replace
+    self.create()
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 781, in create
+    series = self.get_series_data(data)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 766, in get_series_data
+    dataframe = self.parameter.get_data(start=start)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 611, in get_data
+    return self.datasource.get_data(param=self.name,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 384, in get_data
+    date = np.array([aware(d, self.timezone) for d in data.index.to_pydatetime()])
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 37, in aware
+    return timezone.make_aware(d, tz)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/timezone.py", line 304, in make_aware
+    return timezone.localize(value, is_dst=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pytz/tzinfo.py", line 349, in localize
+    raise AmbiguousTimeError(dt)
+AmbiguousTimeError: 2014-10-26 02:00:00
+Internal Server Error: /admin/data/datasource/12/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/transaction.py", line 371, in inner
+    return func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1231, in change_view
+    self.save_related(request, form, formsets, True)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 884, in save_related
+    self.save_formset(request, form, formset, change=change)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/admin.py", line 121, in save_formset
+    instance.save()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 545, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 573, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 654, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/base.py", line 687, in _do_insert
+    using=using, raw=raw)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/manager.py", line 232, in _insert
+    return insert_query(self.model, objs, fields, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 1514, in insert_query
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 902, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 860, in as_sql
+    for obj in self.query.objs
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 350, in get_db_prep_save
+    prepared=False)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 911, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 895, in get_prep_value
+    value = self.to_python(value)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 878, in to_python
+    params={'value': value},
+ValidationError: [u"'01/01/2014 00:03' waarde heeft een ongeldig formaat. Het juiste formaat is YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]."]
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /media/
+Not Found: /media/proef-zoetwaterberging/texel/hoofdperceel/thumbnails/uurwaarden-meteostation-vlieland/series/rh.png
+Not Found: /img/texel.jpg
+Not Found: /img/texel.jpg
+Not Found: /img/texel.jpg
+Internal Server Error: /data
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 137, in get_response
+    response = response.render()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 82, in rendered_content
+    content = template.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 196, in render
+    nodelist.append(node.render(context))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 447, in render
+    six.reraise(*exc_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 433, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 532, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 452, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'project-detail' with arguments '(1L,)' and keyword arguments '{}' not found. 1 pattern(s) tried: [u'data$project/(?P<pk>\\d+)/$']
+Not Found: /data/
+Not Found: /data
+Not Found: /data
+Not Found: /data
