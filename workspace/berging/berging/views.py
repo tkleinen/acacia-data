@@ -25,11 +25,14 @@ def grondsoort(request):
 
 def scenario_highchart(request):
     chart = None
+    chart1 = None
+    chart2 = None
     if request.method == 'POST':
         form = ScenarioForm(request.POST)
         if form.is_valid():
             scenario = form.save(commit=False)
-            chart = make_highchart(scenario)
+            chart1 = make_chart(scenario)
+            chart2 = make_costchart(scenario)
     else:
         form = ScenarioForm()
 
@@ -43,10 +46,8 @@ def scenario_highchart(request):
     return render(request, 'scenario_highchart.html', {
             'form': form, 
             'toelichting': json.dumps(toelichting), 
-            'chart': chart,
-            'investering': 'onbekend',
-            'afschrijving': 'onbekend',
-            'prijs': 'onbekend'})
+            'chart1': chart1,
+            'chart2': chart2})
 
 def getseries(scenario, matrix):
     df = pd.read_csv(matrix.file.path,index_col=0)
@@ -71,16 +72,110 @@ def getresult(scenario):
     return getseries(scenario, matrix)
 
 def getkosten(scenario):
-    mbv = get_object_or_404(Matrix,code='bv')
-    bv = getseries(scenario, mbv)
-    mbvd = get_object_or_404(Matrix,code='bvd')
-    bvd = getseries(scenario, mbvd)
-    return pd.DataFrame({'bv':bv,'bvd': bvd})
+    irri = 'di' if scenario.irrigatie == 'i' else 'dr'
+    series = { c: getseries(scenario, get_object_or_404(Matrix,code= c + 'b' + irri)) for c in 'ijt'}
+    return pd.DataFrame(series)
 
 # referentiewaarden voor neerslagtekort voor droog, gemiddeld en nat 
 P_REF = {'d': 202, 'g': 192, 'n': 182}
 
-def make_highchart(scenario):
+def make_chart(scenario):
+    if scenario.reken == 'v':
+        subtitle = 'Volume bassin = %g m3' % scenario.volume 
+    else:
+        subtitle = 'Oppervlakte perceel = %g Ha' % scenario.oppervlakte
+    options = {
+        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+        'title': {'text': 'Watertekort'},
+        'subtitle':{'text': subtitle},
+        'xAxis': {'title': {'enabled': True},
+                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
+        'tooltip': {'valueSuffix': ' mm',
+                    'shared': True,
+                    'valueDecimals': 1,
+#                    'pointFormat': '{series.name}: <b>{point.y:.1f} mm </b><br/>',
+                    'crosshairs': [True,True],}, 
+        'yAxis': [],
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
+        'plotOptions': {'line': {'marker': {'enabled': False}}},            
+        'credits': {'enabled': False},
+        }
+
+    options['yAxis'].append({'min': 0, 'max': 250, 'alignTicks': False, 'title': {'text': 'Watertekort (mm)'},})
+    
+    data = getresult(scenario)
+    x = data.index.values.astype('f8')
+    y = data.values
+    pref = np.ones(y.shape) * P_REF[scenario.neerslag]
+
+    if scenario.reken == 'o':
+        options['xAxis']['title']['text'] = 'Volume bassin (m3)'
+        options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
+    else:
+        x = x / 10000.0 # m2 -> Ha
+        options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+    
+    options['series'] = [{'name': 'Referentie','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
+                         {'name': 'Watertekort','type': 'line','data': zip(x,y)},]
+    return json.dumps(options)
+
+def make_costchart(scenario):
+    if scenario.reken == 'v':
+        subtitle = 'Volume bassin = %g m3' % scenario.volume 
+    else:
+        subtitle = 'Oppervlakte perceel = %g Ha' % scenario.oppervlakte
+    options = {
+        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+        'title': {'text': 'Kosten'},
+        'subtitle': {'text': subtitle},
+        'xAxis': {'title': {'enabled': True},
+                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
+        'tooltip': {'valueSuffix': ' euro/Ha',
+                    'shared': True,
+                    'valueDecimals': 0,
+                    'crosshairs': [True,True],}, 
+        'yAxis': [],               
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
+        'plotOptions': {'line': {'marker': {'enabled': False}}},            
+        'credits': {'enabled': False},
+        }
+    
+    cost = getkosten(scenario)
+    x = cost.index.values.astype('f8')
+    inv = cost['i'].values
+    jaar = cost['j'].values
+    tot = cost['t'].values
+
+    if scenario.reken == 'o':
+        options['xAxis']['title']['text'] = 'Volume bassin (m3)'
+        options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
+    else:
+        x = x / 10000.0 # m2 -> Ha
+        options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+    options['yAxis'].append({'title':{'text': 'Kosten (euro/Ha)'},
+                             'labels':{'formatter': None}})
+    options['yAxis'].append({'opposite': True, 
+                             'title':{'text': 'Investering (euro/ha)'},
+                             'labels':{'formatter': None}})
+    options['series'] = [
+                     {'name': 'Kosten',
+                      'type': 'line',
+                      'data': zip(x, tot)},
+                     {'name': 'Jaarlijkse kosten',
+                      'type': 'line',
+                      'data': zip(x, jaar),
+                      'visible': False},
+                     {'name': 'Inversteringskosten',
+                      'type': 'line',
+                      'data': zip(x, inv),
+                      'yAxis': 1,
+                      'visible': False},
+                    ]
+    return json.dumps(options)
+
+def make_highchart2(scenario):
     if scenario.reken == 'v':
         title = 'Volume bassin = %g m3' % scenario.volume 
     else:
@@ -121,25 +216,33 @@ def make_highchart(scenario):
                          {'name': 'Watertekort','type': 'line','data': zip(x,y)},]
 #    try:
     cost = getkosten(scenario)
-    bv = cost['bv'].values
-    bvd = cost['bvd'].values
+    inv = cost['i'].values
+    jaar = cost['j'].values
+    tot = cost['t'].values
     options['series'].append(
-                     {'name': 'Kosten bassin en verzamelleiding',
+                     {'name': 'Totale kosten',
                       'type': 'line',
                       'yAxis': 1, 
-                      'data': zip(x,bv),
-#                          'color': '#33ADFF',
-                      'tooltip': {'valueSuffix': ' euro/m3',
+                      'data': zip(x,tot),
+                      'tooltip': {'valueSuffix': ' euro/ha',
                                 'shared': True,
                                 'valueDecimals': 2}
                      })
     options['series'].append(
-                     {'name': 'Totale kosten inclusief druppelsysteem',
+                     {'name': 'Jaarlijkse kosten',
                       'type': 'line',
                       'yAxis': 1, 
-                      'data': zip(x,bvd),
-#                          'color': '#33ADFF',
-                      'tooltip': {'valueSuffix': ' euro/m3',
+                      'data': zip(x,jaar),
+                      'tooltip': {'valueSuffix': ' euro/ha',
+                                'shared': True,
+                                'valueDecimals': 2}
+                     })
+    options['series'].append(
+                     {'name': 'Inversteringskosten',
+                      'type': 'line',
+                      'yAxis': 1, 
+                      'data': zip(x,inv),
+                      'tooltip': {'valueSuffix': ' euro/ha',
                                 'shared': True,
                                 'valueDecimals': 2}
                      })

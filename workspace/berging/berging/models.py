@@ -7,8 +7,8 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 import pandas as pd
 
-NEERSLAG = (('d','droog'),('g','gemiddeld'),('n', 'nat'))
-BODEMTYPE = (('k','klei'),('z','zand'),('x', 'zand op klei'))
+NEERSLAG = (('d','droog'),('g','gemiddeld'),)
+BODEMTYPE = (('z','zand op klei'),)
 KWALITEIT=(('f', 'zoet'),('b','brak'),('s','zout'))
 IRRIGATIE=(('i', 'DI systeem'),('d','druppelbevloeiing'))
 REKENTYPE = (('o','oppervlakte'),('v','volume'))

@@ -58,9 +58,15 @@ $(document).ready(function() {
 });
 
 $(function () {
-  var options = {{chart|safe}};
-  options.xAxis.labels.formatter = function() { return this.value;};
-  $('#chart').highcharts(options);
+	var options1 = {{chart1|safe}};
+	options1.xAxis.labels.formatter = function() { return this.value;};
+	$('#chart1').highcharts(options1);
+
+	var options2 = {{chart2|safe}};
+	options2.xAxis.labels.formatter = function() { return this.value;};
+	options2.yAxis[0].labels.formatter = function() { return this.value;};
+	options2.yAxis[1].labels.formatter = function() { return this.value;};
+	$('#chart2').highcharts(options2);
 });
 
 </script>
@@ -79,14 +85,21 @@ $(function () {
 </div>
 <div class = "col-md-9">
 <div id="placeholder">
-{%if chart %}
-<div id="chart"></div>
-<h3>Toelichting</h3>
+{% if chart1 %}
+<div class="row">
+<div class="col-md-6"><div id="chart1"></div>
+<h3>Toelichting watertekort</h3>
 	In de grafiek zijn de watertekorten weergegeven die horen bij de combinatie van het volume van het bassin en de oppervlakte van het perceel. 
 	Bij een opgegeven perceeloppervlak wordt een grafiek gegenereerd  waarop te zien is wat de watertekorten zijn bij bepaalde bassin volumes. 
 	Bij het opgeven van een volume voor het bassin genereert de tool een grafiek waarop er bij een bepaald perceelsoppervlak te zien is wat de watertekorten zijn. 
 	Op de x-as zijn of de perceeloppervlakten of de bassinvolumes weergegeven, afhankelijk van de keuze om een oppervlakte of volume op te geven. 
-	Op de linker y-as zijn de watertekorten te zien in mm, op de rechter y-as de totale kosten per m3. 
+	Op de y-as zijn de watertekorten te zien in mm. 
+</div>
+<div class="col-md-6"><div id="chart2"></div>
+<h3>Toelichting kosten</h3>
+	<i>(Nog aanleveren)</i> 
+</div>
+</div>
 {%endif%}
 </div>
 </div>
