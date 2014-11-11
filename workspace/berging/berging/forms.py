@@ -13,6 +13,10 @@ class ScenarioForm(forms.ModelForm):
         fields = ['neerslag', 'bodem', 'kwaliteit', 'irrigatie', 'reken', 'oppervlakte', 'volume']
         widgets = {'reken': RadioSelect(),}
         
+#     def __init__(self,*args,**kwargs):
+#         super(ScenarioForm,self).__init__(*args,**kwargs)
+#         self.fields['neerslag'].widget.attrs.update({'autofocus': 'autofocus'})
+
     # django < 1.7
     def add_error(self, field, msg):
         self._errors[field] = self.error_class([msg])
@@ -29,9 +33,9 @@ class ScenarioForm(forms.ModelForm):
         if d['reken'] == 'o':
             grootte = d['oppervlakte'] * 10000 # Ha -> m2
             if grootte > matrix.rijmax:
-                self.add_error('oppervlakte','Maximum oppervlakte is %g m2' % matrix.rijmax)
+                self.add_error('oppervlakte','Maximum oppervlakte is %g Ha' % (matrix.rijmax / 10000))
             elif grootte < matrix.rijmin:
-                self.add_error('oppervlakte','Minimum oppervlakte is %g m2' % matrix.rijmin)
+                self.add_error('oppervlakte','Minimum oppervlakte is %g Ha' % (matrix.rijmin / 10000))
         else:
             grootte = d['volume']
             if grootte > matrix.kolmax:

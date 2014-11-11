@@ -86,7 +86,7 @@ def make_chart(scenario):
         subtitle = 'Oppervlakte perceel = %g Ha' % scenario.oppervlakte
     options = {
         'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
-        'title': {'text': 'Watertekort'},
+        'title': {'text': 'Watergift'},
         'subtitle':{'text': subtitle},
         'xAxis': {'title': {'enabled': True},
                   'labels': {'formatter': None} }, # formatter wordt aangepast in template
@@ -101,12 +101,12 @@ def make_chart(scenario):
         'credits': {'enabled': False},
         }
 
-    options['yAxis'].append({'min': 0, 'max': 250, 'alignTicks': False, 'title': {'text': 'Watertekort (mm)'},})
+    options['yAxis'].append({'min': 0, 'max': 250, 'alignTicks': False, 'title': {'text': 'Watergift (mm)'},})
     
     data = getresult(scenario)
+    pref = np.ones(data.shape[0]) * P_REF[scenario.neerslag]
     x = data.index.values.astype('f8')
-    y = data.values
-    pref = np.ones(y.shape) * P_REF[scenario.neerslag]
+    y = pref - data.values
 
     if scenario.reken == 'o':
         options['xAxis']['title']['text'] = 'Volume bassin (m3)'
@@ -116,8 +116,8 @@ def make_chart(scenario):
         options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
     
-    options['series'] = [{'name': 'Referentie','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
-                         {'name': 'Watertekort','type': 'line','data': zip(x,y)},]
+    options['series'] = [{'name': 'Optimale gift','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
+                         {'name': 'Watergift','type': 'line','data': zip(x,y)},]
     return json.dumps(options)
 
 def make_costchart(scenario):
@@ -131,7 +131,7 @@ def make_costchart(scenario):
         'subtitle': {'text': subtitle},
         'xAxis': {'title': {'enabled': True},
                   'labels': {'formatter': None} }, # formatter wordt aangepast in template
-        'tooltip': {'valueSuffix': ' euro/Ha',
+        'tooltip': {'valueSuffix': ' euro',
                     'shared': True,
                     'valueDecimals': 0,
                     'crosshairs': [True,True],}, 
@@ -144,7 +144,7 @@ def make_costchart(scenario):
     cost = getkosten(scenario)
     x = cost.index.values.astype('f8')
     inv = cost['i'].values
-    jaar = cost['j'].values
+    #jaar = cost['j'].values
     tot = cost['t'].values
 
     if scenario.reken == 'o':
@@ -157,95 +157,17 @@ def make_costchart(scenario):
     options['yAxis'].append({'title':{'text': 'Kosten (euro/Ha)'},
                              'labels':{'formatter': None}})
     options['yAxis'].append({'opposite': True, 
-                             'title':{'text': 'Investering (euro/ha)'},
+                             'title':{'text': 'Investering (euro)'},
                              'labels':{'formatter': None}})
     options['series'] = [
-                     {'name': 'Kosten',
-                      'type': 'line',
-                      'data': zip(x, tot)},
-                     {'name': 'Jaarlijkse kosten',
-                      'type': 'line',
-                      'data': zip(x, jaar),
-                      'visible': False},
                      {'name': 'Inversteringskosten',
                       'type': 'line',
                       'data': zip(x, inv),
-                      'yAxis': 1,
-                      'visible': False},
+                      'yAxis': 1},
+                     {'name': 'Totale kosten',
+                      'type': 'line',
+                      'data': zip(x, tot),
+                      'tooltip': {'valueSuffix': ' euro/Ha','shared': True},}
                     ]
     return json.dumps(options)
 
-def make_highchart2(scenario):
-    if scenario.reken == 'v':
-        title = 'Volume bassin = %g m3' % scenario.volume 
-    else:
-        title = 'Oppervlakte perceel = %g Ha' % scenario.oppervlakte
-    options = {
-        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
-        'title': {'text': title},
-        'xAxis': {'title': {'enabled': True},
-                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
-        'tooltip': {'valueSuffix': ' mm',
-                    'shared': True,
-                    'valueDecimals': 1,
-#                    'pointFormat': '{series.name}: <b>{point.y:.1f} mm </b><br/>',
-                    'crosshairs': [True,True],}, 
-        'yAxis': [],
-        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
-        'plotOptions': {'line': {'marker': {'enabled': False}}},            
-        'credits': {'enabled': False},
-        }
-
-    options['yAxis'].append({'min': 0, 'max': 250, 'alignTicks': False, 'title': {'text': 'Watertekort (mm)'},})
-    options['yAxis'].append({'opposite': 1, 'gridLineWidth': 0, 'title': {'text': 'Kosten (euro/m3)'},})
-    
-    data = getresult(scenario)
-    x = data.index.values.astype('f8')
-    y = data.values
-    pref = np.ones(y.shape) * P_REF[scenario.neerslag]
-
-    if scenario.reken == 'o':
-        options['xAxis']['title']['text'] = 'Volume bassin (m3)'
-        options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
-    else:
-        x = x / 10000.0 # m2 -> Ha
-        options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
-        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
-    
-    options['series'] = [{'name': 'Referentie','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
-                         {'name': 'Watertekort','type': 'line','data': zip(x,y)},]
-#    try:
-    cost = getkosten(scenario)
-    inv = cost['i'].values
-    jaar = cost['j'].values
-    tot = cost['t'].values
-    options['series'].append(
-                     {'name': 'Totale kosten',
-                      'type': 'line',
-                      'yAxis': 1, 
-                      'data': zip(x,tot),
-                      'tooltip': {'valueSuffix': ' euro/ha',
-                                'shared': True,
-                                'valueDecimals': 2}
-                     })
-    options['series'].append(
-                     {'name': 'Jaarlijkse kosten',
-                      'type': 'line',
-                      'yAxis': 1, 
-                      'data': zip(x,jaar),
-                      'tooltip': {'valueSuffix': ' euro/ha',
-                                'shared': True,
-                                'valueDecimals': 2}
-                     })
-    options['series'].append(
-                     {'name': 'Inversteringskosten',
-                      'type': 'line',
-                      'yAxis': 1, 
-                      'data': zip(x,inv),
-                      'tooltip': {'valueSuffix': ' euro/ha',
-                                'shared': True,
-                                'valueDecimals': 2}
-                     })
-#    except:
-#        pass
-    return json.dumps(options)

@@ -9,6 +9,7 @@
 #chart {
   height: 500px;
 }
+
 </style>
 {% endblock %}
 {% block script %}
@@ -88,19 +89,29 @@ $(function () {
 {% if chart1 %}
 <div class="row">
 <div class="col-md-6"><div id="chart1"></div>
-<h3>Toelichting watertekort</h3>
-	In de grafiek zijn de watertekorten weergegeven die horen bij de combinatie van het volume van het bassin en de oppervlakte van het perceel. 
-	Bij een opgegeven perceeloppervlak wordt een grafiek gegenereerd  waarop te zien is wat de watertekorten zijn bij bepaalde bassin volumes. 
-	Bij het opgeven van een volume voor het bassin genereert de tool een grafiek waarop er bij een bepaald perceelsoppervlak te zien is wat de watertekorten zijn. 
-	Op de x-as zijn of de perceeloppervlakten of de bassinvolumes weergegeven, afhankelijk van de keuze om een oppervlakte of volume op te geven. 
-	Op de y-as zijn de watertekorten te zien in mm. 
+<h3>Toelichting watergift</h3>
+	De gele lijn is de optimale watergift die nodig is voor het gewas uitgedrukt in mm.<br/>
+	De groene lijn is de actuele watergift uitgedrukt in mm.
 </div>
 <div class="col-md-6"><div id="chart2"></div>
 <h3>Toelichting kosten</h3>
-	<i>(Nog aanleveren)</i> 
+	De totale kosten zijn uitgedrukt in &euro; per hectare, per jaar voor een looptijd van 30 jaar. De totale kosten omvatten de investeringskosten, onderhoudskosten en afschrijvingskosten.
+	De investeringskosten worden gemaakt in het eerste jaar en is een totaal van het materiaal en  aanlegkosten. Deze kosten worden uitgedrukt in &eacute;&eacute;n totaalbedrag voor het volledige systeem.     
 </div>
 </div>
-{%endif%}
+{% else %}
+<div class = "panel panel-info">
+	<div class = "panel-heading">
+		<h3>Zoetwaterberger</h3>
+	</div>
+	<div class = "panel-body">
+	<p>De zoetwaterberger is een tool waarmee u als agrariër inzicht kunt krijgen in de mogelijkheden van zelfvoorzienendheid met betrekking tot zoetwater voor uw bedrijf.</p>
+	<p>Op basis van een aantal kengetallen zoals perceelgrootte, volume van het bassin en teelt, kunt u de kosten en de beschikbaarheid van zoetwater voor uw bedrijf berekenen. </p>
+	<p>U kiest stapsgewijs uw meteorologische situatie, de grondsoort op uw bedrijf, het soort irrigatiesysteem, de grondwaterkwaliteit op uw bedrijf en het volume van het waterreservoir (bassin) of oppervlakte van de teelt die u wil gaan irrigeren.  
+	Hieruit volgt dan een grafiek die de gemiddelde watertekorten weergeeft behorend tot de combinatie van het perceelgrootte en het volume van het bassin.</p>
+	</div>
+</div>
+{% endif %}
 </div>
 </div>
 </div>
