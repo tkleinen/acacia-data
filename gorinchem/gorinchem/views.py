@@ -20,10 +20,9 @@ logger = logging.getLogger(__name__)
 def chart_for_screen(screen):
     plt.figure(figsize=(15,5))
     plt.grid(linestyle='-', color='0.9')
-    data = [(p.date, p.level) for p in screen.datapoint_set.all()]
-    if len(data)>0:
-        x,y = zip(*data)
-        plt.plot_date(x, y, '-')
+    series = screen.get_levels('nap')
+    for s in series:
+        s.plot()
     plt.title(screen)
     plt.ylabel('m tov NAP')
     img = StringIO() 
@@ -36,11 +35,10 @@ def chart_for_well(well):
     plt.grid(linestyle='-', color='0.9')
     count = 0
     for screen in well.screen_set.all():
-        data = [(p.date, p.level) for p in screen.datapoint_set.all()]
-        if len(data)>0:
-            x,y = zip(*data)
-            plt.plot_date(x, y, '-', label=screen)
-            count += 1
+        series = screen.get_levels('nap')
+        for s in series:
+            s.plot(label=screen)
+        count += 1
     plt.title(well)
     plt.ylabel('m tov NAP')
     if count > 0:

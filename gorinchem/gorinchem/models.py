@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 from gorinchem import settings, util
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
+from acacia.data.models import Datasource
 
 class Network(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name = 'naam')
@@ -130,10 +131,72 @@ class Screen(models.Model):
     bottom = models.FloatField(verbose_name = 'onderkant', help_text = 'onderkant filter in meter min maaiveld')
     diameter = models.FloatField(verbose_name = 'diameter', default=32, help_text='diameter in mm (standaard = 32 mm)')
     material = models.CharField(max_length = 10,verbose_name = 'materiaal', default='pvc', choices = MATERIALS)
+    chart = models.ImageField(null=True,blank=True, upload_to='charts', verbose_name='grafiek')
+
+    def get_series(self):
+        series = []
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
+                series.extend(ds.getseries())
+        return series
+    
+    def get_parameter_series(self, name):
+        series = []
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
+                for p in ds.parameter_set.filter(name=name):
+                    for s in p.series_set.all():
+                        series.append(s)
+        return series
+    
+    def get_pressure(self):
+        return self.get_parameter_series('PRESSURE')
+
+    def get_levels(self, ref='nap'):
+        series = []
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
+                for p in ds.parameter_set.filter(name='PRESSURE'):
+                    for s in p.series_set.all():
+                        df = s.to_pandas()
+                        df = df / 1000 # mm -> m
+                        if ref == 'ref':
+                            # m h2o -> m tov refpnt
+                            levels = logger.depth - df
+                        elif ref == 'nap':
+                            # m h2o -> m tov nap
+                            levels = df + (logger.refpnt - logger.depth)
+                        elif ref == 'mv':
+                            levels = df + (logger.refpnt - logger.depth - self.well.maaiveld)
+                        series.append(levels)
+        return series
+
+    def get_monfiles(self):
+        files = []
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
+                files.extend(list(ds.sourcefiles.all()))
+        return files
+
+    def num_files(self):
+        files = 0
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
+                files += ds.filecount() or 0
+        return files
     
     def num_standen(self):
-        return self.datapoint_set.count()
+        files = self.get_monfiles()
+        return sum([f.rows for f in files]) if len(files)> 0 else 0
 
+    def start(self):
+        files = self.get_monfiles()
+        return min([f.start for f in files]) if len(files) > 0 else None
+
+    def stop(self):
+        files = self.get_monfiles()
+        return max([f.stop for f in files]) if len(files) > 0 else None
+        
     def last_logger(self):
         return self.datalogger_set.all().order_by('date').last()
         
@@ -143,11 +206,13 @@ class Screen(models.Model):
     def get_absolute_url(self):
         return reverse('screen-detail', args=[self.id])
 
-    def to_pandas(self):
-        points = self.datapoint_set.all()
-        dates = [dp.date for dp in points]
-        values = [dp.level for dp in points]
-        return pd.Series(values,index=dates,name=self.__unicode__)
+    def to_pandas(self, ref='nap'):
+        levels = self.get_levels(ref)
+        if len(levels==0):
+            return pd.Series(name = unicode(self))
+        series = pd.concat(levels)
+        series.name = unicode(self)
+        return series
         
     def stats(self):
         df = self.to_pandas()
@@ -178,13 +243,20 @@ class Datalogger(models.Model):
     date = models.DateTimeField(verbose_name = 'datum', help_text = 'Datum en tijd van installatie datalogger')
     refpnt = models.FloatField(verbose_name = 'referentiepunt', help_text = 'ophangpunt in meter tov NAP')
     depth = models.FloatField(verbose_name = 'kabellengte', help_text = 'lengte van ophangkabel in meter')
-
+    
     def __unicode__(self):
         return self.serial
 
     class Meta:
         ordering = ['serial',]
+
+class LoggerDatasource(Datasource):
+    logger = models.ForeignKey(Datalogger, related_name = 'datasources')
     
+    class Meta:
+        verbose_name = 'Gegevensbron'
+        verbose_name_plural = 'Gegevensbronnen'
+        
 class DataPoint(models.Model):
     screen = models.ForeignKey(Screen, verbose_name = 'filter')
     date = models.DateTimeField(verbose_name = 'datum')

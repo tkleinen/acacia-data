@@ -116,8 +116,8 @@ def make_chart(scenario):
         options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
     
-    options['series'] = [{'name': 'Optimale gift','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
-                         {'name': 'Watergift','type': 'line','data': zip(x,y)},]
+    options['series'] = [{'name': 'Optimale watergift','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
+                         {'name': 'Beschikbare watergift','type': 'line','data': zip(x,y)},]
     return json.dumps(options)
 
 def make_costchart(scenario):
@@ -154,7 +154,7 @@ def make_costchart(scenario):
         x = x / 10000.0 # m2 -> Ha
         options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
-    options['yAxis'].append({'title':{'text': 'Kosten (euro/Ha)'},
+    options['yAxis'].append({'title':{'text': 'Kosten (euro/Ha/jaar)'},
                              'labels':{'formatter': None}})
     options['yAxis'].append({'opposite': True, 
                              'title':{'text': 'Investering (euro)'},
@@ -167,7 +167,7 @@ def make_costchart(scenario):
                      {'name': 'Totale kosten',
                       'type': 'line',
                       'data': zip(x, tot),
-                      'tooltip': {'valueSuffix': ' euro/Ha','shared': True},}
+                      'tooltip': {'valueSuffix': ' euro/Ha/jaar','shared': True},}
                     ]
     return json.dumps(options)
 

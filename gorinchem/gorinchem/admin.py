@@ -3,7 +3,9 @@ Created on Jun 1, 2014
 
 @author: theo
 '''
-from gorinchem.models import Network, Well, Photo, Screen, Datalogger, DataPoint
+from gorinchem.models import Network, Well, Photo, Screen, Datalogger, DataPoint, LoggerDatasource, UserProfile
+from acacia.data.models import Datasource, SourceFile
+from acacia.data.admin import DatasourceForm
 
 from django.contrib import admin
 from django import forms
@@ -20,7 +22,6 @@ from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 
-from gorinchem.models import UserProfile
 import actions
 
 class UserProfileInline(admin.StackedInline):
@@ -73,12 +74,12 @@ class DataloggerAdmin(admin.ModelAdmin):
     list_display=('serial', 'model', 'screen', 'refpnt', 'depth', 'date')
     search_fields = ('serial', 'screen__well__name',)
     list_filter = ('screen__well', 'date')
-
+    
 class DataPointInline(admin.TabularInline):
     model = DataPoint
     
 class ScreenAdmin(admin.ModelAdmin):
-    list_display = ('__unicode__', 'top', 'bottom', 'num_standen')
+    list_display = ('__unicode__', 'top', 'bottom', 'num_files', 'num_standen', 'start', 'stop')
     search_fields = ('well__name',)
     list_filter = ('well','well__network')
     #inlines = [DataPointInline,]

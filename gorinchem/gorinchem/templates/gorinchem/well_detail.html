@@ -89,8 +89,8 @@ a img {
 		<td>{{s.last_logger.depth}}</td>
 		<td>{{s.top}}</td>
 		<td>{{s.bottom}}</td>
-		<td>{{s.datapoint_set.first.date|date:'d M Y'}}</td>
-		<td>{{s.datapoint_set.last.date|date:'d M Y'}}</td>
+		<td>{{s.start|date:'d M Y'}}</td>
+		<td>{{s.stop|date:'d M Y'}}</td>
 		<td>{{s.num_standen}}</td>
 		<td>{{stats.p10|default:''}}</td>
 		<td>{{stats.p50|default:''}}</td>

@@ -39,4 +39,3 @@ def trans(p, srid):
         tr = CoordTransform(SpatialReference(p.srid), SpatialReference(srid))
         p.transform(tr)
     return p
-    

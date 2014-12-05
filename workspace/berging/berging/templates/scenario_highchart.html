@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% load staticfiles %}
 {% load bootstrap_tags %}
 {% block extrastyle %}
@@ -90,13 +90,13 @@ $(function () {
 <div class="row">
 <div class="col-md-6"><div id="chart1"></div>
 <h3>Toelichting watergift</h3>
-	De gele lijn is de optimale watergift die nodig is voor het gewas uitgedrukt in mm.<br/>
-	De groene lijn is de actuele watergift uitgedrukt in mm.
+	De gele lijn geeft de optimale watergift die nodig is voor het gewas uitgedrukt in mm.<br/>
+	De groene lijn geeft de beschikbare watergift uitgedrukt in mm.De mate waarin aan de optimale waterbehoefte wordt voorzien.
 </div>
 <div class="col-md-6"><div id="chart2"></div>
 <h3>Toelichting kosten</h3>
-	De totale kosten zijn uitgedrukt in &euro; per hectare, per jaar voor een looptijd van 30 jaar. De totale kosten omvatten de investeringskosten, onderhoudskosten en afschrijvingskosten.
-	De investeringskosten worden gemaakt in het eerste jaar en is een totaal van het materiaal en  aanlegkosten. Deze kosten worden uitgedrukt in &eacute;&eacute;n totaalbedrag voor het volledige systeem.     
+	De gele lijn geeft de investeringskosten. Dit zijn de kosten die worden gemaakt in het eerste jaar en omvat de kosten voor aanleg en materiaal. Deze kosten worden uitgedrukt in &eacute;&eacute;n totaalbedrag voor het volledige systeem dat ‘turn-key’ wordt opgeleverd.
+	De groene lijn geeft de totale kosten uitgedrukt in &euro; per hectare, per jaar. Deze totale kosten omvatten de investeringskosten, onderhoudskosten en afschrijvingskosten over 30 jaar.  
 </div>
 </div>
 {% else %}
