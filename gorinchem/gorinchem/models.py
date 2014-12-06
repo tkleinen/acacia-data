@@ -91,7 +91,7 @@ class Well(geo.Model):
     
     def has_data(self):
         for s in self.screen_set.all():
-            if s.num_standen() > 0:
+            if s.has_data():
                 return True
         return False
     
@@ -158,17 +158,17 @@ class Screen(models.Model):
             for ds in logger.datasources.all():
                 for p in ds.parameter_set.filter(name='PRESSURE'):
                     for s in p.series_set.all():
-                        df = s.to_pandas()
-                        df = df / 1000 # mm -> m
-                        if ref == 'ref':
-                            # m h2o -> m tov refpnt
-                            levels = logger.depth - df
-                        elif ref == 'nap':
-                            # m h2o -> m tov nap
-                            levels = df + (logger.refpnt - logger.depth)
-                        elif ref == 'mv':
-                            levels = df + (logger.refpnt - logger.depth - self.well.maaiveld)
-                        series.append(levels)
+                        for dp in s.datapoints.all():
+                            level = dp.value / 1000
+                            if ref == 'ref':
+                                # m h2o -> m tov refpnt
+                                level = logger.depth - level
+                            elif ref == 'nap':
+                                # m h2o -> m tov nap
+                                level = level + (logger.refpnt - logger.depth)
+                            elif ref == 'mv':
+                                level = level + (logger.refpnt - logger.depth - self.well.maaiveld)
+                            series.append((dp.date, level))
         return series
 
     def get_monfiles(self):
@@ -189,6 +189,9 @@ class Screen(models.Model):
         files = self.get_monfiles()
         return sum([f.rows for f in files]) if len(files)> 0 else 0
 
+    def has_data(self):
+        return self.num_standen() > 0
+
     def start(self):
         files = self.get_monfiles()
         return min([f.start for f in files]) if len(files) > 0 else None
@@ -208,11 +211,12 @@ class Screen(models.Model):
 
     def to_pandas(self, ref='nap'):
         levels = self.get_levels(ref)
-        if len(levels==0):
-            return pd.Series(name = unicode(self))
-        series = pd.concat(levels)
-        series.name = unicode(self)
-        return series
+        if len(levels) > 0:
+            x,y = zip(*levels)
+        else:
+            x = []
+            y = []
+        return pd.Series(index=x, data=y, name=unicode(self))
         
     def stats(self):
         df = self.to_pandas()

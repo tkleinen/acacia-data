@@ -31,6 +31,7 @@ class UserProfileInline(admin.StackedInline):
     verbose_name_plural = 'profielen'
 
 # Define a new User admin
+
 class UserAdmin(UserAdmin):
     inlines = (UserProfileInline, )
 
@@ -79,13 +80,14 @@ class DataPointInline(admin.TabularInline):
     model = DataPoint
     
 class ScreenAdmin(admin.ModelAdmin):
+    actions = [actions.make_screencharts,]
     list_display = ('__unicode__', 'top', 'bottom', 'num_files', 'num_standen', 'start', 'stop')
     search_fields = ('well__name',)
     list_filter = ('well','well__network')
     #inlines = [DataPointInline,]
     
 class WellAdmin(geo.OSMGeoAdmin):
-    actions = [actions.make_thumbnails,]
+    actions = [actions.make_wellcharts,]
     inlines = [PhotoInline, ]
     list_display = ('name','network','num_filters', 'num_photos', 'logger_names', 'straat', 'plaats')
     #list_editable = ('location',)

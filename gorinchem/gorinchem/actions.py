@@ -5,12 +5,12 @@ Created on Jul 8, 2014
 '''
 import os
 from django.utils.text import slugify
-from views import chart_for_well
+from views import make_chart
 import settings
  
-def make_thumbnails(modeladmin, request, queryset):
+def make_wellcharts(modeladmin, request, queryset):
     for w in queryset:
-        if not w.has_data:
+        if not w.has_data():
             continue
         if w.chart.name is None:
             w.chart.name = os.path.join(w.chart.field.upload_to, slugify(unicode(w.name)) +'.png')
@@ -19,7 +19,23 @@ def make_thumbnails(modeladmin, request, queryset):
             if not os.path.exists(imagedir):
                 os.makedirs(imagedir)
         with open(w.chart.path,'wb') as f:
-            f.write(chart_for_well(w))
+            f.write(make_chart(w))
         
-make_thumbnails.short_description = "Grafieken vernieuwen van geseleceerde putten"
+make_wellcharts.short_description = "Grafieken vernieuwen van geseleceerde putten"
+    
+    
+def make_screencharts(modeladmin, request, queryset):
+    for s in queryset:
+        if not s.has_data():
+            continue
+        if s.chart.name is None:
+            s.chart.name = os.path.join(s.chart.field.upload_to, slugify(unicode(s)) +'.png')
+            s.save()
+            imagedir = os.path.dirname(s.chart.path)
+            if not os.path.exists(imagedir):
+                os.makedirs(imagedir)
+        with open(s.chart.path,'wb') as f:
+            f.write(make_chart(s))
+        
+make_screencharts.short_description = "Grafieken vernieuwen van geseleceerde filters"
     

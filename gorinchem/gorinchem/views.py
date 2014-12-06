@@ -20,9 +20,10 @@ logger = logging.getLogger(__name__)
 def chart_for_screen(screen):
     plt.figure(figsize=(15,5))
     plt.grid(linestyle='-', color='0.9')
-    series = screen.get_levels('nap')
-    for s in series:
-        s.plot()
+    data = screen.get_levels('nap')
+    if len(data)>0:
+        x,y = zip(*data)
+        plt.plot_date(x, y, '-')
     plt.title(screen)
     plt.ylabel('m tov NAP')
     img = StringIO() 
@@ -35,10 +36,11 @@ def chart_for_well(well):
     plt.grid(linestyle='-', color='0.9')
     count = 0
     for screen in well.screen_set.all():
-        series = screen.get_levels('nap')
-        for s in series:
-            s.plot(label=screen)
-        count += 1
+        data = screen.get_levels('nap')
+        if len(data)>0:
+            x,y = zip(*data)
+            plt.plot_date(x, y, '-', label=screen)
+            count += 1
     plt.title(well)
     plt.ylabel('m tov NAP')
     if count > 0:
@@ -69,7 +71,9 @@ class WellView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(WellView, self).get_context_data(**kwargs)
-        context['chart'] = make_encoded_chart(self.get_object())
+#        context['chart'] = make_encoded_chart(self.get_object())
+        well = self.get_object()
+        context['chart'] = None if well.chart.name is None else well.chart.url
         return context
 
 class ScreenView(DetailView):
@@ -77,7 +81,9 @@ class ScreenView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super(ScreenView, self).get_context_data(**kwargs)
-        context['chart'] = make_encoded_chart(self.get_object())
+#        context['chart'] = make_encoded_chart(self.get_object())
+        screen = self.get_object()
+        context['chart'] = None if screen.chart.name is None else screen.chart.url
         return context
 
 class NetworkView(DetailView):
@@ -111,8 +117,8 @@ class NetworkView(DetailView):
                             'lat': pos.y,
                             'lon': pos.x,
                             'info': render_to_string('gorinchem/well_info.html', {'object': well, 
-                                                                                  'chart': make_encoded_chart(well),
-#                                                                                  'chart': well.chart,
+                                                                                  #'chart': make_encoded_chart(well),
+                                                                                  'chart': None if well.chart.name is None else well.chart.url,
                                                                                   })
                             })
         context['content'] = json.dumps(content)
@@ -133,6 +139,7 @@ class ScreenChartView(TemplateView):
         context = super(ScreenChartView, self).get_context_data(**kwargs)
         filt = Screen.objects.get(pk=context['pk'])
         name = unicode(filt)
+        data = filt.get_levels(ref='nap')
         options = {
             'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
             'title': {'text': name},
@@ -150,7 +157,7 @@ class ScreenChartView(TemplateView):
                        },
             'series': [{'name': name,
                         'type': 'line',
-                        'data': [[p.date,p.level] for p in filt.datapoint_set.all().order_by('date')]
+                        'data': data
                         },
                        ]
             }
@@ -187,9 +194,10 @@ class WellChartView(TemplateView):
         series = []
         for screen in well.screen_set.all():
             name = unicode(screen)
+            data = screen.get_levels(ref='nap')
             series.append({'name': name,
                         'type': 'line',
-                        'data': [[p.date,p.level] for p in screen.datapoint_set.all().order_by('date')]
+                        'data': data
                         })
         options['series'] = series
         jop = json.dumps(options,default=date_handler)
