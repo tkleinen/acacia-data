@@ -14,6 +14,7 @@ from matplotlib import rcParams
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.size'] = '8'
 from StringIO import StringIO
+import numpy as  np
 
 logger = logging.getLogger(__name__)
     
@@ -23,6 +24,8 @@ def chart_for_screen(screen):
     data = screen.get_levels('nap')
     if len(data)>0:
         x,y = zip(*data)
+        plt.plot_date(x, y, '-')
+        y = np.zeros(len(y)).fill(screen.well.maaiveld)
         plt.plot_date(x, y, '-')
     plt.title(screen)
     plt.ylabel('m tov NAP')
@@ -35,12 +38,16 @@ def chart_for_well(well):
     plt.figure(figsize=(15,5))
     plt.grid(linestyle='-', color='0.9')
     count = 0
+    y = []
     for screen in well.screen_set.all():
         data = screen.get_levels('nap')
         if len(data)>0:
             x,y = zip(*data)
             plt.plot_date(x, y, '-', label=screen)
             count += 1
+    y=np.zeros(len(y))
+    y.fill(screen.well.maaiveld)
+    plt.plot_date(x, y, '-', label='maaiveld')
     plt.title(well)
     plt.ylabel('m tov NAP')
     if count > 0:
@@ -147,7 +154,8 @@ class ScreenChartView(TemplateView):
             'yAxis': [{'title': {'text': 'm'}}
                       ],
             'tooltip': {'valueSuffix': ' m tov NAP',
-                        'valueDecimals': 2
+                        'valueDecimals': 2,
+                        'shared': True,
                        }, 
             'legend': {'enabled': False},
             'plotOptions': {'line': {'marker': {'enabled': False}}},            
@@ -182,7 +190,8 @@ class WellChartView(TemplateView):
             'yAxis': [{'title': {'text': 'm tov NAP'}}
                       ],
             'tooltip': {'valueSuffix': ' m',
-                        'valueDecimals': 2
+                        'valueDecimals': 2,
+                        'shared': True,
                        }, 
             'legend': {'enabled': True},
             'plotOptions': {'line': {'marker': {'enabled': False}}},            
@@ -192,6 +201,7 @@ class WellChartView(TemplateView):
                        },
             }
         series = []
+        data = []
         for screen in well.screen_set.all():
             name = unicode(screen)
             data = screen.get_levels(ref='nap')
@@ -199,6 +209,15 @@ class WellChartView(TemplateView):
                         'type': 'line',
                         'data': data
                         })
+        if len(data)>0:
+            mv = []
+            for i in range(len(data)):
+                mv.append((data[i][0], screen.well.maaiveld))
+            series.append({'name': 'maaiveld',
+                        'type': 'line',
+                        'data': mv
+                        })
+        
         options['series'] = series
         jop = json.dumps(options,default=date_handler)
         # remove quotes around date stuff

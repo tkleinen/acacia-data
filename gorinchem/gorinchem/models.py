@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from gorinchem import settings, util
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-from acacia.data.models import Datasource
+from acacia.data.models import Datasource, Series
 
 class Network(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name = 'naam')
@@ -156,10 +156,29 @@ class Screen(models.Model):
         series = []
         for logger in self.datalogger_set.all():
             for ds in logger.datasources.all():
+                meetlocatie = ds.meetlocatie
+                for s in meetlocatie.formula_set.filter(name='LEVEL'):
+                    for dp in s.datapoints.all():
+                        level = dp.value / 100
+                        if ref == 'ref':
+                            # m h2o -> m tov refpnt
+                            level = logger.depth - level
+                        elif ref == 'nap':
+                            # m h2o -> m tov nap
+                            level = level + (logger.refpnt - logger.depth)
+                        elif ref == 'mv':
+                            level = level + (logger.refpnt - logger.depth - self.well.maaiveld)
+                        series.append((dp.date, level))
+        return series
+
+    def get_pressurelevels(self, ref='nap'):
+        series = []
+        for logger in self.datalogger_set.all():
+            for ds in logger.datasources.all():
                 for p in ds.parameter_set.filter(name='PRESSURE'):
                     for s in p.series_set.all():
                         for dp in s.datapoints.all():
-                            level = dp.value / 1000
+                            level = dp.value / 100
                             if ref == 'ref':
                                 # m h2o -> m tov refpnt
                                 level = logger.depth - level
@@ -243,10 +262,11 @@ DIVER_TYPES = (
 class Datalogger(models.Model):
     serial = models.CharField(max_length=50,verbose_name = 'serienummer', unique=True)
     model = models.CharField(max_length=50,verbose_name = 'type', default='ctd', choices=DIVER_TYPES)
-    screen = models.ForeignKey(Screen,verbose_name = 'filter')
+    screen = models.ForeignKey(Screen,verbose_name = 'filter',blank=True, null=True)
     date = models.DateTimeField(verbose_name = 'datum', help_text = 'Datum en tijd van installatie datalogger')
     refpnt = models.FloatField(verbose_name = 'referentiepunt', help_text = 'ophangpunt in meter tov NAP')
     depth = models.FloatField(verbose_name = 'kabellengte', help_text = 'lengte van ophangkabel in meter')
+    baro = models.ForeignKey(Series, blank=True, null=True)
     
     def __unicode__(self):
         return self.serial

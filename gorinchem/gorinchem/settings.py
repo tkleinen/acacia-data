@@ -24,8 +24,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-SITE_ID = 1
-
 ALLOWED_HOSTS = ['localhost',]
 
 # Application definition
@@ -33,7 +31,6 @@ ALLOWED_HOSTS = ['localhost',]
 INSTALLED_APPS = (
     'grappelli',
     'django.contrib.admin',
-    'django.contrib.sites',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -105,7 +102,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 AUTH_PROFILE_MODULE = 'gorinchem.UserProfile'
 
 # Grapelli admin
-GRAPPELLI_ADMIN_TITLE='Beheer van Texel Online Datastore'
+GRAPPELLI_ADMIN_TITLE='Beheer van Grondwatermeetnet Gorinchem'
 
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7

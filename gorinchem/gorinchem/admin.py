@@ -72,9 +72,14 @@ class PhotoAdmin(admin.ModelAdmin):
         return super(PhotoAdmin,self).formfield_for_dbfield(db_field, **kwargs)
 
 class DataloggerAdmin(admin.ModelAdmin):
-    list_display=('serial', 'model', 'screen', 'refpnt', 'depth', 'date')
+    list_display=('serial', 'model', 'screen', 'baro', 'refpnt', 'depth', 'date')
     search_fields = ('serial', 'screen__well__name',)
     list_filter = ('screen__well', 'date')
+    
+class LoggerDatasourceAdmin(admin.ModelAdmin):
+    list_display=('logger', 'name', 'description', 'meetlocatie', 'last_download', 'filecount', 'parametercount', 'seriescount', 'start', 'stop', 'rows',)
+    search_fields = ['name',]
+    list_filter = ('meetlocatie','meetlocatie__projectlocatie','meetlocatie__projectlocatie__project',)
     
 class DataPointInline(admin.TabularInline):
     model = DataPoint
@@ -146,6 +151,7 @@ class WellAdmin(geo.OSMGeoAdmin):
 admin.site.register(Well, WellAdmin)
 admin.site.register(Screen, ScreenAdmin)
 admin.site.register(Datalogger, DataloggerAdmin)
+admin.site.register(LoggerDatasource, LoggerDatasourceAdmin)
 admin.site.register(Photo,PhotoAdmin)
 admin.site.register(Network)
 
