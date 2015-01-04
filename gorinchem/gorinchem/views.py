@@ -8,13 +8,14 @@ from django.template import RequestContext
 from django.views.generic import DetailView, TemplateView
 from django.template.loader import render_to_string
 from gorinchem.models import Network, Well, Screen, DataPoint
-import json, logging, datetime, re
+import json, logging, datetime, time, re
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.size'] = '8'
 from StringIO import StringIO
 import numpy as  np
+import pandas as pd
 
 logger = logging.getLogger(__name__)
     
@@ -45,14 +46,16 @@ def chart_for_well(well):
             x,y = zip(*data)
             plt.plot_date(x, y, '-', label=screen)
             count += 1
+            
     y=np.zeros(len(y))
     y.fill(screen.well.maaiveld)
     plt.plot_date(x, y, '-', label='maaiveld')
+
     plt.title(well)
     plt.ylabel('m tov NAP')
     if count > 0:
         plt.legend()
-    #plt.legend(loc="upper left", bbox_to_anchor=(1,1.025))
+    
     img = StringIO() 
     plt.savefig(img,format='png',bbox_inches='tight')
     plt.close()    
@@ -132,13 +135,6 @@ class NetworkView(DetailView):
         context['maptype'] = 'HYBRID'
         return context
         
-def tojs(d):
-    ''' python datetime to javascript '''
-    return 'Date.UTC(%d,%d,%d,%d,%d,%d)' % (d.year, d.month-1, d.day, d.hour, d.minute, d.second)
- 
-def date_handler(obj):
-    return tojs(obj) if isinstance(obj, datetime.date) or isinstance(obj, datetime.datetime) else obj
-
 class ScreenChartView(TemplateView):
     template_name = 'gorinchem/plain_chart.html'
     
@@ -170,10 +166,7 @@ class ScreenChartView(TemplateView):
                        ]
             }
             
-        jop = json.dumps(options,default=date_handler)
-        # remove quotes around date stuff
-        jop = re.sub(r'\"(Date\.UTC\([\d,]+\))\"',r'\1', jop)
-        context['options'] = jop
+        context['options'] = json.dumps(options, default=lambda x: int(time.mktime(x.timetuple())*1000))
         return context
 
 class WellChartView(TemplateView):
@@ -184,7 +177,11 @@ class WellChartView(TemplateView):
         well = Well.objects.get(pk=context['pk'])
         name = unicode(well)
         options = {
-            'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+             'rangeSelector': { 'enabled': True,
+                               'inputEnabled': True,
+                               },
+            'navigator': {'adaptToUpdatedData': True, 'enabled': True},
+            'chart': {'type': 'arearange', 'zoomType': 'x'},
             'title': {'text': name},
             'xAxis': {'type': 'datetime'},
             'yAxis': [{'title': {'text': 'm tov NAP'}}
@@ -201,27 +198,45 @@ class WellChartView(TemplateView):
                        },
             }
         series = []
-        data = []
+        xydata = []
         for screen in well.screen_set.all():
             name = unicode(screen)
-            data = screen.get_levels(ref='nap')
+            data = screen.to_pandas(ref='nap')
+            xydata = zip(data.index.to_pydatetime(), data.values)
             series.append({'name': name,
                         'type': 'line',
-                        'data': data
+                        'data': xydata,
+                        'zIndex': 1,
                         })
-        if len(data)>0:
+            mean = pd.expanding_mean(data)
+#             series.append({'name': 'gemiddelde',
+#                         'type': 'line',
+#                         'data': zip(mean.index.to_pydatetime(), mean.values),
+#                         'linkedTo' : ':previous',
+#                         })
+            std = pd.expanding_std(data)
+            a = (mean - std).dropna()
+            b = (mean + std).dropna()
+            ranges = zip(a.index.to_pydatetime(), a.values, b.values)
+            series.append({'name': 'spreiding',
+                        'data': ranges,
+                        'type': 'arearange',
+                        'lineWidth': 0,
+                        'fillOpacity': 0.1,
+                        'linkedTo' : ':previous',
+                        'zIndex': 0,
+                        })
+
+        if len(xydata)>0:
             mv = []
-            for i in range(len(data)):
-                mv.append((data[i][0], screen.well.maaiveld))
+            for i in range(len(xydata)):
+                mv.append((xydata[i][0], screen.well.maaiveld))
             series.append({'name': 'maaiveld',
                         'type': 'line',
                         'data': mv
                         })
-        
+
         options['series'] = series
-        jop = json.dumps(options,default=date_handler)
-        # remove quotes around date stuff
-        jop = re.sub(r'\"(Date\.UTC\([\d,]+\))\"',r'\1', jop)
-        context['options'] = jop
+        context['options'] = json.dumps(options, default=lambda x: int(time.mktime(x.timetuple())*1000))
         context['object'] = well
         return context

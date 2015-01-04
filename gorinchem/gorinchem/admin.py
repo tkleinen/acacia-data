@@ -4,7 +4,7 @@ Created on Jun 1, 2014
 @author: theo
 '''
 from gorinchem.models import Network, Well, Photo, Screen, Datalogger, DataPoint, LoggerDatasource, UserProfile
-from acacia.data.models import Datasource, SourceFile
+from acacia.data.models import Datasource, SourceFile, Series
 from acacia.data.admin import DatasourceForm
 
 from django.contrib import admin
@@ -75,7 +75,12 @@ class DataloggerAdmin(admin.ModelAdmin):
     list_display=('serial', 'model', 'screen', 'baro', 'refpnt', 'depth', 'date')
     search_fields = ('serial', 'screen__well__name',)
     list_filter = ('screen__well', 'date')
-    
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'baro':
+            kwargs['queryset'] = Series.objects.filter(parameter__datasource__name__startswith='Baro')
+        return super(DataloggerAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+        
 class LoggerDatasourceAdmin(admin.ModelAdmin):
     list_display=('logger', 'name', 'description', 'meetlocatie', 'last_download', 'filecount', 'parametercount', 'seriescount', 'start', 'stop', 'rows',)
     search_fields = ['name',]
