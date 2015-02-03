@@ -26,7 +26,7 @@ def chart_for_screen(screen):
     if len(data)>0:
         x,y = zip(*data)
         plt.plot_date(x, y, '-')
-        y = np.zeros(len(y)).fill(screen.well.maaiveld)
+        y = [screen.well.maaiveld] * len(x)
         plt.plot_date(x, y, '-')
     plt.title(screen)
     plt.ylabel('m tov NAP')
@@ -47,8 +47,7 @@ def chart_for_well(well):
             plt.plot_date(x, y, '-', label=screen)
             count += 1
             
-    y=np.zeros(len(y))
-    y.fill(screen.well.maaiveld)
+    y = [screen.well.maaiveld] * len(x)
     plt.plot_date(x, y, '-', label='maaiveld')
 
     plt.title(well)

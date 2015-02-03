@@ -1,0 +1,10 @@
+INFO 2015-01-19 10:58:41,569 acacia.data.models: Getting data for sourcefile zegveld-vergelijking-grondwaterstand-perceel-7 (version 1)
+INFO 2015-01-19 10:59:14,427 acacia.data.models: Got 0 rows, 7 columns
+INFO 2015-01-19 11:04:08,618 acacia.data.models: Getting data for sourcefile test
+INFO 2015-01-19 11:04:37,565 acacia.data.models: Got 0 rows, 7 columns
+INFO 2015-01-19 11:34:40,298 acacia.data.models: Getting data for sourcefile test
+INFO 2015-01-19 11:35:33,796 acacia.data.models: Got 0 rows, 7 columns
+INFO 2015-01-19 11:37:01,367 acacia.data.models: Getting data for sourcefile test
+INFO 2015-01-19 11:38:29,679 acacia.data.models: Getting data for sourcefile test
+INFO 2015-01-19 11:38:32,730 acacia.data.models: Got 21129 rows, 7 columns
+INFO 2015-01-19 11:40:19,616 acacia.data.models: Getting data for sourcefile test

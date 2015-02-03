@@ -1,0 +1,129 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 99, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 337, in resolve
+    for pattern in self.url_patterns:
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 365, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 360, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/zegveld/zegveld/urls.py", line 19, in <module>
+    urlpatterns += static(settings.IMG_URL, document_root=settings.IMG_ROOT)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/conf/__init__.py", line 55, in __getattr__
+    return getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'IMG_URL'
+Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 88, in get_response
+    response = middleware_method(request)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/middleware/common.py", line 71, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 596, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 476, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 337, in resolve
+    for pattern in self.url_patterns:
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 365, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 360, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/zegveld/zegveld/urls.py", line 19, in <module>
+    urlpatterns += static(settings.IMG_URL, document_root=settings.IMG_ROOT)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/conf/__init__.py", line 55, in __getattr__
+    return getattr(self._wrapped, name)
+AttributeError: 'Settings' object has no attribute 'IMG_URL'
+Not Found: /
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /media/
+Not Found: /zegveld/
+Internal Server Error: /Zegveld
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 137, in get_response
+    response = response.render()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 105, in render
+    self.content = self.rendered_content
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/response.py", line 82, in rendered_content
+    content = template.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 447, in render
+    six.reraise(*exc_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 433, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=context.current_app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 532, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 452, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'texel-dashboard' with arguments '(u'Zegveld',)' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /favicon.ico
+Internal Server Error: /data/get/chart/69/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 48, in ChartToJson
+    start = cs.autostart()
+AttributeError: 'ChartSeries' object has no attribute 'autostart'
+Internal Server Error: /data/get/chart/69/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 49, in ChartToJson
+    data['series_%d' % s.id] = [[p.date,p.value] for p in s.datapoints.filter(date__ge=start).order_by('date')]
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/manager.py", line 163, in filter
+    return self.get_queryset().filter(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 593, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 611, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1204, in add_q
+    clause = self._add_q(where_part, used_aliases)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1240, in _add_q
+    current_negated=current_negated)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1103, in build_filter
+    allow_explicit_fk=True)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1363, in setup_joins
+    names, opts, allow_many, allow_explicit_fk)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1326, in names_to_path
+    "the lookup type?" % (name, names[pos + 1]))
+FieldError: Join on field 'date' not permitted. Did you misspell 'ge' for the lookup type?
+Not Found: /favicon.ico

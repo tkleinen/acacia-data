@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /var/www/vhosts/acaciadata.com/httpdocs/django
+source bin/activate
+cd /var/www/vhosts/acaciadata.com/texel/texel
+date >> logs/update.log
+python manage.py update >> logs/update.log
+date >> logs/update.log
+

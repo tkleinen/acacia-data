@@ -1,0 +1,40 @@
+<!DOCTYPE DataTrac_XML_Data> 
+<ECH2O_Devices creator="Decagon Data Service 1.20" format="2.0" created="09 Dec 2014 04:13:41-0800"> 
+	<Device sn="5G0E3381" id="5G0E3381" name="Perceel3" tn="3" type="Em50" ver="217"> 
+		<Configuration time="1418099311" trait="16414"> 
+			<Measurement wake="15" padc="60">
+				<Ports>
+					<Port number="1" value="116" sensor="CTD Depth/Temp/EC" depth="255"/>
+					<Port number="2" value="119" sensor="GS3 Moisture/Temp/EC" depth="255"/>
+					<Port number="3" value="255" sensor="None Selected" depth="255"/>
+					<Port number="4" value="255" sensor="None Selected" depth="255"/>
+					<Port number="5" value="255" sensor="None Selected" depth="255"/>
+				</Ports>
+			</Measurement>
+			<Telemetry> 
+				<CellRadio ReportMode="19173952"/> 
+			</Telemetry> 
+			<Location lon="4.836390" lat="52.138610" tz="8" locname="Zegveld - Oude Meije"/>
+		</Configuration>
+		<Status timestamp="1418109011" batt="49" fwOK="1" eClock="5" eReset="7" eSensor="48" eMemory="0">
+			<GPRS eInit="0" eNW="92" eIP="12" eXfer="16" eReboot="0"> 
+				<Sessions>
+					<Session timestamp="1418109011" rssi="13" attempts="1"/>
+				</Sessions> 
+			</GPRS>
+		</Status>
+		<Data datatype="SI 3.0" scans="11" start="471421800" stop="471430800" rid="18287">
+			471421800,2103505867,1923295458,0,0,0
+			471422700,2103509961,1923295453,0,0,0
+			471423600,2103509959,1923295447,0,0,0
+			471424500,2103509957,1923295447,0,0,0
+			471425400,2103505859,1923295444,0,0,0
+			471426300,2103501761,1923295445,0,0,0
+			471427200,2103509950,1923295445,0,0,0
+			471428100,2103509948,1923299543,0,0,0
+			471429000,2103509947,1923295445,0,0,0
+			471429900,2107700153,1923299542,0,0,0
+			471430800,2103501751,1923299540,0,0,0
+		</Data>
+	</Device>
+</ECH2O_Devices>

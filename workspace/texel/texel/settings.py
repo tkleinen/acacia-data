@@ -145,6 +145,15 @@ LOGGING = {
             'backupCount': 0,
             'formatter': 'default'
         },
+        'update': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(LOGGING_ROOT, 'update.log'),
+            'when': 'D',
+            'interval': 1, # every day a new file
+            'backupCount': 0,
+            'formatter': 'update'
+        },
         'django': {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -157,6 +166,9 @@ LOGGING = {
     'formatters': {
         'default': {
             'format': '%(levelname)s %(asctime)s %(name)s: %(message)s'
+        },
+        'update' : {
+            'format': '%(levelname)s %(asctime)s %(datasource)s: %(message)s'
         }
     },
     'loggers': {
@@ -166,7 +178,12 @@ LOGGING = {
             'propagate': True,
         },
         'acacia.data': {
-            'handlers': ['file'],
+            'handlers': ['file',],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'update' : {
+            'handlers': ['update', ],
             'level': 'DEBUG',
             'propagate': True,
         },

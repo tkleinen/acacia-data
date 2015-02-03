@@ -1,0 +1,55 @@
+<!DOCTYPE DataTrac_XML_Data> 
+<ECH2O_Devices creator="Decagon Data Service 1.20" format="2.0" created="25 Oct 2014 04:43:42-0700"> 
+	<Device sn="5G0E3682" id="5G0E3682" name="5G0E3682" tn="3" type="Em50" ver="218"> 
+		<Configuration time="1414209934" trait="16414"> 
+			<Measurement wake="15" padc="60">
+				<Ports>
+					<Port number="1" value="106" sensor="CTD-5 Depth/Temp/EC" depth="255"/>
+					<Port number="2" value="119" sensor="GS3 Moisture/Temp/EC" depth="255"/>
+					<Port number="3" value="255" sensor="None Selected" depth="255"/>
+					<Port number="4" value="255" sensor="None Selected" depth="255"/>
+					<Port number="5" value="255" sensor="None Selected" depth="255"/>
+				</Ports>
+			</Measurement>
+			<Telemetry> 
+				<CellRadio ReportMode="19173952"/> 
+			</Telemetry> 
+			<Location lon="0.000000" lat="0.000000" tz="8" locname="Zegveld - Oude Meije"/>
+		</Configuration>
+		<Status timestamp="1414232441" batt="84" fwOK="1" eClock="2" eReset="3" eSensor="191" eMemory="0">
+			<GPRS eInit="0" eNW="1" eIP="10" eXfer="1" eReboot="0"> 
+				<Sessions>
+					<Session timestamp="1414222113" rssi="14" attempts="1"/>
+					<Session timestamp="1414232441" rssi="14" attempts="1"/>
+				</Sessions> 
+			</GPRS>
+		</Status>
+		<Data datatype="SI 3.0" scans="25" start="467532900" stop="467554500" rid="8830">
+			467532900,1380328705,2229688461,0,0,0
+			467533800,1380328705,2229688461,0,0,0
+			467534700,1380328705,2229688460,0,0,0
+			467535600,1380328705,2229688461,0,0,0
+			467536500,1380328705,2229688459,0,0,0
+			467537400,1380328705,2229688458,0,0,0
+			467538300,1380328704,2229688458,0,0,0
+			467539200,1380328704,2229688459,0,0,0
+			467540100,1380328704,2229688459,0,0,0
+			467541000,1380328704,2229688459,0,0,0
+			467541900,1380328704,2229688458,0,0,0
+			467542800,1380328704,2229688458,0,0,0
+			467543700,1380320511,2229688460,0,0,0
+			467544600,1380320511,2229688459,0,0,0
+			467545500,1380320511,2229688457,0,0,0
+			467546400,1380320511,2229688455,0,0,0
+			467547300,1380320511,2229688455,0,0,0
+			467548200,1380320511,2229688451,0,0,0
+			467549100,1380320511,2229688445,0,0,0
+			467550000,1380320510,2229688439,0,0,0
+			467550900,1380320510,2229688431,0,0,0
+			467551800,1380320510,2229688422,0,0,0
+			467552700,1380320510,2229684321,0,0,0
+			467553600,1380320510,2229684316,0,0,0
+			467554500,1380320509,2229684310,0,0,0
+		</Data>
+	</Device>
+</ECH2O_Devices>

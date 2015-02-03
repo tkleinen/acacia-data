@@ -15,7 +15,7 @@ a img {
 </style>
 <div id="content">
 <div class="container-fluid">
-<h4>Grondwaterput {{ object.name }}</h4>
+<a href="{% url 'well-detail' object.id %}" ><h4>Grondwaterput {{ object.name }}</h4></a>
 <table class="table table-condensed">
 <tr><td class="col-md-2">Constructiedatum</div></td><td class="col-md-10">{{object.date}}</td></tr>
 <tr><td>Maaiveld</div></td><td>{{object.maaiveld|floatformat:2}} m NAP</td></tr>

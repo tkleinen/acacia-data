@@ -1,0 +1,320 @@
+Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/base.py", line 69, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/base.py", line 87, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/generic/detail.py", line 111, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/theo/acaciadata.com/zegveld/zegveld/views.py", line 20, in get_context_data
+    context = super(HomeView, self).get_context_data(**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/views.py", line 90, in get_context_data
+    for loc in project.projectlocatie_set.all():
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 96, in __iter__
+    self._fetch_all()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 857, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/query.py", line 220, in iterator
+    for row in compiler.results_iter():
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 713, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 786, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 69, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/utils.py", line 99, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/backends/mysql/base.py", line 124, in execute
+    return self.cursor.execute(query, args)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/MySQLdb/cursors.py", line 205, in execute
+    self.errorhandler(self, exc, value)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+OperationalError: (1054, "Unknown column 'data_projectlocatie.dashboard_id' in 'field list'")
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /admin/data/projectlocatie/5/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/transaction.py", line 371, in inner
+    return func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1206, in change_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 503, in get_form
+    fields = flatten_fieldsets(self.get_fieldsets(request, obj))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 491, in get_fieldsets
+    form = self.get_form(request, obj, fields=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 528, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 528, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 282, in __new__
+    opts.help_texts, opts.error_messages)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 205, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 162, in formfield_for_dbfield
+    return db_field.formfield(**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/gis/db/models/fields.py", line 213, in formfield
+    return super(GeometryField, self).formfield(**defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 554, in formfield
+    return form_class(**defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/gis/forms/fields.py", line 41, in __init__
+    super(GeometryField, self).__init__(**kwargs)
+TypeError: __init__() got an unexpected keyword argument 'attrs'
+Internal Server Error: /admin/data/projectlocatie/5/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 432, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/sites.py", line 198, in inner
+    return view(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 29, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 99, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/decorators.py", line 25, in bound_func
+    return func(self, *args2, **kwargs2)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/transaction.py", line 371, in inner
+    return func(*args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 1206, in change_view
+    ModelForm = self.get_form(request, obj)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 503, in get_form
+    fields = flatten_fieldsets(self.get_fieldsets(request, obj))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 491, in get_fieldsets
+    form = self.get_form(request, obj, fields=None)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/options.py", line 528, in get_form
+    return modelform_factory(self.model, **defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 528, in modelform_factory
+    return type(form)(class_name, (form,), form_class_attrs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 282, in __new__
+    opts.help_texts, opts.error_messages)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/forms/models.py", line 205, in fields_for_model
+    formfield = formfield_callback(f, **kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/admin.py", line 57, in formfield_for_dbfield
+    return db_field.formfield(**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/gis/db/models/fields.py", line 213, in formfield
+    return super(GeometryField, self).formfield(**defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/db/models/fields/__init__.py", line 554, in formfield
+    return form_class(**defaults)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/gis/forms/fields.py", line 41, in __init__
+    super(GeometryField, self).__init__(**kwargs)
+TypeError: __init__() got an unexpected keyword argument 'request'
+Not Found: /admin/filebrowser/browse/
+Not Found: /admin/filebrowser/browse/
+Internal Server Error: /admin/filebrowser/browse/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/decorators.py", line 39, in decorator
+    raise ImproperlyConfigured(_("Error finding Upload-Folder (site.storage.location + site.directory). Maybe it does not exist?"))
+ImproperlyConfigured: Error finding Upload-Folder (site.storage.location + site.directory). Maybe it does not exist?
+Internal Server Error: /admin/filebrowser/browse/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/decorators.py", line 39, in decorator
+    raise ImproperlyConfigured(_("Error finding Upload-Folder (site.storage.location + site.directory). Maybe it does not exist?"))
+ImproperlyConfigured: Error finding Upload-Folder (site.storage.location + site.directory). Maybe it does not exist?
+Not Found: /admin
+Internal Server Error: /admin/data/chart/71/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 99, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 337, in resolve
+    for pattern in self.url_patterns:
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 365, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 360, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/zegveld/zegveld/urls.py", line 9, in <module>
+    admin.autodiscover()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/__init__.py", line 29, in autodiscover
+    import_module('%s.admin' % app)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/admin.py", line 231, in <module>
+    class ChartAdmin(admin.ModelAdmin):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/admin.py", line 239, in ChartAdmin
+    class Meta:
+  File "/home/theo/acaciadata.com/acacia/acacia/data/admin.py", line 240, in Meta
+    widgets = {'description': forms.Textarea(css='htmleditor')}
+TypeError: __init__() got an unexpected keyword argument 'css'
+Internal Server Error: /admin/filebrowser/browse/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/decorators.py", line 45, in decorator
+    return function(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/views/decorators.py", line 17, in _checklogin
+    return view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/sites.py", line 356, in browse
+    }, context_instance=Context(request, current_app=self.name))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 169, in render_to_string
+    return t.render(context_instance)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 305, in render
+    return nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 155, in render
+    return self.render_template(self.template, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 137, in render_template
+    output = template.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 196, in render
+    nodelist.append(node.render(context))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 305, in render
+    return nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/templatetags/fb_versions.py", line 98, in render
+    raise e
+IOError: decoder zip not available
+Internal Server Error: /admin/filebrowser/browse/
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 112, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/decorators.py", line 45, in decorator
+    return function(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/contrib/admin/views/decorators.py", line 17, in _checklogin
+    return view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/views/decorators/cache.py", line 52, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/sites.py", line 356, in browse
+    }, context_instance=Context(request, current_app=self.name))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader.py", line 169, in render_to_string
+    return t.render(context_instance)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 305, in render
+    return nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 155, in render
+    return self.render_template(self.template, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 137, in render_template
+    output = template.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 196, in render
+    nodelist.append(node.render(context))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 305, in render
+    return nodelist.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/filebrowser/templatetags/fb_versions.py", line 98, in render
+    raise e
+IOError: decoder zip not available

@@ -1,0 +1,7 @@
+#!/bin/sh
+cd ../backups
+mysqldump -utexel -pAcaciaWater texel > texel.sql
+tar czf data.tar.gz texel.sql
+tar czf media.tar.gz ../texel/media
+tar czf src.tar.gz ../texel --exclude logs/* --exclude media/* --exclude *.pyc
+rm texel.sql

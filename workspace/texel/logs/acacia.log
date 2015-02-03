@@ -1,11 +1,145 @@
-INFO 2014-11-13 09:53:44,541 acacia.data.models: Deleting all 0 datapoints from series Batterij
-INFO 2014-11-13 09:53:44,544 acacia.data.models: Creating series Batterij
-INFO 2014-11-13 09:53:44,636 acacia.data.models: Getting data for datasource Koenders S4990
-INFO 2014-11-13 09:53:44,680 acacia.data.models: Getting data for sourcefile S4988.LOG
-ERROR 2014-11-13 09:53:44,681 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/koenders-s4990/S4988.LOG: FieldFile object is not an iterator
-ERROR 2014-11-13 09:53:44,681 acacia.data.models: Creation of series Batterij failed
-INFO 2014-11-13 09:55:17,224 acacia.data.models: Downloading datasource Koenders S4990 from ftp://82.192.75.237/S4990.LOG
-INFO 2014-11-13 09:55:17,641 acacia.data.models: Download completed, got 1 file(s)
-INFO 2014-11-13 09:55:17,662 acacia.data.models: Getting data for sourcefile S4990.LOG
-INFO 2014-11-13 09:55:17,772 acacia.data.models: Got 4417 rows, 5 columns
-INFO 2014-11-13 09:55:17,825 acacia.data.models: File S4990.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/koenders-s4990/S4990.LOG
+INFO 2015-01-29 10:51:00,562 acacia.data.models: Downloading datasource NMCPro from ftp://82.192.75.237/Texel/Sensors/NMCPro_History Sensors 1.csv
+INFO 2015-01-29 10:51:01,066 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-01-29 10:51:01,092 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
+INFO 2015-01-29 10:57:32,355 acacia.data.models: Got 1049 rows, 24 columns
+INFO 2015-01-29 10:58:16,503 acacia.data.models: File NMCPro_History Sensors 1.csv saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv
+INFO 2015-01-29 10:58:37,149 acacia.data.models: Getting data for datasource NMCPro
+INFO 2015-01-29 10:58:37,169 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
+INFO 2015-01-29 10:58:50,355 acacia.data.models: Got 1049 rows, 24 columns
+INFO 2015-01-29 10:59:42,215 acacia.data.models: Updating parameters for datasource NMCPro
+ERROR 2015-01-29 10:59:42,219 acacia.data.models: Cannot update parameters for sourcefile NMCPro_History Sensors 1.csv: 'COLUMNS'
+INFO 2015-01-29 10:59:42,235 acacia.data.models: Update completed, got 0 parameters from 1 files
+INFO 2015-01-29 10:59:42,236 acacia.data.models: 0 parameters created, 0 updated
+INFO 2015-01-29 10:59:45,937 acacia.data.models: Updating series Bassin Niveau 
+INFO 2015-01-29 10:59:50,220 acacia.data.models: Series Bassin Niveau  updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 10:59:50,221 acacia.data.models: Generating thumbnail for series Bassin Niveau 
+INFO 2015-01-29 10:59:51,577 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/bassin-niveau.png
+INFO 2015-01-29 11:00:00,317 acacia.data.models: Updating series Drain Niveau
+INFO 2015-01-29 11:00:04,520 acacia.data.models: Series Drain Niveau updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 11:00:04,520 acacia.data.models: Generating thumbnail for series Drain Niveau
+INFO 2015-01-29 11:00:05,642 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/drain-niveau.png
+INFO 2015-01-29 11:00:05,646 acacia.data.models: Updating series DglsRgn
+INFO 2015-01-29 11:00:09,653 acacia.data.models: Series DglsRgn updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 11:00:09,653 acacia.data.models: Generating thumbnail for series DglsRgn
+INFO 2015-01-29 11:00:10,810 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/dglsrgn.png
+INFO 2015-01-29 11:00:10,815 acacia.data.models: Updating series EC Drainwater secondair
+INFO 2015-01-29 11:00:14,949 acacia.data.models: Series EC Drainwater secondair updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 11:00:14,949 acacia.data.models: Generating thumbnail for series EC Drainwater secondair
+INFO 2015-01-29 11:00:16,071 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ec-drainwater-secondair.png
+INFO 2015-01-29 11:00:16,076 acacia.data.models: Updating series EC Drainwater
+INFO 2015-01-29 11:00:20,018 acacia.data.models: Series EC Drainwater updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 11:00:20,019 acacia.data.models: Generating thumbnail for series EC Drainwater
+INFO 2015-01-29 11:00:21,101 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ec-drainwater.png
+INFO 2015-01-29 11:00:21,105 acacia.data.models: Updating series PH Sen.
+INFO 2015-01-29 11:00:24,995 acacia.data.models: Series PH Sen. updated: 625 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 11:00:24,995 acacia.data.models: Generating thumbnail for series PH Sen.
+INFO 2015-01-29 11:00:26,099 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ph-sen.png
+INFO 2015-01-29 11:03:14,224 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv for datafile NMCPro_History Sensors 1.csv
+INFO 2015-01-29 11:03:14,225 acacia.data.models: File proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv deleted
+INFO 2015-01-29 11:04:48,456 acacia.data.models: Downloading datasource NMCPro from ftp://82.192.75.237/Texel/Sensors/NMCPro_History Sensors 1.csv
+INFO 2015-01-29 11:04:48,919 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-01-29 11:04:48,939 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
+INFO 2015-01-29 11:05:05,932 acacia.data.models: Got 1049 rows, 24 columns
+INFO 2015-01-29 11:05:05,963 acacia.data.models: File NMCPro_History Sensors 1.csv saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_iuKHPIl.csv
+INFO 2015-01-29 11:05:31,068 acacia.data.models: Updating parameters for datasource NMCPro
+INFO 2015-01-29 11:05:31,074 acacia.data.models: Update completed, got 23 parameters from 1 files
+INFO 2015-01-29 11:05:31,228 acacia.data.models: 0 parameters created, 23 updated
+INFO 2015-01-29 12:43:05,162 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_33.LOG for datafile 2015FER1.LOG
+INFO 2015-01-29 12:43:05,163 acacia.data.models: File proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_33.LOG deleted
+INFO 2015-01-29 12:43:24,269 acacia.data.models: Downloading datasource Koenders 2015 Fert 1 from ftp://82.192.75.237/2015FER1.LOG
+INFO 2015-01-29 12:43:24,906 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-01-29 12:43:24,920 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-01-29 12:44:14,818 acacia.data.models: Got 7244 rows, 5 columns
+INFO 2015-01-29 12:44:35,329 acacia.data.models: File 2015FER1.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1.LOG
+INFO 2015-01-29 12:44:59,146 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
+INFO 2015-01-29 12:44:59,678 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-01-29 12:44:59,698 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
+INFO 2015-01-29 12:45:04,984 acacia.data.models: Got 6954 rows, 5 columns
+INFO 2015-01-29 12:45:05,006 acacia.data.models: File 2015FER2.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
+INFO 2015-01-29 12:46:03,553 acacia.data.models: Updating series Koenders 2015 Fert 1 - Batterij
+INFO 2015-01-29 12:46:03,561 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-01-29 12:46:03,564 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-01-29 12:46:05,254 acacia.data.models: Got 7244 rows, 5 columns
+INFO 2015-01-29 16:37:35,905 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
+INFO 2015-01-29 16:37:36,390 acacia.data.models: Download completed, got 1 file(s)
+WARNING 2015-01-29 16:37:36,407 acacia.data.models: Downloaded file 2015FER2.LOG ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
+INFO 2015-01-29 16:37:38,370 acacia.data.models: Getting data for datasource Koenders 2015 Fert 2 
+INFO 2015-01-29 16:37:38,381 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
+INFO 2015-01-29 16:37:38,462 acacia.data.models: Got 6954 rows, 5 columns
+INFO 2015-01-29 16:37:39,042 acacia.data.models: Updating parameters for datasource Koenders 2015 Fert 2 
+INFO 2015-01-29 16:37:39,050 acacia.data.models: Update completed, got 5 parameters from 1 files
+INFO 2015-01-29 16:37:39,082 acacia.data.models: 0 parameters created, 5 updated
+INFO 2015-01-29 16:42:46,630 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
+INFO 2015-01-29 16:42:47,159 acacia.data.models: Download completed, got 1 file(s)
+WARNING 2015-01-29 16:42:47,167 acacia.data.models: Downloaded file 2015FER2.LOG ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
+INFO 2015-01-29 16:42:51,068 acacia.data.models: Getting data for datasource Koenders 2015 Fert 2 
+INFO 2015-01-29 16:42:51,077 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
+INFO 2015-01-29 16:42:51,150 acacia.data.models: Got 6954 rows, 5 columns
+INFO 2015-01-29 16:42:51,739 acacia.data.models: Updating parameters for datasource Koenders 2015 Fert 2 
+INFO 2015-01-29 16:42:51,749 acacia.data.models: Update completed, got 5 parameters from 1 files
+INFO 2015-01-29 16:42:51,782 acacia.data.models: 0 parameters created, 5 updated
+INFO 2015-01-29 16:56:46,357 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp:pres
+INFO 2015-01-29 16:56:46,811 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-01-29 16:56:46,849 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 16:56:46,896 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 16:56:46,906 acacia.data.models: File daggegevens_knmi_meteo_242.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242_ue55ApF.txt
+INFO 2015-01-29 16:56:46,909 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 16:56:46,912 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 16:56:46,961 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 16:56:47,017 acacia.data.models: Updating parameters for datasource Dagwaarden Meteostation Vlieland 
+ERROR 2015-01-29 16:56:47,017 acacia.data.models: Cannot update parameters for sourcefile daggegevens_knmi_meteo_242.txt: 'COLUMNS'
+INFO 2015-01-29 16:56:47,020 acacia.data.models: Update completed, got 0 parameters from 1 files
+INFO 2015-01-29 16:56:47,020 acacia.data.models: 0 parameters created, 0 updated
+INFO 2015-01-29 16:56:47,020 acacia.data.models: Updating series PG
+INFO 2015-01-29 16:56:47,128 acacia.data.models: Series PG updated: 10 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 16:56:47,128 acacia.data.models: Generating thumbnail for series PG
+INFO 2015-01-29 16:56:47,771 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/pg.png
+INFO 2015-01-29 16:56:47,776 acacia.data.models: Updating series RH
+INFO 2015-01-29 16:56:47,777 acacia.data.models: Series RH updated: 0 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 16:56:47,777 acacia.data.models: Generating thumbnail for series RH
+INFO 2015-01-29 16:56:47,781 acacia.data.models: Creating series RH
+INFO 2015-01-29 16:56:47,781 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 16:56:47,784 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 16:56:47,832 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 16:56:47,861 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
+INFO 2015-01-29 16:56:47,996 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/rh.png
+INFO 2015-01-29 16:56:48,001 acacia.data.models: Updating series EV24
+INFO 2015-01-29 16:56:48,002 acacia.data.models: Series EV24 updated: 0 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 16:56:48,003 acacia.data.models: Generating thumbnail for series EV24
+INFO 2015-01-29 16:56:48,006 acacia.data.models: Creating series EV24
+INFO 2015-01-29 16:56:48,006 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 16:56:48,009 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 16:56:48,055 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 16:56:48,081 acacia.data.models: Series EV24 updated: 0 points created, 0 points skipped
+INFO 2015-01-29 16:56:48,219 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/ev24.png
+INFO 2015-01-29 17:00:30,165 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp:pres
+INFO 2015-01-29 17:00:31,880 acacia.data.models: Download completed, got 1 file(s)
+WARNING 2015-01-29 17:00:31,891 acacia.data.models: Downloaded file daggegevens_knmi_meteo_242.txt ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242_ue55ApF.txt
+INFO 2015-01-29 17:00:31,901 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 17:00:31,910 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 17:00:31,973 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 17:00:32,028 acacia.data.models: Updating parameters for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 17:00:32,035 acacia.data.models: Update completed, got 10 parameters from 1 files
+INFO 2015-01-29 17:00:32,101 acacia.data.models: 0 parameters created, 10 updated
+INFO 2015-01-29 17:00:32,102 acacia.data.models: Updating series PG
+INFO 2015-01-29 17:00:32,113 acacia.data.models: Series PG updated: 0 points created, 1 updated, 0 skipped
+DEBUG 2015-01-29 17:00:32,113 acacia.data.models: Generating thumbnail for series PG
+INFO 2015-01-29 17:00:32,732 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/pg.png
+INFO 2015-01-29 17:00:32,737 acacia.data.models: Updating series RH
+INFO 2015-01-29 17:00:32,739 acacia.data.models: Series RH updated: 0 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 17:00:32,739 acacia.data.models: Generating thumbnail for series RH
+INFO 2015-01-29 17:00:32,741 acacia.data.models: Creating series RH
+INFO 2015-01-29 17:00:32,741 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 17:00:32,744 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 17:00:32,791 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 17:00:32,821 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
+INFO 2015-01-29 17:00:32,961 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/rh.png
+INFO 2015-01-29 17:00:32,966 acacia.data.models: Updating series EV24
+INFO 2015-01-29 17:00:32,967 acacia.data.models: Series EV24 updated: 0 points created, 0 updated, 0 skipped
+DEBUG 2015-01-29 17:00:32,967 acacia.data.models: Generating thumbnail for series EV24
+INFO 2015-01-29 17:00:32,970 acacia.data.models: Creating series EV24
+INFO 2015-01-29 17:00:32,970 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
+INFO 2015-01-29 17:00:32,973 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
+INFO 2015-01-29 17:00:33,019 acacia.data.models: Got 393 rows, 11 columns
+INFO 2015-01-29 17:00:33,051 acacia.data.models: Series EV24 updated: 0 points created, 0 points skipped
+INFO 2015-01-29 17:00:33,179 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/ev24.png
