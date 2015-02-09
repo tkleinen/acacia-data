@@ -125,6 +125,8 @@ GRAPPELLI_ADMIN_TITLE='Beheer van Texel Online Datastore'
 CELERY_RESULT_BACKEND='djcelery.backends.database:DatabaseBackend'
 INSTALLED_APPS += ('kombu.transport.django','djcelery',)                  
 
+#CELERY_ALWAYS_EAGER = DEBUG
+
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'

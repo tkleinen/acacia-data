@@ -1,145 +1,890 @@
-INFO 2015-01-29 10:51:00,562 acacia.data.models: Downloading datasource NMCPro from ftp://82.192.75.237/Texel/Sensors/NMCPro_History Sensors 1.csv
-INFO 2015-01-29 10:51:01,066 acacia.data.models: Download completed, got 1 file(s)
-INFO 2015-01-29 10:51:01,092 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
-INFO 2015-01-29 10:57:32,355 acacia.data.models: Got 1049 rows, 24 columns
-INFO 2015-01-29 10:58:16,503 acacia.data.models: File NMCPro_History Sensors 1.csv saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv
-INFO 2015-01-29 10:58:37,149 acacia.data.models: Getting data for datasource NMCPro
-INFO 2015-01-29 10:58:37,169 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
-INFO 2015-01-29 10:58:50,355 acacia.data.models: Got 1049 rows, 24 columns
-INFO 2015-01-29 10:59:42,215 acacia.data.models: Updating parameters for datasource NMCPro
-ERROR 2015-01-29 10:59:42,219 acacia.data.models: Cannot update parameters for sourcefile NMCPro_History Sensors 1.csv: 'COLUMNS'
-INFO 2015-01-29 10:59:42,235 acacia.data.models: Update completed, got 0 parameters from 1 files
-INFO 2015-01-29 10:59:42,236 acacia.data.models: 0 parameters created, 0 updated
-INFO 2015-01-29 10:59:45,937 acacia.data.models: Updating series Bassin Niveau 
-INFO 2015-01-29 10:59:50,220 acacia.data.models: Series Bassin Niveau  updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 10:59:50,221 acacia.data.models: Generating thumbnail for series Bassin Niveau 
-INFO 2015-01-29 10:59:51,577 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/bassin-niveau.png
-INFO 2015-01-29 11:00:00,317 acacia.data.models: Updating series Drain Niveau
-INFO 2015-01-29 11:00:04,520 acacia.data.models: Series Drain Niveau updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 11:00:04,520 acacia.data.models: Generating thumbnail for series Drain Niveau
-INFO 2015-01-29 11:00:05,642 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/drain-niveau.png
-INFO 2015-01-29 11:00:05,646 acacia.data.models: Updating series DglsRgn
-INFO 2015-01-29 11:00:09,653 acacia.data.models: Series DglsRgn updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 11:00:09,653 acacia.data.models: Generating thumbnail for series DglsRgn
-INFO 2015-01-29 11:00:10,810 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/dglsrgn.png
-INFO 2015-01-29 11:00:10,815 acacia.data.models: Updating series EC Drainwater secondair
-INFO 2015-01-29 11:00:14,949 acacia.data.models: Series EC Drainwater secondair updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 11:00:14,949 acacia.data.models: Generating thumbnail for series EC Drainwater secondair
-INFO 2015-01-29 11:00:16,071 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ec-drainwater-secondair.png
-INFO 2015-01-29 11:00:16,076 acacia.data.models: Updating series EC Drainwater
-INFO 2015-01-29 11:00:20,018 acacia.data.models: Series EC Drainwater updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 11:00:20,019 acacia.data.models: Generating thumbnail for series EC Drainwater
-INFO 2015-01-29 11:00:21,101 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ec-drainwater.png
-INFO 2015-01-29 11:00:21,105 acacia.data.models: Updating series PH Sen.
-INFO 2015-01-29 11:00:24,995 acacia.data.models: Series PH Sen. updated: 625 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 11:00:24,995 acacia.data.models: Generating thumbnail for series PH Sen.
-INFO 2015-01-29 11:00:26,099 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/pompput/thumbnails/nmcpro/series/ph-sen.png
-INFO 2015-01-29 11:03:14,224 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv for datafile NMCPro_History Sensors 1.csv
-INFO 2015-01-29 11:03:14,225 acacia.data.models: File proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_ip2c1fB.csv deleted
-INFO 2015-01-29 11:04:48,456 acacia.data.models: Downloading datasource NMCPro from ftp://82.192.75.237/Texel/Sensors/NMCPro_History Sensors 1.csv
-INFO 2015-01-29 11:04:48,919 acacia.data.models: Download completed, got 1 file(s)
-INFO 2015-01-29 11:04:48,939 acacia.data.models: Getting data for sourcefile NMCPro_History Sensors 1.csv
-INFO 2015-01-29 11:05:05,932 acacia.data.models: Got 1049 rows, 24 columns
-INFO 2015-01-29 11:05:05,963 acacia.data.models: File NMCPro_History Sensors 1.csv saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/pompput/datafiles/nmcpro/NMCPro_History Sensors 1_iuKHPIl.csv
-INFO 2015-01-29 11:05:31,068 acacia.data.models: Updating parameters for datasource NMCPro
-INFO 2015-01-29 11:05:31,074 acacia.data.models: Update completed, got 23 parameters from 1 files
-INFO 2015-01-29 11:05:31,228 acacia.data.models: 0 parameters created, 23 updated
-INFO 2015-01-29 12:43:05,162 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_33.LOG for datafile 2015FER1.LOG
-INFO 2015-01-29 12:43:05,163 acacia.data.models: File proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_33.LOG deleted
-INFO 2015-01-29 12:43:24,269 acacia.data.models: Downloading datasource Koenders 2015 Fert 1 from ftp://82.192.75.237/2015FER1.LOG
-INFO 2015-01-29 12:43:24,906 acacia.data.models: Download completed, got 1 file(s)
-INFO 2015-01-29 12:43:24,920 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
-INFO 2015-01-29 12:44:14,818 acacia.data.models: Got 7244 rows, 5 columns
-INFO 2015-01-29 12:44:35,329 acacia.data.models: File 2015FER1.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1.LOG
-INFO 2015-01-29 12:44:59,146 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
-INFO 2015-01-29 12:44:59,678 acacia.data.models: Download completed, got 1 file(s)
-INFO 2015-01-29 12:44:59,698 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
-INFO 2015-01-29 12:45:04,984 acacia.data.models: Got 6954 rows, 5 columns
-INFO 2015-01-29 12:45:05,006 acacia.data.models: File 2015FER2.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
-INFO 2015-01-29 12:46:03,553 acacia.data.models: Updating series Koenders 2015 Fert 1 - Batterij
-INFO 2015-01-29 12:46:03,561 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
-INFO 2015-01-29 12:46:03,564 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
-INFO 2015-01-29 12:46:05,254 acacia.data.models: Got 7244 rows, 5 columns
-INFO 2015-01-29 16:37:35,905 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
-INFO 2015-01-29 16:37:36,390 acacia.data.models: Download completed, got 1 file(s)
-WARNING 2015-01-29 16:37:36,407 acacia.data.models: Downloaded file 2015FER2.LOG ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
-INFO 2015-01-29 16:37:38,370 acacia.data.models: Getting data for datasource Koenders 2015 Fert 2 
-INFO 2015-01-29 16:37:38,381 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
-INFO 2015-01-29 16:37:38,462 acacia.data.models: Got 6954 rows, 5 columns
-INFO 2015-01-29 16:37:39,042 acacia.data.models: Updating parameters for datasource Koenders 2015 Fert 2 
-INFO 2015-01-29 16:37:39,050 acacia.data.models: Update completed, got 5 parameters from 1 files
-INFO 2015-01-29 16:37:39,082 acacia.data.models: 0 parameters created, 5 updated
-INFO 2015-01-29 16:42:46,630 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
-INFO 2015-01-29 16:42:47,159 acacia.data.models: Download completed, got 1 file(s)
-WARNING 2015-01-29 16:42:47,167 acacia.data.models: Downloaded file 2015FER2.LOG ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_370AfKY.LOG
-INFO 2015-01-29 16:42:51,068 acacia.data.models: Getting data for datasource Koenders 2015 Fert 2 
-INFO 2015-01-29 16:42:51,077 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
-INFO 2015-01-29 16:42:51,150 acacia.data.models: Got 6954 rows, 5 columns
-INFO 2015-01-29 16:42:51,739 acacia.data.models: Updating parameters for datasource Koenders 2015 Fert 2 
-INFO 2015-01-29 16:42:51,749 acacia.data.models: Update completed, got 5 parameters from 1 files
-INFO 2015-01-29 16:42:51,782 acacia.data.models: 0 parameters created, 5 updated
-INFO 2015-01-29 16:56:46,357 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp:pres
-INFO 2015-01-29 16:56:46,811 acacia.data.models: Download completed, got 1 file(s)
-INFO 2015-01-29 16:56:46,849 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 16:56:46,896 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 16:56:46,906 acacia.data.models: File daggegevens_knmi_meteo_242.txt saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242_ue55ApF.txt
-INFO 2015-01-29 16:56:46,909 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 16:56:46,912 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 16:56:46,961 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 16:56:47,017 acacia.data.models: Updating parameters for datasource Dagwaarden Meteostation Vlieland 
-ERROR 2015-01-29 16:56:47,017 acacia.data.models: Cannot update parameters for sourcefile daggegevens_knmi_meteo_242.txt: 'COLUMNS'
-INFO 2015-01-29 16:56:47,020 acacia.data.models: Update completed, got 0 parameters from 1 files
-INFO 2015-01-29 16:56:47,020 acacia.data.models: 0 parameters created, 0 updated
-INFO 2015-01-29 16:56:47,020 acacia.data.models: Updating series PG
-INFO 2015-01-29 16:56:47,128 acacia.data.models: Series PG updated: 10 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 16:56:47,128 acacia.data.models: Generating thumbnail for series PG
-INFO 2015-01-29 16:56:47,771 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/pg.png
-INFO 2015-01-29 16:56:47,776 acacia.data.models: Updating series RH
-INFO 2015-01-29 16:56:47,777 acacia.data.models: Series RH updated: 0 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 16:56:47,777 acacia.data.models: Generating thumbnail for series RH
-INFO 2015-01-29 16:56:47,781 acacia.data.models: Creating series RH
-INFO 2015-01-29 16:56:47,781 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 16:56:47,784 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 16:56:47,832 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 16:56:47,861 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
-INFO 2015-01-29 16:56:47,996 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/rh.png
-INFO 2015-01-29 16:56:48,001 acacia.data.models: Updating series EV24
-INFO 2015-01-29 16:56:48,002 acacia.data.models: Series EV24 updated: 0 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 16:56:48,003 acacia.data.models: Generating thumbnail for series EV24
-INFO 2015-01-29 16:56:48,006 acacia.data.models: Creating series EV24
-INFO 2015-01-29 16:56:48,006 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 16:56:48,009 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 16:56:48,055 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 16:56:48,081 acacia.data.models: Series EV24 updated: 0 points created, 0 points skipped
-INFO 2015-01-29 16:56:48,219 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/ev24.png
-INFO 2015-01-29 17:00:30,165 acacia.data.models: Downloading datasource Dagwaarden Meteostation Vlieland  from http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi?stns=242&start=20140101&vars=prcp:pres
-INFO 2015-01-29 17:00:31,880 acacia.data.models: Download completed, got 1 file(s)
-WARNING 2015-01-29 17:00:31,891 acacia.data.models: Downloaded file daggegevens_knmi_meteo_242.txt ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/hoofdperceel/datafiles/dagwaarden-meteostation-vlieland/daggegevens_knmi_meteo_242_ue55ApF.txt
-INFO 2015-01-29 17:00:31,901 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 17:00:31,910 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 17:00:31,973 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 17:00:32,028 acacia.data.models: Updating parameters for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 17:00:32,035 acacia.data.models: Update completed, got 10 parameters from 1 files
-INFO 2015-01-29 17:00:32,101 acacia.data.models: 0 parameters created, 10 updated
-INFO 2015-01-29 17:00:32,102 acacia.data.models: Updating series PG
-INFO 2015-01-29 17:00:32,113 acacia.data.models: Series PG updated: 0 points created, 1 updated, 0 skipped
-DEBUG 2015-01-29 17:00:32,113 acacia.data.models: Generating thumbnail for series PG
-INFO 2015-01-29 17:00:32,732 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/pg.png
-INFO 2015-01-29 17:00:32,737 acacia.data.models: Updating series RH
-INFO 2015-01-29 17:00:32,739 acacia.data.models: Series RH updated: 0 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 17:00:32,739 acacia.data.models: Generating thumbnail for series RH
-INFO 2015-01-29 17:00:32,741 acacia.data.models: Creating series RH
-INFO 2015-01-29 17:00:32,741 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 17:00:32,744 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 17:00:32,791 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 17:00:32,821 acacia.data.models: Series RH updated: 0 points created, 0 points skipped
-INFO 2015-01-29 17:00:32,961 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/rh.png
-INFO 2015-01-29 17:00:32,966 acacia.data.models: Updating series EV24
-INFO 2015-01-29 17:00:32,967 acacia.data.models: Series EV24 updated: 0 points created, 0 updated, 0 skipped
-DEBUG 2015-01-29 17:00:32,967 acacia.data.models: Generating thumbnail for series EV24
-INFO 2015-01-29 17:00:32,970 acacia.data.models: Creating series EV24
-INFO 2015-01-29 17:00:32,970 acacia.data.models: Getting data for datasource Dagwaarden Meteostation Vlieland 
-INFO 2015-01-29 17:00:32,973 acacia.data.models: Getting data for sourcefile daggegevens_knmi_meteo_242.txt
-INFO 2015-01-29 17:00:33,019 acacia.data.models: Got 393 rows, 11 columns
-INFO 2015-01-29 17:00:33,051 acacia.data.models: Series EV24 updated: 0 points created, 0 points skipped
-INFO 2015-01-29 17:00:33,179 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/hoofdperceel/thumbnails/dagwaarden-meteostation-vlieland/series/ev24.png
+INFO 2015-02-09 14:30:58,045 acacia.data.models: Downloading datasource Koenders 2015 Fert 1 from ftp://82.192.75.237/2015FER1.LOG
+INFO 2015-02-09 14:30:58,515 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 14:31:00,170 acacia.data.models: Got 8300 rows, 5 columns
+INFO 2015-02-09 14:31:00,183 acacia.data.models: File 2015FER1.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG
+INFO 2015-02-09 14:31:00,184 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-02-09 14:31:00,186 acacia.data.models: Downloading datasource Koenders 2015 Fert 2  from ftp://82.192.75.237/2015FER2.LOG
+INFO 2015-02-09 14:31:00,661 acacia.data.models: Getting data for sourcefile 2015FER2.LOG
+INFO 2015-02-09 14:31:00,727 acacia.data.models: Got 8010 rows, 5 columns
+INFO 2015-02-09 14:31:00,737 acacia.data.models: File 2015FER2.LOG saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/fertigatie-2/datafiles/koenders-2015-fert-2/2015FER2_OKDlKHf.LOG
+INFO 2015-02-09 14:31:00,737 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-02-09 14:31:22,903 acacia.data.models: Updating parameters for datasource Koenders 2015 Fert 2 
+INFO 2015-02-09 14:31:22,912 acacia.data.models: Update completed, got 5 parameters from 1 files
+INFO 2015-02-09 14:31:22,943 acacia.data.models: 0 parameters created, 5 updated
+ERROR 2015-02-09 14:32:31,802 acacia.data.actions: ERROR creating series Channel1: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 14:32:31,810 acacia.data.actions: ERROR creating series Channel2: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 14:32:31,820 acacia.data.actions: ERROR creating series Channel3: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 14:32:31,829 acacia.data.actions: ERROR creating series Channel4: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 14:32:31,836 acacia.data.actions: ERROR creating series Channel5: 'tuple' object has no attribute 'replace'
+INFO 2015-02-09 14:33:05,073 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:33:05,080 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:33:05,083 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 14:33:06,749 acacia.data.models: Got 8300 rows, 5 columns
+INFO 2015-02-09 14:34:33,917 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:34:33,925 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:34:33,929 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 14:38:31,996 acacia.data.models: Got 8300 rows, 5 columns
+INFO 2015-02-09 14:40:43,157 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:40:43,166 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:40:43,170 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 14:41:50,649 acacia.data.models: Got 8300 rows, 5 columns
+INFO 2015-02-09 14:56:46,137 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:56:46,146 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:56:46,150 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 14:56:46,208 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: free variable 'pd' referenced before assignment in enclosing scope
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 31, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 30, in <lambda>
+    dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
+NameError: free variable 'pd' referenced before assignment in enclosing scope
+ERROR 2015-02-09 14:56:46,484 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 14:56:58,095 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:56:58,103 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:56:58,106 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 14:56:58,164 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: free variable 'pd' referenced before assignment in enclosing scope
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 31, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 30, in <lambda>
+    dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
+NameError: free variable 'pd' referenced before assignment in enclosing scope
+ERROR 2015-02-09 14:56:58,166 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 14:57:44,053 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:57:44,062 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:57:44,064 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 14:57:55,245 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: free variable 'pd' referenced before assignment in enclosing scope
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 31, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 30, in <lambda>
+    dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
+NameError: free variable 'pd' referenced before assignment in enclosing scope
+INFO 2015-02-09 14:58:40,425 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 14:58:40,435 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 14:58:40,440 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 14:58:53,441 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: must be string, not None
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 32, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 31, in <lambda>
+    dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d %H:%M:%S')
+TypeError: must be string, not None
+INFO 2015-02-09 15:02:24,627 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:02:24,636 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:02:24,640 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 15:04:08,394 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:04:08,404 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:04:08,407 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 15:05:49,695 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:05:49,704 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:05:49,707 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 15:07:30,737 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:07:30,747 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:07:30,751 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 15:12:14,166 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: day is out of range for month
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 42, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 41, in <lambda>
+    dateparse = lambda x: self.doparse(x)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 37, in doparse
+    raise e
+ValueError: day is out of range for month
+ERROR 2015-02-09 15:12:14,183 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 15:14:32,252 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:14:32,262 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:14:32,265 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 15:14:42,054 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: day is out of range for month
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 42, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 41, in <lambda>
+    dateparse = lambda x: self.doparse(x)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 37, in doparse
+    return [parser.parse(d) for d in x]
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 697, in parse
+    return DEFAULTPARSER.parse(timestr, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 310, in parse
+    ret = default.replace(**repl)
+ValueError: day is out of range for month
+ERROR 2015-02-09 15:14:42,058 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 15:16:38,158 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:16:38,167 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:16:38,170 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 15:16:42,099 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: day is out of range for month
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 42, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 41, in <lambda>
+    dateparse = lambda x: self.doparse(x)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 37, in doparse
+    return [parser.parse(d) for d in x]
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 697, in parse
+    return DEFAULTPARSER.parse(timestr, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 310, in parse
+    ret = default.replace(**repl)
+ValueError: day is out of range for month
+ERROR 2015-02-09 15:16:42,102 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 15:17:00,202 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:17:00,211 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:17:00,214 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 15:18:15,517 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 15:18:15,526 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 15:18:15,530 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 15:42:36,865 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: day is out of range for month
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 42, in get_data
+    data = self.read_csv(f, parse_dates = [0], date_parser = dateparse, index_col = 0, header = self.header, dayfirst = self.dayfirst)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generator.py", line 25, in read_csv
+    ret = pd.read_csv(*args,**kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 452, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 244, in _read
+    return parser.read()
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 695, in read
+    ret = self._engine.read(nrows)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1532, in read
+    index, columns = self._make_index(data, alldata, columns, indexnamerow)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 863, in _make_index
+    index = self._agg_index(index)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 944, in _agg_index
+    arr = self._date_conv(arr)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/parsers.py", line 1997, in converter
+    return generic_parser(date_parser, *date_cols)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/io/date_converters.py", line 38, in generic_parser
+    results[i] = parse_func(*args)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 41, in <lambda>
+    dateparse = lambda x: self.doparse(x)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 37, in doparse
+    return [parser.parse(d) for d in x]
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 697, in parse
+    return DEFAULTPARSER.parse(timestr, **kwargs)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/dateutil/parser.py", line 310, in parse
+    ret = default.replace(**repl)
+ValueError: day is out of range for month
+ERROR 2015-02-09 15:42:36,875 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 17:00:59,611 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 17:00:59,620 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 17:00:59,623 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+ERROR 2015-02-09 17:01:01,307 acacia.data.models: Error retrieving data from proef-zoetwaterberging/proefperceel/fertigatie/datafiles/koenders-2015-fert-1/2015FER1_BqMSejD.LOG: Reindexing only valid with uniquely valued Index objects
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 556, in get_data
+    data = gen.get_data(self.file,**kwargs)
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/generic.py", line 29, in get_data
+    data.index = pd.to_datetime(data.index.drop('None'))
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/core/index.py", line 1828, in drop
+    indexer = self.get_indexer(labels)
+  File "/home/theo/acaciadata.com/django/local/lib/python2.7/site-packages/pandas/core/index.py", line 1284, in get_indexer
+    raise InvalidIndexError('Reindexing only valid with uniquely'
+InvalidIndexError: Reindexing only valid with uniquely valued Index objects
+ERROR 2015-02-09 17:01:01,309 acacia.data.models: Update of series Koenders 2015 Fert 1 - Peilbuis 1 failed
+INFO 2015-02-09 17:02:45,952 acacia.data.models: Updating series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 17:02:45,961 acacia.data.models: Getting data for datasource Koenders 2015 Fert 1
+INFO 2015-02-09 17:02:45,964 acacia.data.models: Getting data for sourcefile 2015FER1.LOG
+INFO 2015-02-09 17:02:47,637 acacia.data.models: Got 8300 rows, 5 columns
+INFO 2015-02-09 17:03:25,221 acacia.data.models: Series Koenders 2015 Fert 1 - Peilbuis 1 updated: 2016 points created, 951 updated, 0 skipped
+DEBUG 2015-02-09 17:03:25,222 acacia.data.models: Generating thumbnail for series Koenders 2015 Fert 1 - Peilbuis 1
+INFO 2015-02-09 17:03:26,598 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/fertigatie/thumbnails/koenders-2015-fert-1/series/koenders-2015-fert-1-peilbuis-1.png
+INFO 2015-02-09 22:07:43,679 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_124141839_retcvhX.csv for datafile REF REF 2_20150202_124141839.csv
+INFO 2015-02-09 22:07:43,738 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_124141839_retcvhX.csv deleted
+INFO 2015-02-09 22:07:43,738 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_130058933_IdRGV9P.csv for datafile REF REF 2_20150202_130058933.csv
+INFO 2015-02-09 22:07:43,739 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_130058933_IdRGV9P.csv deleted
+INFO 2015-02-09 22:07:43,740 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_133057358_JwpAm0p.csv for datafile REF REF 2_20150202_133057358.csv
+INFO 2015-02-09 22:07:43,741 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_133057358_JwpAm0p.csv deleted
+INFO 2015-02-09 22:07:43,741 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_134603684_4522k9s.csv for datafile REF REF 2_20150202_134603684.csv
+INFO 2015-02-09 22:07:43,743 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_134603684_4522k9s.csv deleted
+INFO 2015-02-09 22:07:43,743 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_141559250_1nYLS2V.csv for datafile REF REF 2_20150202_141559250.csv
+INFO 2015-02-09 22:07:43,744 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_141559250_1nYLS2V.csv deleted
+INFO 2015-02-09 22:07:43,744 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_143056514_U24ufyQ.csv for datafile REF REF 2_20150202_143056514.csv
+INFO 2015-02-09 22:07:43,745 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_143056514_U24ufyQ.csv deleted
+INFO 2015-02-09 22:07:43,746 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_150056267_5aE8FFw.csv for datafile REF REF 2_20150202_150056267.csv
+INFO 2015-02-09 22:07:43,747 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_150056267_5aE8FFw.csv deleted
+INFO 2015-02-09 22:07:43,747 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_151602693_ofqyfuf.csv for datafile REF REF 2_20150202_151602693.csv
+INFO 2015-02-09 22:07:43,748 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_151602693_ofqyfuf.csv deleted
+INFO 2015-02-09 22:07:43,748 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_154556940_Qo8Gm5j.csv for datafile REF REF 2_20150202_154556940.csv
+INFO 2015-02-09 22:07:43,749 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_154556940_Qo8Gm5j.csv deleted
+INFO 2015-02-09 22:07:43,750 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_160103267_SHsVnpo.csv for datafile REF REF 2_20150202_160103267.csv
+INFO 2015-02-09 22:07:43,751 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_160103267_SHsVnpo.csv deleted
+INFO 2015-02-09 22:07:43,751 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_164654903_nAsnygX.csv for datafile REF REF 2_20150202_164654903.csv
+INFO 2015-02-09 22:07:43,752 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_164654903_nAsnygX.csv deleted
+INFO 2015-02-09 22:07:43,753 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_170213904_bJb7QS7.csv for datafile REF REF 2_20150202_170213904.csv
+INFO 2015-02-09 22:07:43,753 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_170213904_bJb7QS7.csv deleted
+INFO 2015-02-09 22:07:43,754 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_172922108_iCseHlE.csv for datafile REF REF 2_20150202_172922108.csv
+INFO 2015-02-09 22:07:43,755 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_172922108_iCseHlE.csv deleted
+INFO 2015-02-09 22:07:43,755 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_174556784_1R8Meni.csv for datafile REF REF 2_20150202_174556784.csv
+INFO 2015-02-09 22:07:43,756 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_174556784_1R8Meni.csv deleted
+INFO 2015-02-09 22:07:43,756 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_181406636_LJWHZYn.csv for datafile REF REF 2_20150202_181406636.csv
+INFO 2015-02-09 22:07:43,757 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_181406636_LJWHZYn.csv deleted
+INFO 2015-02-09 22:07:43,758 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_182829277_KlAttwv.csv for datafile REF REF 2_20150202_182829277.csv
+INFO 2015-02-09 22:07:43,759 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_182829277_KlAttwv.csv deleted
+INFO 2015-02-09 22:07:43,760 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_185637624_csFi8cw.csv for datafile REF REF 2_20150202_185637624.csv
+INFO 2015-02-09 22:07:43,760 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_185637624_csFi8cw.csv deleted
+INFO 2015-02-09 22:07:43,761 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_191424722_iar70AJ.csv for datafile REF REF 2_20150202_191424722.csv
+INFO 2015-02-09 22:07:43,762 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_191424722_iar70AJ.csv deleted
+INFO 2015-02-09 22:07:43,762 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_194611880_FnxEgY7.csv for datafile REF REF 2_20150202_194611880.csv
+INFO 2015-02-09 22:07:43,763 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_194611880_FnxEgY7.csv deleted
+INFO 2015-02-09 22:07:43,764 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_195906401_9oWavqI.csv for datafile REF REF 2_20150202_195906401.csv
+INFO 2015-02-09 22:07:43,764 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_195906401_9oWavqI.csv deleted
+INFO 2015-02-09 22:07:43,765 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_201140790_njcuUTU.csv for datafile REF REF 2_20150202_201140790.csv
+INFO 2015-02-09 22:07:43,767 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_201140790_njcuUTU.csv deleted
+INFO 2015-02-09 22:07:43,767 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_203338436_6ABs6xs.csv for datafile REF REF 2_20150202_203338436.csv
+INFO 2015-02-09 22:07:43,768 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_203338436_6ABs6xs.csv deleted
+INFO 2015-02-09 22:07:43,768 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_211801741_9KdpT3c.csv for datafile REF REF 2_20150202_211801741.csv
+INFO 2015-02-09 22:07:43,769 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_211801741_9KdpT3c.csv deleted
+INFO 2015-02-09 22:07:43,770 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_214515684_Sk5Fpq7.csv for datafile REF REF 2_20150202_214515684.csv
+INFO 2015-02-09 22:07:43,770 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_214515684_Sk5Fpq7.csv deleted
+INFO 2015-02-09 22:07:43,770 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_220358861_jEASga7.csv for datafile REF REF 2_20150202_220358861.csv
+INFO 2015-02-09 22:07:43,771 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_220358861_jEASga7.csv deleted
+INFO 2015-02-09 22:07:43,772 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_223059515_XH6EwAX.csv for datafile REF REF 2_20150202_223059515.csv
+INFO 2015-02-09 22:07:43,772 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_223059515_XH6EwAX.csv deleted
+INFO 2015-02-09 22:07:43,773 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_224717496_WLAglu9.csv for datafile REF REF 2_20150202_224717496.csv
+INFO 2015-02-09 22:07:43,774 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_224717496_WLAglu9.csv deleted
+INFO 2015-02-09 22:07:43,774 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_231419919_4N4zQ6C.csv for datafile REF REF 2_20150202_231419919.csv
+INFO 2015-02-09 22:07:43,775 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_231419919_4N4zQ6C.csv deleted
+INFO 2015-02-09 22:07:43,775 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_233245293_srdgxCZ.csv for datafile REF REF 2_20150202_233245293.csv
+INFO 2015-02-09 22:07:43,776 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_233245293_srdgxCZ.csv deleted
+INFO 2015-02-09 22:07:43,776 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_235821677_F02E6jZ.csv for datafile REF REF 2_20150202_235821677.csv
+INFO 2015-02-09 22:07:43,777 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150202_235821677_F02E6jZ.csv deleted
+INFO 2015-02-09 22:07:43,777 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_001658357_tW0PH2d.csv for datafile REF REF 2_20150203_001658357.csv
+INFO 2015-02-09 22:07:43,778 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_001658357_tW0PH2d.csv deleted
+INFO 2015-02-09 22:07:43,779 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_004555449_CusshUO.csv for datafile REF REF 2_20150203_004555449.csv
+INFO 2015-02-09 22:07:43,780 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_004555449_CusshUO.csv deleted
+INFO 2015-02-09 22:07:43,780 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_010556458_Hp4lAI1.csv for datafile REF REF 2_20150203_010556458.csv
+INFO 2015-02-09 22:07:43,781 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_010556458_Hp4lAI1.csv deleted
+INFO 2015-02-09 22:07:43,781 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_013342567_vMsBkMK.csv for datafile REF REF 2_20150203_013342567.csv
+INFO 2015-02-09 22:07:43,783 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_013342567_vMsBkMK.csv deleted
+INFO 2015-02-09 22:07:43,783 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_014619958_dWXinDg.csv for datafile REF REF 2_20150203_014619958.csv
+INFO 2015-02-09 22:07:43,784 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_014619958_dWXinDg.csv deleted
+INFO 2015-02-09 22:07:43,784 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_021648954_Kziki7J.csv for datafile REF REF 2_20150203_021648954.csv
+INFO 2015-02-09 22:07:43,785 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_021648954_Kziki7J.csv deleted
+INFO 2015-02-09 22:07:43,785 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_023424995_3PNWEan.csv for datafile REF REF 2_20150203_023424995.csv
+INFO 2015-02-09 22:07:43,786 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_023424995_3PNWEan.csv deleted
+INFO 2015-02-09 22:07:43,786 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_030154439_W2LygLo.csv for datafile REF REF 2_20150203_030154439.csv
+INFO 2015-02-09 22:07:43,787 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_030154439_W2LygLo.csv deleted
+INFO 2015-02-09 22:07:43,787 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_034037400_BS6SKkl.csv for datafile REF REF 2_20150203_034037400.csv
+INFO 2015-02-09 22:07:43,788 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_034037400_BS6SKkl.csv deleted
+INFO 2015-02-09 22:07:43,789 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_041331092_GuGTaZL.csv for datafile REF REF 2_20150203_041331092.csv
+INFO 2015-02-09 22:07:43,789 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_041331092_GuGTaZL.csv deleted
+INFO 2015-02-09 22:07:43,790 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_043147942_RqTF2pc.csv for datafile REF REF 2_20150203_043147942.csv
+INFO 2015-02-09 22:07:43,791 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_043147942_RqTF2pc.csv deleted
+INFO 2015-02-09 22:07:43,791 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_050103317_iorIivA.csv for datafile REF REF 2_20150203_050103317.csv
+INFO 2015-02-09 22:07:43,792 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_050103317_iorIivA.csv deleted
+INFO 2015-02-09 22:07:43,792 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_051719939_GgdiiHN.csv for datafile REF REF 2_20150203_051719939.csv
+INFO 2015-02-09 22:07:43,793 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_051719939_GgdiiHN.csv deleted
+INFO 2015-02-09 22:07:43,793 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_054649794_QvQJKo3.csv for datafile REF REF 2_20150203_054649794.csv
+INFO 2015-02-09 22:07:43,794 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_054649794_QvQJKo3.csv deleted
+INFO 2015-02-09 22:07:43,795 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_060040221_PUH5TPn.csv for datafile REF REF 2_20150203_060040221.csv
+INFO 2015-02-09 22:07:43,795 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_060040221_PUH5TPn.csv deleted
+INFO 2015-02-09 22:07:43,796 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_062152955_x9Z1SOw.csv for datafile REF REF 2_20150203_062152955.csv
+INFO 2015-02-09 22:07:43,797 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_062152955_x9Z1SOw.csv deleted
+INFO 2015-02-09 22:07:43,797 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_070112750_H8Waxnz.csv for datafile REF REF 2_20150203_070112750.csv
+INFO 2015-02-09 22:07:43,798 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_070112750_H8Waxnz.csv deleted
+INFO 2015-02-09 22:07:43,798 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_071606729_hzJAZvl.csv for datafile REF REF 2_20150203_071606729.csv
+INFO 2015-02-09 22:07:43,799 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_071606729_hzJAZvl.csv deleted
+INFO 2015-02-09 22:07:43,799 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_074606344_TbrVPBv.csv for datafile REF REF 2_20150203_074606344.csv
+INFO 2015-02-09 22:07:43,800 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_074606344_TbrVPBv.csv deleted
+INFO 2015-02-09 22:07:43,800 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_080107566_XVLEFfB.csv for datafile REF REF 2_20150203_080107566.csv
+INFO 2015-02-09 22:07:43,801 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_080107566_XVLEFfB.csv deleted
+INFO 2015-02-09 22:07:43,802 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_083110617_CHzwmZm.csv for datafile REF REF 2_20150203_083110617.csv
+INFO 2015-02-09 22:07:43,803 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_083110617_CHzwmZm.csv deleted
+INFO 2015-02-09 22:07:43,803 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_084606234_ytIQvSR.csv for datafile REF REF 2_20150203_084606234.csv
+INFO 2015-02-09 22:07:43,804 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_084606234_ytIQvSR.csv deleted
+INFO 2015-02-09 22:07:43,805 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_091613952_vGjhAag.csv for datafile REF REF 2_20150203_091613952.csv
+INFO 2015-02-09 22:07:43,805 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_091613952_vGjhAag.csv deleted
+INFO 2015-02-09 22:07:43,806 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_093102021_nrHBtkQ.csv for datafile REF REF 2_20150203_093102021.csv
+INFO 2015-02-09 22:07:43,807 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_093102021_nrHBtkQ.csv deleted
+INFO 2015-02-09 22:07:43,807 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_094603900_SEiREvJ.csv for datafile REF REF 2_20150203_094603900.csv
+INFO 2015-02-09 22:07:43,808 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_094603900_SEiREvJ.csv deleted
+INFO 2015-02-09 22:07:43,808 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_100106761_W8o5VqA.csv for datafile REF REF 2_20150203_100106761.csv
+INFO 2015-02-09 22:07:43,809 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_100106761_W8o5VqA.csv deleted
+INFO 2015-02-09 22:07:43,809 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_101616571_hwu7bIt.csv for datafile REF REF 2_20150203_101616571.csv
+INFO 2015-02-09 22:07:43,810 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_101616571_hwu7bIt.csv deleted
+INFO 2015-02-09 22:07:43,810 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_103101299_UUpjQay.csv for datafile REF REF 2_20150203_103101299.csv
+INFO 2015-02-09 22:07:43,811 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_103101299_UUpjQay.csv deleted
+INFO 2015-02-09 22:07:43,812 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_104609208_uazLnw0.csv for datafile REF REF 2_20150203_104609208.csv
+INFO 2015-02-09 22:07:43,812 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_104609208_uazLnw0.csv deleted
+INFO 2015-02-09 22:07:43,813 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_111601197_J1njFEb.csv for datafile REF REF 2_20150203_111601197.csv
+INFO 2015-02-09 22:07:43,814 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_111601197_J1njFEb.csv deleted
+INFO 2015-02-09 22:07:43,814 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_113103200_pFybcfH.csv for datafile REF REF 2_20150203_113103200.csv
+INFO 2015-02-09 22:07:43,815 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_113103200_pFybcfH.csv deleted
+INFO 2015-02-09 22:07:43,815 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_120106021_jLZJ0Gm.csv for datafile REF REF 2_20150203_120106021.csv
+INFO 2015-02-09 22:07:43,816 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_120106021_jLZJ0Gm.csv deleted
+INFO 2015-02-09 22:07:43,816 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_121604277_00tCxtG.csv for datafile REF REF 2_20150203_121604277.csv
+INFO 2015-02-09 22:07:43,817 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_121604277_00tCxtG.csv deleted
+INFO 2015-02-09 22:07:43,817 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_124602224_awCgSl7.csv for datafile REF REF 2_20150203_124602224.csv
+INFO 2015-02-09 22:07:43,818 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_124602224_awCgSl7.csv deleted
+INFO 2015-02-09 22:07:43,819 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_130111267_KYtwm5G.csv for datafile REF REF 2_20150203_130111267.csv
+INFO 2015-02-09 22:07:43,820 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_130111267_KYtwm5G.csv deleted
+INFO 2015-02-09 22:07:43,820 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_133108179_KlSXARB.csv for datafile REF REF 2_20150203_133108179.csv
+INFO 2015-02-09 22:07:43,821 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_133108179_KlSXARB.csv deleted
+INFO 2015-02-09 22:07:43,821 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_134605818_EypDDlZ.csv for datafile REF REF 2_20150203_134605818.csv
+INFO 2015-02-09 22:07:43,822 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_134605818_EypDDlZ.csv deleted
+INFO 2015-02-09 22:07:43,822 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_141601503_UYs7bAn.csv for datafile REF REF 2_20150203_141601503.csv
+INFO 2015-02-09 22:07:43,823 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_141601503_UYs7bAn.csv deleted
+INFO 2015-02-09 22:07:43,823 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_143109458_zVw5l1w.csv for datafile REF REF 2_20150203_143109458.csv
+INFO 2015-02-09 22:07:43,824 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_143109458_zVw5l1w.csv deleted
+INFO 2015-02-09 22:07:43,824 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_150102069_RV53b8O.csv for datafile REF REF 2_20150203_150102069.csv
+INFO 2015-02-09 22:07:43,825 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_150102069_RV53b8O.csv deleted
+INFO 2015-02-09 22:07:43,826 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_151608738_H2X92P6.csv for datafile REF REF 2_20150203_151608738.csv
+INFO 2015-02-09 22:07:43,826 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_151608738_H2X92P6.csv deleted
+INFO 2015-02-09 22:07:43,827 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_154559247_E06MhLk.csv for datafile REF REF 2_20150203_154559247.csv
+INFO 2015-02-09 22:07:43,828 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_154559247_E06MhLk.csv deleted
+INFO 2015-02-09 22:07:43,829 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_160112206_uN8qdqt.csv for datafile REF REF 2_20150203_160112206.csv
+INFO 2015-02-09 22:07:43,829 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_160112206_uN8qdqt.csv deleted
+INFO 2015-02-09 22:07:43,830 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_163100419_zqQixR9.csv for datafile REF REF 2_20150203_163100419.csv
+INFO 2015-02-09 22:07:43,831 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_163100419_zqQixR9.csv deleted
+INFO 2015-02-09 22:07:43,831 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_164612749_WzIjgiM.csv for datafile REF REF 2_20150203_164612749.csv
+INFO 2015-02-09 22:07:43,832 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_164612749_WzIjgiM.csv deleted
+INFO 2015-02-09 22:07:43,832 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_170100158_Q69VvgB.csv for datafile REF REF 2_20150203_170100158.csv
+INFO 2015-02-09 22:07:43,833 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_170100158_Q69VvgB.csv deleted
+INFO 2015-02-09 22:07:43,833 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_171607513_fUuY1hY.csv for datafile REF REF 2_20150203_171607513.csv
+INFO 2015-02-09 22:07:43,834 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_171607513_fUuY1hY.csv deleted
+INFO 2015-02-09 22:07:43,835 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_174606737_kbbtnvH.csv for datafile REF REF 2_20150203_174606737.csv
+INFO 2015-02-09 22:07:43,836 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_174606737_kbbtnvH.csv deleted
+INFO 2015-02-09 22:07:43,836 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_180110158_hyk4su1.csv for datafile REF REF 2_20150203_180110158.csv
+INFO 2015-02-09 22:07:43,837 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_180110158_hyk4su1.csv deleted
+INFO 2015-02-09 22:07:43,837 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_183105828_GPnVtWE.csv for datafile REF REF 2_20150203_183105828.csv
+INFO 2015-02-09 22:07:43,838 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_183105828_GPnVtWE.csv deleted
+INFO 2015-02-09 22:07:43,838 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_184608606_tr0qZy7.csv for datafile REF REF 2_20150203_184608606.csv
+INFO 2015-02-09 22:07:43,839 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_184608606_tr0qZy7.csv deleted
+INFO 2015-02-09 22:07:43,839 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_191556871_FOqFGgd.csv for datafile REF REF 2_20150203_191556871.csv
+INFO 2015-02-09 22:07:43,840 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_191556871_FOqFGgd.csv deleted
+INFO 2015-02-09 22:07:43,840 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_193113527_hQ0McF8.csv for datafile REF REF 2_20150203_193113527.csv
+INFO 2015-02-09 22:07:43,841 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_193113527_hQ0McF8.csv deleted
+INFO 2015-02-09 22:07:43,842 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_200105611_4qLWBce.csv for datafile REF REF 2_20150203_200105611.csv
+INFO 2015-02-09 22:07:43,843 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_200105611_4qLWBce.csv deleted
+INFO 2015-02-09 22:07:43,843 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_201605691_RDRchKS.csv for datafile REF REF 2_20150203_201605691.csv
+INFO 2015-02-09 22:07:43,844 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_201605691_RDRchKS.csv deleted
+INFO 2015-02-09 22:07:43,844 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_204603436_gX0p5wX.csv for datafile REF REF 2_20150203_204603436.csv
+INFO 2015-02-09 22:07:43,845 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_204603436_gX0p5wX.csv deleted
+INFO 2015-02-09 22:07:43,845 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_210109039_6RP3Vca.csv for datafile REF REF 2_20150203_210109039.csv
+INFO 2015-02-09 22:07:43,847 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_210109039_6RP3Vca.csv deleted
+INFO 2015-02-09 22:07:43,847 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_213058908_vlNSvhH.csv for datafile REF REF 2_20150203_213058908.csv
+INFO 2015-02-09 22:07:43,848 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_213058908_vlNSvhH.csv deleted
+INFO 2015-02-09 22:07:43,848 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_214607289_1ONsvYr.csv for datafile REF REF 2_20150203_214607289.csv
+INFO 2015-02-09 22:07:43,849 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_214607289_1ONsvYr.csv deleted
+INFO 2015-02-09 22:07:43,850 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_221606548_E162iBF.csv for datafile REF REF 2_20150203_221606548.csv
+INFO 2015-02-09 22:07:43,850 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_221606548_E162iBF.csv deleted
+INFO 2015-02-09 22:07:43,851 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_223106840_esbaNYC.csv for datafile REF REF 2_20150203_223106840.csv
+INFO 2015-02-09 22:07:43,851 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_223106840_esbaNYC.csv deleted
+INFO 2015-02-09 22:07:43,852 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_230109445_hUuBguY.csv for datafile REF REF 2_20150203_230109445.csv
+INFO 2015-02-09 22:07:43,853 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_230109445_hUuBguY.csv deleted
+INFO 2015-02-09 22:07:43,853 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_231613025_WfjgapL.csv for datafile REF REF 2_20150203_231613025.csv
+INFO 2015-02-09 22:07:43,854 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_231613025_WfjgapL.csv deleted
+INFO 2015-02-09 22:07:43,854 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_234611291_3xxKCcC.csv for datafile REF REF 2_20150203_234611291.csv
+INFO 2015-02-09 22:07:43,855 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150203_234611291_3xxKCcC.csv deleted
+INFO 2015-02-09 22:07:43,855 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_001604034_5ppRkQM.csv for datafile REF REF 2_20150204_001604034.csv
+INFO 2015-02-09 22:07:43,856 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_001604034_5ppRkQM.csv deleted
+INFO 2015-02-09 22:07:43,856 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_003109638_8CYxlqM.csv for datafile REF REF 2_20150204_003109638.csv
+INFO 2015-02-09 22:07:43,857 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_003109638_8CYxlqM.csv deleted
+INFO 2015-02-09 22:07:43,858 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_004607345_QRFeNH7.csv for datafile REF REF 2_20150204_004607345.csv
+INFO 2015-02-09 22:07:43,859 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_004607345_QRFeNH7.csv deleted
+INFO 2015-02-09 22:07:43,859 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_010056501_dmXyZbS.csv for datafile REF REF 2_20150204_010056501.csv
+INFO 2015-02-09 22:07:43,860 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_010056501_dmXyZbS.csv deleted
+INFO 2015-02-09 22:07:43,860 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_011615017_NNVvqQj.csv for datafile REF REF 2_20150204_011615017.csv
+INFO 2015-02-09 22:07:43,861 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_011615017_NNVvqQj.csv deleted
+INFO 2015-02-09 22:07:43,861 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_013102757_ZXBPvWZ.csv for datafile REF REF 2_20150204_013102757.csv
+INFO 2015-02-09 22:07:43,863 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_013102757_ZXBPvWZ.csv deleted
+INFO 2015-02-09 22:07:43,863 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_014556071.csv for datafile REF REF 2_20150204_014556071.csv
+INFO 2015-02-09 22:07:43,864 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_014556071.csv deleted
+INFO 2015-02-09 22:07:43,864 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_020122074.csv for datafile REF REF 2_20150204_020122074.csv
+INFO 2015-02-09 22:07:43,865 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_020122074.csv deleted
+INFO 2015-02-09 22:07:43,865 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_023106181.csv for datafile REF REF 2_20150204_023106181.csv
+INFO 2015-02-09 22:07:43,866 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_023106181.csv deleted
+INFO 2015-02-09 22:07:43,866 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_024605710.csv for datafile REF REF 2_20150204_024605710.csv
+INFO 2015-02-09 22:07:43,867 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_024605710.csv deleted
+INFO 2015-02-09 22:07:43,867 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_031558638.csv for datafile REF REF 2_20150204_031558638.csv
+INFO 2015-02-09 22:07:43,868 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_031558638.csv deleted
+INFO 2015-02-09 22:07:43,869 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_033110355.csv for datafile REF REF 2_20150204_033110355.csv
+INFO 2015-02-09 22:07:43,869 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_033110355.csv deleted
+INFO 2015-02-09 22:07:43,870 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_040102427.csv for datafile REF REF 2_20150204_040102427.csv
+INFO 2015-02-09 22:07:43,871 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_040102427.csv deleted
+INFO 2015-02-09 22:07:43,871 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_041606064.csv for datafile REF REF 2_20150204_041606064.csv
+INFO 2015-02-09 22:07:43,872 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_041606064.csv deleted
+INFO 2015-02-09 22:07:43,872 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_044612111.csv for datafile REF REF 2_20150204_044612111.csv
+INFO 2015-02-09 22:07:43,873 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_044612111.csv deleted
+INFO 2015-02-09 22:07:43,873 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_050104359.csv for datafile REF REF 2_20150204_050104359.csv
+INFO 2015-02-09 22:07:43,874 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_050104359.csv deleted
+INFO 2015-02-09 22:07:43,875 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_053104897.csv for datafile REF REF 2_20150204_053104897.csv
+INFO 2015-02-09 22:07:43,875 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_053104897.csv deleted
+INFO 2015-02-09 22:07:43,876 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_054611618.csv for datafile REF REF 2_20150204_054611618.csv
+INFO 2015-02-09 22:07:43,877 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_054611618.csv deleted
+INFO 2015-02-09 22:07:43,877 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_061630419.csv for datafile REF REF 2_20150204_061630419.csv
+INFO 2015-02-09 22:07:43,878 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_061630419.csv deleted
+INFO 2015-02-09 22:07:43,878 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_063105830.csv for datafile REF REF 2_20150204_063105830.csv
+INFO 2015-02-09 22:07:43,879 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_063105830.csv deleted
+INFO 2015-02-09 22:07:43,880 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_070108996.csv for datafile REF REF 2_20150204_070108996.csv
+INFO 2015-02-09 22:07:43,880 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_070108996.csv deleted
+INFO 2015-02-09 22:07:43,881 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_071606384.csv for datafile REF REF 2_20150204_071606384.csv
+INFO 2015-02-09 22:07:43,882 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_071606384.csv deleted
+INFO 2015-02-09 22:07:43,882 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_073102974.csv for datafile REF REF 2_20150204_073102974.csv
+INFO 2015-02-09 22:07:43,883 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_073102974.csv deleted
+INFO 2015-02-09 22:07:43,883 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_074605724.csv for datafile REF REF 2_20150204_074605724.csv
+INFO 2015-02-09 22:07:43,884 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_074605724.csv deleted
+INFO 2015-02-09 22:07:43,884 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_080116097.csv for datafile REF REF 2_20150204_080116097.csv
+INFO 2015-02-09 22:07:43,885 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_080116097.csv deleted
+INFO 2015-02-09 22:07:43,886 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_083102715.csv for datafile REF REF 2_20150204_083102715.csv
+INFO 2015-02-09 22:07:43,886 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_083102715.csv deleted
+INFO 2015-02-09 22:07:43,887 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_084607624.csv for datafile REF REF 2_20150204_084607624.csv
+INFO 2015-02-09 22:07:43,888 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_084607624.csv deleted
+INFO 2015-02-09 22:07:43,888 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_090100223.csv for datafile REF REF 2_20150204_090100223.csv
+INFO 2015-02-09 22:07:43,889 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_090100223.csv deleted
+INFO 2015-02-09 22:07:43,889 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_091607344.csv for datafile REF REF 2_20150204_091607344.csv
+INFO 2015-02-09 22:07:43,891 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_091607344.csv deleted
+INFO 2015-02-09 22:07:43,891 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_094601518.csv for datafile REF REF 2_20150204_094601518.csv
+INFO 2015-02-09 22:07:43,892 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_094601518.csv deleted
+INFO 2015-02-09 22:07:43,892 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_100114967.csv for datafile REF REF 2_20150204_100114967.csv
+INFO 2015-02-09 22:07:43,893 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_100114967.csv deleted
+INFO 2015-02-09 22:07:43,893 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_103110057.csv for datafile REF REF 2_20150204_103110057.csv
+INFO 2015-02-09 22:07:43,894 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_103110057.csv deleted
+INFO 2015-02-09 22:07:43,894 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_104604322.csv for datafile REF REF 2_20150204_104604322.csv
+INFO 2015-02-09 22:07:43,895 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_104604322.csv deleted
+INFO 2015-02-09 22:07:43,895 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_111603844.csv for datafile REF REF 2_20150204_111603844.csv
+INFO 2015-02-09 22:07:43,896 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_111603844.csv deleted
+INFO 2015-02-09 22:07:43,897 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_113113475.csv for datafile REF REF 2_20150204_113113475.csv
+INFO 2015-02-09 22:07:43,897 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_113113475.csv deleted
+INFO 2015-02-09 22:07:43,898 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_120108488.csv for datafile REF REF 2_20150204_120108488.csv
+INFO 2015-02-09 22:07:43,899 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_120108488.csv deleted
+INFO 2015-02-09 22:07:43,899 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_121608028.csv for datafile REF REF 2_20150204_121608028.csv
+INFO 2015-02-09 22:07:43,900 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_121608028.csv deleted
+INFO 2015-02-09 22:07:43,900 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_124609961.csv for datafile REF REF 2_20150204_124609961.csv
+INFO 2015-02-09 22:07:43,901 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_124609961.csv deleted
+INFO 2015-02-09 22:07:43,901 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_130107247.csv for datafile REF REF 2_20150204_130107247.csv
+INFO 2015-02-09 22:07:43,902 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_130107247.csv deleted
+INFO 2015-02-09 22:07:43,903 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_133101644.csv for datafile REF REF 2_20150204_133101644.csv
+INFO 2015-02-09 22:07:43,904 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_133101644.csv deleted
+INFO 2015-02-09 22:07:43,904 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_134617585.csv for datafile REF REF 2_20150204_134617585.csv
+INFO 2015-02-09 22:07:43,905 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_134617585.csv deleted
+INFO 2015-02-09 22:07:43,905 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_141609498.csv for datafile REF REF 2_20150204_141609498.csv
+INFO 2015-02-09 22:07:43,906 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_141609498.csv deleted
+INFO 2015-02-09 22:07:43,907 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_143131417.csv for datafile REF REF 2_20150204_143131417.csv
+INFO 2015-02-09 22:07:43,908 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_143131417.csv deleted
+INFO 2015-02-09 22:07:43,908 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_150111747.csv for datafile REF REF 2_20150204_150111747.csv
+INFO 2015-02-09 22:07:43,909 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_150111747.csv deleted
+INFO 2015-02-09 22:07:43,909 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_151609965.csv for datafile REF REF 2_20150204_151609965.csv
+INFO 2015-02-09 22:07:43,910 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_151609965.csv deleted
+INFO 2015-02-09 22:07:43,910 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_153108865.csv for datafile REF REF 2_20150204_153108865.csv
+INFO 2015-02-09 22:07:43,912 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_153108865.csv deleted
+INFO 2015-02-09 22:07:43,912 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_154606764.csv for datafile REF REF 2_20150204_154606764.csv
+INFO 2015-02-09 22:07:43,913 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_154606764.csv deleted
+INFO 2015-02-09 22:07:43,913 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_161610327.csv for datafile REF REF 2_20150204_161610327.csv
+INFO 2015-02-09 22:07:43,914 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_161610327.csv deleted
+INFO 2015-02-09 22:07:43,914 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_163110550.csv for datafile REF REF 2_20150204_163110550.csv
+INFO 2015-02-09 22:07:43,915 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_163110550.csv deleted
+INFO 2015-02-09 22:07:43,915 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_170059859.csv for datafile REF REF 2_20150204_170059859.csv
+INFO 2015-02-09 22:07:43,916 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_170059859.csv deleted
+INFO 2015-02-09 22:07:43,916 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_171611153.csv for datafile REF REF 2_20150204_171611153.csv
+INFO 2015-02-09 22:07:43,917 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_171611153.csv deleted
+INFO 2015-02-09 22:07:43,918 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_174600573.csv for datafile REF REF 2_20150204_174600573.csv
+INFO 2015-02-09 22:07:43,918 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_174600573.csv deleted
+INFO 2015-02-09 22:07:43,919 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_180116818.csv for datafile REF REF 2_20150204_180116818.csv
+INFO 2015-02-09 22:07:43,920 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_180116818.csv deleted
+INFO 2015-02-09 22:07:43,920 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_182321194.csv for datafile REF REF 2_20150204_182321194.csv
+INFO 2015-02-09 22:07:43,921 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_182321194.csv deleted
+INFO 2015-02-09 22:07:43,921 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_185326128.csv for datafile REF REF 2_20150204_185326128.csv
+INFO 2015-02-09 22:07:43,922 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_185326128.csv deleted
+INFO 2015-02-09 22:07:43,922 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_190823882.csv for datafile REF REF 2_20150204_190823882.csv
+INFO 2015-02-09 22:07:43,923 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_190823882.csv deleted
+INFO 2015-02-09 22:07:43,924 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_193826373.csv for datafile REF REF 2_20150204_193826373.csv
+INFO 2015-02-09 22:07:43,924 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_193826373.csv deleted
+INFO 2015-02-09 22:07:43,925 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_195324967.csv for datafile REF REF 2_20150204_195324967.csv
+INFO 2015-02-09 22:07:43,926 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_195324967.csv deleted
+INFO 2015-02-09 22:07:43,926 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_202324053.csv for datafile REF REF 2_20150204_202324053.csv
+INFO 2015-02-09 22:07:43,927 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_202324053.csv deleted
+INFO 2015-02-09 22:07:43,927 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_203821215.csv for datafile REF REF 2_20150204_203821215.csv
+INFO 2015-02-09 22:07:43,928 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_203821215.csv deleted
+INFO 2015-02-09 22:07:43,928 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_210823548.csv for datafile REF REF 2_20150204_210823548.csv
+INFO 2015-02-09 22:07:43,929 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_210823548.csv deleted
+INFO 2015-02-09 22:07:43,929 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_212321019.csv for datafile REF REF 2_20150204_212321019.csv
+INFO 2015-02-09 22:07:43,930 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_212321019.csv deleted
+INFO 2015-02-09 22:07:43,931 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_215320970.csv for datafile REF REF 2_20150204_215320970.csv
+INFO 2015-02-09 22:07:43,931 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_215320970.csv deleted
+INFO 2015-02-09 22:07:43,932 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_220826289.csv for datafile REF REF 2_20150204_220826289.csv
+INFO 2015-02-09 22:07:43,933 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_220826289.csv deleted
+INFO 2015-02-09 22:07:43,934 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_223820894.csv for datafile REF REF 2_20150204_223820894.csv
+INFO 2015-02-09 22:07:43,934 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_223820894.csv deleted
+INFO 2015-02-09 22:07:43,935 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_230823591.csv for datafile REF REF 2_20150204_230823591.csv
+INFO 2015-02-09 22:07:43,936 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_230823591.csv deleted
+INFO 2015-02-09 22:07:43,936 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_232324362.csv for datafile REF REF 2_20150204_232324362.csv
+INFO 2015-02-09 22:07:43,937 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_232324362.csv deleted
+INFO 2015-02-09 22:07:43,937 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_235326638.csv for datafile REF REF 2_20150204_235326638.csv
+INFO 2015-02-09 22:07:43,938 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150204_235326638.csv deleted
+INFO 2015-02-09 22:07:43,939 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_000822085.csv for datafile REF REF 2_20150205_000822085.csv
+INFO 2015-02-09 22:07:43,939 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_000822085.csv deleted
+INFO 2015-02-09 22:07:43,940 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_003825722.csv for datafile REF REF 2_20150205_003825722.csv
+INFO 2015-02-09 22:07:43,940 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_003825722.csv deleted
+INFO 2015-02-09 22:07:43,941 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_005325401.csv for datafile REF REF 2_20150205_005325401.csv
+INFO 2015-02-09 22:07:43,942 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_005325401.csv deleted
+INFO 2015-02-09 22:07:43,942 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_012326518.csv for datafile REF REF 2_20150205_012326518.csv
+INFO 2015-02-09 22:07:43,943 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_012326518.csv deleted
+INFO 2015-02-09 22:07:43,943 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_013821693.csv for datafile REF REF 2_20150205_013821693.csv
+INFO 2015-02-09 22:07:43,944 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_013821693.csv deleted
+INFO 2015-02-09 22:07:43,945 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_020824917.csv for datafile REF REF 2_20150205_020824917.csv
+INFO 2015-02-09 22:07:43,946 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_020824917.csv deleted
+INFO 2015-02-09 22:07:43,946 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_022325196.csv for datafile REF REF 2_20150205_022325196.csv
+INFO 2015-02-09 22:07:43,947 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_022325196.csv deleted
+INFO 2015-02-09 22:07:43,947 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_025328006.csv for datafile REF REF 2_20150205_025328006.csv
+INFO 2015-02-09 22:07:43,948 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_025328006.csv deleted
+INFO 2015-02-09 22:07:43,948 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_030818490.csv for datafile REF REF 2_20150205_030818490.csv
+INFO 2015-02-09 22:07:43,949 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_030818490.csv deleted
+INFO 2015-02-09 22:07:43,950 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_033820605.csv for datafile REF REF 2_20150205_033820605.csv
+INFO 2015-02-09 22:07:43,951 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_033820605.csv deleted
+INFO 2015-02-09 22:07:43,951 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_035325847.csv for datafile REF REF 2_20150205_035325847.csv
+INFO 2015-02-09 22:07:43,952 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_035325847.csv deleted
+INFO 2015-02-09 22:07:43,952 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_042324461.csv for datafile REF REF 2_20150205_042324461.csv
+INFO 2015-02-09 22:07:43,953 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_042324461.csv deleted
+INFO 2015-02-09 22:07:43,953 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_043828048.csv for datafile REF REF 2_20150205_043828048.csv
+INFO 2015-02-09 22:07:43,954 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_043828048.csv deleted
+INFO 2015-02-09 22:07:43,954 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_050826502.csv for datafile REF REF 2_20150205_050826502.csv
+INFO 2015-02-09 22:07:43,955 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_050826502.csv deleted
+INFO 2015-02-09 22:07:43,955 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_052324329.csv for datafile REF REF 2_20150205_052324329.csv
+INFO 2015-02-09 22:07:43,956 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_052324329.csv deleted
+INFO 2015-02-09 22:07:43,957 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_140858048.csv for datafile REF REF 2_20150205_140858048.csv
+INFO 2015-02-09 22:07:43,957 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_140858048.csv deleted
+INFO 2015-02-09 22:07:43,958 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_141040852.csv for datafile REF REF 2_20150205_141040852.csv
+INFO 2015-02-09 22:07:43,959 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_141040852.csv deleted
+INFO 2015-02-09 22:07:43,959 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_141410977.csv for datafile REF REF 2_20150205_141410977.csv
+INFO 2015-02-09 22:07:43,960 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_141410977.csv deleted
+INFO 2015-02-09 22:07:43,960 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_144402298.csv for datafile REF REF 2_20150205_144402298.csv
+INFO 2015-02-09 22:07:43,961 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_144402298.csv deleted
+INFO 2015-02-09 22:07:43,962 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_145910320.csv for datafile REF REF 2_20150205_145910320.csv
+INFO 2015-02-09 22:07:43,963 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_145910320.csv deleted
+INFO 2015-02-09 22:07:43,963 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_152910289.csv for datafile REF REF 2_20150205_152910289.csv
+INFO 2015-02-09 22:07:43,964 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_152910289.csv deleted
+INFO 2015-02-09 22:07:43,964 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_154408623.csv for datafile REF REF 2_20150205_154408623.csv
+INFO 2015-02-09 22:07:43,965 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_154408623.csv deleted
+INFO 2015-02-09 22:07:43,965 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_161404441.csv for datafile REF REF 2_20150205_161404441.csv
+INFO 2015-02-09 22:07:43,967 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_161404441.csv deleted
+INFO 2015-02-09 22:07:43,967 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_162907973.csv for datafile REF REF 2_20150205_162907973.csv
+INFO 2015-02-09 22:07:43,968 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_162907973.csv deleted
+INFO 2015-02-09 22:07:43,968 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_165907080.csv for datafile REF REF 2_20150205_165907080.csv
+INFO 2015-02-09 22:07:43,969 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_165907080.csv deleted
+INFO 2015-02-09 22:07:43,969 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_171412999.csv for datafile REF REF 2_20150205_171412999.csv
+INFO 2015-02-09 22:07:43,970 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_171412999.csv deleted
+INFO 2015-02-09 22:07:43,971 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_174418399.csv for datafile REF REF 2_20150205_174418399.csv
+INFO 2015-02-09 22:07:43,971 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_174418399.csv deleted
+INFO 2015-02-09 22:07:43,972 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_175907392.csv for datafile REF REF 2_20150205_175907392.csv
+INFO 2015-02-09 22:07:43,973 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_175907392.csv deleted
+INFO 2015-02-09 22:07:43,973 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_182907418.csv for datafile REF REF 2_20150205_182907418.csv
+INFO 2015-02-09 22:07:43,974 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_182907418.csv deleted
+INFO 2015-02-09 22:07:43,974 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_184402347.csv for datafile REF REF 2_20150205_184402347.csv
+INFO 2015-02-09 22:07:43,975 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_184402347.csv deleted
+INFO 2015-02-09 22:07:43,975 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_191413692.csv for datafile REF REF 2_20150205_191413692.csv
+INFO 2015-02-09 22:07:43,976 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_191413692.csv deleted
+INFO 2015-02-09 22:07:43,976 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_192910299.csv for datafile REF REF 2_20150205_192910299.csv
+INFO 2015-02-09 22:07:43,977 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_192910299.csv deleted
+INFO 2015-02-09 22:07:43,978 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_194408173.csv for datafile REF REF 2_20150205_194408173.csv
+INFO 2015-02-09 22:07:43,979 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_194408173.csv deleted
+INFO 2015-02-09 22:07:43,979 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_195906969.csv for datafile REF REF 2_20150205_195906969.csv
+INFO 2015-02-09 22:07:43,980 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_195906969.csv deleted
+INFO 2015-02-09 22:07:43,980 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_202904808.csv for datafile REF REF 2_20150205_202904808.csv
+INFO 2015-02-09 22:07:43,981 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_202904808.csv deleted
+INFO 2015-02-09 22:07:43,981 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_204403387.csv for datafile REF REF 2_20150205_204403387.csv
+INFO 2015-02-09 22:07:43,983 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_204403387.csv deleted
+INFO 2015-02-09 22:07:43,983 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_211404285.csv for datafile REF REF 2_20150205_211404285.csv
+INFO 2015-02-09 22:07:43,984 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_211404285.csv deleted
+INFO 2015-02-09 22:07:43,984 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_212911945.csv for datafile REF REF 2_20150205_212911945.csv
+INFO 2015-02-09 22:07:43,985 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_212911945.csv deleted
+INFO 2015-02-09 22:07:43,985 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_215908634.csv for datafile REF REF 2_20150205_215908634.csv
+INFO 2015-02-09 22:07:43,986 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_215908634.csv deleted
+INFO 2015-02-09 22:07:43,987 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_221404658.csv for datafile REF REF 2_20150205_221404658.csv
+INFO 2015-02-09 22:07:43,987 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_221404658.csv deleted
+INFO 2015-02-09 22:07:43,988 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_224404934.csv for datafile REF REF 2_20150205_224404934.csv
+INFO 2015-02-09 22:07:43,989 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_224404934.csv deleted
+INFO 2015-02-09 22:07:43,989 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_225910555.csv for datafile REF REF 2_20150205_225910555.csv
+INFO 2015-02-09 22:07:43,990 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_225910555.csv deleted
+INFO 2015-02-09 22:07:43,990 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_232914232.csv for datafile REF REF 2_20150205_232914232.csv
+INFO 2015-02-09 22:07:43,991 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_232914232.csv deleted
+INFO 2015-02-09 22:07:43,991 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_234412656.csv for datafile REF REF 2_20150205_234412656.csv
+INFO 2015-02-09 22:07:43,992 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150205_234412656.csv deleted
+INFO 2015-02-09 22:07:43,993 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_001411339.csv for datafile REF REF 2_20150206_001411339.csv
+INFO 2015-02-09 22:07:43,993 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_001411339.csv deleted
+INFO 2015-02-09 22:07:43,994 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_002903438.csv for datafile REF REF 2_20150206_002903438.csv
+INFO 2015-02-09 22:07:43,995 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_002903438.csv deleted
+INFO 2015-02-09 22:07:43,995 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_005905924.csv for datafile REF REF 2_20150206_005905924.csv
+INFO 2015-02-09 22:07:43,996 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_005905924.csv deleted
+INFO 2015-02-09 22:07:43,996 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_011411106.csv for datafile REF REF 2_20150206_011411106.csv
+INFO 2015-02-09 22:07:43,997 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_011411106.csv deleted
+INFO 2015-02-09 22:07:43,997 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_014423675.csv for datafile REF REF 2_20150206_014423675.csv
+INFO 2015-02-09 22:07:43,999 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_014423675.csv deleted
+INFO 2015-02-09 22:07:43,999 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_015904363.csv for datafile REF REF 2_20150206_015904363.csv
+INFO 2015-02-09 22:07:44,000 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_015904363.csv deleted
+INFO 2015-02-09 22:07:44,000 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_022907679.csv for datafile REF REF 2_20150206_022907679.csv
+INFO 2015-02-09 22:07:44,001 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_022907679.csv deleted
+INFO 2015-02-09 22:07:44,001 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_024408826.csv for datafile REF REF 2_20150206_024408826.csv
+INFO 2015-02-09 22:07:44,002 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_024408826.csv deleted
+INFO 2015-02-09 22:07:44,002 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_025907497.csv for datafile REF REF 2_20150206_025907497.csv
+INFO 2015-02-09 22:07:44,003 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_025907497.csv deleted
+INFO 2015-02-09 22:07:44,004 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_031406003.csv for datafile REF REF 2_20150206_031406003.csv
+INFO 2015-02-09 22:07:44,005 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_031406003.csv deleted
+INFO 2015-02-09 22:07:44,005 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_034433833.csv for datafile REF REF 2_20150206_034433833.csv
+INFO 2015-02-09 22:07:44,006 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_034433833.csv deleted
+INFO 2015-02-09 22:07:44,006 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_040214950.csv for datafile REF REF 2_20150206_040214950.csv
+INFO 2015-02-09 22:07:44,007 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/REF REF 2_20150206_040214950.csv deleted
+INFO 2015-02-09 22:07:44,008 acacia.data.models: Deleting file proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/_gsdata__QFUoo7A for datafile _gsdata_
+INFO 2015-02-09 22:07:44,008 acacia.data.models: File proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irri/_gsdata__QFUoo7A deleted
+INFO 2015-02-09 22:07:44,033 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-VWC_2
+INFO 2015-02-09 22:07:44,033 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-EC_2
+INFO 2015-02-09 22:07:44,034 acacia.data.models: Deleting thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irri/parameter/ref_ref_2_5te-ec_1.png for parameter REF_REF_2_5TE-EC_1
+INFO 2015-02-09 22:07:44,035 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-VWC_1
+INFO 2015-02-09 22:07:44,036 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-EC_3
+INFO 2015-02-09 22:07:44,036 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-VWC_3
+INFO 2015-02-09 22:07:44,036 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-Temperature_1
+INFO 2015-02-09 22:07:44,037 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-Temperature_2
+INFO 2015-02-09 22:07:44,037 acacia.data.models: Deleting thumbnail  for parameter REF_REF_2_5TE-Temperature_3
+INFO 2015-02-09 22:08:10,854 acacia.data.models: Downloading datasource irrizip from ftp://82.192.75.237/Texel/Datasync/REF%20REF%202.zip
+INFO 2015-02-09 22:08:11,780 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:08:53,833 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:09:02,649 acacia.data.models: File REF%20REF%202.zip saved to /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irrizip/REF%20REF%202.zip
+INFO 2015-02-09 22:11:07,214 acacia.data.models: Downloading datasource irrizip from ftp://82.192.75.237/Texel/Datasync/REF%20REF%202.zip
+WARNING 2015-02-09 22:11:08,005 acacia.data.models: Downloaded file REF%20REF%202.zip ignored: identical to local file /home/theo/acaciadata.com/workspace/texel/media/proef-zoetwaterberging/proefperceel/referentie-veld/datafiles/irrizip/REF%20REF%202.zip
+INFO 2015-02-09 22:11:08,008 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-02-09 22:11:29,863 acacia.data.actions: 0 parameters deleted for datasource irrizip
+INFO 2015-02-09 22:11:29,864 acacia.data.models: Updating parameters for datasource irrizip
+INFO 2015-02-09 22:11:29,873 acacia.data.models: Update completed, got 9 parameters from 1 files
+WARNING 2015-02-09 22:11:29,877 acacia.data.models: parameter REF_REF_2_5TE-VWC_2 created
+WARNING 2015-02-09 22:11:29,886 acacia.data.models: parameter REF_REF_2_5TE-EC_2 created
+WARNING 2015-02-09 22:11:29,893 acacia.data.models: parameter REF_REF_2_5TE-EC_1 created
+WARNING 2015-02-09 22:11:29,900 acacia.data.models: parameter REF_REF_2_5TE-VWC_1 created
+WARNING 2015-02-09 22:11:29,908 acacia.data.models: parameter REF_REF_2_5TE-EC_3 created
+WARNING 2015-02-09 22:11:29,915 acacia.data.models: parameter REF_REF_2_5TE-VWC_3 created
+WARNING 2015-02-09 22:11:29,923 acacia.data.models: parameter REF_REF_2_5TE-Temperature_1 created
+WARNING 2015-02-09 22:11:29,930 acacia.data.models: parameter REF_REF_2_5TE-Temperature_2 created
+WARNING 2015-02-09 22:11:29,938 acacia.data.models: parameter REF_REF_2_5TE-Temperature_3 created
+INFO 2015-02-09 22:11:29,941 acacia.data.models: 9 parameters created, 0 updated
+ERROR 2015-02-09 22:12:01,648 acacia.data.actions: ERROR creating series REF_REF_2_5TE-EC_1: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,660 acacia.data.actions: ERROR creating series REF_REF_2_5TE-EC_2: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,670 acacia.data.actions: ERROR creating series REF_REF_2_5TE-EC_3: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,681 acacia.data.actions: ERROR creating series REF_REF_2_5TE-Temperature_1: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,691 acacia.data.actions: ERROR creating series REF_REF_2_5TE-Temperature_2: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,701 acacia.data.actions: ERROR creating series REF_REF_2_5TE-Temperature_3: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,712 acacia.data.actions: ERROR creating series REF_REF_2_5TE-VWC_1: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,726 acacia.data.actions: ERROR creating series REF_REF_2_5TE-VWC_2: 'tuple' object has no attribute 'replace'
+ERROR 2015-02-09 22:12:01,736 acacia.data.actions: ERROR creating series REF_REF_2_5TE-VWC_3: 'tuple' object has no attribute 'replace'
+INFO 2015-02-09 22:12:09,384 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:09,389 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:09,748 acacia.data.models: Got 33 rows, 9 columns
+DEBUG 2015-02-09 22:12:09,862 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-EC_1
+INFO 2015-02-09 22:12:10,298 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-ec_1.png
+DEBUG 2015-02-09 22:12:10,306 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-EC_2
+INFO 2015-02-09 22:12:10,611 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-ec_2.png
+DEBUG 2015-02-09 22:12:10,620 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-EC_3
+INFO 2015-02-09 22:12:10,948 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-ec_3.png
+DEBUG 2015-02-09 22:12:10,956 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-Temperature_1
+INFO 2015-02-09 22:12:11,243 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-temperature_1.png
+DEBUG 2015-02-09 22:12:11,251 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-Temperature_2
+INFO 2015-02-09 22:12:11,532 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-temperature_2.png
+DEBUG 2015-02-09 22:12:11,540 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-Temperature_3
+INFO 2015-02-09 22:12:11,846 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-temperature_3.png
+DEBUG 2015-02-09 22:12:11,857 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-VWC_1
+INFO 2015-02-09 22:12:12,171 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-vwc_1.png
+DEBUG 2015-02-09 22:12:12,180 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-VWC_2
+INFO 2015-02-09 22:12:12,492 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-vwc_2.png
+DEBUG 2015-02-09 22:12:12,502 acacia.data.models: Generating thumbnail for parameter REF_REF_2_5TE-VWC_3
+INFO 2015-02-09 22:12:12,790 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/parameter/ref_ref_2_5te-vwc_3.png
+INFO 2015-02-09 22:12:56,036 acacia.data.models: Updating series REF_REF_2_5TE-EC_1
+INFO 2015-02-09 22:12:56,047 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:56,052 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:56,413 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:12:56,596 acacia.data.models: Series REF_REF_2_5TE-EC_1 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:12:56,596 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-EC_1
+INFO 2015-02-09 22:12:57,017 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-ec_1.png
+INFO 2015-02-09 22:12:57,023 acacia.data.models: Updating series REF_REF_2_5TE-EC_2
+INFO 2015-02-09 22:12:57,033 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:57,037 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:57,389 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:12:57,476 acacia.data.models: Series REF_REF_2_5TE-EC_2 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:12:57,477 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-EC_2
+INFO 2015-02-09 22:12:57,791 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-ec_2.png
+INFO 2015-02-09 22:12:57,797 acacia.data.models: Updating series REF_REF_2_5TE-EC_3
+INFO 2015-02-09 22:12:57,807 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:57,811 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:58,178 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:12:58,268 acacia.data.models: Series REF_REF_2_5TE-EC_3 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:12:58,268 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-EC_3
+INFO 2015-02-09 22:12:58,616 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-ec_3.png
+INFO 2015-02-09 22:12:58,621 acacia.data.models: Updating series REF_REF_2_5TE-Temperature_1
+INFO 2015-02-09 22:12:58,631 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:58,635 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:58,995 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:12:59,081 acacia.data.models: Series REF_REF_2_5TE-Temperature_1 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:12:59,082 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-Temperature_1
+INFO 2015-02-09 22:12:59,381 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-temperature_1.png
+INFO 2015-02-09 22:12:59,387 acacia.data.models: Updating series REF_REF_2_5TE-Temperature_2
+INFO 2015-02-09 22:12:59,397 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:12:59,401 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:12:59,753 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:12:59,845 acacia.data.models: Series REF_REF_2_5TE-Temperature_2 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:12:59,845 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-Temperature_2
+INFO 2015-02-09 22:13:00,144 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-temperature_2.png
+INFO 2015-02-09 22:13:00,150 acacia.data.models: Updating series REF_REF_2_5TE-Temperature_3
+INFO 2015-02-09 22:13:00,160 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:13:00,165 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:13:00,519 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:13:00,610 acacia.data.models: Series REF_REF_2_5TE-Temperature_3 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:13:00,610 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-Temperature_3
+INFO 2015-02-09 22:13:01,024 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-temperature_3.png
+INFO 2015-02-09 22:13:01,030 acacia.data.models: Updating series REF_REF_2_5TE-VWC_1
+INFO 2015-02-09 22:13:01,041 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:13:01,044 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:13:01,404 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:13:01,499 acacia.data.models: Series REF_REF_2_5TE-VWC_1 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:13:01,499 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-VWC_1
+INFO 2015-02-09 22:13:01,833 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-vwc_1.png
+INFO 2015-02-09 22:13:01,839 acacia.data.models: Updating series REF_REF_2_5TE-VWC_2
+INFO 2015-02-09 22:13:01,849 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:13:01,853 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:13:02,212 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:13:02,303 acacia.data.models: Series REF_REF_2_5TE-VWC_2 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:13:02,303 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-VWC_2
+INFO 2015-02-09 22:13:02,640 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-vwc_2.png
+INFO 2015-02-09 22:13:02,645 acacia.data.models: Updating series REF_REF_2_5TE-VWC_3
+INFO 2015-02-09 22:13:02,655 acacia.data.models: Getting data for datasource irrizip
+INFO 2015-02-09 22:13:02,659 acacia.data.models: Getting data for sourcefile REF%20REF%202.zip
+INFO 2015-02-09 22:13:03,017 acacia.data.models: Got 33 rows, 9 columns
+INFO 2015-02-09 22:13:03,108 acacia.data.models: Series REF_REF_2_5TE-VWC_3 updated: 11 points created, 0 updated, 0 skipped
+DEBUG 2015-02-09 22:13:03,109 acacia.data.models: Generating thumbnail for series REF_REF_2_5TE-VWC_3
+INFO 2015-02-09 22:13:03,422 acacia.data.models: Generated thumbnail proef-zoetwaterberging/proefperceel/referentie-veld/thumbnails/irrizip/series/ref_ref_2_5te-vwc_3.png
