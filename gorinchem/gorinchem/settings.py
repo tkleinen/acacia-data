@@ -59,6 +59,8 @@ ROOT_URLCONF = 'gorinchem.urls'
 
 WSGI_APPLICATION = 'gorinchem.wsgi.application'
 
+# use bootstrap3 for crispy forms
+CRISPY_TEMPLATE_PACK='bootstrap3'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases

@@ -15,6 +15,7 @@ urlpatterns = patterns('gorinchem.views',
     url(r'^well/(?P<pk>\d+)$', WellView.as_view(), name='well-detail'),
     url(r'^screen/(?P<pk>\d+)$', ScreenView.as_view(), name='screen-detail'),
     url(r'^chart/(?P<pk>\d+)/$', WellChartView.as_view(), name='chart-detail'),
+    url(r'^upload/$', 'upload_file', name='upload_file'),
     url(r'^admin/', include(admin.site.urls)),
 )
 

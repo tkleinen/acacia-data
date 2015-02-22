@@ -3,11 +3,12 @@ Created on Jun 3, 2014
 
 @author: theo
 '''
-from django.shortcuts import render_to_response
+from django.shortcuts import render, redirect
 from django.template import RequestContext
 from django.views.generic import DetailView, TemplateView
+from django.views.generic.edit import FormView
 from django.template.loader import render_to_string
-from gorinchem.models import Network, Well, Screen, DataPoint
+from gorinchem.models import Network, Well, Screen
 import json, logging, datetime, time, re
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -16,9 +17,24 @@ rcParams['font.size'] = '8'
 from StringIO import StringIO
 import numpy as  np
 import pandas as pd
+from forms import UploadFileForm
 
 logger = logging.getLogger(__name__)
-    
+import monfile
+
+        
+def upload_file(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            #handle_uploaded_file(request.FILES['file'])
+            for f in form.files.getlist('filename'):
+                monfile.save(request,f)
+            return redirect('/success/url/')
+    else:
+        form = UploadFileForm()
+    return render(request,'gorinchem/upload1.html', {'form': form})
+
 def chart_for_screen(screen):
     plt.figure(figsize=(15,5))
     plt.grid(linestyle='-', color='0.9')
@@ -74,6 +90,18 @@ def make_chart(obj):
 def make_encoded_chart(obj):
     return encode_chart(make_chart(obj))
 
+# def topd(xy,name):
+#     if len(xy) > 0:
+#         x,y = zip(*xy)
+#     else:
+#         x = y = []
+#     return pd.Series(index = x, data = y, name = name)
+# 
+# def export_series(screen):
+#     druk = topd(screen.get_levels('nap','PRESSURE'),'druk')
+#     baro = topd(screen.get_baro('nap','PRESSURE'),'druk')
+#     stand = topd(screen.get_levels('nap','LEVEL'), 'stand')
+    
 class WellView(DetailView):
     template = 'gorinchem/well_info.html'
     model = Well
@@ -166,6 +194,7 @@ class ScreenChartView(TemplateView):
             }
             
         context['options'] = json.dumps(options, default=lambda x: int(time.mktime(x.timetuple())*1000))
+        context['screen'] = filt
         return context
 
 class WellChartView(TemplateView):
@@ -221,7 +250,7 @@ class WellChartView(TemplateView):
                         'data': ranges,
                         'type': 'arearange',
                         'lineWidth': 0,
-                        'fillOpacity': 0.1,
+                        'fillOpacity': 0.2,
                         'linkedTo' : ':previous',
                         'zIndex': 0,
                         })

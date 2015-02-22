@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from gorinchem import settings, util
 from django.db.models.signals import post_save
 from django.contrib.auth.models import User
-from acacia.data.models import Datasource, Series
+from acacia.data.models import Datasource, Series, SourceFile
 
 class Network(models.Model):
     name = models.CharField(max_length=50, unique=True, verbose_name = 'naam')
@@ -152,12 +152,12 @@ class Screen(models.Model):
     def get_pressure(self):
         return self.get_parameter_series('PRESSURE')
 
-    def get_levels(self, ref='nap'):
+    def get_levels(self, ref='nap', formula='LEVEL'):
         series = []
         for logger in self.datalogger_set.all():
             for ds in logger.datasources.all():
                 meetlocatie = ds.meetlocatie
-                for s in meetlocatie.formula_set.filter(name='LEVEL'):
+                for s in meetlocatie.formula_set.filter(name=formula):
                     for dp in s.datapoints.all():
                         level = dp.value / 100
                         if ref == 'ref':
@@ -171,24 +171,24 @@ class Screen(models.Model):
                         series.append((dp.date, level))
         return series
 
-    def get_pressurelevels(self, ref='nap'):
-        series = []
-        for logger in self.datalogger_set.all():
-            for ds in logger.datasources.all():
-                for p in ds.parameter_set.filter(name='PRESSURE'):
-                    for s in p.series_set.all():
-                        for dp in s.datapoints.all():
-                            level = dp.value / 100
-                            if ref == 'ref':
-                                # m h2o -> m tov refpnt
-                                level = logger.depth - level
-                            elif ref == 'nap':
-                                # m h2o -> m tov nap
-                                level = level + (logger.refpnt - logger.depth)
-                            elif ref == 'mv':
-                                level = level + (logger.refpnt - logger.depth - self.well.maaiveld)
-                            series.append((dp.date, level))
-        return series
+#     def get_pressurelevels(self, ref='nap'):
+#         series = []
+#         for logger in self.datalogger_set.all():
+#             for ds in logger.datasources.all():
+#                 for p in ds.parameter_set.filter(name='PRESSURE'):
+#                     for s in p.series_set.all():
+#                         for dp in s.datapoints.all():
+#                             level = dp.value / 100
+#                             if ref == 'ref':
+#                                 # m h2o -> m tov refpnt
+#                                 level = logger.depth - level
+#                             elif ref == 'nap':
+#                                 # m h2o -> m tov nap
+#                                 level = level + (logger.refpnt - logger.depth)
+#                             elif ref == 'mv':
+#                                 level = level + (logger.refpnt - logger.depth - self.well.maaiveld)
+#                             series.append((dp.date, level))
+#         return series
 
     def get_monfiles(self):
         files = []
@@ -280,17 +280,50 @@ class LoggerDatasource(Datasource):
     class Meta:
         verbose_name = 'Gegevensbron'
         verbose_name_plural = 'Gegevensbronnen'
-        
-class DataPoint(models.Model):
-    screen = models.ForeignKey(Screen, verbose_name = 'filter')
-    date = models.DateTimeField(verbose_name = 'datum')
-    level = models.FloatField(verbose_name = 'stand', help_text = 'stand in m tov NAP')
 
+class MonFile(SourceFile):
+    company = models.CharField(max_length=50)
+    compstat = models.CharField(max_length=10)
+    date = models.DateTimeField()
+    monfilename = models.CharField(max_length=512)
+    createdby = models.CharField(max_length=100)
+    instrument_type = models.CharField(max_length=50)
+    status = models.CharField(max_length=50)
+    serial_number = models.CharField(max_length=50)
+    instrument_number = models.CharField(max_length=50)
+    location = models.CharField(max_length=50)
+    sample_period = models.CharField(max_length=50)
+    sample_method = models.CharField(max_length=10)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+    num_channels = models.IntegerField(default = 1)
+    num_points = models.IntegerField()
+ 
     def __unicode__(self):
-        return '%s %s' % (self.screen, self.date)
-    
-    class Meta:
-        verbose_name = 'Stand'
-        verbose_name_plural = 'Standen'
-        unique_together = ('screen', 'date',)
+        return self.monfilename
+     
+class Channel(models.Model):
+    monfile = models.ForeignKey(MonFile)
+    number = models.IntegerField()
+    identification = models.CharField(max_length=20)
+    reference_level = models.FloatField()
+    reference_unit = models.CharField(max_length=10)
+    range = models.FloatField()
+    range_unit = models.CharField(max_length=10)
+ 
+    def __unicode__(self):
+        return self.identification
+
+# class DataPoint(models.Model):
+#     screen = models.ForeignKey(Screen, verbose_name = 'filter')
+#     date = models.DateTimeField(verbose_name = 'datum')
+#     level = models.FloatField(verbose_name = 'stand', help_text = 'stand in m tov NAP')
+# 
+#     def __unicode__(self):
+#         return '%s %s' % (self.screen, self.date)
+#     
+#     class Meta:
+#         verbose_name = 'Stand'
+#         verbose_name_plural = 'Standen'
+#         unique_together = ('screen', 'date',)
     

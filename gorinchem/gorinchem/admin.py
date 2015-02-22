@@ -3,7 +3,7 @@ Created on Jun 1, 2014
 
 @author: theo
 '''
-from gorinchem.models import Network, Well, Photo, Screen, Datalogger, DataPoint, LoggerDatasource, UserProfile
+from gorinchem.models import Network, Well, Photo, Screen, Datalogger, LoggerDatasource, UserProfile
 from acacia.data.models import Datasource, SourceFile, Series
 from acacia.data.admin import DatasourceForm
 
@@ -85,16 +85,12 @@ class LoggerDatasourceAdmin(admin.ModelAdmin):
     list_display=('logger', 'name', 'description', 'meetlocatie', 'last_download', 'filecount', 'parametercount', 'seriescount', 'start', 'stop', 'rows',)
     search_fields = ['name',]
     list_filter = ('meetlocatie','meetlocatie__projectlocatie','meetlocatie__projectlocatie__project',)
-    
-class DataPointInline(admin.TabularInline):
-    model = DataPoint
-    
+        
 class ScreenAdmin(admin.ModelAdmin):
     actions = [actions.make_screencharts,]
     list_display = ('__unicode__', 'top', 'bottom', 'num_files', 'num_standen', 'start', 'stop')
     search_fields = ('well__name',)
     list_filter = ('well','well__network')
-    #inlines = [DataPointInline,]
     
 class WellAdmin(geo.OSMGeoAdmin):
     actions = [actions.make_wellcharts,]
