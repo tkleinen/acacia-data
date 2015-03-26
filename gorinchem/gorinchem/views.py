@@ -110,7 +110,10 @@ class WellView(DetailView):
         context = super(WellView, self).get_context_data(**kwargs)
 #        context['chart'] = make_encoded_chart(self.get_object())
         well = self.get_object()
-        context['chart'] = None if well.chart.name is None else well.chart.url
+        try:
+            context['chart'] = well.chart.url
+        except:
+            context['chart'] = None 
         return context
 
 class ScreenView(DetailView):
@@ -120,7 +123,10 @@ class ScreenView(DetailView):
         context = super(ScreenView, self).get_context_data(**kwargs)
 #        context['chart'] = make_encoded_chart(self.get_object())
         screen = self.get_object()
-        context['chart'] = None if screen.chart.name is None else screen.chart.url
+        try:
+            context['chart'] = screen.chart.url
+        except:
+            context['chart'] = None 
         return context
 
 class NetworkView(DetailView):
@@ -149,13 +155,17 @@ class NetworkView(DetailView):
         content = []
         for well in network.well_set.all():
             pos = well.latlon()
+            try:
+                chart_url = well.chart.url
+            except:
+                chart_url = None 
             content.append({
                             'name': well.name,
                             'lat': pos.y,
                             'lon': pos.x,
                             'info': render_to_string('gorinchem/well_info.html', {'object': well, 
                                                                                   #'chart': make_encoded_chart(well),
-                                                                                  'chart': None if well.chart.name is None else well.chart.url,
+                                                                                  'chart': chart_url,
                                                                                   })
                             })
         context['content'] = json.dumps(content)
