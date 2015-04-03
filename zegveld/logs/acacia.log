@@ -1,10 +1,118 @@
-INFO 2015-01-19 10:58:41,569 acacia.data.models: Getting data for sourcefile zegveld-vergelijking-grondwaterstand-perceel-7 (version 1)
-INFO 2015-01-19 10:59:14,427 acacia.data.models: Got 0 rows, 7 columns
-INFO 2015-01-19 11:04:08,618 acacia.data.models: Getting data for sourcefile test
-INFO 2015-01-19 11:04:37,565 acacia.data.models: Got 0 rows, 7 columns
-INFO 2015-01-19 11:34:40,298 acacia.data.models: Getting data for sourcefile test
-INFO 2015-01-19 11:35:33,796 acacia.data.models: Got 0 rows, 7 columns
-INFO 2015-01-19 11:37:01,367 acacia.data.models: Getting data for sourcefile test
-INFO 2015-01-19 11:38:29,679 acacia.data.models: Getting data for sourcefile test
-INFO 2015-01-19 11:38:32,730 acacia.data.models: Got 21129 rows, 7 columns
-INFO 2015-01-19 11:40:19,616 acacia.data.models: Getting data for sourcefile test
+INFO 2015-04-02 20:30:45,000 acacia.data.update: Downloading data, updating parameters and related time series
+INFO 2015-04-02 20:30:45,005 acacia.data.update: Updating datasource
+INFO 2015-04-02 20:30:46,696 acacia.data.update: Downloading datasource
+INFO 2015-04-02 20:30:54,772 acacia.data.models: Downloading datasource Zegveld kastje 1 from http://api.ech2odata.com/spaarwater/dxd.cgi
+INFO 2015-04-02 20:31:31,031 acacia.data.models: Getting data for sourcefile 5G0E3381_1504022031.dxd
+DEBUG 2015-04-02 20:31:31,038 acacia.data.generators.decagon: Reading data
+DEBUG 2015-04-02 20:31:31,683 acacia.data.generators.decagon: 8237 records read
+DEBUG 2015-04-02 20:31:31,817 acacia.data.generators.decagon: Adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:31,864 acacia.data.generators.decagon: Finished adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:31,865 acacia.data.generators.decagon: Adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:31,867 acacia.data.generators.decagon: Finished adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:31,868 acacia.data.generators.decagon: Adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:31,870 acacia.data.generators.decagon: Finished adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:32,047 acacia.data.generators.decagon: Adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:32,050 acacia.data.generators.decagon: Finished adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:32,051 acacia.data.generators.decagon: Adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:32,053 acacia.data.generators.decagon: Finished adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:32,054 acacia.data.generators.decagon: Adding data for EC P2 (GS3)
+DEBUG 2015-04-02 20:31:32,057 acacia.data.generators.decagon: Finished adding data for EC P2 (GS3)
+DEBUG 2015-04-02 20:31:32,186 acacia.data.generators.decagon: Adding data for VWC P3 (GS3)
+DEBUG 2015-04-02 20:31:32,188 acacia.data.generators.decagon: Finished adding data for VWC P3 (GS3)
+DEBUG 2015-04-02 20:31:32,189 acacia.data.generators.decagon: Adding data for Temp P3 (GS3)
+DEBUG 2015-04-02 20:31:32,191 acacia.data.generators.decagon: Finished adding data for Temp P3 (GS3)
+DEBUG 2015-04-02 20:31:32,191 acacia.data.generators.decagon: Adding data for EC P3 (GS3)
+DEBUG 2015-04-02 20:31:32,192 acacia.data.generators.decagon: Finished adding data for EC P3 (GS3)
+INFO 2015-04-02 20:31:32,201 acacia.data.models: Got 8232 rows, 14 columns
+INFO 2015-04-02 20:31:33,014 acacia.data.models: File 5G0E3381_1504022031.dxd saved to /home/theo/acaciadata.com/zegveld/media/vic/zegveld/perceel-3/datafiles/zegveld-kastje-1/5G0E3381_1504022031.dxd
+INFO 2015-04-02 20:31:44,690 acacia.data.models: Download completed, got 1 file(s)
+INFO 2015-04-02 20:31:50,015 acacia.data.update: Got 1 new files
+INFO 2015-04-02 20:31:52,231 acacia.data.update: Reading datasource
+INFO 2015-04-02 20:31:57,365 acacia.data.models: Getting data for datasource Zegveld kastje 1
+INFO 2015-04-02 20:31:57,704 acacia.data.models: Getting data for sourcefile 5G0E3381_1504022031.dxd
+DEBUG 2015-04-02 20:31:57,707 acacia.data.generators.decagon: Reading data
+DEBUG 2015-04-02 20:31:58,312 acacia.data.generators.decagon: 8237 records read
+DEBUG 2015-04-02 20:31:58,446 acacia.data.generators.decagon: Adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:58,450 acacia.data.generators.decagon: Finished adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:58,450 acacia.data.generators.decagon: Adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:58,453 acacia.data.generators.decagon: Finished adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:58,453 acacia.data.generators.decagon: Adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:58,456 acacia.data.generators.decagon: Finished adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:58,630 acacia.data.generators.decagon: Adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,633 acacia.data.generators.decagon: Finished adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,633 acacia.data.generators.decagon: Adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:58,636 acacia.data.generators.decagon: Finished adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:58,637 acacia.data.generators.decagon: Adding data for EC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,639 acacia.data.generators.decagon: Finished adding data for EC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,814 acacia.data.generators.decagon: Adding data for VWC P3 (GS3)
+DEBUG 2015-04-02 20:31:58,816 acacia.data.generators.decagon: Finished adding data for VWC P3 (GS3)
+DEBUG 2015-04-02 20:31:58,816 acacia.data.generators.decagon: Adding data for Temp P3 (GS3)
+DEBUG 2015-04-02 20:31:58,818 acacia.data.generators.decagon: Finished adding data for Temp P3 (GS3)
+DEBUG 2015-04-02 20:31:58,819 acacia.data.generators.decagon: Adding data for EC P3 (GS3)
+DEBUG 2015-04-02 20:31:58,821 acacia.data.generators.decagon: Finished adding data for EC P3 (GS3)
+INFO 2015-04-02 20:31:58,828 acacia.data.models: Got 8232 rows, 14 columns
+INFO 2015-04-02 20:31:58,839 acacia.data.models: Getting data for sourcefile 5G0E3381_1501082116.dxd
+DEBUG 2015-04-02 20:31:58,863 acacia.data.generators.decagon: Reading data
+DEBUG 2015-04-02 20:31:58,868 acacia.data.generators.decagon: 24 records read
+DEBUG 2015-04-02 20:31:58,869 acacia.data.generators.decagon: Adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:58,870 acacia.data.generators.decagon: Finished adding data for Level P1 (CTD)
+DEBUG 2015-04-02 20:31:58,870 acacia.data.generators.decagon: Adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:58,872 acacia.data.generators.decagon: Finished adding data for Temp P1 (CTD)
+DEBUG 2015-04-02 20:31:58,872 acacia.data.generators.decagon: Adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:58,873 acacia.data.generators.decagon: Finished adding data for EC P1 (CTD)
+DEBUG 2015-04-02 20:31:58,874 acacia.data.generators.decagon: Adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,875 acacia.data.generators.decagon: Finished adding data for VWC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,875 acacia.data.generators.decagon: Adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:58,876 acacia.data.generators.decagon: Finished adding data for Temp P2 (GS3)
+DEBUG 2015-04-02 20:31:58,876 acacia.data.generators.decagon: Adding data for EC P2 (GS3)
+DEBUG 2015-04-02 20:31:58,877 acacia.data.generators.decagon: Finished adding data for EC P2 (GS3)
+INFO 2015-04-02 20:31:58,881 acacia.data.models: Got 23 rows, 11 columns
+INFO 2015-04-02 20:32:02,702 acacia.data.update: Updating parameters
+INFO 2015-04-02 20:32:15,276 acacia.data.models: Updating parameters for datasource Zegveld kastje 1
+ERROR 2015-04-02 20:32:45,520 acacia.data.models: Cannot update parameters for sourcefile 5G0E3381_1504022031.dxd: no element found: line 1, column 0
+Traceback (most recent call last):
+  File "/home/theo/acaciadata.com/acacia/acacia/data/models.py", line 327, in update_parameters
+    params.update(gen.get_parameters(sourcefile.file))
+  File "/home/theo/acaciadata.com/acacia/acacia/data/generators/decagon.py", line 391, in get_parameters
+    tree.parse(f)
+  File "<string>", line 38, in parse
+ParseError: no element found: line 1, column 0
+INFO 2015-04-02 20:32:59,900 acacia.data.models: Update completed, got 0 parameters from 1115 files
+INFO 2015-04-02 20:32:59,901 acacia.data.models: 0 parameters created, 0 updated
+INFO 2015-04-02 20:32:59,902 acacia.data.update: Updating timeseries Temp P1 (CTD)
+INFO 2015-04-02 20:32:59,902 acacia.data.models: Updating series Temp P1 (CTD)
+INFO 2015-04-02 20:33:39,662 acacia.data.models: Series Temp P1 (CTD) updated: 6665 points created, 0 updated, 0 skipped
+DEBUG 2015-04-02 20:33:39,662 acacia.data.models: Generating thumbnail for series Temp P1 (CTD)
+INFO 2015-04-02 20:33:48,111 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/temp-p1-ctd.png
+INFO 2015-04-02 20:33:48,115 acacia.data.update: Updating timeseries Temp P2 (GS3)
+INFO 2015-04-02 20:33:48,116 acacia.data.models: Updating series Temp P2 (GS3)
+INFO 2015-04-02 20:34:42,391 acacia.data.models: Series Temp P2 (GS3) updated: 8016 points created, 0 updated, 0 skipped
+DEBUG 2015-04-02 20:34:42,391 acacia.data.models: Generating thumbnail for series Temp P2 (GS3)
+INFO 2015-04-02 20:34:57,558 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/temp-p2-gs3.png
+INFO 2015-04-02 20:34:57,578 acacia.data.update: Updating timeseries VWC P2 (GS3)
+INFO 2015-04-02 20:34:57,579 acacia.data.models: Updating series VWC P2 (GS3)
+INFO 2015-04-02 20:35:40,751 acacia.data.models: Series VWC P2 (GS3) updated: 8016 points created, 0 updated, 0 skipped
+DEBUG 2015-04-02 20:35:40,751 acacia.data.models: Generating thumbnail for series VWC P2 (GS3)
+INFO 2015-04-02 20:35:45,602 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/vwc-p2-gs3.png
+INFO 2015-04-02 20:35:45,607 acacia.data.update: Updating timeseries EC P1 (CTD)
+INFO 2015-04-02 20:35:45,607 acacia.data.models: Updating series EC P1 (CTD)
+INFO 2015-04-02 20:36:20,157 acacia.data.models: Series EC P1 (CTD) updated: 6665 points created, 2 updated, 0 skipped
+DEBUG 2015-04-02 20:36:20,157 acacia.data.models: Generating thumbnail for series EC P1 (CTD)
+INFO 2015-04-02 20:36:24,495 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/ec-p1-ctd.png
+INFO 2015-04-02 20:36:24,498 acacia.data.update: Updating timeseries EC P2 (GS3)
+INFO 2015-04-02 20:36:24,499 acacia.data.models: Updating series EC P2 (GS3)
+INFO 2015-04-02 20:37:06,371 acacia.data.models: Series EC P2 (GS3) updated: 8016 points created, 2 updated, 0 skipped
+DEBUG 2015-04-02 20:37:06,371 acacia.data.models: Generating thumbnail for series EC P2 (GS3)
+INFO 2015-04-02 20:37:12,202 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/ec-p2-gs3.png
+INFO 2015-04-02 20:37:12,206 acacia.data.update: Updating timeseries Level P1 (CTD)
+INFO 2015-04-02 20:37:12,206 acacia.data.models: Updating series Level P1 (CTD)
+INFO 2015-04-02 20:37:47,740 acacia.data.models: Series Level P1 (CTD) updated: 6665 points created, 2 updated, 0 skipped
+DEBUG 2015-04-02 20:37:47,741 acacia.data.models: Generating thumbnail for series Level P1 (CTD)
+INFO 2015-04-02 20:37:52,732 acacia.data.models: Generated thumbnail vic/zegveld/perceel-3/thumbnails/zegveld-kastje-1/series/level-p1-ctd.png
+INFO 2015-04-02 20:37:52,736 acacia.data.update: Datasource updated.
+INFO 2015-04-02 20:47:30,505 acacia.data.models: Updating parameters for datasource Zegveld kastje 1
+INFO 2015-04-02 20:48:07,707 acacia.data.models: Update completed, got 9 parameters from 1115 files
+WARNING 2015-04-02 20:48:15,263 acacia.data.models: parameter Temp P3 (GS3) created
+WARNING 2015-04-02 20:48:26,293 acacia.data.models: parameter EC P3 (GS3) created
+WARNING 2015-04-02 20:48:28,203 acacia.data.models: parameter VWC P3 (GS3) created
+INFO 2015-04-02 20:48:32,847 acacia.data.models: 3 parameters created, 6 updated
