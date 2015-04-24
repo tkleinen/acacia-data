@@ -84,10 +84,7 @@ class Command(BaseCommand):
                                     mon.crc = abs(binascii.crc32(contents))
                                     contentfile = ContentFile(contents)
                                     mon.file.save(name=filename, content=contentfile)
-                                    try:
-                                        mon.save()
-                                    except IntegrityError as e:
-                                        pass
+                                    mon.save()
                                     mon.channel_set.add(*channels)
                                     pos.monfile_set.add(mon)
 
