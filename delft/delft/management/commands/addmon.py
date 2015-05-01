@@ -54,7 +54,7 @@ class Command(BaseCommand):
                 for info in z.infolist():
                     if info.filename.endswith('.MON'):
                         name = re.split(r'[_\.\/]',info.filename)
-                        if name[0] == 'MON':
+                        if name[0].startswith('MON'):
                             try:
                                 put, filter = name[1].split('-')
                             except:
@@ -75,7 +75,8 @@ class Command(BaseCommand):
                                     
                                     # get/create datasource for logger
                                     ds, created = LoggerDatasource.objects.get_or_create(name=logger.serial,meetlocatie=loc,
-                                                                                         defaults = {'logger': logger, 'generator': generator, 'user': user})
+                                                                                         defaults = {'logger': logger, 'generator': generator, 'user': user, 'timezone': 'CET'})
+                                    
                                     # add source file
                                     filename = os.path.basename(info.filename)
                                     mon.name = mon.filename = filename
@@ -84,6 +85,7 @@ class Command(BaseCommand):
                                     mon.crc = abs(binascii.crc32(contents))
                                     contentfile = ContentFile(contents)
                                     mon.file.save(name=filename, content=contentfile)
+                                    mon.get_dimensions()
                                     mon.save()
                                     mon.channel_set.add(*channels)
                                     pos.monfile_set.add(mon)

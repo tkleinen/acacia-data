@@ -14,7 +14,5 @@ class DataPointInline(admin.TabularInline):
 class ManualSeriesAdmin(SeriesAdmin):
     model = ManualSeries
     inlines = [DataPointInline,]
-
-    exclude = ('parameter',)
     
 admin.site.register(ManualSeries,ManualSeriesAdmin)

@@ -90,7 +90,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'nl-nl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 

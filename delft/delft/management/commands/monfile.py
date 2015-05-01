@@ -9,11 +9,15 @@ from acacia.data.generators import sws
 from acacia.meetnet.models import MonFile, Channel, LoggerDatasource
 from acacia.data.models import SourceFile
 
-import datetime
+import datetime, pytz
 import re, binascii
 from django.core.files.base import ContentFile
 
 def create(source, generator=sws.Diver()):
+    
+    # default timeone for MON files = CET
+    CET = pytz.timezone('CET')
+    
     headerdict = generator.get_header(source)
     mon = MonFile()
     header = headerdict['HEADER']
@@ -21,9 +25,9 @@ def create(source, generator=sws.Diver()):
     mon.compstat = header.get('COMP.STATUS',None)
     if 'DATE' in header and 'TIME' in header:
         dt = header.get('DATE') + ' ' + header.get('TIME')
-        mon.date = datetime.datetime.strptime(dt,'%d/%m/%Y %H:%M:%S')
+        mon.date = datetime.datetime.strptime(dt,'%d/%m/%Y %H:%M:%S').replace(tzinfo=CET)
     else:
-        mon.date = datetime.datetime.now()
+        mon.date = datetime.datetime.now(CET)
     mon.monfilename = header.get('FILENAME',None)
     mon.createdby = header.get('CREATED BY',None)
     mon.num_points = int(header.get('Number of points','0'))
@@ -44,8 +48,8 @@ def create(source, generator=sws.Diver()):
     mon.num_channels = int(s.get('Number of channels','1'))
 
     s = headerdict['Series settings']
-    mon.start_date = datetime.datetime.strptime(s['Start date / time'],'%S:%M:%H %d/%m/%y')    
-    mon.end_date = datetime.datetime.strptime(s['End date / time'], '%S:%M:%H %d/%m/%y')    
+    mon.start_date = datetime.datetime.strptime(s['Start date / time'],'%S:%M:%H %d/%m/%y').replace(tzinfo=CET)    
+    mon.end_date = datetime.datetime.strptime(s['End date / time'], '%S:%M:%H %d/%m/%y').replace(tzinfo=CET)    
 
     channels = []
     for i in range(mon.num_channels):

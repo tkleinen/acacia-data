@@ -3,15 +3,12 @@ Created on Dec 6, 2014
 
 @author: theo
 '''
-import os, csv, re, datetime, binascii
-from optparse import make_option
-from django.core.management.base import BaseCommand, CommandError
-from django.core.files.base import ContentFile
-from acacia.meetnet.models import Datalogger, LoggerDatasource
-from acacia.data.models import Formula, Variable, MeetLocatie, Project
+from django.core.management.base import BaseCommand
+from acacia.data.models import Project, Series, Parameter
 
-from acacia.data.knmi.models import NeerslagStation, Station
+from acacia.data.knmi.models import Station
 from acacia.data.models import Datasource, Generator
+from acacia.meetnet.models import Screen, Well
 from django.contrib.auth.models import User
 
 import math
@@ -40,7 +37,7 @@ def sort_objects(query,target):
 def luchtdruk(loc,user):
     ''' Luchtdruk stations toevoegen aan project '''
     
-    project = loc.project()
+    project = loc.project
     p = loc.location
     
     stns = sort_objects(Station.objects.all(),p)
@@ -49,16 +46,40 @@ def luchtdruk(loc,user):
     ploc, created = project.projectlocatie_set.get_or_create(name=name,defaults={'location':stn.location})
     mloc, created = ploc.meetlocatie_set.get_or_create(name=name,defaults={'location':stn.location})
     try:
-        df = mloc.datasources.get(name=name)
+        ds = mloc.datasources.get(name=name)
     except Datasource.DoesNotExist:
         print name
-        df = Datasource(name=name,meetlocatie = mloc,user = user, generator = Generator.objects.get(name='KNMI Uurgegevens'))
-        generator = df.get_generator_instance()
-        df.url = generator.url + '?stns=%d&start=2014010101' % stn.nummer
-        df.save()
-        df.download()
-        df.update_parameters()
+        ds = Datasource(name=name,meetlocatie = mloc,user = user, generator = Generator.objects.get(name='KNMI Uurgegevens'))
+        generator = ds.get_generator_instance()
+        ds.url = generator.url + '?stns=%d&start=2014010101' % stn.nummer
+        ds.timezone = 'UTC'
+        ds.save()
+        ds.download()
+        ds.update_parameters()
+ 
+    # create timeseries for air pressure
+    try:
+        pressure = ds.parameter_set.get(name='P')
+        series,created = pressure.series_set.get_or_create(name = pressure.name, description = pressure.description, unit = pressure.unit, user = ds.user)
+        if created:
+            series.create()
+            print series, 'created'
+    except Parameter.DoesNotExist:
+        # not pressure found in knmi file??
+        pass
         
+    # set air pressure series for well at current project location
+    # update logger installations for all screens at current location
+    try:
+        w = Well.objects.get(name=loc.name)
+        for s in w.screen_set.all():
+            for logpos in s.loggerpos_set.all():
+                logpos.baro = series
+                logpos.save()
+                print logpos, 'updated'
+    except Well.DoesNotExist:
+        pass
+    
 class Command(BaseCommand):
     args = ''
     help = 'KNMI luchtdruk stations toevoegen aan project'
@@ -67,5 +88,4 @@ class Command(BaseCommand):
         project = Project.objects.get(name = 'Delft')
         user = User.objects.get(username='theo')
         for pl in project.projectlocatie_set.all():
-            for ml in pl.meetlocatie_set.all():
-                luchtdruk(ml,user) 
+            luchtdruk(pl,user)
