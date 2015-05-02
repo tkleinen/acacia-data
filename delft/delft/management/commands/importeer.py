@@ -3,11 +3,10 @@ Created on Feb 13, 2014
 
 @author: theo
 '''
-import os, csv, datetime
+import csv, datetime
 from optparse import make_option
-from django.core.management.base import BaseCommand, CommandError
-from acacia.meetnet.models import Network, Well, Screen
-from delft import settings
+from django.core.management.base import BaseCommand
+from acacia.meetnet.models import Network, Well
 from django.contrib.gis.geos import Point
 
 class Command(BaseCommand):

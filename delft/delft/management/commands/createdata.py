@@ -11,7 +11,7 @@ Created on Feb 13, 2014
 '''
 from optparse import make_option
 from django.core.management.base import BaseCommand
-from acacia.meetnet.models import Network, LoggerDatasource
+from acacia.meetnet.models import Network
 from acacia.data.models import Project, ProjectLocatie, MeetLocatie, Generator
 from django.contrib.auth.models import User
 

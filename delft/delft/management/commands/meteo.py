@@ -4,11 +4,11 @@ Created on Dec 6, 2014
 @author: theo
 '''
 from django.core.management.base import BaseCommand
-from acacia.data.models import Project, Series, Parameter
+from acacia.data.models import Project, Parameter
 
 from acacia.data.knmi.models import Station
 from acacia.data.models import Datasource, Generator
-from acacia.meetnet.models import Screen, Well
+from acacia.meetnet.models import Well
 from django.contrib.auth.models import User
 
 import math

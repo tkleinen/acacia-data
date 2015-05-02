@@ -3,15 +3,12 @@ Created on Dec 6, 2014
 
 @author: theo
 '''
-import os, csv, re, datetime, binascii
+import csv, datetime
 from optparse import make_option
-from django.core.management.base import BaseCommand, CommandError
-from django.core.files.base import ContentFile
-from acacia.meetnet.models import Datalogger, LoggerDatasource
-from acacia.data.models import ProjectLocatie, MeetLocatie, Series, DataPoint
+from django.core.management.base import BaseCommand
+from acacia.data.models import ProjectLocatie, MeetLocatie
 from acacia.meetnet.models import Well,Screen
 from django.contrib.auth.models import User
-import math
 import pytz
 
 class Command(BaseCommand):
@@ -46,12 +43,13 @@ class Command(BaseCommand):
                             depth = float(depth)
                         else:
                             depth = 0
+                        nap = screen.refpnt - depth
                         date = datetime.datetime.strptime(datumtijd,'%d/%m/%Y %H:%M:%S')
                         date = date.replace(tzinfo=CET)
                         series, created = mloc.manualseries_set.get_or_create(name='%s HAND' % mloc.name, defaults = {'description': 'Handpeiling', 'unit': 'm -ref', 'type': 'scatter', 'user': user})
-                        pt, created = series.datapoints.get_or_create(date=date,defaults={'value': depth})
+                        pt, created = series.datapoints.get_or_create(date=date,defaults={'value': nap})
                         if not created:
-                            pt.value = depth
+                            pt.value = nap
                             pt.save()
                         print screen, pt.date, pt.value
                     except Well.DoesNotExist:

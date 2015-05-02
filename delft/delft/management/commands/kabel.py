@@ -3,15 +3,10 @@ Created on Dec 6, 2014
 
 @author: theo
 '''
-import os, csv, re, datetime, binascii
+import csv, datetime
 from optparse import make_option
-from django.core.management.base import BaseCommand, CommandError
-from django.core.files.base import ContentFile
-from acacia.meetnet.models import Datalogger, LoggerDatasource
-from acacia.data.models import Series, DataPoint
+from django.core.management.base import BaseCommand
 from acacia.meetnet.models import Well,Screen
-from django.contrib.auth.models import User
-import math
 import pytz
 
 class Command(BaseCommand):
