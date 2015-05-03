@@ -18,9 +18,9 @@ class Command(BaseCommand):
             else:
                 loc = s.parameter
                 name = slugify(unicode(loc)) 
-                fname = os.path.join(self.fldr,name) + '.csv'
-                print fname
-                with open(fname,'w') as f:
-                    text = s.to_csv()
-                    f.write(text)
+            fname = os.path.join(self.fldr,name) + '.csv'
+            print fname
+            with open(fname,'w') as f:
+                text = s.to_csv()
+                f.write(text)
                 
