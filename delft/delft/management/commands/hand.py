@@ -46,7 +46,7 @@ class Command(BaseCommand):
                         nap = screen.refpnt - depth
                         date = datetime.datetime.strptime(datumtijd,'%d/%m/%Y %H:%M:%S')
                         date = date.replace(tzinfo=CET)
-                        series, created = mloc.manualseries_set.get_or_create(name='%s HAND' % mloc.name, defaults = {'description': 'Handpeiling', 'unit': 'm -ref', 'type': 'scatter', 'user': user})
+                        series, created = mloc.manualseries_set.get_or_create(name='%s HAND' % mloc.name, defaults = {'description': 'Handpeiling', 'unit': 'm NAP', 'type': 'scatter', 'user': user})
                         pt, created = series.datapoints.get_or_create(date=date,defaults={'value': nap})
                         if not created:
                             pt.value = nap

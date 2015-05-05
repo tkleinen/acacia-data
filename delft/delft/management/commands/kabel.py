@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 for row in reader:
                     NITG = row['nitg']
                     try:
-                        well = Well.objects.get(name=NITG)
+                        well = Well.objects.get(nitg=NITG)
                         filt = int(row['filter'])
                         screen = well.screen_set.get(nr=filt)
                         datumtijd = '%s %s' % (row['datum'], row['tijd'])

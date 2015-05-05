@@ -48,10 +48,10 @@ def luchtdruk(loc,user):
     try:
         ds = mloc.datasources.get(name=name)
     except Datasource.DoesNotExist:
-        print name
         ds = Datasource(name=name,meetlocatie = mloc,user = user, generator = Generator.objects.get(name='KNMI Uurgegevens'))
+        print name
         generator = ds.get_generator_instance()
-        ds.url = generator.url + '?stns=%d&start=2014010101' % stn.nummer
+        ds.url = generator.url + '?stns=%d&start=2013010101' % stn.nummer
         ds.timezone = 'UTC'
         ds.save()
         ds.download()
@@ -62,7 +62,7 @@ def luchtdruk(loc,user):
         pressure = ds.parameter_set.get(name='P')
         series,created = pressure.series_set.get_or_create(name = pressure.name, description = pressure.description, unit = pressure.unit, user = ds.user)
         if created:
-            series.create()
+            series.replace()
             print series, 'created'
     except Parameter.DoesNotExist:
         # not pressure found in knmi file??
@@ -71,7 +71,7 @@ def luchtdruk(loc,user):
     # set air pressure series for well at current project location
     # update logger installations for all screens at current location
     try:
-        w = Well.objects.get(name=loc.name)
+        w = Well.objects.get(nitg=loc.name)
         for s in w.screen_set.all():
             for logpos in s.loggerpos_set.all():
                 logpos.baro = series

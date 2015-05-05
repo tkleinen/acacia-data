@@ -60,7 +60,10 @@ class Command(BaseCommand):
                             except:
                                 continue
                             try:
-                                well = Well.objects.get(name=put)
+                                try:
+                                    well = Well.objects.get(nitg=put)
+                                except Well.DoesNotExist:
+                                    well = Well.objects.get(name=put)
                                 screen = well.screen_set.get(nr=int(filter))
                                 with z.open(info.filename, 'r') as f:
                                     contents = f.read() 
@@ -68,7 +71,7 @@ class Command(BaseCommand):
                                     mon, channels = monfile.create(io)
                                     serial = mon.serial_number
                                     logger, created = Datalogger.objects.get_or_create(serial=serial,defaults={'model': mon.instrument_type})
-                                    pos = logger.loggerpos_set.create(screen=screen,start_date=mon.start_date,end_date=mon.end_date,refpnt=screen.refpnt)
+                                    pos, created = logger.loggerpos_set.get_or_create(screen=screen,start_date=mon.start_date,end_date=mon.end_date,refpnt=screen.refpnt)
                                     
                                     # get meetlocatie
                                     loc = MeetLocatie.objects.get(name=unicode(screen))
@@ -77,24 +80,28 @@ class Command(BaseCommand):
                                     ds, created = LoggerDatasource.objects.get_or_create(name=logger.serial,meetlocatie=loc,
                                                                                          defaults = {'logger': logger, 'generator': generator, 'user': user, 'timezone': 'CET'})
                                     
-                                    # add source file
-                                    filename = os.path.basename(info.filename)
-                                    mon.name = mon.filename = filename
-                                    mon.datasource = ds
-                                    mon.user = ds.user
                                     mon.crc = abs(binascii.crc32(contents))
-                                    contentfile = ContentFile(contents)
-                                    mon.file.save(name=filename, content=contentfile)
-                                    mon.get_dimensions()
-                                    mon.save()
-                                    mon.channel_set.add(*channels)
-                                    pos.monfile_set.add(mon)
+                                    try:
+                                        ds.sourcefiles.get(crc=mon.crc)
+                                    except SourceFile.DoesNotExist:
+                                        # add source file
+                                        filename = os.path.basename(info.filename)
+                                        mon.name = mon.filename = filename
+                                        mon.datasource = ds
+                                        mon.user = ds.user
+                                        contentfile = ContentFile(contents)
+                                        mon.file.save(name=filename, content=contentfile)
+                                        mon.get_dimensions()
+                                        mon.save()
+                                        mon.channel_set.add(*channels)
+                                        pos.monfile_set.add(mon)
 
                                 print screen, serial, mon.num_points, mon.start_date, mon.end_date
                                 count += 1
                             except Well.DoesNotExist:
                                 continue
                             except Screen.DoesNotExist:
+                                #print 'screen not found:', well.name, filter
                                 continue
                             except Exception as e:
                                 print e
