@@ -72,6 +72,7 @@ DATABASES = {
         'PASSWORD': 'Beaumont1',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+#        'OPTIONS': {'default-character-set': 'utf8'},
     }
 }
 
@@ -109,7 +110,7 @@ GRAPPELLI_ADMIN_TITLE='Beheer van Grondwatermeetnet Gorinchem'
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'
-
+DEFAULT_FROM_EMAIL = 'noreply@acaciawater.com'
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
 # Logging
@@ -147,6 +148,11 @@ LOGGING = {
             'propagate': True,
         },
         'acacia.data': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'upload': {
             'handlers': ['file'],
             'level': 'DEBUG',
             'propagate': True,

@@ -5,10 +5,12 @@ Created on Jun 3, 2014
 '''
 from django.shortcuts import render, redirect
 from django.template import RequestContext
-from django.views.generic import DetailView, TemplateView
+from django.views.generic import View, FormView, DetailView, TemplateView
 from django.views.generic.edit import FormView
 from django.template.loader import render_to_string
-from gorinchem.models import Network, Well, Screen
+from django.contrib import messages
+from gorinchem.models import Network, Well, Screen, LoggerDatasource
+from acacia.data.models import Datasource, Formula
 import json, logging, datetime, time, re
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -19,22 +21,86 @@ import numpy as  np
 import pandas as pd
 from forms import UploadFileForm
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('upload')
 import monfile
 
-        
-def upload_file(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            #handle_uploaded_file(request.FILES['file'])
-            for f in form.files.getlist('filename'):
-                monfile.save(request,f)
-            return redirect('/success/url/')
-    else:
-        form = UploadFileForm()
-    return render(request,'gorinchem/upload1.html', {'form': form})
 
+class UploadDoneView(TemplateView):
+    template_name = 'gorinchem/done.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UploadDoneView, self).get_context_data(**kwargs)
+        context['messages'] = messages.get_messages(self.request)
+        pk = self.kwargs.get('id')
+        self.network = Network.objects.get(pk=pk)
+        context['network'] = self.network
+        if not 'request' in context:
+            context['request'] = self.request
+        return context
+
+    
+class UploadFileView(FormView):
+
+    template_name = 'gorinchem/upload.html'
+    form_class = UploadFileForm
+    success_url = '/done/1'
+    
+    def get_success_url(self):
+        return '/done/' + self.kwargs.get('id')
+
+    def get_context_data(self, **kwargs):
+        context = super(UploadFileView, self).get_context_data(**kwargs)
+        pk = self.kwargs.get('id')
+        self.network = Network.objects.get(pk=pk)
+        context['network'] = self.network
+        return context
+
+    def form_valid(self, form):
+        monfiles = []
+        netid = int(self.kwargs.get('id','1'))
+        messages.set_level(self.request, messages.DEBUG)
+        def msg(how, what):
+            log = getattr(logger,how)
+            log(what);
+            mes = getattr(messages,how)
+            mes(self.request,what)
+        
+        for f in form.files.getlist('filename'):
+            try:
+                msg('debug','Verwerking van MON file %s' % f.name)
+                mon, saved = monfile.save(self.request,f,net=netid)
+                if saved:
+                    msg('info','Bestand toegevoegd: %s' % mon.file)
+                    monfiles.append(mon)
+                else:
+                    msg('warning','Identiek bestand bestaat al: %s' % mon.file)
+                    continue
+            except Exception as e:
+                msg('error',e)
+                continue
+            
+        for mon in monfiles:
+            # actualiseren PRESSURE tijdreeksen
+            for s in mon.datasource.getseries():
+                msg('debug','Tijdreeks actualiseren:  %s' % s)
+                try:
+                    s.update()
+                except Exception as e:
+                    msg('error','Fout bij actualisatie van tijdreeks %s: %s' %(s, e))
+
+        locs = set([mon.meetlocatie() for mon in monfiles])
+        for loc in locs:
+            # dependent series (LEVEL) actualiseren voor alle geactualiseerde meetlocaties
+            for fm in loc.formula_set.all():
+                msg('debug','Berekenen van tijdreeks %s (%s)' % (fm,fm.locatie.name))
+                try:
+                    fm.update()
+                except Exception as e:
+                    msg('error','Fout bij berekening van tijdreeks %s: %s' % (fm, e))
+                break
+            
+        return super(UploadFileView,self).form_valid(form)
+        
 def chart_for_screen(screen):
     plt.figure(figsize=(15,5))
     plt.grid(linestyle='-', color='0.9')

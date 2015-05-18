@@ -114,7 +114,7 @@ UPLOAD_IMAGES = 'images'
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Grapelli admin
-GRAPPELLI_ADMIN_TITLE='Beheer van meetnet Gezamelijke Regeling Delft-Noord'
+GRAPPELLI_ADMIN_TITLE='Beheer van meetnet Gemeenschappelijke Regeling Delft-Noord'
 
 # Celery stuff
 #BROKER_URL = 'django://'

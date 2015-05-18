@@ -169,6 +169,7 @@ class Screen(models.Model):
                         elif ref == 'mv':
                             level = level + (logger.refpnt - logger.depth - self.well.maaiveld)
                         series.append((dp.date, level))
+        series.sort(key=lambda x: x[0])
         return series
 
 #     def get_pressurelevels(self, ref='nap'):
@@ -230,7 +231,7 @@ class Screen(models.Model):
 
     def to_pandas(self, ref='nap'):
         levels = self.get_levels(ref)
-        if len(levels) > 0:
+        if (levels is not None) and (len(levels) > 0):
             x,y = zip(*levels)
         else:
             x = []

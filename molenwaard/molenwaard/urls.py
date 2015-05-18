@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from .views import HomeView
+from .views import HomeView, UploadWizardView
 
 admin.autodiscover()
 
@@ -12,6 +12,7 @@ urlpatterns = patterns('molenwaard.views',
     url(r'^data/', include('acacia.data.urls',namespace='acacia')),
     url(r'^net/', include('acacia.meetnet.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^upload/$', UploadWizardView.as_view(), name='upload_files'),
 )
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
