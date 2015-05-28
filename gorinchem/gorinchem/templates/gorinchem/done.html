@@ -1,0 +1,30 @@
+{% extends 'bootbase.html' %}
+{% load staticfiles %}
+{% load l10n %}
+{% block title %}Grondwatermeetnet {{network.name}}{% endblock title %}
+{% block breadcrumbs %}{% endblock %}
+{% block brandname %}<div class="navbar-brand"><img style="margin-top: -7px;max-width: 100px;" src="/media/{{network.logo}}"/>Grondwatermeetnet {{network.name}}</div>{% endblock %}
+{% block extrastyle %}	
+<style>
+</style>
+{% endblock extrastyle %}
+{% block content %}
+{% if messages %}
+	<div class='container-fluid'>
+		<div class='row'>
+			<div class="col-md-12">
+				<ul class="messages">
+				    {% for message in messages %}
+				    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+				    {% endfor %}
+				</ul>
+			</div>
+		</div>
+{% endif %}
+	<div class='row'>
+		<div class="col-md-1"/>
+		<div class="col-md-11">
+			<a href="{{ request.META.HTTP_REFERER }}" class="btn btn-primary active" data-toggle="tooltip" title="Terug naar upload pagina" id="terug">Terug</a>
+		</div>
+	</div>
+{% endblock %}

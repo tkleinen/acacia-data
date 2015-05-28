@@ -1,0 +1,49 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	
+	<style>
+		.btn-file {
+		  position: relative;
+		  overflow: hidden;
+		}
+		.btn-file input[type=file] {
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		  min-width: 100%;
+		  min-height: 100%;
+		  font-size: 100px;
+		  text-align: right;
+		  filter: alpha(opacity=0);
+		  opacity: 0;
+		  background: red;
+		  cursor: inherit;
+		  display: block;
+		}
+		input[readonly] {
+		  background-color: white !important;
+		  cursor: text !important;
+		}
+	</style>
+
+	
+</head>
+<body>
+	<div class='container-fluid'>
+	<div class='row-fluid'>
+		{% crispy form %}
+	</div>
+	</div>
+</body>
+</html>
