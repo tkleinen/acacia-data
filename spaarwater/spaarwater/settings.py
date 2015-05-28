@@ -34,6 +34,7 @@ DEFAULT_FROM_EMAIL = 'webmaster@acaciadata.com'
 
 INSTALLED_APPS = (
     'grappelli',
+    'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -202,7 +203,7 @@ LOGGING = {
             'propagate': True,
         },
         'acacia.data': {
-            'handlers': ['file','email'],
+            'handlers': ['file',],
             'level': 'DEBUG',
             'propagate': True,
         },
