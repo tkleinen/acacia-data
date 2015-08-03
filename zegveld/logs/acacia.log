@@ -116,3 +116,115 @@ WARNING 2015-04-02 20:48:15,263 acacia.data.models: parameter Temp P3 (GS3) crea
 WARNING 2015-04-02 20:48:26,293 acacia.data.models: parameter EC P3 (GS3) created
 WARNING 2015-04-02 20:48:28,203 acacia.data.models: parameter VWC P3 (GS3) created
 INFO 2015-04-02 20:48:32,847 acacia.data.models: 3 parameters created, 6 updated
+INFO 2015-07-17 09:00:48,731 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:00:55,459 acacia.data: Series Neerslag
+INFO 2015-07-17 09:02:35,328 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:02:35,336 acacia.data: Series Neerslag
+INFO 2015-07-17 09:02:50,886 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:02:50,894 acacia.data: Series Neerslag
+INFO 2015-07-17 09:03:10,916 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:03:10,925 acacia.data: Series Neerslag
+INFO 2015-07-17 09:04:44,532 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:04:44,542 acacia.data: Series Neerslag
+INFO 2015-07-17 09:05:04,380 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:05:04,390 acacia.data: Series Neerslag
+INFO 2015-07-17 09:06:01,157 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:06:01,166 acacia.data: Series Neerslag
+INFO 2015-07-17 09:06:40,537 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:06:40,546 acacia.data: Series Neerslag
+INFO 2015-07-17 09:10:09,551 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:10:09,561 acacia.data: Series Neerslag
+INFO 2015-07-17 09:11:04,380 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:11:04,389 acacia.data: Series Neerslag
+INFO 2015-07-17 09:13:04,193 acacia.data: Dumping datasource Regenradar Zegveld
+INFO 2015-07-17 09:13:04,203 acacia.data: Series Neerslag
+INFO 2015-07-17 09:13:17,628 acacia.data: Dumping datasource Zegveld grondwaterstand-HM p13
+INFO 2015-07-17 09:13:17,640 acacia.data: Series Zegveld grondwaterstand-HM p13
+INFO 2015-07-17 09:13:17,652 acacia.data: Series Zegveld slootwaterpeil p13
+INFO 2015-07-17 09:13:17,661 acacia.data: Dumping datasource Zegveld grondwaterstand-HM p3
+INFO 2015-07-17 09:13:17,674 acacia.data: Series Zegveld grondwaterstand-HM p3
+INFO 2015-07-17 09:13:17,687 acacia.data: Series Zegveld slootwaterpeil p3
+INFO 2015-07-17 09:13:17,695 acacia.data: Dumping datasource Zegveld grondwaterstand-HM p7
+INFO 2015-07-17 09:13:17,704 acacia.data: Series Zegveld grondwaterstand-HM p7
+INFO 2015-07-17 09:13:17,715 acacia.data: Series Zegveld slootwaterpeil p7
+INFO 2015-07-17 09:13:17,723 acacia.data: Dumping datasource Zegveld kastje 1
+INFO 2015-07-17 09:13:17,778 acacia.data: Series Temp P1 (CTD)
+INFO 2015-07-17 09:13:17,841 acacia.data: Series Temp P2 (GS3)
+INFO 2015-07-17 09:13:23,651 acacia.data: Series VWC P2 (GS3)
+INFO 2015-07-17 09:13:25,075 acacia.data: Series Temp perceel 3
+INFO 2015-07-17 09:13:28,728 acacia.data: Series VWC P3 (GS3)
+INFO 2015-07-17 09:13:29,126 acacia.data: Series EC P4 (CTD-10)
+INFO 2015-07-17 09:13:29,211 acacia.data: Series Level P4 (CTD-10)
+INFO 2015-07-17 09:13:29,296 acacia.data: Series Temp P4 (CTD-10)
+INFO 2015-07-17 09:13:29,409 acacia.data: Series Temp P3 (GS3)
+INFO 2015-07-17 09:13:29,787 acacia.data: Series Zegveld slootwaterpeil perceel 3
+INFO 2015-07-17 09:13:29,873 acacia.data: Series Temp P3 (ECT/RT-1)
+INFO 2015-07-17 09:13:30,949 acacia.data: Series EC P3 (GS3)
+INFO 2015-07-17 09:13:31,327 acacia.data: Series EC P1 (CTD)
+INFO 2015-07-17 09:13:31,389 acacia.data: Series EC P2 (GS3)
+INFO 2015-07-17 09:13:31,451 acacia.data: Series Level P1 (CTD)
+INFO 2015-07-17 09:13:32,848 acacia.data: Dumping datasource Zegveld kastje 2
+INFO 2015-07-17 09:13:32,899 acacia.data: Series Daily Precipitation P3 (ECRN-100)
+INFO 2015-07-17 09:13:32,967 acacia.data: Series EC P1 (CTD)
+INFO 2015-07-17 09:13:33,030 acacia.data: Series EC P2 (GS3)
+INFO 2015-07-17 09:13:33,093 acacia.data: Series Level P1 (CTD)
+INFO 2015-07-17 09:13:34,494 acacia.data: Series EC P4 (GS3)
+INFO 2015-07-17 09:13:34,869 acacia.data: Series Temp P1 (CTD)
+INFO 2015-07-17 09:13:34,932 acacia.data: Series Temp P2 (GS3)
+INFO 2015-07-17 09:13:40,645 acacia.data: Series VWC P2 (GS3)
+INFO 2015-07-17 09:13:42,108 acacia.data: Series Temp P4 (GS3)
+INFO 2015-07-17 09:13:42,492 acacia.data: Series EC P5 (CTD-10)
+INFO 2015-07-17 09:13:43,434 acacia.data: Series Level P5 (CTD-10)
+INFO 2015-07-17 09:13:44,359 acacia.data: Series Temp P5 (CTD-10)
+INFO 2015-07-17 09:13:45,247 acacia.data: Series VWC P4 (GS3)
+INFO 2015-07-17 09:13:45,477 acacia.data: Series Zegveld slootwaterpeil perceel 7
+INFO 2015-07-17 09:13:46,398 acacia.data: Series Temp P4 (ECT/RT-1)
+INFO 2015-07-17 09:13:47,503 acacia.data: Dumping datasource Zegveld kastje 3
+INFO 2015-07-17 09:13:47,553 acacia.data: Series Level P4 (CTD-10)
+INFO 2015-07-17 09:13:48,466 acacia.data: Series EC P3 (GS3)
+INFO 2015-07-17 09:13:48,925 acacia.data: Series Temp P3 (GS3)
+INFO 2015-07-17 09:13:49,381 acacia.data: Series VWC P3 (GS3)
+INFO 2015-07-17 09:13:49,864 acacia.data: Series Temp P4 (CTD-10)
+INFO 2015-07-17 09:13:50,756 acacia.data: Series EC P1 (CTD-5)
+INFO 2015-07-17 09:13:50,815 acacia.data: Series EC P4 (CTD-10)
+INFO 2015-07-17 09:13:51,721 acacia.data: Series Level P1 (CTD-5)
+INFO 2015-07-17 09:13:52,968 acacia.data: Series Temp P1 (CTD-5)
+INFO 2015-07-17 09:13:53,023 acacia.data: Series Temp P2 (GS3)
+INFO 2015-07-17 09:13:57,996 acacia.data: Series VWC P2 (GS3)
+INFO 2015-07-17 09:13:59,272 acacia.data: Series Temp P3 (ECT/RT-1)
+INFO 2015-07-17 09:13:59,276 acacia.data: Series Temp P5 (ECT/RT-1)
+INFO 2015-07-17 09:14:00,026 acacia.data: Series EC P2 (GS3)
+INFO 2015-07-17 09:14:00,080 acacia.data: Dumping datasource Zegveld perceel 13-N0
+INFO 2015-07-17 09:14:00,097 acacia.data: Series Nitraat-N0
+INFO 2015-07-17 09:14:00,109 acacia.data: Series Ammonium-N0
+INFO 2015-07-17 09:14:00,118 acacia.data: Series Fosfor-N0
+INFO 2015-07-17 09:14:00,127 acacia.data: Series Bodemvocht-N0
+INFO 2015-07-17 09:14:00,136 acacia.data: Dumping datasource Zegveld perceel 13-N1
+INFO 2015-07-17 09:14:00,152 acacia.data: Series Nitraat-N1
+INFO 2015-07-17 09:14:00,163 acacia.data: Series Ammonium-N1
+INFO 2015-07-17 09:14:00,171 acacia.data: Series Fosfor-N1
+INFO 2015-07-17 09:14:00,180 acacia.data: Series Bodemvocht-N1
+INFO 2015-07-17 09:14:00,190 acacia.data: Dumping datasource Zegveld perceel 2-N0
+INFO 2015-07-17 09:14:00,207 acacia.data: Dumping datasource Zegveld perceel 2-N1
+INFO 2015-07-17 09:14:00,223 acacia.data: Dumping datasource Zegveld perceel 3-N0
+INFO 2015-07-17 09:14:00,239 acacia.data: Series Nitraat-N0
+INFO 2015-07-17 09:14:00,250 acacia.data: Series Ammonium-N0
+INFO 2015-07-17 09:14:00,260 acacia.data: Series Fosfor-N0
+INFO 2015-07-17 09:14:00,268 acacia.data: Series Bodemvocht-N0
+INFO 2015-07-17 09:14:00,277 acacia.data: Dumping datasource Zegveld perceel 3-N1
+INFO 2015-07-17 09:14:00,293 acacia.data: Series Fosfor-N1
+INFO 2015-07-17 09:14:00,308 acacia.data: Series Nitraat-N1
+INFO 2015-07-17 09:14:00,317 acacia.data: Series Ammonium-N1
+INFO 2015-07-17 09:14:00,326 acacia.data: Series Bodemvocht-N1
+INFO 2015-07-17 09:14:00,334 acacia.data: Dumping datasource Zegveld perceel 7-N0
+INFO 2015-07-17 09:14:00,349 acacia.data: Series Nitraat-N0
+INFO 2015-07-17 09:14:00,361 acacia.data: Series Fosfor-N0
+INFO 2015-07-17 09:14:00,370 acacia.data: Series Ammonium-N0
+INFO 2015-07-17 09:14:00,378 acacia.data: Series Bodemvocht-N0
+INFO 2015-07-17 09:14:00,386 acacia.data: Dumping datasource Zegveld perceel 7-N1
+INFO 2015-07-17 09:14:00,403 acacia.data: Series Nitraat-N1
+INFO 2015-07-17 09:14:00,416 acacia.data: Series Fosfor-N1
+INFO 2015-07-17 09:14:00,426 acacia.data: Series Ammonium-N1
+INFO 2015-07-17 09:14:00,434 acacia.data: Series Bodemvocht-N1
+INFO 2015-07-17 09:14:00,443 acacia.data: Dumping datasource Zegveld perceel 8-N0
+INFO 2015-07-17 09:14:00,458 acacia.data: Dumping datasource Zegveld perceel 8-N1
