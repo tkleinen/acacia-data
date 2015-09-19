@@ -45,20 +45,22 @@ class DatasourceMixin:
         if hasattr(self,'datasource'):
             datasource = getattr(self,'datasource')
             return datasource() if callable(datasource) else datasource
+        else:
+            return None
 
     def getLogger(self,name=__name__): 
         logger = logging.getLogger(name)  
         return logging.LoggerAdapter(logger,extra={'datasource': self.getDatasource()})
 
-class FollowMixin:
-    ''' Mixin that provides a logging adapter that adds source context to log records
-    Used to send emails to users that follow an object ''' 
-
-    def getSource(self):
-        return self
-    
-    def getLogger(self,name=__name__): 
-        return logging.LoggerAdapter(logging.getLogger(name),extra={'source': self.getSource()})
+# class FollowMixin:
+#     ''' Mixin that provides a logging adapter that adds source context to log records
+#     Used to send emails to users that follow an object ''' 
+# 
+#     def getSource(self):
+#         return self
+#     
+#     def getLogger(self,name=__name__): 
+#         return logging.LoggerAdapter(logging.getLogger(name),extra={'source': self.getSource()})
        
 class Project(models.Model):
     name = models.CharField(max_length=50, unique=True)
@@ -1141,7 +1143,7 @@ class SeriesProperties(models.Model):
         else:
             self.eerste = self.series.datapoints.order_by('date')[0]
             if self.aantal == 1:
-                self.laaste = self.eerste
+                self.laatste = self.eerste
                 self.beforelast = self.eerste
             else:
                 points = self.series.datapoints.order_by('-date')

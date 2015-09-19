@@ -50,13 +50,11 @@ def SeriesToDict(request, pk):
 def ChartToJson(request, pk):
     c = get_object_or_404(Chart,pk=pk)
     start = c.auto_start()
+    stop = c.stop or datetime.datetime.now()
     data = {}
     for cs in c.series.all():
         s = cs.series
-        if c.stop is None:
-            data['series_%d' % s.id] = [[p.date,p.value] for p in s.datapoints.filter(date__gt=start).order_by('date')]
-        else:
-            data['series_%d' % s.id] = [[p.date,p.value] for p in s.datapoints.filter(date__gt=start, date__lt=c.stop).order_by('date')]
+        data['series_%d' % s.id] = [[p.date,p.value] for p in s.datapoints.exclude(date__lt=start,date__gt=stop).order_by('date')]
     return HttpResponse(json.dumps(data, default=lambda x: time.mktime(x.timetuple())*1000.0), content_type='application/json')
 
 def GridToJson(request, pk):
@@ -256,7 +254,7 @@ class ChartBaseView(TemplateView):
             }
 
         start = chart.auto_start()
-        options['xAxis']['min'] = tojs(start)
+#        options['xAxis']['min'] = tojs(start)
 #         if not chart.stop is None:
 #             options['xAxis']['max'] = tojs(chart.stop)
         allseries = []
