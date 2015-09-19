@@ -1,5 +1,6 @@
 from django.contrib.gis.db import models
 from ..util import RDNEW
+from .util import closest as closestn
 
 class Station(models.Model):
     nummer = models.IntegerField()
@@ -14,6 +15,11 @@ class Station(models.Model):
     def __unicode__(self):
         return self.naam
     
+    @classmethod
+    def closest(cls, coords, n=1):
+        ''' coords in rdnew projection ''' 
+        return closestn(cls,coords,n)
+
     class Meta:
         ordering = ('naam',)
 
@@ -29,6 +35,11 @@ class NeerslagStation(models.Model):
 
     def __unicode__(self):
         return self.naam
+
+    @classmethod
+    def closest(cls, coords, n=1):
+        ''' coords in rdnew projection ''' 
+        return closestn(cls,coords,n)
 
     class Meta:
         ordering = ('naam',)

@@ -8,6 +8,7 @@ import urlparse
 import StringIO
 import datetime
 import numpy as np
+import zipfile
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,6 @@ class Meteo(Generator):
     
     #url = 'http://www.knmi.nl/klimatologie/daggegevens/getdata_uur.cgi'
     url = 'http://www.knmi.nl/klimatologie/daggegevens/getdata_dag.cgi'
-        
     def download(self, **kwargs):
         if not 'filename' in kwargs:
             # need unique filename for incremental downloads
@@ -192,4 +192,112 @@ class Neerslag(Meteo):
         names.append('NAME')
         skiprows = self.skiprows if self.engine == 'python' else 0
         data = self.read_csv(f, header=None, skiprows = skiprows, names=names, skipinitialspace=True, comment = '#', index_col = 1, parse_dates = True)
+        return data
+
+class ZipMixin(object):
+    
+    def unzip(self, fil):
+        try:
+            with zipfile.ZipFile(fil,'r') as z:
+                for name in z.namelist():
+                    # first (and only) file in zip archive
+                    return z.open(name)
+        except zipfile.BadZipfile:
+            # maybe not a zip file after all?
+            return fil
+
+  
+class ZipMeteo(Meteo,ZipMixin):
+
+    def download(self,**kwargs):
+        if not 'filename' in kwargs:
+            # need unique filename for incremental downloads
+            url = kwargs.get('url','')
+            filename = 'etmgeg_000.zip'
+            if url != '':
+                parts = urlparse.urlparse(url)
+                filename = os.path.basename(os.path.basename(parts[2]))
+            kwargs['filename'] = filename
+        return Generator.download(self,**kwargs)
+    
+    def get_header(self, f):
+        # new zip files have slightly different format :(
+        header = {}
+        descr = {}
+        header['DESCRIPTION'] = descr
+        line = f.readline()
+        self.skiprows = 0
+        while line != '':
+            if line.startswith('YYYYMMDD'):
+                line = f.readline()
+                self.skiprows += 1
+                while len(line)>1:
+                    eq = line.find('=')
+                    if eq>0:
+                        key = line[:eq].strip()
+                        val = line[eq+1:].strip()
+                        descr[key]=val
+                    else:
+                        break
+                    line = f.readline()
+                    self.skiprows += 1
+                while not line.startswith('# STN,YYYYMMDD'):
+                    line = f.readline()
+                    self.skiprows += 1
+                columns = [w.strip() for w in line[2:].split(',')]
+                header['COLUMNS'] = [c for c in columns if len(c)>0]
+                line = f.readline()
+                self.skiprows += 1
+                break
+            else:
+                line = f.readline()
+                self.skiprows += 1
+        return header
+
+    def get_parameters(self, fil):
+        return super(ZipMeteo,self).get_parameters(self.unzip(fil))
+
+    def get_data(self, f, **kwargs):
+        return super(ZipMeteo,self).get_data(self.unzip(f),**kwargs)
+        
+class ZipNeerslag(Neerslag, ZipMixin):
+    
+    def download(self,**kwargs):
+        if not 'filename' in kwargs:
+            # need unique filename for incremental downloads
+            url = kwargs.get('url','')
+            filename = 'neerslaggeg_000.zip'
+            if url != '':
+                parts = urlparse.urlparse(url)
+                filename = os.path.basename(os.path.basename(parts[2]))
+            kwargs['filename'] = filename
+        return Generator.download(self,**kwargs)
+
+    def get_parameters(self, fil):
+        return super(ZipNeerslag,self).get_parameters(self.unzip(fil))
+
+    def get_data(self, f, **kwargs):
+        return super(ZipNeerslag,self).get_data(self.unzip(f),**kwargs)
+
+class ZipUurGegevens(ZipMeteo):
+
+    def get_columns(self, hdr):
+        return hdr['COLUMNS'][3:] # eerste 3 zijn station, datum en uur
+
+    def get_data(self, f, **kwargs):
+        f=self.unzip(f)
+        header = self.get_header(f)
+        columns = header['COLUMNS']
+        skiprows = self.skiprows # if self.engine == 'python' else 0
+        text = f.read().translate(None,'\r')
+        io = StringIO.StringIO(text)
+        data = self.read_csv(io, 
+                             header=None, 
+                             names=columns, 
+                             skiprows = skiprows, 
+                             skipinitialspace=True, 
+                             comment = '#', 
+                             index_col = 'Datum', 
+                             parse_dates={'Datum': [1,2]}, 
+                             date_parser = datehour_parser)
         return data
