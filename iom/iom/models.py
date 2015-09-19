@@ -140,9 +140,12 @@ class Waarnemer(models.Model):
             return '%s %s' % (self.initialen, self.achternaam)
         else:
             return '%s %s %s' % (self.initialen, self.tussenvoegsel, self.achternaam)
-
-    def waarnemingen(self):
-        w = sum([m.waarnemingen() for m in self.meetpunt_set.all()])
+    
+    def aantal_meetpunten(self):
+        return self.meetpunt_set.count()
+    
+    def aantal_waarnemingen(self):
+        w = sum([m.aantal_waarnemingen() for m in self.meetpunt_set.all()])
         return w
         
 from django.db.models import Sum
@@ -153,14 +156,23 @@ class Meetpunt(MeetLocatie):
     begin=models.DateTimeField(null=True, blank=True)
     einde=models.DateTimeField(null=True, blank=True)
     watergang = models.ForeignKey(Watergang,null=True, blank=True)
-    chart = models.ImageField(upload_to='charts', verbose_name='grafiek', help_text='Grafiek in popup op cartodb kaartje')
+    chart_thumbnail = models.ImageField(upload_to='charts', blank=True, null=True, verbose_name='voorbeeld', help_text='Grafiek in popup op cartodb kaartje')
+    chart = models.ForeignKey(Chart, verbose_name='grafiek', help_text='Interactive grafiek',null=True,blank=True)
+    photo = models.ImageField(upload_to='images', blank=True, null=True, verbose_name='foto', help_text='Foto van meetpunt')
     
+    def chart_url(self):
+        try:
+            return self.chart.get_dash_url()
+        except:
+            return '#'
+        
     class Meta:
         verbose_name_plural = 'Meetpunten'
                 
     def get_series(self, name='EC'):
-        series = [s for s in self.series() if s.name == name]
+        series = [s for s in self.series() if s.name.startswith(name)]
         return series[0] if len(series)>0 else None
 
-    def waarnemingen(self):
-        return sum([d.rows() for d in self.datasources.all()])
+    def aantal_waarnemingen(self):
+        return sum([s.aantal() for s in self.manualseries_set.all()])
+

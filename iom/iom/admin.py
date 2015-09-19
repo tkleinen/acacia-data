@@ -8,11 +8,12 @@ from django import forms
 from django.forms import Textarea
 from django.contrib.gis.db import models
 from .models import UserProfile, Adres, Waarnemer, Meetpunt, Watergang, Organisatie
-from acacia.data.models import Series, DataPoint
+from acacia.data.models import Series, DataPoint, ManualSeries
 
 from django.core.exceptions import ValidationError
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
+from .util import maak_meetpunt_grafiek
 
 import re
 
@@ -35,18 +36,31 @@ class WatergangAdmin(admin.ModelAdmin):
     list_filter = ('hoofdafwat', 'breedtekla', 'typewater')
 
 class DataPointInline(admin.TabularInline):
+#class DataPointInline(nested_admin.TabularInline):
     model = DataPoint
 
-class SeriesInline(admin.TabularInline):
-    model = Series
+class SeriesInline(admin.StackedInline):
+#class SeriesInline(nested_admin.NestedStackedInline):
+    model = ManualSeries
+    fields = ('name',)
     inlines = (DataPointInline,)
-            
+    verbose_name = 'Tijdreeks'
+    verbose_name_plural = 'Tijdreeksen'
+
+def maak_grafiek(modeladmin, request, queryset):
+    for m in queryset:
+        maak_meetpunt_grafiek(m,request.user)
+maak_grafiek.short_description = "Maak grafieken voor geselecteerde meetpunten"
+        
 @admin.register(Meetpunt)
 class MeetpuntAdmin(admin.ModelAdmin):
-    list_display = ('name', 'nummer', 'waarnemer')
+#class MeetpuntAdmin(nested_admin.NestedAdmin):
+    actions = [maak_grafiek,]
+    list_display = ('name', 'waarnemer', 'nummer', 'description')
     list_filter = ('waarnemer', )
-    search_fields = ('name', 'nummer', 'waarnemer', )
-    fields = ('waarnemer','nummer', 'location', 'watergang','description', )
+    inlines = [SeriesInline,]
+    search_fields = ('name', 'nummer', 'waarnemer__achternaam', )
+    fields = (('waarnemer','nummer'), 'location', 'photo', 'description', 'watergang',)
     formfield_overrides = {models.PointField:{'widget': Textarea}}
     raw_id_fields = ('watergang',)
     autocomplete_lookup_fields = {
@@ -79,7 +93,7 @@ class AdresAdmin(admin.ModelAdmin):
     
 @admin.register(Waarnemer)
 class WaarnemerAdmin(admin.ModelAdmin):        
-    list_display = ('achternaam', 'tussenvoegsel', 'voornaam', 'organisatie')
+    list_display = ('achternaam', 'tussenvoegsel', 'voornaam', 'organisatie', 'aantal_meetpunten', 'aantal_waarnemingen')
     list_filter = ('achternaam', 'organisatie')
     search_fields = ('achternaam', 'voornaam', )
     ordering = ('achternaam', )
