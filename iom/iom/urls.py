@@ -23,6 +23,7 @@ from iom.views import HomeView, WaarnemerDetailView, MeetpuntDetailView,\
 urlpatterns = [
     url(r'^$',HomeView.as_view(),name='home'),
     url(r'^home$',HomeView.as_view(),name='home'),
+    url(r'^akvo$','iom.views.importAkvo',name='akvo'),
     url(r'^waarnemer/(?P<pk>\d+)$',WaarnemerDetailView.as_view(),name='waarnemer-detail'),
     url(r'^get/series/(?P<pk>\d+)/$', 'acacia.data.views.SeriesToDict'),
     url(r'^waarnemingen/(?P<pk>\d+)$', WaarnemingenToDict),

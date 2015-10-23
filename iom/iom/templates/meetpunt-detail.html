@@ -3,15 +3,15 @@
 {% load l10n %}
 {% block script %}
 {{ block.super }}
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/locale/bootstrap-table-nl-NL.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.0/bootstrap-table.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.0/locale/bootstrap-table-nl-NL.min.js"></script>
 {% endblock script %}
 {% block createdone %}
 	vis.getNativeMap().setView([{{location.y}}, {{location.x}}], 15);
 {% endblock createdone %}
 {% block style %}
 {{block.super }}
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.8.1/bootstrap-table.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.9.0/bootstrap-table.min.css">
 {% endblock style %}
 
 {% block extrastyle %}

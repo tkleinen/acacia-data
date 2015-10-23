@@ -7,8 +7,8 @@ from django.contrib import admin
 from django import forms
 from django.forms import Textarea
 from django.contrib.gis.db import models
-from .models import UserProfile, Adres, Waarnemer, Meetpunt, Watergang, Organisatie
-from acacia.data.models import Series, DataPoint, ManualSeries
+from .models import UserProfile, Adres, Waarnemer, Meetpunt, Organisatie, AkvoFlow
+from acacia.data.models import DataPoint, ManualSeries
 
 from django.core.exceptions import ValidationError
 from django.contrib.auth.admin import UserAdmin
@@ -28,12 +28,6 @@ class UserAdmin(UserAdmin):
 # Re-register UserAdmin
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
-
-@admin.register(Watergang)
-class WatergangAdmin(admin.ModelAdmin):
-    list_display = ('identifica', 'naamnl', 'typewater', 'breedtekla', 'hoofdafwat')
-    search_fields = ('identifica', 'naamnl', )
-    list_filter = ('hoofdafwat', 'breedtekla', 'typewater')
 
 class DataPointInline(admin.TabularInline):
 #class DataPointInline(nested_admin.TabularInline):
@@ -56,21 +50,13 @@ maak_grafiek.short_description = "Maak grafieken voor geselecteerde meetpunten"
 class MeetpuntAdmin(admin.ModelAdmin):
 #class MeetpuntAdmin(nested_admin.NestedAdmin):
     actions = [maak_grafiek,]
-    list_display = ('name', 'waarnemer', 'nummer', 'description')
+    list_display = ('name', 'waarnemer', 'description')
     list_filter = ('waarnemer', )
     inlines = [SeriesInline,]
-    search_fields = ('name', 'nummer', 'waarnemer__achternaam', )
-    fields = (('waarnemer','nummer'), 'location', 'photo', 'description', 'watergang',)
+    search_fields = ('name', 'waarnemer__achternaam', )
+    fields = ('name', 'waarnemer', 'location', ('photo_url','chart_thumbnail'), 'description',)
     formfield_overrides = {models.PointField:{'widget': Textarea}}
-    raw_id_fields = ('watergang',)
-    autocomplete_lookup_fields = {
-        'fk': ['watergang',],
-    }
     
-    def save_model(self,request,obj,form,change):
-        obj.name = 'MP%d.%d' % (obj.waarnemer.id, obj.nummer)
-        obj.save()
-
 class AdresForm(forms.ModelForm):
     model = Adres
     
@@ -93,9 +79,9 @@ class AdresAdmin(admin.ModelAdmin):
     
 @admin.register(Waarnemer)
 class WaarnemerAdmin(admin.ModelAdmin):        
-    list_display = ('achternaam', 'tussenvoegsel', 'voornaam', 'organisatie', 'aantal_meetpunten', 'aantal_waarnemingen')
-    list_filter = ('achternaam', 'organisatie')
-    search_fields = ('achternaam', 'voornaam', )
+    list_display = ('achternaam', 'tussenvoegsel', 'voornaam', 'organisatie', 'akvoname', 'aantal_meetpunten', 'aantal_waarnemingen')
+    list_filter = ('achternaam', 'organisatie','akvoname',)
+    search_fields = ('achternaam', 'voornaam', 'akvoname', )
     ordering = ('achternaam', )
 
 @admin.register(Organisatie)
@@ -104,3 +90,9 @@ class OrganisatieAdmin(admin.ModelAdmin):
     autocomplete_lookup_fields = {
         'fk': ['adres',],
     }
+    
+@admin.register(AkvoFlow)
+class AkvoAdmin(admin.ModelAdmin):
+    list_display = ('name', 'instance', 'description')
+    list_filter = ('name', )
+    search_fields = ('name', 'instance', )

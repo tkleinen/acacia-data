@@ -21,8 +21,8 @@ body, html {height: 100%;}
 {% block content %}
 <div class = "container-fluid fullheight">
 <div class = "row-fluid fullheight">
-<div class = "col-md-9 fullheight"><div id="chart"><iframe class="fullheight fullwidth" src="{{object.chart_url}}" marginwidth="0" seamless="seamless" frameborder="0"></iframe></div></div>
-<div class = "col-md-3">
+<div class = "col-md-8 fullheight"><div id="chart"><iframe class="fullheight fullwidth" src="{{object.chart_url}}" marginwidth="0" seamless="seamless" frameborder="0"></iframe></div></div>
+<div class = "col-md-4">
 {% block list %}
 <div id="list" class = "list-group scroll">
 <a href="#" class="list-group-item active" title="Meetpunt">{{object.waarnemer}} Meetpunt {{object.name}}<span title="Aantal waarnemingen" class="badge">{{series.aantal}}</a>
