@@ -49,7 +49,7 @@ import pandas as pd
 
 def maak_meetpunt_thumbnail(meetpunt):
     
-    imagefile = os.path.join(meetpunt.chart_thumbnail.field.upload_to,slugify(unicode(meetpunt.name))+'.png')
+    imagefile = os.path.join(meetpunt.chart_thumbnail.field.upload_to,slugify(unicode(meetpunt.identifier))+'.png')
     imagepath = os.path.join(settings.MEDIA_ROOT,imagefile)
     imagedir = os.path.dirname(imagepath)
     if not os.path.exists(imagedir):
@@ -58,15 +58,16 @@ def maak_meetpunt_thumbnail(meetpunt):
     meetpunt.chart_thumbnail.name = imagefile
     
     plt.figure(figsize=(9,3))
-    options = {'grid': False, 'legend': True, 'title': 'Meetpunt {num}'.format(num=meetpunt.nummer)}
+    options = {'grid': False, 'legend': True, 'title': 'Meetpunt {num}'.format(num=meetpunt)}
 
     mps = zoek_meetpunten(meetpunt.location, 1)
     for mp in mps:
-        s = mp.get_series('EC').to_pandas()
-        s.name = 'ondiep' if s.name.endswith('o') else 'diep'
-        ax=s.plot(**options)
-    #pd.DataFrame([s.to_pandas() for s in mp.get_series('EC')]).plot(**options)
-    ax.set_ylabel('EC')
+        s = mp.get_series('EC')
+        if s:
+            s =s.to_pandas()
+            s.name = 'ondiep' if s.name.endswith('o') else 'diep'
+            ax=s.plot(**options)
+            ax.set_ylabel('EC')
     plt.savefig(imagepath)
     
     plt.close()
@@ -77,10 +78,13 @@ def maak_meetpunt_grafiek(meetpunt,user):
     try:
         chart = meetpunt.chart
     except Exception as e:
-        name = '%s.%s' % (meetpunt.waarnemer.id, meetpunt.nummer)
+        chart = None
+
+    if chart is None:
+        name = meetpunt.name
         chart, created = Chart.objects.get_or_create(name = name, defaults = {
                                                              'user': user, 
-                                                             'title': 'Meetpunt %d ' % (meetpunt.nummer), 
+                                                             'title': 'Meetpunt %s' % (meetpunt.name), 
                                                              'description': unicode(meetpunt.waarnemer)})
         meetpunt.chart=chart
         meetpunt.save()
