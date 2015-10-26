@@ -4,24 +4,33 @@ Created on Jun 12, 2015
 @author: theo
 '''
 from django.views.generic import TemplateView, DetailView
-from .models import Waarnemer, Meetpunt
-import json
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
-import pandas as pd
 from django.views.generic.edit import UpdateView
-from iom.forms import UploadPhotoForm
 from django.utils import timezone
-import locale
 from django.conf import settings
-from acacia.data.models import Project, ProjectLocatie
+from .models import Waarnemer, Meetpunt, CartoDb
+
+import json
+import pandas as pd
+import locale
+from iom.models import AkvoFlow
 
 def WaarnemingenToDict(request, pk):
     tz = timezone.get_current_timezone()
     locale.setlocale(locale.LC_ALL,'nl_NL.utf8')
     
-    ''' return dataframe with observations (ec, temp) as dict'''
+    mp = get_object_or_404(Meetpunt,pk=pk)
+    waarnemingen = mp.waarneming_set.all()
+    dct = [{'date': w.datum, 'EC': w.waarde} for w in waarnemingen]
+    dct.sort(key=lambda x: x['date'])
+    j = json.dumps(dct, default=lambda x: x.astimezone(tz).strftime('%c'))
+    return HttpResponse(j, content_type='application/json')
+
+def WaarnemingenToDict1(request, pk):
+    tz = timezone.get_current_timezone()
+    locale.setlocale(locale.LC_ALL,'nl_NL.utf8')
+    
     mp = get_object_or_404(Meetpunt,pk=pk)
     ec = mp.get_series('EC').to_pandas()
     temp = mp.get_series('Temp').to_pandas()
@@ -36,8 +45,16 @@ def WaarnemingenToDict(request, pk):
     dct.sort(key=lambda x: x['date'])
     j = json.dumps(dct, default=lambda x: x.astimezone(tz).strftime('%c'))
     return HttpResponse(j, content_type='application/json')
-    
-class HomeView(TemplateView):
+
+class ContextMixin(object):
+    ''' adds cartodb and akvo config to context '''
+    def get_context_data(self, **kwargs):
+        context = super(ContextMixin, self).get_context_data(**kwargs)
+        context['cartodb'] = get_object_or_404(CartoDb, pk=settings.CARTODB_ID)
+        context['akvo'] = get_object_or_404(AkvoFlow, pk=settings.AKVOFLOW_ID)
+        return context
+
+class HomeView(ContextMixin,TemplateView):
     template_name = 'home.html'
     
     def get_context_data(self, **kwargs):
@@ -60,7 +77,7 @@ class HomeView(TemplateView):
         context['maptype'] = 'ROADMAP'
         return context
 
-class WaarnemerDetailView(DetailView):
+class WaarnemerDetailView(ContextMixin,DetailView):
     template_name = 'waarnemer-detail.html'
     model = Waarnemer    
 
@@ -70,7 +87,7 @@ class WaarnemerDetailView(DetailView):
         context['meetpunten'] = waarnemer.meetpunt_set.all()
         return context
 
-class MeetpuntDetailView(DetailView):
+class MeetpuntDetailView(ContextMixin,DetailView):
     template_name = 'meetpunt-grafiek.html'
     model = Meetpunt    
 
@@ -86,46 +103,12 @@ class UploadPhotoView(UpdateView):
     fields = ['photo',]
     template_name_suffix = '_photo_form'
 
-from .akvo import FlowAPI
-from .models import AkvoFlow
+from iom.management.commands import import_akvo
 
-def importAkvoRegistration(api,surveyId,projectLocatie):
-    for key,instance in api.get_registration_instances(surveyId).items():
-        answers = api.get_answers(instance['keyId'])
-        identifier=instance['surveyedLocaleIdentifier']
-        locale = instance['surveyedLocaleDisplayName']
-        geoloc = answers['9070917|Geolocatie']        
-        try:
-            mp = Meetpunt.objects.get(identifier=identifier)
-        except Meetpunt.DoesNotExist:
-            mp = Meetpunt(identifier = identifier, name=name, projectlocatie = projectlocatie, location=location,description = description)
+def update_datasource(pk, download = True, replace = False, calc = False):
+    command = import_akvo.Command()
+    command.execute(pk=pk,down=download,replace=replace,calc=calc)
 
-def importAkvoMonitoring(api,surveys):
-    for surveyId in surveys:
-        survey = api.get_survey(surveyId)
-        instances,meta = api.get_survey_instances(surveyId=surveyId)
-        while instances:
-            for instance in instances:
-                #find related registration form (meetpunt)
-                localeId = instance['surveyedLocaleIdentifier']
-                try:
-                    mp = Meetpunt.objects.get(identifier=localeId)
-                except Meetpunt.DoesNotExist:
-                    continue
-                answers = api.get_answers(instance['keyId'])
-                # TODO: create/add datapoints to timeseries
-
-            instances,meta = api.get_survey_instances(surveyId=surveyId, since=meta['since'])
-                        
 def importAkvo(request):
     '''import data from akvo flow'''
-    akvo = get_object_or_404(AkvoFlow,name='Texel Meet')
-    api = FlowAPI(instance=akvo.instance, key=akvo.key, secret=akvo.secret)
-
-    project = ProjectLocatie.objects.get(pk=1) # Texel
-    importAkvoRegistration(api, akvo.regform, projectLocatie=project)
-
-    surveys = [f.trim() for f in akvo.monforms.split(',')]
-    importAkvoMonitoring(api, surveys)
-
     return 'Done'
