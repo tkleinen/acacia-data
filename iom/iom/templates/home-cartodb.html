@@ -31,7 +31,7 @@ padding-right: 12px;
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js"></script>
 <script>
 window.onload = function() {
-  cartodb.createVis('map', 'https://tkleinen.cartodb.com/api/v2/viz/f3caaf4c-1b11-11e5-8db7-0e9d821ea90d/viz.json')
+  cartodb.createVis('map', '{{cartodb.viz}}')
   	.done(function(vis, layers) {
   		{% block createdone %}	  		
   		{% endblock createdone %}	  		
