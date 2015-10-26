@@ -13,7 +13,7 @@ from django.contrib.gis.db import models as geo
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images',blank=True,null=True)
 
 from django.db.models.signals import post_save
 
@@ -119,21 +119,25 @@ class Meetpunt(MeetLocatie):
         return series[0] if len(series)>0 else None
 
     def aantal_waarnemingen(self):
-        return sum([s.aantal() for s in self.manualseries_set.all()])
+        return self.waarneming_set.count()
     
 class Waarneming(models.Model):
+    naam = models.CharField(max_length=40)
     waarnemer = models.ForeignKey(Waarnemer)
     locatie = models.ForeignKey(Meetpunt)
+    device = models.CharField(max_length=50)
     datum = models.DateTimeField()
-    grootheid = models.CharField(max_length=20)
     eenheid = models.CharField(max_length=20)
     waarde = models.FloatField()
     foto_url = models.CharField(max_length=200,blank=True,null=True)
     opmerking = models.TextField(blank=True,null=True)
-    
+
+    class Meta:
+        verbose_name_plural = 'Waarnemingen'
+        
 class AkvoFlow(models.Model):
     ''' Akvo Flow configuratie '''
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,unique=True)
     description = models.TextField(blank=True, null=True)
     instance = models.CharField(max_length=100)
     key = models.CharField(max_length=100)    
@@ -143,8 +147,29 @@ class AkvoFlow(models.Model):
     monforms = models.CharField(max_length=100,blank=True, null=True, verbose_name = 'Monitoringformulier',help_text='Survey id van monitoringformulier')
     
     class Meta:
-        verbose_name = 'Akvoflow API'        
-        verbose_name_plural = 'Akvoflow API'
+        verbose_name = 'Akvoflow configuratie'        
         
     def __unicode__(self):
         return self.name
+    
+import urllib,urllib2
+
+class CartoDb(models.Model):
+    ''' Cartodb configuratie '''
+    name = models.CharField(max_length=100,unique=True)
+    description = models.TextField(blank=True, null=True)
+    url = models.CharField(max_length=100,verbose_name='Account')
+    viz = models.CharField(max_length=100,verbose_name='Visualisatie')    
+    key = models.CharField(max_length=100,verbose_name='API key')
+    sql_url = models.CharField(max_length=100,verbose_name='SQL url')
+
+    class Meta:
+        verbose_name = 'Cartodb configuratie'        
+        
+    def __unicode__(self):
+        return self.name
+
+    def runsql(self,sql):
+        data = urllib.urlencode({'q': sql, 'api_key': self.key})
+        request = urllib2.Request(url=self.sql_url, data=data)
+        return urllib2.urlopen(request)
