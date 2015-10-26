@@ -80,14 +80,6 @@ DATABASES = {
         'HOST': '',
         'PORT': '',
     }
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-#         'NAME': 'iom',
-#         'USER': 'theo',
-#         'PASSWORD': 'Heinis14',
-#         'HOST': '',
-#         'PORT': '',
-#     }
 }
 
 LANGUAGE_CODE = 'nl-nl'
@@ -100,11 +92,20 @@ USE_L10N = True
 
 USE_TZ = True
 
+# id of cartodb configuration
+CARTODB_ID = 1
+
+# id of akvoflow configuration
+AKVOFLOW_ID = 1
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LOGGING_URL = '/logs/'
+LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
 GRAPPELLI_ADMIN_TITLE='Beheer van Texel Meet'
 POSTCODE_API_KEY = 'c48b31116d112971df7e669d963f8a9b0c1e8c98'
@@ -116,3 +117,45 @@ DEFAULT_FROM_EMAIL = 'noreply@acaciawater.com'
 REGISTRATION_AUTO_LOGIN = True
 
 AUTH_PROFILE_MODULE = 'iom.UserProfile'
+
+# Logging
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(LOGGING_ROOT, 'texel.log'),
+            'when': 'D',
+            'interval': 1, # every day a new file
+            'backupCount': 0,
+            'formatter': 'default'
+        },
+        'django': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(LOGGING_ROOT, 'django.log'),
+            'when': 'D',
+            'interval': 1, # every day a new file
+            'backupCount': 0,
+        },
+    },
+    'formatters': {
+        'default': {
+            'format': '%(levelname)s %(asctime)s %(name)s: %(message)s'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['django'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'akvo': {
+            'handlers': ['file',],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
