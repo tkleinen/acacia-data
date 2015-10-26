@@ -7,7 +7,7 @@ from django.contrib import admin
 from django import forms
 from django.forms import Textarea
 from django.contrib.gis.db import models
-from .models import UserProfile, Adres, Waarnemer, Meetpunt, Organisatie, AkvoFlow
+from .models import UserProfile, Adres, Waarnemer, Meetpunt, Organisatie, AkvoFlow, CartoDb
 from acacia.data.models import DataPoint, ManualSeries
 
 from django.core.exceptions import ValidationError
@@ -16,6 +16,7 @@ from django.contrib.auth.models import User
 from .util import maak_meetpunt_grafiek
 
 import re
+from iom.models import Waarneming
 
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
@@ -45,16 +46,21 @@ def maak_grafiek(modeladmin, request, queryset):
     for m in queryset:
         maak_meetpunt_grafiek(m,request.user)
 maak_grafiek.short_description = "Maak grafieken voor geselecteerde meetpunten"
-        
+
+class WaarnemingInline(admin.TabularInline):
+    model = Waarneming
+    exclude = ('opmerking',)
+    extra = 0
+
 @admin.register(Meetpunt)
 class MeetpuntAdmin(admin.ModelAdmin):
 #class MeetpuntAdmin(nested_admin.NestedAdmin):
     actions = [maak_grafiek,]
-    list_display = ('name', 'waarnemer', 'description')
+    list_display = ('name', 'waarnemer', 'description', 'aantal_waarnemingen')
     list_filter = ('waarnemer', )
-    inlines = [SeriesInline,]
+    inlines = [WaarnemingInline,]
     search_fields = ('name', 'waarnemer__achternaam', )
-    fields = ('name', 'waarnemer', 'location', ('photo_url','chart_thumbnail'), 'description',)
+    fields = ('name', 'waarnemer', 'location', 'photo_url', 'description',)
     formfield_overrides = {models.PointField:{'widget': Textarea}}
     
 class AdresForm(forms.ModelForm):
@@ -96,3 +102,9 @@ class AkvoAdmin(admin.ModelAdmin):
     list_display = ('name', 'instance', 'description')
     list_filter = ('name', )
     search_fields = ('name', 'instance', )
+
+@admin.register(CartoDb)
+class CartodbAdmin(admin.ModelAdmin):
+    list_display = ('name', 'url', 'description')
+    list_filter = ('name', )
+    search_fields = ('name', 'url', )
