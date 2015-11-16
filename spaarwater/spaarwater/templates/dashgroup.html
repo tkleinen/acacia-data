@@ -16,6 +16,8 @@
   {% else %}
   <li><a href="{{request.path}}?page={{forloop.counter}}">{{p.name}}</a></li>
   {% endif %}
+  {% empty %}
+	<li class="bg-info">Geen tabbladen gedefinieerd</li>
   {% endfor %}
 </ul>
 <div class="row row-fluid">
@@ -26,6 +28,8 @@
 {% if forloop.counter|divisibleby:2 %}
 </div><div class="row row-fluid">
 {% endif %}
+{% empty %}
+<div class="row row-fluid"><div class="col-md-12 bg-info">Geen dashboards gedefinieerd</div></div>
 {% endfor %}
 </div>
 </div>
