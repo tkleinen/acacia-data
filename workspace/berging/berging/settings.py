@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'django_forms_bootstrap',
     'berging',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -87,6 +88,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SHAPEFILE = r'/media/sf_F_DRIVE/projdirs/Texel/Shapefile_website/j5rd.shp'
 
 LEAFLET_CONFIG = {
     'SPATIAL_EXTENT': (3.0, 50.0, 7.5, 55),

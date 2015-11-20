@@ -20,7 +20,12 @@ class OgrInspector:
                 
     def open(self, datasource):
         self.datasource = ogr.OpenShared(datasource)
+        if not self.datasource:
+            raise OgrException('Cannot open datasource {}'.format(datasource))
         self.layer = self.datasource.GetLayerByIndex(0)
+        if not self.layer:
+            self.close()
+            raise OgrException('Cannot access layer in datasource {}'.format(datasource))
         defn = self.layer.GetLayerDefn();
         self.fieldnames = [defn.GetFieldDefn(index).GetName() for index in range(defn.GetFieldCount())]
     
@@ -41,15 +46,17 @@ class OgrInspector:
         self.layer.SetSpatialFilter(point)
         result = {}
         for feature in self.layer:
-            result[feature.GetFID()] = {name: feature.GetField(name) for name in self.fieldnames}
-        return result
+            # return only first feature
+            return {name: feature.GetField(name) for name in self.fieldnames}
+#             result[feature.GetFID()] = {name: feature.GetField(name) for name in self.fieldnames}
+#         return result
     
-x=125235.71628573995
-y=532004.3869108006
-MAP = '/media/sf_F_DRIVE/projdirs/Texel/Shapefile_website/j4rd.shp'
-
-if __name__ == '__main__':
-    inspector = OgrInspector(MAP)
-    point = ogr.Geometry(ogr.wkbPoint)
-    point.AddPoint(x,y)
-    print inspector.inspect(point)
+# x=125235.71628573995
+# y=532004.3869108006
+# MAP = '/media/sf_F_DRIVE/projdirs/Texel/Shapefile_website/j4rd.shp'
+# 
+# if __name__ == '__main__':
+#     inspector = OgrInspector(MAP)
+#     point = ogr.Geometry(ogr.wkbPoint)
+#     point.AddPoint(x,y)
+#     print inspector.inspect(point)

@@ -3,7 +3,7 @@ Created on Jun 1, 2014
 
 @author: theo
 '''
-from berging.models import Scenario, Matrix
+from berging.models import Scenario, Matrix, Gift, Scenario2
 
 from django.contrib import admin
 
@@ -17,4 +17,6 @@ class MatrixAdmin(admin.ModelAdmin):
         obj.save()
         
 admin.site.register(Scenario)
+admin.site.register(Scenario2)
+admin.site.register(Gift)
 admin.site.register(Matrix,MatrixAdmin)

@@ -7,6 +7,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('berging.views',
     url(r'^$', 'home', name='home'),
+    url(r'^select', 'select', name='select'),
+    url(r'^query', 'query', name='query'),
+    url(r'^scenario2', 'scenario2', name='scenario2'),
     url(r'^scenario', 'scenario_highchart', name='scenario'),
     url(r'^grondsoort', 'grondsoort', name='grondsoort'),
 #    url(r'admin/berging/matrix/add/', 'addmatrix'),

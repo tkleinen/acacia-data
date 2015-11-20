@@ -5,7 +5,7 @@ Created on Sep 1, 2014
 '''
 from django import forms
 from django.forms.widgets import RadioSelect
-from .models import Scenario, Matrix
+from .models import Scenario, Scenario2, Matrix
 
 class ScenarioForm(forms.ModelForm):
     class Meta:
@@ -45,6 +45,39 @@ class ScenarioForm(forms.ModelForm):
             
         return d
     
+class Scenario2Form(forms.ModelForm):
+    class Meta:
+        model = Scenario2
+        fields = ['gewas', 'grondsoort', 'kwaliteit', 'kwel', 'weerstand', 'irrigatie', 'reken', 'perceel', 'bassin']
+        widgets = {'reken': RadioSelect(),}
+        
+    # django < 1.7
+    def add_error(self, field, msg):
+        self._errors[field] = self.error_class([msg])
+        del self.cleaned_data[field]
+        
+    def clean(self):
+        d = self.cleaned_data;
+        code = d['gewas']+d['irrigatie']+d['grondsoort']+d['kwaliteit']+d['weerstand']+d['kwel']
+        try:
+            matrix = Matrix.objects.get(code=code)
+        except:
+            raise forms.ValidationError('Geen berekeningsresultaten beschikbaar voor deze combinatie van invoergegevens',code='invalid')
+        
+        if d['reken'] == 'o':
+            grootte = d['perceel']
+            if grootte > matrix.rijmax:
+                self.add_error('perceel','Maximum oppervlakte is %g Ha' % (matrix.rijmax / 10000))
+            elif grootte < matrix.rijmin:
+                self.add_error('perceel','Minimum oppervlakte is %g Ha' % (matrix.rijmin / 10000))
+        else:
+            grootte = d['bassin']
+            if grootte > matrix.kolmax:
+                self.add_error('bassin','Maximum oppervlakte is %g m2' % matrix.kolmax)
+            elif grootte < matrix.kolmin:
+                self.add_error('bassin','Minimum oppervlakte is %g m2' % matrix.kolmin)
+            
+        return d
     
 class AddMatrixForm(forms.ModelForm):
     class Meta:

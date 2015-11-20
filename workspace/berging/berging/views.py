@@ -9,20 +9,54 @@ import pandas as pd
 
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.loader import render_to_string
-
-import settings
-from forms import ScenarioForm
+from django.http import HttpResponse
+from forms import ScenarioForm,Scenario2Form
 from models import Matrix
+from django.conf import settings
+from django.contrib.gis.geos import Point
+from .util import OgrInspector
 
 def home(request):
     return render_to_response('home.html')
 
+def select(request):
+    return render_to_response('google_select.html')
+
+inspector = OgrInspector()
+
+def query(request):
+    lon = float(request.GET.get('lon'))
+    lat = float(request.GET.get('lat'))
+
+    # shapefile is in RD coordinates, transform
+    p = Point((lon,lat),srid=4326)
+    p.transform(28992)
+    
+    if inspector.isclosed():
+        # open lazy
+        inspector.open(settings.SHAPEFILE)
+    return HttpResponse(json.dumps(inspector.inspect(p)), content_type='application/json')
+    
 def grondsoort(request):
     # TODO: load json with in template using .ajax
     path = os.path.join(settings.MEDIA_ROOT, 'maps', 'nhgrond2m.geojson')
     with open(path) as f:
         return render_to_response('leaflet_grondsoort.html',{'grondsoort': f.read()})
 
+def scenario2(request):
+    if request.method == 'POST':
+        form = Scenario2Form(request.POST)
+        if form.is_valid():
+            scenario = form.save(commit=False)
+            chart1 = make_chart(scenario)
+            chart2 = make_costchart(scenario)
+    else:
+        form = Scenario2Form()
+
+    return render(request, 'scenario2.html', {
+            'form': form
+    })
+    
 def scenario_highchart(request):
     chart = None
     chart1 = None
