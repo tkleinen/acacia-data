@@ -8,6 +8,8 @@ from berging.models import Scenario, Matrix, Gift, Scenario2
 from django.contrib import admin
 
 class MatrixAdmin(admin.ModelAdmin):
+    list_display = ('code','rijmin','rijmax','kolmin','kolmax')
+    
     def save_model(self, request, obj, form, change):
         try:
             f = request.FILES['file']
