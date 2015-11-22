@@ -4,6 +4,8 @@ Created on Sep 1, 2014
 @author: theo
 '''
 from django.db import models
+from django.contrib.auth.models import User
+
 from django.core.validators import MaxValueValidator, MinValueValidator
 import pandas as pd
 
@@ -58,8 +60,12 @@ class Scenario2(models.Model):
     weerstand=models.CharField(max_length=1,choices=WDEK,default='h',verbose_name='weerstand deklaag')
     irrigatie = models.CharField(max_length=1,choices=IRRI,default='d',verbose_name='methode van watergift')
     reken = models.CharField(max_length=1,choices=REKEN,default='o',verbose_name='berekeningsmethode')
-    perceel = models.FloatField(default=1, validators = [MinValueValidator(0.1), MaxValueValidator(1000)], verbose_name='perceel', help_text = 'oppervlakte perceel (Ha)')
-    bassin = models.FloatField(default=5000, validators = [MinValueValidator(1), MaxValueValidator(1000000)], verbose_name='bassin', help_text = 'oppervlakte bassin (m2)')
+    perceel = models.FloatField(default=1, validators = [MinValueValidator(0.01), MaxValueValidator(100)], verbose_name='perceel', help_text = 'oppervlakte perceel (Ha)')
+    bassin = models.FloatField(default=0.1, validators = [MinValueValidator(0.001), MaxValueValidator(10)], verbose_name='bassin', help_text = 'oppervlakte bassin (Ha)')
+    lon = models.FloatField(null=True,blank=True)
+    lat = models.FloatField(null=True,blank=True)
+    #adres = models.CharField(max_length=256,null=True,blank=True)
+    user = models.ForeignKey(User,null=True,blank=True)
 
     def __unicode__(self):
         return self.naam
@@ -72,10 +78,10 @@ class Matrix(models.Model):
     code = models.CharField(max_length=10, unique=True)
     toelichting = models.TextField(blank=True)
     file = models.FileField(upload_to='matrix')
-    rijnaam = models.CharField(default = 'Oppervlakte (m2)', max_length=50)
+    rijnaam = models.CharField(default = 'Oppervlakte perceel (Ha)', max_length=50)
     rijmin = models.FloatField(blank=True)
     rijmax = models.FloatField(blank=True)
-    kolomnaam = models.CharField(default = 'Volume (m3)', max_length=50)
+    kolomnaam = models.CharField(default = 'Oppervlakte bassin (m2)', max_length=50)
     kolmin = models.FloatField(blank=True)
     kolmax = models.FloatField(blank=True)
 
