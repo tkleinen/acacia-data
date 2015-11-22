@@ -11,7 +11,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from forms import ScenarioForm,Scenario2Form
-from models import Matrix
+from models import Matrix, Gift
 from django.conf import settings
 from django.contrib.gis.geos import Point
 from .util import OgrInspector
@@ -36,25 +36,86 @@ def query(request):
         # open lazy
         inspector.open(settings.SHAPEFILE)
     return HttpResponse(json.dumps(inspector.inspect(p)), content_type='application/json')
-    
-def grondsoort(request):
-    # TODO: load json with in template using .ajax
-    path = os.path.join(settings.MEDIA_ROOT, 'maps', 'nhgrond2m.geojson')
-    with open(path) as f:
-        return render_to_response('leaflet_grondsoort.html',{'grondsoort': f.read()})
 
+def make_chart2(scenario):
+    if scenario.reken == 'v':
+        subtitle = 'Oppervlakte bassin = %g Ha' % scenario.bassin 
+    else:
+        subtitle = 'Oppervlakte perceel = %g Ha' % scenario.perceel
+    options = {
+        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+        'title': {'text': 'Watergift'},
+        'subtitle':{'text': subtitle},
+        'xAxis': {'title': {'enabled': True},
+                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
+        'tooltip': {'valueSuffix': ' mm',
+                    'shared': True,
+                    'valueDecimals': 1,
+#                    'pointFormat': '{series.name}: <b>{point.y:.1f} mm </b><br/>',
+                    'crosshairs': [True,True],}, 
+        'yAxis': [],
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
+        'plotOptions': {'line': {'marker': {'enabled': False}}},            
+        'credits': {'enabled': False},
+        }
+
+    options['yAxis'].append({'min': 0, 'alignTicks': False, 'title': {'text': 'Watergift (mm)'},})
+    
+    data = getresult2(scenario)
+    gift = get_object_or_404(Gift,gewas=scenario.gewas,grondsoort=scenario.grondsoort)
+    pref = np.ones(data.shape[0]) * gift.gift
+    x = data.index.values.astype('f8')
+    y = data.values
+    
+    if scenario.reken == 'o':
+        options['xAxis']['title']['text'] = 'Oppervlakte bassin (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+    else:
+        options['xAxis']['title']['text'] = 'Oppervlakte perceel (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+    
+    options['series'] = [{'name': 'Optimale watergift','type': 'line','data': zip(x,pref), 'dashStyle': 'Dot'},
+                         {'name': 'Beschikbare watergift','type': 'line','data': zip(x,y)},]
+    return json.dumps(options)
+
+def getseries2(scenario, matrix):
+    df = pd.read_csv(matrix.file.path,index_col=0)
+    drow = (matrix.rijmax - matrix.rijmin) / (df.shape[0]-1)
+    dcol = (matrix.kolmax - matrix.kolmin) / (df.shape[1]-1)
+
+    if scenario.reken == 'v':
+        labels = df.index
+        index = (scenario.bassin - matrix.kolmin) / dcol
+        data = df[df.columns[int(index)]].values
+        series = pd.Series(data,index=labels,name=matrix.code)
+    else:
+        labels = df.columns
+        index = (scenario.perceel - matrix.rijmin) / drow 
+        data = df.iloc[int(index)].values
+        series = pd.Series(data,index=labels,name=matrix.code)
+    return series
+
+def getresult2(scenario):
+    code = scenario.matrix_code()
+    matrix = get_object_or_404(Matrix,code=code)
+    return getseries2(scenario, matrix)
+    
 def scenario2(request):
+    chart1 = None
+    chart2 = None
     if request.method == 'POST':
         form = Scenario2Form(request.POST)
         if form.is_valid():
             scenario = form.save(commit=False)
-            chart1 = make_chart(scenario)
-            chart2 = make_costchart(scenario)
+            chart1 = make_chart2(scenario)
+            #chart2 = make_costchart(scenario)
     else:
         form = Scenario2Form()
 
     return render(request, 'scenario2.html', {
-            'form': form
+            'form': form,
+            'chart1': chart1,
+            'chart2': chart2
     })
     
 def scenario_highchart(request):
@@ -205,3 +266,8 @@ def make_costchart(scenario):
                     ]
     return json.dumps(options)
 
+def grondsoort(request):
+    # TODO: load json with in template using .ajax
+    path = os.path.join(settings.MEDIA_ROOT, 'maps', 'nhgrond2m.geojson')
+    with open(path) as f:
+        return render_to_response('leaflet_grondsoort.html',{'grondsoort': f.read()})
