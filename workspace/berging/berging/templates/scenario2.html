@@ -1,0 +1,175 @@
+﻿{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% block extrastyle %}
+<style>
+body, html {
+  height: 100%;
+  width: 100%;
+}
+.error-msg {
+  color: #a94442;
+}
+#chart {
+  height: 500px;
+}
+.wrapper, .fill
+{
+	height: 100%;
+} 
+#map {
+	width: 95%;
+	height: 80%;
+/* 	margin: 64px; */
+/* 	padding: 64px; */
+}
+
+</style>
+{% endblock %}
+{% block script %}
+{{block.super}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPN07TWkHmD8Mulqd1hKVx155AVAZWddM" type="text/javascript"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static "js/themes/dark-blue.js" %}"></script>
+
+<script type="text/javascript">
+
+function updateSelection(sel) {
+	document.getElementById('id_grondsoort').value = sel.grondsoort;
+	document.getElementById('id_kwaliteit').value=sel.kwaliteit;
+	document.getElementById('id_kwel').value=sel.kwel;
+	document.getElementById('id_weerstand').value=sel.weerstand;
+}
+
+function updateAddress(data) {
+	var address = data.results[0].formatted_address;
+	document.getElementById('locatie').innerHTML = address;	
+}
+
+function fetchData(position) {
+	  $.getJSON('query',{'lat': position.lat(), 'lon': position.lng()}, function(data) {
+		  updateSelection(data);
+	  });
+}
+
+function fetchAddress(position) {
+	  latlng = position.lat() + ',' + position.lng()
+ 	  $.getJSON('https://maps.googleapis.com/maps/api/geocode/json',{'latlng': latlng, 'language': 'nl', 'key': 'AIzaSyD8cTeXT5dTQv7jLMucoBs3oqEx4X_qu54'}, function(data) {
+ 		  updateAddress(data);
+ 	  });
+}
+
+function initMap() {
+
+	var mapOptions = {
+      scrollwheel: true,
+	  draggableCursor: 'default'
+    };
+	
+	var marker = null;
+	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var geocoder = new google.maps.Geocoder();
+
+    if (geocoder) {
+	   geocoder.geocode({ 'address': 'Noord-Holland' }, function (results, status) {
+	     if (status == google.maps.GeocoderStatus.OK) {
+	       map.fitBounds(results[0].geometry.viewport);
+	     }
+	   });
+	}
+
+	google.maps.event.addListener(map, "click", function(event) {
+
+		if(marker){
+			marker.setMap(null); marker = null;
+		}
+		marker = new google.maps.Marker({
+			position: event.latLng,
+			map: map,
+			draggable: true,
+		});
+	  
+		fetchData(event.latLng);
+		fetchAddress(event.latLng);
+			
+		google.maps.event.addListener(marker, 'dragend', function(e) {
+			  fetchData(e.latLng);
+			  fetchAddress(e.latLng);
+			});
+ 	  
+    });
+}
+
+function initCharts() {
+	var options1 = {{chart1|safe}};
+// 	options1.xAxis.labels.formatter = function() { return this.value;};
+	$('#chart1').highcharts(options1);
+
+// 	var options2 = {{chart2|safe}};
+// 	options2.xAxis.labels.formatter = function() { return this.value;};
+// 	options2.yAxis[0].labels.formatter = function() { return this.value;};
+// 	options2.yAxis[1].labels.formatter = function() { return this.value;};
+	$('#chart2').highcharts(options1);
+	
+}
+
+function ToggleDisplay(idon,idoff) {
+	var on = document.getElementById(idon); 		
+	var off = document.getElementById(idoff);
+	on.style.display = 'block';
+	off.style.display = 'none';
+}
+
+$(function() {
+	var id1 = document.getElementById("id_reken_1");
+	id1.onchange = function(){ToggleDisplay("div_id_perceel","div_id_bassin");};
+	var id2 = document.getElementById("id_reken_2");
+	id2.onchange = function(){ToggleDisplay("div_id_bassin","div_id_perceel");};
+	if (id1.checked) {
+		ToggleDisplay("div_id_perceel","div_id_bassin");
+	}
+	else {
+		ToggleDisplay("div_id_bassin","div_id_perceel");
+	}
+	{% if chart1 %} initCharts(); {% endif %}
+	initMap();
+});
+
+</script>
+{% endblock %}
+{% block content %}
+<div class = "container-fluid fill">
+<div class = "row-fluid fill">
+<div class = "col-md-3 fill">
+<form action="" method="post">
+{% csrf_token %}
+	{{ form|as_bootstrap }}
+	<div class="form-actions">
+	     <button type="submit" class="btn btn-primary">Berekenen</button>
+	</div>
+</form>
+</div>
+
+{% if chart1 %}
+<div class="row">
+<div class="col-md-4"><div id="chart1"></div>
+<h3>Toelichting watergift</h3>
+	De gele lijn geeft de optimale watergift die nodig is voor het gewas uitgedrukt in mm.<br/>
+	De groene lijn geeft de beschikbare watergift uitgedrukt in mm.De mate waarin aan de optimale waterbehoefte wordt voorzien.
+</div>
+<div class="col-md-4"><div id="chart2"></div>
+<h3>Toelichting kosten</h3>
+	De gele lijn geeft de investeringskosten. Dit zijn de kosten die worden gemaakt in het eerste jaar en omvat de kosten voor aanleg en materiaal. Deze kosten worden uitgedrukt in &eacute;&eacute;n totaalbedrag voor het volledige systeem dat ‘turn-key’ wordt opgeleverd.
+	De groene lijn geeft de totale kosten uitgedrukt in &euro; per hectare, per jaar. Deze totale kosten omvatten de investeringskosten, onderhoudskosten en afschrijvingskosten over 30 jaar.  
+</div>
+</div>
+{% else %}
+<div class = "col-md-9 fill">
+<div id="map" class="fill"></div>
+<p><div id="locatie"></div></p>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock %}
