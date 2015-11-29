@@ -8,7 +8,7 @@ from berging.models import Scenario, Matrix, Gift, Scenario2
 from django.contrib import admin
 
 class MatrixAdmin(admin.ModelAdmin):
-    list_display = ('code','rijmin','rijmax','kolmin','kolmax')
+    list_display = ('code','factor', 'maxopbrengst', 'rijmin','rijmax','kolmin','kolmax')
     
     def save_model(self, request, obj, form, change):
         try:
@@ -17,8 +17,11 @@ class MatrixAdmin(admin.ModelAdmin):
         except:
             pass
         obj.save()
-        
+
+class GiftAdmin(admin.ModelAdmin):
+    list_display = ('__unicode__', 'gewas', 'grondsoort', 'gift')
+            
 admin.site.register(Scenario)
 admin.site.register(Scenario2)
-admin.site.register(Gift)
+admin.site.register(Gift, GiftAdmin)
 admin.site.register(Matrix,MatrixAdmin)
