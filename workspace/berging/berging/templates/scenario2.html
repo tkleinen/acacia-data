@@ -10,18 +10,27 @@ body, html {
 .error-msg {
   color: #a94442;
 }
-#chart {
-  height: 500px;
+.chart {
+  height: 400px;
 }
 .wrapper, .fill
 {
 	height: 100%;
 } 
-#map {
+.bigmap {
 	width: 95%;
 	height: 80%;
-/* 	margin: 64px; */
-/* 	padding: 64px; */
+}
+.smallmap {
+	width: 400px;
+	height: 400px;
+}
+#matrix {
+	float: right;
+	margin-right: 5%
+}
+#locatie {
+	float: left;
 }
 
 </style>
@@ -36,15 +45,31 @@ body, html {
 <script type="text/javascript">
 
 function updateSelection(sel) {
-	document.getElementById('id_grondsoort').value = sel.grondsoort;
-	document.getElementById('id_kwaliteit').value=sel.kwaliteit;
-	document.getElementById('id_kwel').value=sel.kwel;
-	document.getElementById('id_weerstand').value=sel.weerstand;
+	if (sel == null) {
+		document.getElementById('matrix').innerHTML='Geen gegevens';
+		document.getElementById('id_grondsoort').value = '';
+		document.getElementById('id_kwaliteit').value= '';
+		document.getElementById('id_kwel').value='';
+		document.getElementById('id_weerstand').value='';
+	}
+	else {		
+		var code = sel.grondsoort+sel.kwaliteit+sel.kwel+sel.weerstand;
+		document.getElementById('matrix').innerHTML = code;
+		document.getElementById('id_grondsoort').value = sel.grondsoort;
+		document.getElementById('id_kwaliteit').value=sel.kwaliteit;
+		document.getElementById('id_kwel').value=sel.kwel;
+		document.getElementById('id_weerstand').value=sel.weerstand;
+	}
 }
 
 function updateAddress(data) {
-	var address = data.results[0].formatted_address;
-	document.getElementById('locatie').innerHTML = address;	
+	if (data.status == "OK") {
+		var address = data.results[0].formatted_address;
+		document.getElementById('locatie').innerHTML = address;	
+	}
+	else {
+		document.getElementById('locatie').innerHTML = "Locatie onbekend";	
+	}
 }
 
 function fetchData(position) {
@@ -103,15 +128,24 @@ function initMap() {
 
 function initCharts() {
 	var options1 = {{chart1|safe}};
-// 	options1.xAxis.labels.formatter = function() { return this.value;};
-	$('#chart1').highcharts(options1);
-
-// 	var options2 = {{chart2|safe}};
-// 	options2.xAxis.labels.formatter = function() { return this.value;};
-// 	options2.yAxis[0].labels.formatter = function() { return this.value;};
-// 	options2.yAxis[1].labels.formatter = function() { return this.value;};
-	$('#chart2').highcharts(options1);
+	if (options1 != null) {
+	 	options1.xAxis.labels.formatter = function() { return this.value;};
+		$('#chart1').highcharts(options1);
+	}
 	
+ 	var options2 = {{chart2|safe}};
+	if (options2 != null) {
+ 		options2.xAxis.labels.formatter = function() { return this.value;};
+ 		options2.yAxis[0].labels.formatter = function() { return this.value;};
+		$('#chart2').highcharts(options2);
+	}
+	
+ 	var options3 = {{chart3|safe}};
+	if (options3 != null) {
+		options3.xAxis.labels.formatter = function() { return this.value;};
+ 		options3.yAxis[0].labels.formatter = function() { return this.value;};
+		$('#chart3').highcharts(options3);
+	}
 }
 
 function ToggleDisplay(idon,idoff) {
@@ -132,12 +166,21 @@ $(function() {
 	else {
 		ToggleDisplay("div_id_bassin","div_id_perceel");
 	}
-	{% if chart1 %} initCharts(); {% endif %}
-	initMap();
+	{% if chart1 %} 
+		initCharts();
+	{% else %}
+		initMap();
+	{% endif %}
 });
 
+function goBack() {
+	window.history.back();
+}
+
 </script>
-{% endblock %}
+{% endblock %}/* 	margin: 64px; */
+/* 	padding: 64px; */
+
 {% block content %}
 <div class = "container-fluid fill">
 <div class = "row-fluid fill">
@@ -149,25 +192,26 @@ $(function() {
 	     <button type="submit" class="btn btn-primary">Berekenen</button>
 	</div>
 </form>
+<!-- {% if chart1 %}<br/><button class="btn btn-primary" onclick="goBack();">Terug naar kaart</button>{% endif %} -->
+{% if chart1 %}<br/><a href="/scenario2" class="btn btn-primary">Naar kaart</a>{% endif %}
 </div>
 
 {% if chart1 %}
-<div class="row">
-<div class="col-md-4"><div id="chart1"></div>
-<h3>Toelichting watergift</h3>
-	De gele lijn geeft de optimale watergift die nodig is voor het gewas uitgedrukt in mm.<br/>
-	De groene lijn geeft de beschikbare watergift uitgedrukt in mm.De mate waarin aan de optimale waterbehoefte wordt voorzien.
+<div class="row-fluid">
+<div class="col-md-4"><div id="chart1" class="chart"></div><br/></div>
+<div class="col-md-4"><div id="chart2" class="chart"></div><br/></div>
 </div>
-<div class="col-md-4"><div id="chart2"></div>
-<h3>Toelichting kosten</h3>
-	De gele lijn geeft de investeringskosten. Dit zijn de kosten die worden gemaakt in het eerste jaar en omvat de kosten voor aanleg en materiaal. Deze kosten worden uitgedrukt in &eacute;&eacute;n totaalbedrag voor het volledige systeem dat ‘turn-key’ wordt opgeleverd.
-	De groene lijn geeft de totale kosten uitgedrukt in &euro; per hectare, per jaar. Deze totale kosten omvatten de investeringskosten, onderhoudskosten en afschrijvingskosten over 30 jaar.  
+<div class="row-fluid">
+<div class="col-md-4"><div id="chart3" class="chart"></div><br/></div>
+<div class="col-md-4"><div id="chart4" class="chart"></div>
+<br/>
 </div>
 </div>
 {% else %}
 <div class = "col-md-9 fill">
-<div id="map" class="fill"></div>
-<p><div id="locatie"></div></p>
+<div id="map" class="bigmap fill"></div>
+<div id="locatie"></div>
+<div id="matrix"></div>
 </div>
 {% endif %}
 </div>
