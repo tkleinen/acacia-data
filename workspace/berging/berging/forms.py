@@ -48,7 +48,7 @@ class ScenarioForm(forms.ModelForm):
 class Scenario2Form(forms.ModelForm):
     class Meta:
         model = Scenario2
-        fields = ['gewas', 'grondsoort', 'kwaliteit', 'kwel', 'weerstand', 'irrigatie', 'reken', 'perceel', 'bassin']
+        fields = ['gewas',  'irrigatie', 'grondsoort', 'kwaliteit', 'kwel', 'weerstand', 'reken', 'perceel', 'bassin']
         widgets = {'reken': RadioSelect(),}
         
     # django < 1.7
