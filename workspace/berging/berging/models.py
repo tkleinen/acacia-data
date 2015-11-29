@@ -52,23 +52,23 @@ class Gift(models.Model):
         return self.gewas+self.grondsoort
     
 class Scenario2(models.Model):
-    naam = models.CharField(max_length=100)
+    naam = models.CharField(max_length=100,default='scenario')
     gewas = models.CharField(max_length=1,choices=GEWAS,default='t',verbose_name='gewas')
-    grondsoort = models.CharField(max_length=1,choices=GROND,default='k',verbose_name='grondsoort')
+    grondsoort = models.CharField(max_length=1,choices=GROND,default='z',verbose_name='grondsoort')
     kwaliteit = models.CharField(max_length=1,choices=ZOUT,default='f',verbose_name='waterkwaliteit')
-    kwel=models.CharField(max_length=1,choices=KWEL,default='k',verbose_name='kwel of infiltratie')
+    kwel=models.CharField(max_length=1,choices=KWEL,default='i',verbose_name='kwel of infiltratie')
     weerstand=models.CharField(max_length=1,choices=WDEK,default='h',verbose_name='weerstand deklaag')
     irrigatie = models.CharField(max_length=1,choices=IRRI,default='d',verbose_name='methode van watergift')
     reken = models.CharField(max_length=1,choices=REKEN,default='o',verbose_name='berekeningsmethode')
-    perceel = models.FloatField(default=1, validators = [MinValueValidator(0.01), MaxValueValidator(100)], verbose_name='perceel', help_text = 'oppervlakte perceel (Ha)')
-    bassin = models.FloatField(default=0.1, validators = [MinValueValidator(0.001), MaxValueValidator(10)], verbose_name='bassin', help_text = 'oppervlakte bassin (Ha)')
+    perceel = models.FloatField(default=5, verbose_name='perceel', help_text = 'oppervlakte perceel (Ha)')
+    bassin = models.FloatField(default=5000, verbose_name='bassin', help_text = 'volume bassin (m3)')
     lon = models.FloatField(null=True,blank=True)
     lat = models.FloatField(null=True,blank=True)
     #adres = models.CharField(max_length=256,null=True,blank=True)
     user = models.ForeignKey(User,null=True,blank=True)
 
     def __unicode__(self):
-        return self.naam
+        return self.matrix_code()
 
     def matrix_code(self):
         ''' bepaal matrix code adhv gemaakte keuzes'''
@@ -81,10 +81,12 @@ class Matrix(models.Model):
     rijnaam = models.CharField(default = 'Oppervlakte perceel (Ha)', max_length=50)
     rijmin = models.FloatField(blank=True)
     rijmax = models.FloatField(blank=True)
-    kolomnaam = models.CharField(default = 'Oppervlakte bassin (m2)', max_length=50)
+    kolomnaam = models.CharField(default = 'Oppervlakte bassin (Ha)', max_length=50)
     kolmin = models.FloatField(blank=True)
     kolmax = models.FloatField(blank=True)
-
+    maxopbrengst = models.FloatField(verbose_name = 'maximum opbrengst', default = 0)
+    factor = models.FloatField(verbose_name = 'omrekenfactor', default = 0)
+    
     def get_dimensions(self, f=None):
         src = f or self.file.path
         df = pd.read_csv(src,index_col=0)
@@ -99,6 +101,12 @@ class Matrix(models.Model):
         
     def __unicode__(self):
         return self.code
+
+    @property
+    def data(self):
+        if not hasattr(self,'_data'):
+            self._data = pd.read_csv(self.file.path,index_col=0)
+        return self._data
 
     class Meta:
         verbose_name_plural = 'matrices'
