@@ -9,6 +9,7 @@ import pandas as pd
 
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.loader import render_to_string
+from django.template import RequestContext
 from django.http import HttpResponse
 from forms import ScenarioForm,Scenario2Form
 from models import Matrix, Gift, Scenario
@@ -30,6 +31,10 @@ def query(request):
     lon = float(request.GET.get('lon'))
     lat = float(request.GET.get('lat'))
 
+    # store in session
+    request.session['lon'] = lon
+    request.session['lat'] = lat
+    
     # shapefile is in RD coordinates, transform
     p = Point((lon,lat),srid=4326)
     p.transform(28992)
@@ -120,7 +125,7 @@ def waterchart(scenario):
     x = vraag.index.values.astype('f8')
     
     if scenario.reken == 'o':
-        x = x * 25000 # Ha -> m3
+        x = (x * 25000).astype('i8') # Ha -> m3
         options['xAxis']['title']['text'] = 'Volume bassin (m3)'
         options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
     else:
@@ -192,7 +197,7 @@ def opbrengstchart(scenario):
         'subtitle':{'text': subtitle},
         'xAxis': {'title': {'enabled': True},
                   'labels': {'formatter': None} }, # formatter wordt aangepast in template
-        'tooltip': {'valueSuffix': ' euro',
+        'tooltip': {'valueSuffix': ' euro/Ha',
                     'shared': True,
                     'valueDecimals': 0,
                     'crosshairs': [True,True],}, 
@@ -210,7 +215,7 @@ def opbrengstchart(scenario):
     x = opbrengst.index.values.astype('f8')
 
     if scenario.reken == 'o':
-        x = x * 25000 # Ha -> m3
+        x = (x * 25000).astype('i8') # Ha -> m3
         options['xAxis']['title']['text'] = 'Volume bassin (m3)'
         options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
     else:
@@ -218,8 +223,8 @@ def opbrengstchart(scenario):
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
 
     options['series'] = [
-                         {'name': 'Opbrengst','type': 'line','data': zip(x,opbrengst.values)},
-                         {'name': 'Nulsituatie', 'type': 'line', 'data': zip(x,nulopbrengst.values)}
+                         {'name': 'Zonder bassin', 'type': 'line', 'data': zip(x,nulopbrengst.values), 'dashStyle': 'Dot'},
+                         {'name': 'Met bassin','type': 'line','data': zip(x,opbrengst.values)},
                          ]
     return json.dumps(options)
 
@@ -244,13 +249,11 @@ def scenario2(request):
 #         else:
             form = Scenario2Form()
 
-    return render(request, 'scenario2.html', {
-            'form': form,
+    return render(request, 'scenario2.html', {'form': form,
             'chart1': chart1,
             'chart2': chart2,
-            'chart3': chart3,
-    })
-
+            'chart3': chart3},
+            context_instance = RequestContext(request))
 
 # OUDE WEBSITE HIERONDER
     

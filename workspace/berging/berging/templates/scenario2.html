@@ -1,6 +1,7 @@
 ﻿{% extends 'base.html' %}
 {% load staticfiles %}
 {% load bootstrap_tags %}
+{% load l10n %}
 {% block extrastyle %}
 <style>
 body, html {
@@ -92,9 +93,9 @@ function initMap() {
 	  draggableCursor: 'default'
     };
 	
-	var marker = null;
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
     var geocoder = new google.maps.Geocoder();
+    var marker = null;
 
     if (geocoder) {
 	   geocoder.geocode({ 'address': 'Noord-Holland' }, function (results, status) {
@@ -104,10 +105,31 @@ function initMap() {
 	   });
 	}
 
+    {% if request.session.lon %}
+    {% localize off %}
+    var pos = new google.maps.LatLng({{request.session.lat}}, {{request.session.lon}});
+    {% endlocalize %}
+	marker = new google.maps.Marker({
+		position: pos,
+		map: map,
+		draggable: true,
+	});
+  
+	fetchData(pos);
+	fetchAddress(pos);
+
+	google.maps.event.addListener(marker, 'dragend', function(e) {
+		  fetchData(e.latLng);
+		  fetchAddress(e.latLng);
+		});
+		
+    {% endif %}
+    
 	google.maps.event.addListener(map, "click", function(event) {
 
-		if(marker){
-			marker.setMap(null); marker = null;
+		if (marker) {
+			marker.setMap(null);
+			marker = null;
 		}
 		marker = new google.maps.Marker({
 			position: event.latLng,
@@ -117,12 +139,12 @@ function initMap() {
 	  
 		fetchData(event.latLng);
 		fetchAddress(event.latLng);
-			
+
 		google.maps.event.addListener(marker, 'dragend', function(e) {
 			  fetchData(e.latLng);
 			  fetchAddress(e.latLng);
 			});
- 	  
+	 
     });
 }
 
@@ -209,7 +231,8 @@ function goBack() {
 </div>
 {% else %}
 <div class = "col-md-9 fill">
-<div id="map" class="bigmap fill"></div>
+<div id="map" class="bigmap fill" title="Klik op de kaart om grondsoort, waterkwaliteit en hydrologisch systeem
+(kwel of infiltratie en weerstand deklaag) op te zoeken"></div>
 <div id="locatie"></div>
 <div id="matrix"></div>
 </div>
