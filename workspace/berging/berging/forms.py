@@ -67,15 +67,16 @@ class Scenario2Form(forms.ModelForm):
         if d['reken'] == 'o':
             grootte = d['perceel']
             if grootte > matrix.rijmax:
-                self.add_error('perceel','Maximum oppervlakte is %g Ha' % (matrix.rijmax / 10000))
+                self.add_error('perceel','Maximum oppervlakte is %g Ha' % matrix.rijmax)
             elif grootte < matrix.rijmin:
-                self.add_error('perceel','Minimum oppervlakte is %g Ha' % (matrix.rijmin / 10000))
+                self.add_error('perceel','Minimum oppervlakte is %g Ha' % matrix.rijmin)
         else:
             grootte = d['bassin']
+            grootte /= 25000 # m3 -> Ha
             if grootte > matrix.kolmax:
-                self.add_error('bassin','Maximum oppervlakte is %g m2' % matrix.kolmax)
+                self.add_error('bassin','Maximum volume is %g m3' % (matrix.kolmax * 25000))
             elif grootte < matrix.kolmin:
-                self.add_error('bassin','Minimum oppervlakte is %g m2' % matrix.kolmin)
+                self.add_error('bassin','Minimum volume is %g m3' % (matrix.kolmin * 25000))
             
         return d
     
