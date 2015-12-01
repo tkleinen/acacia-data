@@ -61,6 +61,7 @@ class Scenario2Form(forms.ModelForm):
         code = d['gewas']+d['irrigatie']+d['grondsoort']+d['kwaliteit']+d['weerstand']+d['kwel']
         try:
             matrix = Matrix.objects.get(code=code)
+            opbrengst_matrix = Matrix.objects.get(code='op'+code)
         except:
             raise forms.ValidationError('Geen berekeningsresultaten beschikbaar voor deze combinatie van invoergegevens',code='invalid')
         
