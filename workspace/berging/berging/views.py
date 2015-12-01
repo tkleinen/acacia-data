@@ -74,6 +74,10 @@ def getdata(scenario):
     gift = get_object_or_404(Gift,gewas=scenario.gewas,grondsoort=scenario.grondsoort)
     vraag = pd.Series(data=np.ones(tekort.shape[0])*gift.gift, index=tekort.index)
     
+    #beschiklbare waterhoeveelheid zonder bassin
+    nul = matrix1.data.iloc[0,0]
+    water0 = vraag - pd.Series(data=np.ones(vraag.shape[0]) * nul, index=vraag.index)
+    
     #verdamping: eact/epot
     code2 = 'op' + code1
     matrix2 = get_object_or_404(Matrix,code=code2)
@@ -86,12 +90,14 @@ def getdata(scenario):
     nul = matrix2.maxopbrengst - (1.0-matrix2.data.iloc[0,0]) * 100.0 * matrix2.factor
     nulopbrengst = pd.Series(data=np.ones(opbrengst.shape[0]) * nul, index=opbrengst.index)
 
+
     scenario.data = pd.DataFrame({
                                   'tekort': tekort, 
                                   'vraag':vraag, 
                                   'verdamping':verdamping, 
                                   'opbrengst': opbrengst, 
-                                  'nulopbrengst': nulopbrengst
+                                  'nulopbrengst': nulopbrengst,
+                                  'water0': water0
                                   })
     return scenario.data
 
@@ -102,7 +108,7 @@ def waterchart(scenario):
         subtitle = 'Oppervlakte perceel = %g Ha' % scenario.perceel
     options = {
         'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
-        'title': {'text': 'Waterbeschikbaarheid'},
+        'title': {'text': 'Watergift'},
         'subtitle':{'text': subtitle},
         'xAxis': {'title': {'enabled': True},
                   'labels': {'formatter': None} }, # formatter wordt aangepast in template
@@ -117,11 +123,15 @@ def waterchart(scenario):
         'credits': {'enabled': False},
         }
 
-    options['yAxis'].append({'alignTicks': False, 'title': {'text': 'mm'},})
+    options['yAxis'].append({'alignTicks': False, 'min': 0, 'title': {'text': 'mm'},})
     
     tekort = scenario.data['tekort']
     vraag = scenario.data['vraag']
-    beschikbaarheid = vraag - tekort
+    water0 = scenario.data['water0']
+
+    beschikbaarheid = vraag - tekort - water0
+    vraag = vraag - water0
+    
     x = vraag.index.values.astype('f8')
     
     if scenario.reken == 'o':
@@ -132,10 +142,16 @@ def waterchart(scenario):
         options['xAxis']['title']['text'] = 'Oppervlakte perceel (Ha)'
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
     
-    options['series'] = [{'name': 'Watervraag','type': 'line','data': zip(x,vraag.values), 'dashStyle': 'Dot'},
-                         {'name': 'Beschikbare waterhoeveelheid','type': 'line','data': zip(x,beschikbaarheid.values)},]
+    options['series'] = [#{'name': 'Zonder bassin', 'type': 'line', 'data': zip(x,water0.values),'dashStyle': 'Dot'},
+                         {'name': 'Watergift','type': 'line','data': zip(x,beschikbaarheid.values)},
+                         {'name': 'Watervraag','type': 'line','data': zip(x,vraag.values), 'dashStyle': 'Dot'},
+                         ]
     return json.dumps(options)
 
+def getkosten2(scenario):
+    irri = 'di' if scenario.irrigatie == 'p' else 'dr'
+    series = { c: getseries(scenario, get_object_or_404(Matrix,code= c + 'b' + irri)) for c in 'ijt'}
+    return pd.DataFrame(series)
     
 def kostenchart(scenario):
     
@@ -153,7 +169,7 @@ def kostenchart(scenario):
                     'shared': True,
                     'valueDecimals': 0,
                     'crosshairs': [True,True],}, 
-        'legend': {'enabled': False},
+        'legend': {'enabled': True},
         'yAxis': [],               
         'plotOptions': {'line': {'marker': {'enabled': False}}},            
         'credits': {'enabled': False},
@@ -162,7 +178,7 @@ def kostenchart(scenario):
     scenario.volume = scenario.bassin # Ha -> m3
     scenario.oppervlakte = scenario.perceel # in Ha
     
-    cost = getkosten(scenario) # van versie 1 website uit 2014
+    cost = getkosten2(scenario)
     x = cost.index.values.astype('f8')
     #inv = cost['i'].values
     #jaar = cost['j'].values
@@ -223,8 +239,8 @@ def opbrengstchart(scenario):
         options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
 
     options['series'] = [
-                         {'name': 'Zonder bassin', 'type': 'line', 'data': zip(x,nulopbrengst.values), 'dashStyle': 'Dot'},
                          {'name': 'Met bassin','type': 'line','data': zip(x,opbrengst.values)},
+                         {'name': 'Zonder bassin', 'type': 'line', 'data': zip(x,nulopbrengst.values), 'dashStyle': 'Dot'},
                          ]
     return json.dumps(options)
 
