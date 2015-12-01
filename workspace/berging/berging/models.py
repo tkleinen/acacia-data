@@ -37,7 +37,7 @@ GROND = (('k','klei'),('z','zand'),('v','veen'),)
 KWEL = (('k', 'kwel'), ('i', 'infiltratie'),)
 ZOUT=(('f', 'zoet'),('s','zout'))
 WDEK=(('h', 'hoog'),('l','laag'))
-IRRI=(('i', 'DI systeem'),('d','druppelbevloeiing'))
+IRRI=(('p', 'DI systeem'),('d','druppelbevloeiing'))
 REKEN = (('o','perceel'),('v','bassin'))
 
 class Gift(models.Model):
