@@ -4,17 +4,18 @@ Created on Jun 12, 2015
 @author: theo
 '''
 from django.views.generic import TemplateView, DetailView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import HttpResponse
 from django.views.generic.edit import UpdateView
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from .models import Waarnemer, Meetpunt, CartoDb
 
 import json
 import pandas as pd
 import locale
-from iom.models import AkvoFlow
+from iom.models import AkvoFlow, Waarneming
 
 def WaarnemingenToDict(request, pk):
     tz = timezone.get_current_timezone()
@@ -22,7 +23,16 @@ def WaarnemingenToDict(request, pk):
     
     mp = get_object_or_404(Meetpunt,pk=pk)
     waarnemingen = mp.waarneming_set.all()
-    dct = [{'date': w.datum, 'EC': w.waarde} for w in waarnemingen]
+
+    def diep(w):
+        if w.naam.endswith('ndiep'):
+            return 'ondiep'
+        elif w.naam.endswith('iep'):
+            return 'diep'
+        else:
+            return '&nbsp;'
+
+    dct = [{'date': w.datum, 'EC': w.waarde, 'diep': diep(w),'foto': '<a href="{f}"><img class="foto" src="{f}"/></a>'.format(f=w.foto_url) if w.foto_url else '-' } for w in waarnemingen]
     dct.sort(key=lambda x: x['date'])
     j = json.dumps(dct, default=lambda x: x.astimezone(tz).strftime('%c'))
     return HttpResponse(j, content_type='application/json')
@@ -74,6 +84,7 @@ class HomeView(ContextMixin,TemplateView):
         context['waarnemers'] = waarnemers
         context['meetpunten'] = meetpunten
         context['content'] = json.dumps(content)
+        context['laatste'] = Waarneming.objects.all().order_by('-datum')[0]
         context['maptype'] = 'ROADMAP'
         return context
 
@@ -84,6 +95,7 @@ class WaarnemerDetailView(ContextMixin,DetailView):
     def get_context_data(self, **kwargs):
         context = super(WaarnemerDetailView, self).get_context_data(**kwargs)
         waarnemer = self.get_object();
+        context['laatste'] = Waarneming.objects.all().order_by('-datum')[0]
         context['meetpunten'] = waarnemer.meetpunt_set.all()
         return context
 
@@ -103,12 +115,13 @@ class UploadPhotoView(UpdateView):
     fields = ['photo',]
     template_name_suffix = '_photo_form'
 
-from iom.management.commands import import_akvo
+from .tasks import import_Akvo
 
-def update_datasource(pk, download = True, replace = False, calc = False):
-    command = import_akvo.Command()
-    command.execute(pk=pk,down=download,replace=replace,calc=calc)
-
+@login_required
 def importAkvo(request):
-    '''import data from akvo flow'''
-    return 'Done'
+    nextpage = request.GET['next']
+    import_Akvo(request.user.username)
+    return redirect(nextpage)
+
+def phones(request):
+    pass

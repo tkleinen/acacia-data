@@ -10,6 +10,7 @@ from acacia.data.models import MeetLocatie, Chart
 
 # This is an auto-generated Django model module created by ogrinspect.
 from django.contrib.gis.db import models as geo
+from _ast import alias
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
@@ -64,8 +65,10 @@ class Waarnemer(models.Model):
     telefoon = models.CharField(max_length=16, validators=[phone_regex], blank=True)
     email=models.EmailField(blank=True)
     organisatie = models.ForeignKey(Organisatie, blank=True, null=True)
-    
-    akvoname = models.CharField(max_length=40,verbose_name='Akvo-Id',blank=True,null=True)
+
+    @property
+    def alias(self):
+        return ','.join([a.alias for a in self.alias_set.all()])
     
     def get_absolute_url(self):
         return reverse('waarnemer-detail', args=[self.id])
@@ -80,7 +83,7 @@ class Waarnemer(models.Model):
             s = self.initialen + ' '
         if self.tussenvoegsel and len(self.tussenvoegsel) > 0:
             s += self.tussenvoegsel + ' '
-        return '%s %s' % (s, self.achternaam)
+        return s + self.achternaam
     
     def aantal_meetpunten(self):
         return self.meetpunt_set.count()
@@ -88,23 +91,32 @@ class Waarnemer(models.Model):
     def aantal_waarnemingen(self):
         w = sum([m.aantal_waarnemingen() for m in self.meetpunt_set.all()])
         return w
+    
+class Alias(models.Model):        
+    ''' alias voor Waarnemer (wordt gebruikt in Akvo Flow) '''
+    alias = models.CharField(max_length=50)
+    waarnemer = models.ForeignKey(Waarnemer)
+    
+    def __unicode__(self):
+        return self.alias
+    
+    class Meta:
+        verbose_name_plural = 'Aliassen'
         
 class Meetpunt(MeetLocatie):
     # Akvo flow meetpunt gegevens
     identifier=models.CharField(max_length=50)
+    displayname = models.CharField(max_length=50)
     submitter=models.CharField(max_length=50)
     device=models.CharField(max_length=50)
     photo_url=models.CharField(max_length=200,null=True,blank=True)
-    
-    # location -> Meetlocatie.description?
-    # Meetpunt ID -> Meetlocatie.name
-    # Geolocatie -> MeetLocatie.location (Point)
-    # photo -> MeetLocatie.image
-
     waarnemer=models.ForeignKey(Waarnemer)
     chart_thumbnail = models.ImageField(upload_to='thumbnails/charts', blank=True, null=True, verbose_name='voorbeeld', help_text='Grafiek in popup op cartodb kaartje')
     chart = models.ForeignKey(Chart, verbose_name='grafiek', help_text='Interactive grafiek',null=True,blank=True)
     
+    def __unicode__(self):
+        return self.name
+
     def chart_url(self):
         try:
             return self.chart.get_dash_url()
@@ -145,7 +157,8 @@ class AkvoFlow(models.Model):
     storage = models.CharField(max_length=100) 
     regform = models.CharField(max_length=100,blank=True, null=True, verbose_name = 'Registratieformulier',help_text='Survey id van registratieformulier')
     monforms = models.CharField(max_length=100,blank=True, null=True, verbose_name = 'Monitoringformulier',help_text='Survey id van monitoringformulier')
-    
+    last_update = models.DateTimeField(null=True)
+
     class Meta:
         verbose_name = 'Akvoflow configuratie'        
         
@@ -173,3 +186,13 @@ class CartoDb(models.Model):
         data = urllib.urlencode({'q': sql, 'api_key': self.key})
         request = urllib2.Request(url=self.sql_url, data=data)
         return urllib2.urlopen(request)
+
+class Phone(models.Model):
+    imei = models.CharField(max_length=20)
+    phone_number = models.CharField(max_length=20)
+    device_id = models.CharField(max_length=20)
+    last_contact = models.DateTimeField(null=True)
+    latitude = models.FloatField(null=True)
+    longitude = models.FloatField(null=True)
+    accuracy = models.IntegerField(null=True)
+    

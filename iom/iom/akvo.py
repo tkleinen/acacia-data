@@ -28,15 +28,40 @@ import urllib
 import urllib2
 import json
 import csv
+import platform
 
 from datetime import datetime
+from pytz import utc
+from time import mktime
 from hashlib import sha1
+
+windows = platform.system() == 'Windows'
 
 def unix_timestamp():
     now = datetime.utcnow()
     return calendar.timegm(now.timetuple())
 
+def as_timestamp(dt):
+    ''' return utc timestamp for dt '''
+    if dt is None:
+        return None
+    if dt.tzinfo is None:
+        dt = utc.localize(dt)
+    return int(mktime(dt.utctimetuple())*1000)
+
+def as_datetime(timestamp,timezone=None):
+    ''' convert unix timestamp to datetime with timezone '''
+    return datetime.fromtimestamp(timestamp,timezone) if timestamp else None
+
+def utf8(d):
+    ''' encode dict or list as utf-8 (needed for windows) '''
+    if isinstance(d,list):
+        return [unicode(a).encode('utf-8') for a in d]
+    else:
+        return {unicode(k).encode('utf-8'):unicode(v).encode('utf-8') for k,v in d.items()}
+
 class FlowAPI:
+
 
     def __init__(self,instance,key,secret):
         self.key=str(key)
@@ -65,9 +90,18 @@ class FlowAPI:
         timestamp, base64_signature = self.signature(path)
         auth_header = "{}:{}".format(self.key, base64_signature)
         request = urllib2.Request(url, headers={"Date": timestamp, "Authorization": auth_header})
-        contents = urllib2.urlopen(request).read()
-        contents = json.loads(contents)
-        return contents.get(key,contents) if key else contents
+        for i in range(4):
+            try:
+                contents = urllib2.urlopen(request).read()
+                contents = json.loads(contents)
+                return contents.get(key,contents) if key else contents
+            except urllib2.URLError as e:
+                if hasattr(e,'code') and e.code == 400:  # bad request
+                    raise e
+                if i == 3: # Too many tries
+                    print '\n{error}, Giving up...'.format(error=e)
+                    raise e
+                print '\n{error}, Trying again...'.format(error=e)
 
     def base_url(self):
         return self.instance + self.api
@@ -129,13 +163,19 @@ class FlowAPI:
         response = self.get_response(url)
         return (response['survey_instances'],response['meta'])
 
-    def get_registration_instances(self, surveyId, key='surveyedLocaleIdentifier'):
+    def get_registration_instances(self, surveyId, key='surveyedLocaleIdentifier', beginDate=None, endDate = None):
         '''Retrieve dict of survey instances, indexed by key for use as lookup table'''
         instances = {}
-        reg, meta = self.get_survey_instances(surveyId=surveyId)
+        kwargs = {'surveyId': surveyId }
+        if beginDate:
+            kwargs['beginDate'] = beginDate
+        if endDate:
+            kwargs['endDate'] = endDate
+        reg, meta = self.get_survey_instances(**kwargs)
         while reg:
             instances.update({r[key]: r for r in reg})
-            reg, meta = self.get_survey_instances(surveyId=surveyId,since=meta['since'])
+            kwargs['since'] = meta['since']
+            reg, meta = self.get_survey_instances(**kwargs)
         return instances
 
     def get_registration_instances_with_answers(self, surveyId, key='surveyedLocaleIdentifier'):
@@ -167,10 +207,16 @@ class FlowAPI:
             url = self.format_url('question_groups')
         return self.get_response(url,'question_groups')
 
+    def datefilter(self,answers):
+        for a in answers:
+            if a['type'] == 'DATE':
+                a['value'] =  datetime.utcfromtimestamp(int(a['value'])/1000)
+        return answers
+    
     def get_answers(self, survey_instance_id):
         '''Retrieve answers for a survey instance'''
         url = self.format_url('question_answers?surveyInstanceId={id}'.format(id=survey_instance_id))
-        return self.get_response(url,'question_answers')
+        return self.datefilter(self.get_response(url,'question_answers'))
     
     def get_answer(self, answers, **kwargs):
         key,value = kwargs.popitem()
@@ -234,9 +280,9 @@ class FlowAPI:
                         row.update(fields)
                 try:
                     # convert unix timestamp to human readable form
-                    ts = row['date']
-                    dt = datetime.utcfromtimestamp(ts/1000.0)
-                    row['date'] = dt.isoformat(' ')#dt.strftime('%c')
+                    row['date'] = datetime.utcfromtimestamp(int(row['date'])/1000)
+                    if windows:
+                        row = utf8(row)
                     writer.writerow(row)
                 except Exception as e:
                     # some error occurred while writing the row
@@ -244,3 +290,17 @@ class FlowAPI:
 
             # get next bunch of survey instances 
             instances,meta = self.get_survey_instances(surveyId=surveyId,since=meta['since'])
+
+KEY=r'B3+dye342B4HpLuJ+Ked3GCyjjTVA5/4fv1ZT0SEKi0='
+SECRET=r'fBA5XsXAtSXzbOs4acpg5l2S+ptPPZhiKKzMSwYTfqQ='
+INSTANCE=r'http://acacia.akvoflow.org/'
+
+if __name__ == '__main__':
+    now1 = datetime.now()
+    tsnow1 = as_timestamp(now1)
+    tsnow2 = unix_timestamp()
+    now2 = as_datetime(tsnow2)
+    
+    api = FlowAPI(instance=INSTANCE, key=KEY, secret=SECRET)
+    devs = api.get_devices()
+    print devs

@@ -64,7 +64,7 @@
 	            <li><a href="/accounts/password/change">Wachtwoord veranderen</a></li>
 	          </ul>
 	        </li>
-	        <li><a href="/admin/iom/{% block admin_url %}{% endblock admin_url %}" title="Ga naar de beheerpagina"><img class="barbut navbar-brand" src="{% static "img/beheer.png" %}"></img></a></li>
+	        <li><a href="/admin/iom/{% block admin_url %}{% endblock admin_url %}" title="Ga naar de beheerpagina">Beheer</a></li>
           	{% else %}
 	        <li><a href="/accounts/login">Inloggen</a></li>
           	{% endif %}
@@ -74,7 +74,7 @@
 	          <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="{{akvo.instance}}" title="Ga naar het Acacia dashboard op Akvoflow">Website</a></li>
-	            <li><a href="" title="Nieuwe meetwaarden ophalen" >Acualiseren</a></li>
+	            <li><a href="/akvo?next=/home" title="Nieuwe meetwaarden ophalen" >Acualiseren</a></li>
 	          </ul>
 			</li>
 			{% endif %}

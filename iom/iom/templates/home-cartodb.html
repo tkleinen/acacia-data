@@ -9,8 +9,9 @@
 <style>
 body, html {height: 100%;}
 .fullheight {height: 100%;}
+.fullwidth {width: 100%;}
 .wrapper {height: 100%;}
-.scroll {overflow-y: auto;}
+.scroll {overflow-x: hidden; overflow-y: auto;}
 #map {width: 100%; height: 100%; padding-bottom: 12px;}
 .chart-ec {
 	width: 380px;
@@ -20,8 +21,11 @@ body, html {height: 100%;}
 	min-height: 200px;
 }
 .persona {
-height: 24px;
-padding-right: 12px;
+	height: 24px;
+	padding-right: 12px;
+}
+.update {
+	margin-top: -14px;
 }
 </style>
 {% endblock extrastyle %}
@@ -44,7 +48,7 @@ window.onload = function() {
 {% block content %}
 <div class = "container-fluid fullheight">
 <div class = "row-fluid fullheight">
-<div class = "col-md-9 fullheight"><div id="map"></div></div>
+<div class = "col-md-9 fullheight"><div id="map"></div><div class="update text-muted"><small>Geactualiseerd op {{akvo.last_update}}. Laatste waarneming door {{laatste.waarnemer}} op {{laatste.datum}}<br/></small></div></div>
 <div class = "col-md-3">
 {% block list %}
 <div id="list" class = "list-group scroll">
@@ -54,7 +58,7 @@ window.onload = function() {
 <!-- <span class="badge" title='Aantal waarnemingen'>{{w.waarnemingen|defaultif0:""}}</span> -->
 <span class = "badge" title='Aantal waarnemingen'>{{w.aantal_waarnemingen|defaultif0:""}}</span> 
 <br/>
-<div class='text-muted'><small>{{w.organisatie}}</small></div>
+<div class='text-muted'><small>{{w.organisatie|default:"&nbsp;"}}</small></div>
 </a>
 {% endfor %}
 </div>

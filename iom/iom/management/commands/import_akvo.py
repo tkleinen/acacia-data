@@ -8,19 +8,26 @@ from django.contrib.auth.models import User
 
 from optparse import make_option
 from django.contrib.gis.geos import Point
-import pytz,datetime, time
+import os,pytz,datetime, time
 import logging
 
 from acacia.data.models import ProjectLocatie
 from iom import util
-from iom.akvo import FlowAPI
+from iom.akvo import FlowAPI, as_timestamp
 from iom.models import AkvoFlow, CartoDb, Meetpunt, Waarnemer
 
 logger = logging.getLogger('akvo')
 
-def importAkvoRegistration(api,surveyId,projectlocatie,user):
+def importAkvoRegistration(api,akvo,projectlocatie,user):
+    surveyId = akvo.regform
     meetpunten=set()
-    for key,instance in api.get_registration_instances(surveyId).items():
+    num_meetpunten = 0
+
+    # TODO: alleen nieuwe punten ophalen
+    #lastupdate = as_timestamp(akvo.last_update)
+        
+    instances = api.get_registration_instances(surveyId).items()
+    for key,instance in instances:
         identifier=instance['surveyedLocaleIdentifier']
         locale = instance['surveyedLocaleDisplayName']
         submitter = instance['submitterName']
@@ -31,6 +38,18 @@ def importAkvoRegistration(api,surveyId,projectlocatie,user):
         meetid = api.get_answer(answers,questionID='6040925')
         foto = api.get_answer(answers,questionID='8070919')
         geoloc = api.get_answer(answers,questionID='9070917')
+
+        if not submitter or device=='IMPORTER':
+            # skip imported data for now
+            continue
+            # try to find out submitter from Waarnemer
+            try:
+                submitter = api.get_answer(answers, questionText='Waarnemer')
+            except:
+                submitter = None
+            if not submitter:
+                logger.warning('{locale} skipped: data has been imported into AkvoFlow'.format(locale=locale))
+                continue
         try:
             lat,lon,elev,code = geoloc.split('|')
             location = Point(float(lon),float(lat),srid=4326)
@@ -42,7 +61,11 @@ def importAkvoRegistration(api,surveyId,projectlocatie,user):
         waarnemer,created = Waarnemer.objects.get_or_create(akvoname=submitter,defaults={'achternaam':submitter})
         if created:
             logger.info('Waarnemer {name} aangemaakt'.format(name=submitter))
-            
+
+        # move reference to photo from local storage (phone) to amazon storage
+        if foto:
+            foto = os.path.join(akvo.storage,os.path.basename(foto))
+
         meetpunt, created = waarnemer.meetpunt_set.get_or_create(identifier=identifier, defaults={
             'name': meetid or locale, 
             'projectlocatie': projectlocatie, 
@@ -52,10 +75,13 @@ def importAkvoRegistration(api,surveyId,projectlocatie,user):
             'description': 'imported from {url}'.format(url=api.instance)})
         if created:
             logger.info('Meetpunt {locatie} aangemaakt'.format(locatie=meetpunt.name))
+            num_meetpunten += 1
         
         ec = api.get_answer(answers,questionID='3020916')
         diep = api.get_answer(answers,questionID='6060916')
+        # TODO: diep kan hier ook 'niet van toepassing' zijn
 
+        # TODO: alleen waarnemingen vervangen als waarde anders is!
         waarnemingen = meetpunt.waarneming_set.filter(naam='EC_'+diep,datum=date)
         if waarnemingen.exists():
             logger.warning('EC waarnemingen worden vervangen voor {locatie}, datum={date}'.format(locatie=meetpunt.name,date=date)) 
@@ -65,11 +91,19 @@ def importAkvoRegistration(api,surveyId,projectlocatie,user):
         
         meetpunten.add(meetpunt)
         
+    logger.info('Aantal nieuwe meetpunten: {punt}'.format(punt=num_meetpunten))
+
     return meetpunten
    
-def importAkvoMonitoring(api,surveys):
+def importAkvoMonitoring(api,akvo):
     meetpunten = set()
-    for surveyId in surveys:
+    num_waarnemingen = 0
+    num_replaced = 0
+
+    # TODO: alleen nieuwe punten ophalen
+    #beginDate = as_timestamp(akvo.last_update)
+    
+    for surveyId in [f.strip() for f in akvo.monforms.split(',')]:
         survey = api.get_survey(surveyId)
         instances,meta = api.get_survey_instances(surveyId=surveyId)
         while instances:
@@ -93,18 +127,33 @@ def importAkvoMonitoring(api,surveys):
 
                 answers = api.get_answers(instance['keyId'])
                 ec=api.get_answer(answers,questionID='2060924')
-                diep=api.get_answer(answers,questionID='7080929')
                 foto=api.get_answer(answers,questionID='5040929')
-
+                diep=api.get_answer(answers,questionID='7080929')
+                # TODO: diep kan hier ook 'niet van toepassing' zijn
+                
+                # move reference to photo from local storage (phone) to amazon storage
+                if foto:
+                    foto = os.path.join(akvo.storage,os.path.basename(foto))
+        
+                if foto and not meetpunt.photo_url:
+                    # update meetpunt along the way..
+                    meetpunt.photo_url = foto
+                    meetpunt.save(update_fields=['photo_url'])
+                     
+                # TODO: alleen vervangen als waarde anders is!
                 waarnemingen = meetpunt.waarneming_set.filter(naam='EC_'+diep,datum=date)
                 if waarnemingen.exists():
                     logger.warning('EC waarnemingen worden vervangen voor {locatie}, datum={date}'.format(locatie=meetpunt.name,date=date)) 
                     waarnemingen.delete()
+                    num_replaced += 1
+                else:
+                    num_waarnemingen += 1
                 meetpunt.waarneming_set.create(naam='EC_'+diep, waarnemer=waarnemer, datum=date, waarde=ec, device=device, foto_url=foto, opmerking='', eenheid='uS/cm' )
                 logger.debug('EC_{diep}, {date}, EC={ec}'.format(diep=diep, date=date, ec=ec))
                 meetpunten.add(meetpunt)
 
             instances,meta = api.get_survey_instances(surveyId=surveyId, since=meta['since'])
+    logger.info('Aantal nieuwe metingen: {meet}'.format(meet=num_waarnemingen))
     return meetpunten
 
 def updateSeries(mps, user):    
@@ -134,7 +183,6 @@ def updateSeries(mps, user):
         util.maak_meetpunt_grafiek(mp, user)
         
 def updateCartodb(cartodb, mps):
-    #cartodb.runsql('DELETE FROM waarnemingen')
     for m in mps:
         p = m.location
         p.transform(4326)
@@ -149,8 +197,6 @@ def updateCartodb(cartodb, mps):
             ec = None
             date = None
             diep = ''
-#         series = m.get_series('EC')
-#         ec = None if series is None else series.laatste()
         if ec is None or date is None:
             date = 'NULL'
             ec = 'NULL'
@@ -159,13 +205,13 @@ def updateCartodb(cartodb, mps):
 
         url = m.chart_thumbnail.name
         url = 'NULL' if url is None else "'{url}'".format(url=url)
-        s = "(ST_SetSRID(ST_Point({x},{y}),4326), {diep}, {charturl}, '{sampleid}', '{waarnemer}', to_timestamp({date}), {ec})".format(x=p.x,y=p.y,diep=diep,charturl=url,sampleid=m.name,waarnemer=unicode(m.waarnemer),ec=ec,date=date)
+        s = "(ST_SetSRID(ST_Point({x},{y}),4326), {diep}, {charturl}, '{meetpunt}', '{waarnemer}', to_timestamp({date}), {ec})".format(x=p.x,y=p.y,diep=diep,charturl=url,meetpunt=m.name,waarnemer=unicode(m.waarnemer),ec=ec,date=date)
         values = 'VALUES ' + s
         
-        sql = "DELETE FROM waarnemingen WHERE waarnemer='{waarnemer}' AND sampleid='{sampleid}'".format(waarnemer=m.waarnemer.id, sampleid=m.name)
+        sql = "DELETE FROM waarnemingen WHERE waarnemer='{waarnemer}' AND meetpunt='{meetpunt}'".format(waarnemer=unicode(m.waarnemer), meetpunt=m.name)
         cartodb.runsql(sql)
 
-        sql = 'INSERT INTO waarnemingen (the_geom,diepondiep,charturl,sampleid,waarnemer,datum,ec) ' + values
+        sql = 'INSERT INTO waarnemingen (the_geom,diepondiep,charturl,meetpunt,waarnemer,datum,ec) ' + values
         cartodb.runsql(sql)
     
 class Command(BaseCommand):
@@ -205,11 +251,10 @@ class Command(BaseCommand):
 
         try:
             logger.info('Meetpuntgegevens ophalen')
-            mp = importAkvoRegistration(api, akvo.regform, projectlocatie=project,user=user)
+            mp = importAkvoRegistration(api, akvo, projectlocatie=project,user=user)
         
             logger.info('Waarnemingen ophalen')
-            surveys = [f.strip() for f in akvo.monforms.split(',')]
-            mp.update(importAkvoMonitoring(api, surveys))
+            mp.update(importAkvoMonitoring(api, akvo))
             
             logger.info('Grafieken aanpassen')
             updateSeries(mp, user)
@@ -218,4 +263,6 @@ class Command(BaseCommand):
             updateCartodb(cartodb, mp)        
         except Exception as e:
             logger.exception('Probleem met verwerken nieuwe EC metingen: %s',e)
+        finally:
+            pass
 
