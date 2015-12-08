@@ -74,7 +74,7 @@ update_cdb_waarnemers.short_description = 'cartodb en tijdreeksen actualiseren v
 class MeetpuntAdmin(admin.ModelAdmin):
 #class MeetpuntAdmin(nested_admin.NestedAdmin):
     actions = [maak_grafiek,update_series,update_cdb_meetpunten]
-    list_display = ('name', 'waarnemer', 'displayname', 'description', 'aantal_waarnemingen')
+    list_display = ('name', 'waarnemer', 'displayname', 'description', 'aantal_waarnemingen', 'photo')
     list_filter = ('waarnemer', )
     inlines = [WaarnemingInline,]
     search_fields = ('name', 'waarnemer__achternaam', )
@@ -141,5 +141,5 @@ class CartodbAdmin(admin.ModelAdmin):
 
 @admin.register(Waarneming)
 class WaarnemingAdmin(admin.ModelAdmin):
-    list_display = ('naam', 'datum', 'waarnemer', 'locatie', 'device','waarde', 'eenheid')
+    list_display = ('naam', 'datum', 'waarnemer', 'locatie', 'device','waarde', 'eenheid', 'photo')
     list_filter = ('naam', 'waarnemer', 'locatie', 'device', 'datum' )

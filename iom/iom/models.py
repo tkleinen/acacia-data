@@ -132,6 +132,10 @@ class Meetpunt(MeetLocatie):
 
     def aantal_waarnemingen(self):
         return self.waarneming_set.count()
+
+    def photo(self):
+        return '<a href="{url}"><img src="{url}" height="60px"/></a>'.format(url=self.photo_url) if self.photo_url else ''
+    photo.allow_tags=True
     
 class Waarneming(models.Model):
     naam = models.CharField(max_length=40)
@@ -143,6 +147,10 @@ class Waarneming(models.Model):
     waarde = models.FloatField()
     foto_url = models.CharField(max_length=200,blank=True,null=True)
     opmerking = models.TextField(blank=True,null=True)
+
+    def photo(self):
+        return '<a href="{url}"><img src="{url}" height="60px"/></a>'.format(url=self.foto_url) if self.foto_url else ''
+    photo.allow_tags=True
 
     class Meta:
         verbose_name_plural = 'Waarnemingen'
