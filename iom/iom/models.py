@@ -123,6 +123,10 @@ class Meetpunt(MeetLocatie):
         except:
             return '#'
         
+    def latlng(self):
+        p = self.latlon()
+        return [p.y,p.x]
+    
     class Meta:
         verbose_name_plural = 'Meetpunten'
                 
