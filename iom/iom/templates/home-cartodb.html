@@ -12,7 +12,7 @@ body, html {height: 100%;}
 .fullwidth {width: 100%;}
 .wrapper {height: 100%;}
 .scroll {overflow-x: hidden; overflow-y: auto;}
-#map {width: 100%; height: 100%; padding-bottom: 12px;}
+#map {width: 100%; height: 100%; padding-bottom: 16px;}
 .chart-ec {
 	width: 380px;
 	height: 120px;
@@ -25,7 +25,7 @@ body, html {height: 100%;}
 	padding-right: 12px;
 }
 .update {
-	margin-top: -14px;
+ 	margin-top: -16px;
 }
 </style>
 {% endblock extrastyle %}
@@ -34,9 +34,11 @@ body, html {height: 100%;}
 {% localize off %}
 <script src="http://libs.cartocdn.com/cartodb.js/v3/3.14/cartodb.js"></script>
 <script>
+var theMap = null;
 window.onload = function() {
   cartodb.createVis('map', '{{cartodb.viz}}')
   	.done(function(vis, layers) {
+  		theMap = vis.getNativeMap();
   		{% block createdone %}	  		
   		{% endblock createdone %}	  		
   	});
@@ -48,7 +50,13 @@ window.onload = function() {
 {% block content %}
 <div class = "container-fluid fullheight">
 <div class = "row-fluid fullheight">
-<div class = "col-md-9 fullheight"><div id="map"></div><div class="update text-muted"><small>Geactualiseerd op {{akvo.last_update}}. Laatste waarneming door {{laatste.waarnemer}} op {{laatste.datum}}<br/></small></div></div>
+<div class = "col-md-9 fullheight">
+ <div class= "row fullheight"><div class="col-md-12 fullheight"><div id="map"></div></div></div>
+ <div class= "row"><div class="col-md-12">
+ <div class="update text-muted"><small>Geactualiseerd op {{akvo.last_update}}. Laatste waarneming door {{laatste.waarnemer}} op {{laatste.datum}}</small></div>
+ </div>
+ </div>
+</div>
 <div class = "col-md-3">
 {% block list %}
 <div id="list" class = "list-group scroll">
