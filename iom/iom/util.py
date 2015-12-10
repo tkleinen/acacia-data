@@ -194,14 +194,4 @@ def exportCartodb(cartodb, mps, table):
             sql = 'INSERT INTO {table} (the_geom,diepondiep,charturl,meetpunt,waarnemer,datum,ec) VALUES '.format(table=table) + values
             cartodb.runsql(sql)
         
-from PIL import Image
-from PIL.ExifTags import TAGS
- 
-def get_exif(fn):
-    ret = {}
-    i = Image.open(fn)
-    info = i._getexif()
-    for tag, value in info.items():
-        decoded = TAGS.get(tag, tag)
-        ret[decoded] = value
-    return ret
+
