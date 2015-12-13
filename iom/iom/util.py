@@ -125,12 +125,15 @@ def updateSeries(mps, user):
     for mp in mps:
         maak_meetpunt_grafiek(mp, user)
 
-
 def maak_naam(parameter,diep):
     if diep and not diep.endswith('iep'):
         diep = None
     return parameter + '_' + diep if diep else parameter
         
+def escape(string):
+    ''' double single quotes '''
+    return string.replace("'", "''")
+
 def updateCartodb(cartodb, mps):
     for m in mps:
         p = m.location
@@ -154,12 +157,13 @@ def updateCartodb(cartodb, mps):
 
         url = m.chart_thumbnail.name
         url = 'NULL' if url is None else "'{url}'".format(url=url)
-        s = "(ST_SetSRID(ST_Point({x},{y}),4326), {diep}, {charturl}, '{meetpunt}', '{waarnemer}', to_timestamp({date}), {ec})".format(x=p.x,y=p.y,diep=diep,charturl=url,meetpunt=m.name,waarnemer=unicode(m.waarnemer),ec=ec,date=date)
+        s = "(ST_SetSRID(ST_Point({x},{y}),4326), {diep}, {charturl}, '{meetpunt}', '{waarnemer}', to_timestamp({date}), {ec})".format(x=p.x,y=p.y,diep=diep,charturl=url,meetpunt=escape(m.name),waarnemer=unicode(m.waarnemer),ec=ec,date=date)
         values = 'VALUES ' + s
         
-        sql = "DELETE FROM waarnemingen WHERE waarnemer='{waarnemer}' AND meetpunt='{meetpunt}'".format(waarnemer=unicode(m.waarnemer), meetpunt=m.name)
+        logger.debug('Actualiseren meetpunt {meetpunt}, waarnemer {waarnemer}'.format(meetpunt=m,waarnemer=m.waarnemer))
+        sql = "DELETE FROM waarnemingen WHERE waarnemer='{waarnemer}' AND meetpunt='{meetpunt}'".format(waarnemer=unicode(m.waarnemer), meetpunt=escape(m.name))
         cartodb.runsql(sql)
-
+        
         sql = 'INSERT INTO waarnemingen (the_geom,diepondiep,charturl,meetpunt,waarnemer,datum,ec) ' + values
         cartodb.runsql(sql)
 
@@ -189,6 +193,7 @@ def exportCartodb(cartodb, mps, table):
             values += s
             
         if values:
+            logger.debug('Actualiseren meetpunt {meetpunt}, waarnemer {waarnemer}'.format(meetpunt=m,waarnemer=m.waarnemer))
             sql = "DELETE FROM {table} WHERE waarnemer='{waarnemer}' AND meetpunt='{meetpunt}'".format(table=table, waarnemer=unicode(m.waarnemer), meetpunt=m.name)
             cartodb.runsql(sql)
             sql = 'INSERT INTO {table} (the_geom,diepondiep,charturl,meetpunt,waarnemer,datum,ec) VALUES '.format(table=table) + values
