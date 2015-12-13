@@ -92,6 +92,14 @@ class Waarnemer(models.Model):
         w = sum([m.aantal_waarnemingen() for m in self.meetpunt_set.all()])
         return w
     
+    def laatste_waarneming(self):
+        try:
+            laatste = [m.laatste_waarneming() for m in self.meetpunt_set.all() if m]
+            laatste.sort(key = lambda x: x.datum)
+            return laatste[-1]
+        except:
+            return None
+
 class Alias(models.Model):        
     ''' alias voor Waarnemer (wordt gebruikt in Akvo Flow) '''
     alias = models.CharField(max_length=50)
@@ -110,6 +118,7 @@ class Meetpunt(MeetLocatie):
     submitter=models.CharField(max_length=50)
     device=models.CharField(max_length=50)
     photo_url=models.CharField(max_length=200,null=True,blank=True)
+    #photo_orient = models.IntegerField(default=1) # exif orientation
     waarnemer=models.ForeignKey(Waarnemer)
     chart_thumbnail = models.ImageField(upload_to='thumbnails/charts', blank=True, null=True, verbose_name='voorbeeld', help_text='Grafiek in popup op cartodb kaartje')
     chart = models.ForeignKey(Chart, verbose_name='grafiek', help_text='Interactive grafiek',null=True,blank=True)
@@ -136,7 +145,14 @@ class Meetpunt(MeetLocatie):
 
     def aantal_waarnemingen(self):
         return self.waarneming_set.count()
-
+    
+    def laatste_waarneming(self):
+        try:
+            waarnemingen = self.waarneming_set.all().order_by('-datum')
+            return waarnemingen[0]
+        except:
+            return None
+        
     def photo(self):
         return '<a href="{url}"><img src="{url}" height="60px"/></a>'.format(url=self.photo_url) if self.photo_url else ''
     photo.allow_tags=True
@@ -150,6 +166,7 @@ class Waarneming(models.Model):
     eenheid = models.CharField(max_length=20)
     waarde = models.FloatField()
     foto_url = models.CharField(max_length=200,blank=True,null=True)
+    #foto_orient = models.IntegerField(default=1) # exif orientation
     opmerking = models.TextField(blank=True,null=True)
 
     def photo(self):
