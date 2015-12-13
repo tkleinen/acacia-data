@@ -105,6 +105,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+PHOTO_URL = os.path.join(MEDIA_URL, 'fotos')
+PHOTO_DIR = os.path.join(MEDIA_ROOT, 'fotos')
+
 LOGGING_URL = '/logs/'
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
@@ -158,7 +161,7 @@ LOGGING = {
         },
         'iom': {
             'handlers': ['file',],
-            'level': 'INFO',
+            'level': 'DEBUG',
             'propagate': True,
         },
     },

@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 from optparse import make_option
 from django.contrib.gis.geos import Point
 from django.utils import timezone
-
+from django.conf import settings
 import os,pytz,datetime
 import logging
 
@@ -17,6 +17,7 @@ from acacia.data.models import ProjectLocatie
 from iom import util
 from iom.akvo import FlowAPI, as_timestamp
 from iom.models import AkvoFlow, CartoDb, Meetpunt, Waarnemer, Alias
+from iom.exif import Exif
 
 logger = logging.getLogger(__name__)
 
@@ -46,7 +47,16 @@ def get_or_create_waarnemer(akvoname):
         alias = waarnemer.alias_set.create(alias=akvoname)
         logger.info('alias {alias} toegevoegd aan waarnemer {name}'.format(alias=unicode(alias),name=unicode(waarnemer)))
     return waarnemer
-        
+
+def download_photo(url):
+    # copy photo to local storage and rotate if necessary
+    try:
+        filename = os.path.basename(url)
+        Exif.copyImage(url, os.path.join(settings.PHOTO_DIR,filename))
+        return os.path.join(settings.PHOTO_URL,filename)
+    except:
+        return url
+            
 def importAkvoRegistration(api,akvo,projectlocatie,user):
     surveyId = akvo.regform
     meetpunten=set()
@@ -79,9 +89,9 @@ def importAkvoRegistration(api,akvo,projectlocatie,user):
         akvoname = akvowaarnemer or submitter
         waarnemer = get_or_create_waarnemer(akvoname)
 
-        # move reference to photo from local storage (phone) to amazon storage
+        # change reference to photo from smartphone storage to amazon storage and download to this server
         if foto:
-            foto = os.path.join(akvo.storage,os.path.basename(foto))
+            foto = download_photo(os.path.join(akvo.storage,os.path.basename(foto)))
 
         if meetid:
             # Gebuik waarnemer naam + meetid
@@ -108,6 +118,7 @@ def importAkvoRegistration(api,akvo,projectlocatie,user):
                 meetpunt.photo_url = foto
                 meetpunt.save()
                 meetpunten.add(meetpunt)
+                created = True
             except:
                 logger.exception('Probleem bij toevoegen meetpunt {mname} aan waarnemer {wname}'.format(mname=meetName, wname=unicode(waarnemer)))
                 continue
@@ -173,9 +184,8 @@ def importAkvoMonitoring(api,akvo):
                 diep=api.get_answer(answers,questionID='7080929')
                 waarneming_naam = maak_naam('EC',diep)
                 
-                # move reference to photo from local storage (phone) to amazon storage
                 if foto:
-                    foto = os.path.join(akvo.storage,os.path.basename(foto))
+                    foto = download_photo(os.path.join(akvo.storage,os.path.basename(foto)))
         
                 if foto and not meetpunt.photo_url:
                     # update meetpunt along the way..
