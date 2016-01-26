@@ -287,7 +287,9 @@ class Datasource(models.Model, DatasourceMixin):
 
         options = {'url': self.url}
         if self.meetlocatie:
-            lonlat = self.meetlocatie.latlon()
+            #lonlat = self.meetlocatie.latlon() # does not initialize geo object manager
+            loc = MeetLocatie.objects.get(pk=self.meetlocatie.pk)
+            lonlat = loc.latlon()
             options['lonlat'] = (lonlat.x,lonlat.y)
         if self.username:
             options['username'] = self.username
