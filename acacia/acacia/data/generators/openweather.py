@@ -24,7 +24,7 @@ class Forecast(Generator):
         url = url.format(lat=lat,lon=lon,cnt=cnt,appid=appid)
         kwargs['url'] = url
         if not 'filename' in kwargs:
-            kwargs['filename'] = 'openweather_{lon}_{lat}.txt'.format(lon=lon,lat=lat)
+            kwargs['filename'] = 'owm_{lon:04}{lat:04}.txt'.format(lon=int(lon*10),lat=int(lat*10))
         return super(Forecast, self).download(**kwargs)
         
     def get_data(self,fil,**kwargs):
@@ -32,22 +32,25 @@ class Forecast(Generator):
 #         if o['cod'] != '200':
 #             return None
         index = []
-        data = {'rain': [], 'tmin': [], 'tmax': []}
+        data = {'rain': [], 'tmin': [], 'tmax': [], 'pressure': [], 'speed': [], 'direction': []}
         for rec in o['list']:
             dt = rec['dt']
             index.append(datetime.datetime.fromtimestamp(dt,tz=pytz.utc))
             data['rain'].append(rec.get('rain', 0))
             data['tmin'].append(rec['temp'].get('min', None))
             data['tmax'].append(rec['temp'].get('max', None))
+            data['pressure'].append(rec.get('pressure', None))
+            data['speed'].append(rec.get('speed', None))
+            data['direction'].append(rec.get('deg', None))
         return pd.DataFrame(data, index=index)
 
     def get_parameters(self,fil):
         return {'rain': {'description': 'neerslag', 'unit': 'mm/d'},
                  'tmin': {'description': 'minimum temperatuur', 'unit': 'oC'},
                  'tmax': {'description': 'maximum temperatuur', 'unit': 'oC'},
-#                 'pressure': {'description': 'luchtdruk', 'unit': 'oC'},
-#                 'speed': {'description': 'wind speed', 'unit': '-'},
-#                 'direction': {'description': 'wind direction', 'unit': 'deg'},
+                 'pressure': {'description': 'luchtdruk', 'unit': 'hPa'},
+                 'speed': {'description': 'windsnelheid', 'unit': 'm/s'},
+                 'direction': {'description': 'windrichting', 'unit': 'deg'},
                  }
 
 from acacia.data.models import Datasource
