@@ -39,15 +39,18 @@ class Forecast(Generator):
             data['rain'].append(rec.get('rain', 0))
             data['tmin'].append(rec['temp'].get('min', None))
             data['tmax'].append(rec['temp'].get('max', None))
+            data['pressure'].append(rec.get('pressure', None))
+            data['speed'].append(rec.get('speed', None))
+            data['direction'].append(rec.get('direction', None))
         return pd.DataFrame(data, index=index)
 
     def get_parameters(self,fil):
         return {'rain': {'description': 'neerslag', 'unit': 'mm/d'},
                  'tmin': {'description': 'minimum temperatuur', 'unit': 'oC'},
                  'tmax': {'description': 'maximum temperatuur', 'unit': 'oC'},
-#                 'pressure': {'description': 'luchtdruk', 'unit': 'oC'},
-#                 'speed': {'description': 'wind speed', 'unit': '-'},
-#                 'direction': {'description': 'wind direction', 'unit': 'deg'},
+                 'pressure': {'description': 'luchtdruk', 'unit': 'hPa'},
+                 'speed': {'description': 'wind speed', 'unit': 'm/s'},
+                 'direction': {'description': 'wind direction', 'unit': 'deg'},
                  }
 
 from acacia.data.models import Datasource
