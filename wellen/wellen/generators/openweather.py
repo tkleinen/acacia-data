@@ -24,7 +24,7 @@ class Forecast(Generator):
         url = url.format(lat=lat,lon=lon,cnt=cnt,appid=appid)
         kwargs['url'] = url
         if not 'filename' in kwargs:
-            kwargs['filename'] = 'openweather_{lon}_{lat}.txt'.format(lon=lon,lat=lat)
+            kwargs['filename'] = 'owm_{lon:04}{lat:04}.txt'.format(lon=int(lon*10),lat=int(lat*10))
         return super(Forecast, self).download(**kwargs)
         
     def get_data(self,fil,**kwargs):
