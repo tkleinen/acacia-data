@@ -372,12 +372,12 @@ class SeriesAdmin(PolymorphicParentModelAdmin):
 
 class ChartSeriesInline(admin.StackedInline):
     model = ChartSeries
-    raw_id_fields = ('series',)
+    raw_id_fields = ('series','series2')
     autocomplete_lookup_fields = {
-        'fk': ['series'],
+        'fk': ['series','series2'],
     }
     extra = 0
-    fields = (('series', 'order', 'name'), ('axis', 'axislr', 'label'), ('color', 'type', 'stack'), ('t0', 't1'), ('y0', 'y1'))
+    fields = (('series', 'order', 'name'), ('axis', 'axislr', 'label'), ('color', 'type', 'series2', 'stack'), ('t0', 't1'), ('y0', 'y1'))
     ordering = ('order',)
 
 class GridSeriesInline(admin.TabularInline):

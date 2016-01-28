@@ -661,7 +661,7 @@ def sourcefile_save(sender, instance, **kwargs):
 SERIES_CHOICES = (('line', 'lijn'),
                   ('column', 'staaf'),
                   ('scatter', 'punt'),
-                  ('area', 'vlak'),
+                  ('area', 'area'),
                   ('spline', 'spline')
                   )
         
@@ -1421,6 +1421,7 @@ class ChartSeries(models.Model):
     chart = models.ForeignKey(Chart,related_name='series', verbose_name='grafiek')
     order = models.IntegerField(default=1,verbose_name='volgorde')
     series = models.ForeignKey(Series, verbose_name = 'tijdreeks')
+    series2 = models.ForeignKey(Series, related_name='series2',blank=True, null=True, verbose_name = 'tweede tijdreeks', help_text='tijdreeks voor ondergrens bij area grafiek')
     name = models.CharField(max_length=50,blank=True,null=True,verbose_name='legendanaam')
     axis = models.IntegerField(default=1,verbose_name='Nummer y-as')
     axislr = models.CharField(max_length=2, choices=AXIS_CHOICES, default='l',verbose_name='Positie y-as')
