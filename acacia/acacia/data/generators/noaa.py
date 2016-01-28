@@ -129,8 +129,10 @@ class Pluim(GEFS):
     def get_data(self,fil,**kwargs):
         df1 = super(Pluim,self).get_data(fil,**kwargs)
         df2 = pd.DataFrame({'tmin': df1['tmp2m_mean']-df1['tmp2m_std']-273.15, 
+                           'tmp2m': df1['tmp2m_mean']-273.15,
                            'tmax': df1['tmp2m_mean']+df1['tmp2m_std']-273.15,
                            'pmin': df1['apcpsfc_mean']-df1['apcpsfc_std'],
+                           'apcpsfc': df1['apcpsfc_mean'],
                            'pmax': df1['apcpsfc_mean']+df1['apcpsfc_std']})
         pmin = df2['pmin']
         pmin[pmin<0] = 0
@@ -139,8 +141,11 @@ class Pluim(GEFS):
     def get_parameters(self,fil):
         return {
                  'tmin': {'description': 'minimum temperatuur', 'unit': 'oC'},
+                 'tmp2m': {'description': 'gemiddelde temperatuur', 'unit': 'oC'},
                  'tmax': {'description': 'maximum temperatuur', 'unit': 'oC'},
-                 'pmin': {'description': 'minimum neeslag', 'unit': 'mm'},
+                 'tmin': {'description': 'minimum temperatuur', 'unit': 'oC'},
+                 'pmin': {'description': 'minimum neerslag', 'unit': 'mm'},
+                 'apcpsfc': {'description': 'gemiddelde neerslag', 'unit': 'mm'},
                  'pmax': {'description': 'maximum neerslag', 'unit': 'mm'},
                  }
     
