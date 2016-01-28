@@ -55,7 +55,7 @@ class GEFS(GenericCSV):
         if dataset is None:
             return {}
 
-        vars = kwargs.get('vars',['apcpsfc','tmp2m'])
+        vars = kwargs.get('vars',defvars)
         
         # convert lonlat to index in grib file (resolution is 1 degree)
         lon,lat = kwargs.get('lonlat',debilt)
@@ -117,7 +117,39 @@ class GEFS(GenericCSV):
                 callback = kwargs['callback']
                 callback(result)
         return result
-        
+
+class Pluim(GEFS):
+    #pluimvars = ['apcpsfc','tmp2m','tmax2m','tmin2m']
+    pluimvars = ['apcpsfc','tmp2m']
+
+    def download(self, **kwargs):
+        vars = kwargs.get('vars',self.pluimvars)
+        return super(Pluim,self).download(**kwargs)
+    
+    def get_data(self,fil,**kwargs):
+        df1 = super(Pluim,self).get_data(fil,**kwargs)
+        df2 = pd.DataFrame({'tmin': df1['tmp2m_mean']-df1['tmp2m_std']-273.15, 
+                           'tmax': df1['tmp2m_mean']+df1['tmp2m_std']-273.15,
+                           'pmin': df1['apcpsfc_mean']-df1['apcpsfc_std'],
+                           'pmax': df1['apcpsfc_mean']+df1['apcpsfc_std']})
+        pmin = df2['pmin']
+        pmin[pmin<0] = 0
+        return df2
+
+    def get_parameters(self,fil):
+        return {
+                 'tmin': {'description': 'minimum temperatuur', 'unit': 'oC'},
+                 'tmax': {'description': 'maximum temperatuur', 'unit': 'oC'},
+                 'pmin': {'description': 'minimum neeslag', 'unit': 'mm'},
+                 'pmax': {'description': 'maximum neerslag', 'unit': 'mm'},
+                 }
+    
 if __name__ == '__main__':
-    gefs = GEFS()
-    result = gefs.download()
+    datafile = r'/home/theo/acaciadata.com/spaarwater/media/spaarwater/borgsweer/perceel-1/datafiles/gefs-borgsweer/gens2016012613_007143.csv'
+    pluim = Pluim()
+    par = pluim.get_parameters(datafile)
+    dat = pluim.get_data(datafile)
+    print dat
+    
+#     gefs = GEFS()
+#     result = gefs.download()
