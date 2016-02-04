@@ -55,7 +55,7 @@ class Project(models.Model):
     name = models.CharField(max_length=50, unique=True)
     description = models.TextField(blank=True,null=True,verbose_name='omschrijving')
     image = models.ImageField(upload_to=up.project_upload, blank = True, null=True)
-    logo = models.ImageField(upload_to=up.project_upload, blank=True, null=True,help_text='Mini-logo voor grafieken')
+    logo = models.ImageField(upload_to=up.project_upload, blank=True, null=True)
     theme = models.CharField(max_length=50,verbose_name='thema', default='dark-blue',choices=THEME_CHOICES,help_text='Thema voor grafieken')
         
     def location_count(self):

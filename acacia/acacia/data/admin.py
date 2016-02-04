@@ -50,6 +50,7 @@ class ParameterInline(admin.TabularInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'location_count', )
+    exclude = ['image']
     formfield_overrides = {models.TextField: {'widget': forms.Textarea(attrs={'class': 'htmleditor'})}}
 
 class ProjectLocatieForm(ModelForm):
@@ -62,6 +63,7 @@ class ProjectLocatieAdmin(admin.ModelAdmin):
     actions = [actions.meetlocatie_aanmaken,]
     list_display = ('name','project','location_count',)
     list_filter = ('project',)
+    exclude = ['image']
     formfield_overrides = {models.PointField:{'widget': forms.TextInput(attrs={'width': '40px'})},
                            models.TextField: {'widget': forms.Textarea(attrs={'class': 'htmleditor'})}}
 class MeetLocatieForm(ModelForm):
@@ -82,6 +84,7 @@ class MeetLocatieAdmin(admin.ModelAdmin):
     form = MeetLocatieForm
     list_display = ('name','projectlocatie','project','datasourcecount',)
     list_filter = ('projectlocatie','projectlocatie__project',)
+    exclude = ['image']
     formfield_overrides = {models.PointField:{'widget': forms.TextInput, 'required': False},
                            models.TextField: {'widget': forms.Textarea(attrs={'class': 'htmleditor'})}}
     actions = [actions.meteo_toevoegen, 'add_notifications']
