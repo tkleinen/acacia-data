@@ -1311,8 +1311,9 @@ class Chart(PolymorphicModel):
     title = models.CharField(max_length = 50, verbose_name = 'titel')
     user=models.ForeignKey(User,default=User)
     start = models.DateTimeField(blank=True,null=True)
+    #start_today = models.BooleanField(default=False,verbose_name='vanaf vandaag')
     stop = models.DateTimeField(blank=True,null=True)
-    percount = models.IntegerField(default=2,verbose_name='aantal perioden',help_text='maximaal aantal periodes die getoond worden (0 = alle perioden)')
+    percount = models.IntegerField(default=2,verbose_name='aantal perioden',help_text='maximaal aantal periodes terug in de tijd (0 = alle perioden)')
     perunit = models.CharField(max_length=10,choices = PERIOD_CHOICES, default = 'months', verbose_name='periodelengte')
 
     def tijdreeksen(self):
@@ -1328,8 +1329,14 @@ class Chart(PolymorphicModel):
         return reverse('acacia:chart-detail', args=[self.pk])
 
     def auto_start(self):
+        tz = timezone.get_current_timezone()
+#         if self.start_today:
+#             # start at today 00:00 UTC
+#             # can be accomplished using percount=1, perunit=day
+#             today = datetime.datetime.utcnow()
+#             today.replace(hour=0,minute=0,second=0)
+#             return today
         if self.start is None:
-            tz = timezone.get_current_timezone()
             start = timezone.make_aware(datetime.datetime.now(),tz)
             for cs in self.series.all():
                 t0 = cs.t0

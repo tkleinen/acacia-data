@@ -404,7 +404,15 @@ class ChartAdmin(admin.ModelAdmin):
     list_display = ('name', 'title', 'tijdreeksen', )
     inlines = [ChartSeriesInline,]
     exclude = ('user',)
-    fields = ('name', 'description', 'title', ('percount', 'perunit',), ('start', 'stop',),)
+    fieldsets = (
+                 ('Algemeen', {'fields': ('name', 'description', 'title'),
+                               'classes': ('grp-collapse grp-open',),
+                               }),
+                 ('Tijdas', {'fields': (('percount', 'perunit',), ('start', 'stop',)),
+                               'classes': ('grp-collapse grp-closed',),
+                              })
+                )
+
     search_fields = ['name','description', 'title']
 
     #formfield_overrides = {models.TextField: {'widget': forms.Textarea(attrs={'class': 'htmleditor'})}}

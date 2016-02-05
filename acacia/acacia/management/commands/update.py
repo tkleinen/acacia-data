@@ -8,7 +8,8 @@ from optparse import make_option
 from acacia.data.models import Datasource, Formula
 import logging
 from acacia.data.loggers import DatasourceAdapter, BufferingEmailHandler
-
+from datetime import datetime
+ 
 # Move this part to settings.py
 # email_handler=BufferingEmailHandler(fromaddr='webmaster@acaciadata.com', subject='Houston, we have a problem', capacity=1000, interval=30)
 # email_handler.setFormatter(logging.Formatter('%(levelname)s %(asctime)s %(datasource)s: %(message)s'))
@@ -93,7 +94,10 @@ class Command(BaseCommand):
                             start = series_start
                         else:
                             start = min(series_start,data_start)
-        
+                        
+                        # if start is in the future, use datetime.now as start to overwrite previous forecasts
+                        start = min(start, datetime.now())
+                        
                     if down and d.autoupdate and d.url is not None:
                         logger.info('Downloading datasource')
                         try:
