@@ -5,9 +5,9 @@ Created on Feb 13, 2014
 '''
 from django.core.management.base import BaseCommand
 from optparse import make_option
-from acacia.data.models import Datasource, Formula
+from acacia.data.models import Datasource, Formula, aware
 import logging
-from acacia.data.loggers import DatasourceAdapter, BufferingEmailHandler
+from acacia.data.loggers import DatasourceAdapter
 from datetime import datetime
  
 # Move this part to settings.py
@@ -96,7 +96,7 @@ class Command(BaseCommand):
                             start = min(series_start,data_start)
                         
                         # if start is in the future, use datetime.now as start to overwrite previous forecasts
-                        start = min(start, datetime.now())
+                        start = min(start, aware(datetime.now()))
                         
                     if down and d.autoupdate and d.url is not None:
                         logger.info('Downloading datasource')
