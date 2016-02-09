@@ -39,7 +39,7 @@ class GEFS(GenericCSV):
             try:
                 logger.debug('querying '+url)
                 dataset = open_url(url)
-                logger.debug('Forecast found for date={date}, hour={hour} found!'.format(date=date,hour=hour))
+                logger.debug('Forecast found for date={date}, hour={hour}'.format(date=date,hour=hour))
                 return dataset
             except Exception as e:
                 logger.warning('Forecast not found: %s' % e)
