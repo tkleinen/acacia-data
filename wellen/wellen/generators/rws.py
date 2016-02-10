@@ -162,7 +162,7 @@ class LMW(Generator):
         kwargs['url'] = url.format(loc=locatie, parameter=parameter)
         return super(LMW, self).download(**kwargs)
 
-    def get_data(self, fil, **kwargs):
+    def get_data1(self, fil, **kwargs):
         try:
             # assume 1 series per file
             # can be H10 (Water levels) and H10V (forecaste waterlevels)
@@ -188,6 +188,27 @@ class LMW(Generator):
             raise e
 #            logger.exception('Error parsing json response')
         return pd.DataFrame({series_name: series})
+
+    def get_data(self, fil, **kwargs):
+        try:
+            fil.seek(0)
+            obj=json.load(fil)
+            tz = pytz.timezone('CET')
+            dfs = []
+            for k,v in obj.items():
+                index = [datetime.datetime.fromtimestamp(int(x['tijd']),tz) for x in v]
+                def conv(x):
+                    try:
+                        return float(x)
+                    except:
+                        return None
+                values = [conv(x['waarde']) for x in v]
+                s = pd.Series(index=index,data=values)
+                dfs.append(pd.DataFrame({k:s}))
+        except Exception as e:
+            raise e
+#            logger.exception('Error parsing json response')
+        return pd.concat(dfs).sort()
         
     def get_parameters(self, fil):
         try:
@@ -196,8 +217,6 @@ class LMW(Generator):
             params = {}
             for k,v in obj.items():
                 params[k] = {'description' : v[0]['parameternaam'], 'unit': ''}
-                # use only 1st dataset for parameter name
-                break
         except:
             logger.exception('Error parsing json response')
         return params
@@ -294,15 +313,15 @@ if __name__ == '__main__':
 #   print gen.get_parameters(datafile)
 #    print gen.get_data(datafile)
             
-#     gen = LMW()
-#     datafile = r'/media/sf_F_DRIVE/acaciadata.com/H10.txt'
-#     with open(datafile) as f:
-#         print gen.get_parameters(f)
-#         print gen.get_data(f)
-            
-    gen = Waterbase()
-    datafile = r'/media/sf_F_DRIVE/acaciadata.com/id1-CULBBG-201301010000-201512312359.txt'
+    gen = LMW()
+    datafile = r'/media/sf_F_DRIVE/acaciadata.com/H10.txt'
     with open(datafile) as f:
         print gen.get_parameters(f)
         print gen.get_data(f)
+            
+#     gen = Waterbase()
+#     datafile = r'/media/sf_F_DRIVE/acaciadata.com/id1-CULBBG-201301010000-201512312359.txt'
+#     with open(datafile) as f:
+#         print gen.get_parameters(f)
+#         print gen.get_data(f)
    
