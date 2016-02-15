@@ -73,8 +73,8 @@ class Topic(models.Model):
     def __unicode__(self):
         return self.topic    
 
-    class Meta:
-        unique_together = ('host', 'topic')
+#     class Meta:
+#         unique_together = ('host', 'topic')
 
 from django.db.models.signals import pre_delete, pre_save
 from django.dispatch.dispatcher import receiver
@@ -95,8 +95,8 @@ class Message(models.Model):
     def __unicode__(self):
         return '%s %s' % (self.topic, self.date)
 
-    class Meta:
-        unique_together = ('date', 'topic')
+#     class Meta:
+#         unique_together = ('date', 'topic')
     
 def subscribe_all():
     for topic in Topic.objects.filter(active=True):
@@ -106,5 +106,6 @@ def start():
     subscribe_all()
     for host in Host.objects.all():
         host.client().loop_start()
-        
+
+# TODO: move somewhere else: we don't always want to start network loop          
 start()
