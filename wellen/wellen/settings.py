@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'acacia',
     'acacia.data',
     'acacia.data.knmi',
+    'acacia.mqtt',
     'wellen',
 )
 
@@ -92,7 +93,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'nl-nl'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Amsterdam'
 
 USE_I18N = True
 
@@ -178,6 +179,11 @@ LOGGING = {
     'loggers': {
         'django.request': {
             'handlers': ['django'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'acacia.mqtt': {
+            'handlers': ['file',],
             'level': 'DEBUG',
             'propagate': True,
         },
