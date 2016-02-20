@@ -36,7 +36,7 @@ class Trigger(models.Model):
     def source(self):
         return unicode(self.series)
     
-    def generate(self,**kwargs):        
+    def select(self,**kwargs):        
         s = self.series.to_pandas(**kwargs)
         window = max(self.window,self.count)
         min_periods = min(window,self.count)
