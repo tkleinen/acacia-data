@@ -45,6 +45,7 @@ INSTALLED_APPS = (
     'acacia',
     'acacia.data',
     'acacia.data.knmi',
+    'acacia.data.events',
     'acacia.mqtt',
     'wellen',
 )
@@ -133,6 +134,12 @@ INSTALLED_APPS += ('kombu.transport.django','djcelery',)
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'
+
+EMAIL_HOST='smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_HOST_USER='tkleinen@gmail.com'
+EMAIL_HOST_PASSWORD='pw4Gmail'
+EMAIL_USE_TLS = True
 
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
