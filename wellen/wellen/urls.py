@@ -13,6 +13,7 @@ urlpatterns = patterns('wellen.views',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^data/', include('acacia.data.urls',namespace='acacia')),
     url(r'^(?P<name>[\w\s]+)$', DashGroupView.as_view(), name='wellen-dashboard'),
+    url(r'^alarm/',include('acacia.data.events.urls'))
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
