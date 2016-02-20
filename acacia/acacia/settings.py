@@ -39,10 +39,7 @@ INSTALLED_APPS = (
     'registration',
     'south',
     'acacia',
-    'acacia.meetnet',
     'acacia.data',
-    'acacia.data.knmi',
-    'spaarwater',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -156,24 +153,24 @@ LOGGING = {
             'backupCount': 0,
             'formatter': 'default'
         },
-        'update': {
-            'level': 'DEBUG',
-            'class': 'acacia.data.loggers.BulkEmailHandler',
-            'capacity': 100000, # max 100k lines per message
-            'fromaddr': 'webmaster@acaciadata.com',
-            'subject': 'acaciadata update',
-            'formatter': 'update'
-        },
-
 #         'update': {
 #             'level': 'DEBUG',
-#             'class': 'logging.handlers.TimedRotatingFileHandler',
-#             'filename': os.path.join(LOGGING_ROOT, 'update.log'),
-#             'when': 'D',
-#             'interval': 1, # every day a new file
-#             'backupCount': 0,
+#             'class': 'acacia.data.loggers.BulkEmailHandler',
+#             'capacity': 100000, # max 100k lines per message
+#             'fromaddr': 'webmaster@acaciadata.com',
+#             'subject': 'acaciadata update',
 #             'formatter': 'update'
 #         },
+
+        'update': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': os.path.join(LOGGING_ROOT, 'update.log'),
+            'when': 'D',
+            'interval': 1, # every day a new file
+            'backupCount': 0,
+            'formatter': 'update'
+        },
         'django': {
             'level': 'DEBUG',
             'class': 'logging.handlers.TimedRotatingFileHandler',
