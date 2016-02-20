@@ -110,11 +110,8 @@ class Message(models.Model):
 def subscribe_all():
     for topic in Topic.objects.all():
         topic.subscribe()
-        
+
 def start():
     subscribe_all()
     for host in Host.objects.all():
         host.client().loop_start()
-
-# TODO: move somewhere else: we don't always want to start network loop          
-start()

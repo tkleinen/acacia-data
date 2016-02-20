@@ -15,7 +15,7 @@ class HostAdmin(admin.ModelAdmin):
     
 class TopicAdmin(admin.ModelAdmin):
     model = Topic
-    inlines = [MessageInline]
+    #inlines = [MessageInline]
     list_display = ('topic', 'host', 'messages')
     list_filter = ('host',)
 
