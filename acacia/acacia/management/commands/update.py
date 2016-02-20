@@ -6,10 +6,11 @@ Created on Feb 13, 2014
 from django.core.management.base import BaseCommand
 from optparse import make_option
 from acacia.data.models import Datasource, Formula, aware
-import logging
 from acacia.data.loggers import DatasourceAdapter
+from acacia.data.events.messenger import process_triggers
+import logging
 from datetime import datetime
- 
+
 # Move this part to settings.py
 # email_handler=BufferingEmailHandler(fromaddr='webmaster@acaciadata.com', subject='Houston, we have a problem', capacity=1000, interval=30)
 # email_handler.setFormatter(logging.Formatter('%(levelname)s %(asctime)s %(datasource)s: %(message)s'))
@@ -84,7 +85,7 @@ class Command(BaseCommand):
                         else:
                             # actialisatie vanaf een na laatste datapoint
                             # (rekening houden met niet volledig gevulde laatste tijdsinterval bij accumulatie of sommatie)
-                            last = [p.date for p in [s.beforelast() for s in series] if p is not None]
+                            last = [p.date for p in [s.beforelast() for s in series if s.aantal()>0] if p is not None]
                             if len(last)>0:
                                 series_start = min(last)
                             else:
@@ -96,7 +97,8 @@ class Command(BaseCommand):
                             start = min(series_start,data_start)
                         
                         # if start is in the future, use datetime.now as start to overwrite previous forecasts
-                        start = min(start, aware(datetime.now()))
+                        if start:
+                            start = min(start, aware(datetime.now()))
                         
                     if down and d.autoupdate and d.url is not None:
                         logger.info('Downloading datasource')
@@ -148,6 +150,8 @@ class Command(BaseCommand):
                             changes = s.replace() if replace else s.update(data,start=start) 
                             if changes > 0:
                                 changed_series.append(s)
+                                # immediately trigger alarms (if any)
+                                process_triggers(s)
                             else:
                                 logger.warning('No new data for %s' % s.name)    
                         except Exception as e:
@@ -176,6 +180,8 @@ class Command(BaseCommand):
                         logger.info('Updating calculated time series %s' % f.name)
                         if f.update() == 0:
                             logger.warning('No new data for %s' % f.name)
+                        else:
+                            process_triggers(f)
                         count += 1
                     except Exception as e:
                         logger.exception('ERROR updating calculated time series %s: %s' % (f.name, e))
