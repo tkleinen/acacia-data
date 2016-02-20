@@ -36,6 +36,7 @@ clients = {}
 
 class Host(models.Model):
     host = models.CharField(max_length=256)
+    description = models.CharField(max_length=128,null=True,blank=True)
     port = models.IntegerField(default=1883)
     keepalive = models.IntegerField(default = 60)
     _client = None
@@ -71,6 +72,7 @@ def QoSValidator(value):
 class Topic(models.Model):
     host = models.ForeignKey(Host)
     topic = models.CharField(max_length=512)
+    description = models.CharField(max_length=128,null=True,blank=True)
     qos = models.IntegerField(default=0, validators=[QoSValidator], verbose_name = 'Quality of Service')
     
     def client(self):
