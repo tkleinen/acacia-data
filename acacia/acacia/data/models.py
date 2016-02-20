@@ -1029,18 +1029,20 @@ class Series(PolymorphicModel,DatasourceMixin):
             logger.warning('No valid datapoints found in series %s' % self.name)
             return 0;
         
-        values = ["(%d,'%s')" % (self.id, datetime.datetime.strftime(p.date, '%Y-%m-%d %H:%M:%S')) for p in pts]
-        values = '(' + ','.join(values) + ')'
-        sql = 'DELETE from {table} WHERE (`series_id`,`date`) IN {values}'.format(table=DataPoint._meta.db_table, values=values)
         count = self.datapoints.count()
-        cursor = connection.cursor()
-        cursor.execute(sql)
-
+        if count>0:
+            values = ["(%d,'%s')" % (self.id, datetime.datetime.strftime(p.date, '%Y-%m-%d %H:%M:%S')) for p in pts]
+            values = '(' + ','.join(values) + ')'
+            sql = 'DELETE from {table} WHERE (`series_id`,`date`) IN {values}'.format(table=DataPoint._meta.db_table, values=values)
+            cursor = connection.cursor()
+            num_deleted = cursor.execute(sql)
+        else:
+            num_deleted = 0    
         created = self.datapoints.bulk_create(pts)
-        num_created = len(created)
-        num_updated = count - num_created
-        logger.info('Series %s updated: %d points created' % (self.name, num_created))
-        if (num_created + num_updated) > 0:
+        num_created = len(created) - num_deleted
+        num_updated = num_deleted
+        logger.info('Series %s updated: %d points created, %d updated' % (self.name, num_created, num_updated))
+        if num_created > 0 or num_updated > 0:
             self.make_thumbnail()
         self.save()
         return num_created + num_updated
