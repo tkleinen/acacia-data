@@ -3,11 +3,9 @@ Created on Feb 20, 2016
 
 @author: theo
 '''
-from django.template.defaultfilters import last
 
-#MESSAGEBIRD_APIKEY = 'test_hN7EwTAz8Xz9xmhradD1twXAg'
-MESSAGEBIRD_APIKEY = 'live_JPcO8tl6eSRxOFClD0tSwO3A0'
-    
+from django.conf import settings
+
 class Messenger():
     ''' buffers triggered events and automatically sends messages to users through email or sms'''
 
@@ -24,7 +22,7 @@ class Messenger():
  
     def send_sms(self, originator, body, recipients):
         import messagebird
-        client = messagebird.Client(MESSAGEBIRD_APIKEY)
+        client = messagebird.Client(settings.MESSAGEBIRD_APIKEY)
         params = {}
         msg = client.message_create(originator, recipients, body, params)
         return msg
