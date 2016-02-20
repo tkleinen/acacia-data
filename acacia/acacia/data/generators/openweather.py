@@ -4,13 +4,13 @@ Created on Nov 25, 2015
 @author: theo
 '''
 
-defkey=r'cbfee8a09865749b6a3a6781c1acfcca'
 defurl=r'http://api.openweathermap.org/data/2.5/forecast/daily?lat={lat}&lon={lon}&cnt={cnt}&units=metric&appid={appid}' 
 debilt=(5.177,52.101) # lonlat
 defcnt=16
 
 import datetime, pytz, json, StringIO
 from acacia.data.generators.generator import Generator
+from django.conf import settings
 import pandas as pd
 
 class Forecast(Generator):
@@ -20,7 +20,7 @@ class Forecast(Generator):
         url = kwargs.get('url',defurl)
         lon,lat = kwargs.get('lonlat',debilt)
         cnt = kwargs.get('cnt', defcnt)
-        appid=kwargs.get('key', defkey)
+        appid=kwargs.get('key', settings.OPENWEATHER_APIKEY)
         url = url.format(lat=lat,lon=lon,cnt=cnt,appid=appid)
         kwargs['url'] = url
         if not 'filename' in kwargs:
