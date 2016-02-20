@@ -16,9 +16,6 @@ os.sys.path.append('/home/theo/acaciadata.com/acacia')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5bulpp(cii8xq3z33(%f7r*&=*$ct9i4q_sh*mo=4^1364x4_e'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -62,20 +59,6 @@ WSGI_APPLICATION = 'gorinchem.wsgi.application'
 # use bootstrap3 for crispy forms
 CRISPY_TEMPLATE_PACK='bootstrap3'
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'gorinchem',                      # Or path to database file if using sqlite3.
-        'USER': 'gormol',                      # Not used with sqlite3.
-        'PASSWORD': 'Beaumont1',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-#        'OPTIONS': {'default-character-set': 'utf8'},
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -110,7 +93,6 @@ GRAPPELLI_ADMIN_TITLE='Beheer van Grondwatermeetnet Gorinchem'
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'
-DEFAULT_FROM_EMAIL = 'noreply@acaciawater.com'
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
 # Logging
@@ -159,3 +141,5 @@ LOGGING = {
         },
     },
 }
+
+from secrets import *

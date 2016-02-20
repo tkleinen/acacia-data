@@ -17,18 +17,12 @@ os.sys.path.append('/home/theo/acaciadata.com/acacia')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's@od5ww0)1)h)(wvue!ht^$0)z(7=$75rv^1slu3g1rxz2$9br'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['.acaciadata.com', 'localhost']
-
-ADMINS = ('theo', 'theo.kleinendorst@acaciawater.com')
-DEFAULT_FROM_EMAIL = 'webmaster@acaciadata.com'
 
 # Application definition
 
@@ -76,21 +70,6 @@ ROOT_URLCONF = 'spaarwater.urls'
 
 WSGI_APPLICATION = 'spaarwater.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'spaarwater',                      # Or path to database file if using sqlite3.
-        'USER': 'acacia',                      # Not used with sqlite3.
-        'PASSWORD': 'Beaumont1',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -136,14 +115,6 @@ INSTALLED_APPS += ('kombu.transport.django','djcelery',)
 # registration stuff
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/data/'
-
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_PORT=587
-EMAIL_HOST_USER='grondwatertoolbox@gmail.com'
-EMAIL_HOST_PASSWORD='pw4toolbox'
-EMAIL_USE_TLS = True
-
-DEFAULT_FROM_EMAIL = 'noreply@acaciawater.com'
 
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
 
@@ -214,3 +185,5 @@ LOGGING = {
         },
     },
 }
+
+from secrets import *

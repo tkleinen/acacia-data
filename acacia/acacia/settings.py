@@ -15,9 +15,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'lyh)8hhwcz*a7i-o9ndk(7j0(%e25o3ji^7e+anqq4e)f^7#y('
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -67,23 +64,6 @@ ROOT_URLCONF = 'acacia.urls'
 
 WSGI_APPLICATION = 'acacia.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.contrib.gis.db.backends.spatialite',
-#         'NAME': os.path.join(BASE_DIR, 'acaciadata.db'),                      # Or path to database file if using sqlite3.
-#     },
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'acaciadata',                      # Or path to database file if using sqlite3.
-        'USER': 'acacia',                      # Not used with sqlite3.
-        'PASSWORD': 'Beaumont1',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 LANGUAGE_CODE = 'nl-nl'
@@ -124,20 +104,6 @@ LOGIN_REDIRECT_URL = '/data/'
 #CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 
 LOGGING_ROOT = os.path.join(BASE_DIR, 'logs')
-
-# EMAIL_HOST='smtp.gmail.com'
-# EMAIL_PORT=587
-# EMAIL_HOST_USER='grondwatertoolbox@gmail.com'
-# EMAIL_HOST_PASSWORD='pw4toolbox'
-# EMAIL_USE_TLS = True
-
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-EMAIL_HOST='acaciadata.com'
-EMAIL_PORT=25
-EMAIL_HOST_USER='webmaster@acaciadata.com'
-EMAIL_HOST_PASSWORD='acaciawater'
-EMAIL_USE_TLS = True
 
 # Logging
 LOGGING = {
@@ -206,3 +172,5 @@ LOGGING = {
         },
     },
 }
+
+from secrets import *

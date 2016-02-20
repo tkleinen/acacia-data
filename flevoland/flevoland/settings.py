@@ -16,9 +16,6 @@ os.sys.path.append('/home/theo/acaciadata.com/acacia')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 's@od5ww0)1)h)(wvue!ht^$0)z(7=$75rv^1slu3g1rxz2$9br'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -71,21 +68,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 ROOT_URLCONF = 'flevoland.urls'
 
 WSGI_APPLICATION = 'flevoland.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.contrib.gis.db.backends.mysql',
-        'NAME': 'flevoland',                      # Or path to database file if using sqlite3.
-        'USER': 'acacia',                      # Not used with sqlite3.
-        'PASSWORD': 'Beaumont1',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
@@ -193,3 +175,5 @@ LOGGING = {
         },
     },
 }
+
+from secrets import *
