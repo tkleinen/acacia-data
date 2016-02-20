@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'acacia.meetnet',
     'acacia.data',
     'acacia.data.knmi',
+    'acacia.data.events',
     'molenwaard',
 )
 

@@ -44,6 +44,7 @@ INSTALLED_APPS = (
     'acacia',
     'acacia.data',
     'acacia.data.knmi',
+    'acacia.data.events',
     'zegveld',
 )
 
