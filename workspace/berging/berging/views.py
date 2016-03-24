@@ -421,19 +421,27 @@ def getdata3(scenario):
 
 def scenario3(request):
     chart1, chart2, chart3 = (None,None,None)
+    template = 'scenario3.html'
     if request.method == 'POST':
         form = Scenario3Form(request.POST)
         if form.is_valid():
             scenario = form.save(commit=False)
             request.session['scenario'] = scenario.id
-            getdata3(scenario)
-            chart1 = waterchart3(scenario)
-            chart3 = opbrengstchart3(scenario)
-                
+            if scenario.opslag == 'o':
+                getdata3(scenario)
+                chart1 = waterchart3(scenario)
+                chart3 = opbrengstchart3(scenario)
+            else:
+                scenario2 = scenario.as_scenario2()
+                getdata(scenario2)
+                chart1 = waterchart(scenario2)
+                chart2 = kostenchart(scenario2)
+                chart3 = opbrengstchart(scenario2)
+                template = 'scenario3.html'
     else:
             form = Scenario3Form()
 
-    return render(request, 'scenario3.html', {'form': form,
+    return render(request, template, {'form': form,
             'chart1': chart1,
             'chart2': chart2,
             'chart3': chart3},

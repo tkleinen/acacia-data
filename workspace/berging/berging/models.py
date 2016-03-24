@@ -81,7 +81,8 @@ ZOUT3=(('s','zout'),)
 WDEK3=(('h', 'hoog'),)
 IRRI3=(('d','druppelbevloeiing'),)
 OPSLAG3 = (('b','bassin'),('o','ondergronds'))
-REKEN3 = (('p','vaste perceelsgrootte, varierende opslag'),('o','vaste opslag, varierende perceelsgrootte'))
+REKEN3 = (('p','vaste perceelsgrootte, varierende opslag'),('o','vaste opvang, varierende perceelsgrootte'))
+
 
 class Scenario3(models.Model):
     naam = models.CharField(max_length=100,default='scenario')
@@ -93,13 +94,39 @@ class Scenario3(models.Model):
     weerstand=models.CharField(max_length=1,choices=WDEK3,default='h',verbose_name='weerstand deklaag')
     opslag = models.CharField(max_length=1,choices=OPSLAG3,default='o',verbose_name='opslag van water')
     reken = models.CharField(max_length=1,choices=REKEN3,default='o',verbose_name='berekeningsmethode')
-    perceel = models.FloatField(default=5, verbose_name='oppervlakte perceel', help_text = 'oppervlakte perceel in hectare')
-    oppervlakte = models.FloatField(default=5, verbose_name='oppervlakte opslag', help_text = 'oppervlakte ondergrondse opslag in hectare')
+    perceel = models.FloatField(default=5, verbose_name='oppervlakte perceel', help_text = 'oppervlakte te irrigeren perceel in hectare')
+    oppervlakte = models.FloatField(default=5, verbose_name='oppervlakte opvang')
     bassin = models.FloatField(default=5000, verbose_name='volume bassin', help_text = 'volume bassin in m3')
     lon = models.FloatField(null=True,blank=True)
     lat = models.FloatField(null=True,blank=True)
     #adres = models.CharField(max_length=256,null=True,blank=True)
     user = models.ForeignKey(User,null=True,blank=True)
+
+    def translate(self, choice, choices1, choices2):
+        try:
+            for c1,c2 in zip(choices1,choices2):
+                if choice == c1:
+                    return c2
+        except:
+            pass
+        return choice
+
+    def as_scenario2(self):
+        s2 = Scenario2()
+        s2.naam = self.naam
+        s2.gewas = self.gewas
+        s2.irrigatie = self.irrigatie
+        s2.grondsoort = self.grondsoort
+        s2.kwaliteit = self.kwaliteit
+        s2.kwel = self.kwel
+        s2.weerstand = self.weerstand
+        s2.reken = 'o' if self.reken == 'p' else 'v'
+        s2.perceel = self.perceel
+        s2.bassin = self.bassin
+        s2.lon = self.lon
+        s2.lat = self.lat
+        s2.user = self.user
+        return s2
 
     def __unicode__(self):
         return self.matrix_code()

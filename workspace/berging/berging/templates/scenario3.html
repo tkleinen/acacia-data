@@ -1,0 +1,287 @@
+﻿{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap_tags %}
+{% load l10n %}
+{% block extrastyle %}
+<style>
+body, html {
+  height: 100%;
+  width: 100%;
+}
+.error-msg {
+  color: #a94442;
+}
+.chart {
+  height: 400px;
+}
+.wrapper, .fill
+{
+	height: 100%;
+} 
+.bigmap {
+	width: 95%;
+	height: 80%;
+}
+.smallmap {
+	width: 400px;
+	height: 400px;
+}
+#matrix {
+	float: right;
+	margin-right: 5%
+}
+#locatie {
+	float: left;
+}
+
+</style>
+{% endblock %}
+{% block script %}
+{{block.super}}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPN07TWkHmD8Mulqd1hKVx155AVAZWddM" type="text/javascript"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="{% static "js/themes/dark-blue.js" %}"></script>
+
+<script type="text/javascript">
+
+function updateSelection(sel) {
+	if (sel == null) {
+		document.getElementById('matrix').innerHTML='Geen gegevens';
+		document.getElementById('id_grondsoort').value = '';
+		document.getElementById('id_kwaliteit').value= '';
+		document.getElementById('id_kwel').value='';
+		document.getElementById('id_weerstand').value='';
+	}
+	else {		
+		var code = sel.grondsoort+sel.kwaliteit+sel.kwel+sel.weerstand;
+		document.getElementById('matrix').innerHTML = code;
+		document.getElementById('id_grondsoort').value = sel.grondsoort;
+		document.getElementById('id_kwaliteit').value=sel.kwaliteit;
+		document.getElementById('id_kwel').value=sel.kwel;
+		document.getElementById('id_weerstand').value=sel.weerstand;
+	}
+}
+
+function updateAddress(data) {
+	if (data.status == "OK") {
+		var address = data.results[0].formatted_address;
+		document.getElementById('locatie').innerHTML = address;	
+	}
+	else {
+		document.getElementById('locatie').innerHTML = "Locatie onbekend";	
+	}
+}
+
+function fetchData(position) {
+	  $.getJSON('query',{'lat': position.lat(), 'lon': position.lng()}, function(data) {
+		  updateSelection(data);
+	  });
+}
+
+function fetchAddress(position) {
+	  latlng = position.lat() + ',' + position.lng()
+ 	  $.getJSON('https://maps.googleapis.com/maps/api/geocode/json',{'latlng': latlng, 'language': 'nl', 'key': 'AIzaSyD8cTeXT5dTQv7jLMucoBs3oqEx4X_qu54'}, function(data) {
+ 		  updateAddress(data);
+ 	  });
+}
+
+function initMap() {
+
+	var mapOptions = {
+      scrollwheel: true,
+	  draggableCursor: 'default'
+    };
+	
+	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    var geocoder = new google.maps.Geocoder();
+    var marker = null;
+
+    if (geocoder) {
+	   geocoder.geocode({ 'address': 'Noord-Holland' }, function (results, status) {
+	     if (status == google.maps.GeocoderStatus.OK) {
+	       map.fitBounds(results[0].geometry.viewport);
+	     }
+	   });
+	}
+
+    {% if request.session.lon %}
+    {% localize off %}
+    var pos = new google.maps.LatLng({{request.session.lat}}, {{request.session.lon}});
+    {% endlocalize %}
+	marker = new google.maps.Marker({
+		position: pos,
+		map: map,
+		draggable: true,
+	});
+  
+	fetchData(pos);
+	fetchAddress(pos);
+
+	google.maps.event.addListener(marker, 'dragend', function(e) {
+		  fetchData(e.latLng);
+		  fetchAddress(e.latLng);
+		});
+		
+    {% endif %}
+    
+	google.maps.event.addListener(map, "click", function(event) {
+
+		if (marker) {
+			marker.setMap(null);
+			marker = null;
+		}
+		marker = new google.maps.Marker({
+			position: event.latLng,
+			map: map,
+			draggable: true,
+		});
+	  
+		fetchData(event.latLng);
+		fetchAddress(event.latLng);
+
+		google.maps.event.addListener(marker, 'dragend', function(e) {
+			  fetchData(e.latLng);
+			  fetchAddress(e.latLng);
+			});
+	 
+    });
+}
+
+function initCharts() {
+	var options1 = {{chart1|safe}};
+	if (options1 != null) {
+	 	options1.xAxis.labels.formatter = function() { return this.value;};
+		$('#chart1').highcharts(options1);
+	}
+	
+//  	var options2 = {{chart2|safe}};
+// 	if (options2 != null) {
+//  		options2.xAxis.labels.formatter = function() { return this.value;};
+//  		options2.yAxis[0].labels.formatter = function() { return this.value;};
+// 		$('#chart2').highcharts(options2);
+// 	}
+	
+ 	var options3 = {{chart3|safe}};
+	if (options3 != null) {
+		options3.xAxis.labels.formatter = function() { return this.value;};
+ 		options3.yAxis[0].labels.formatter = function() { return this.value;};
+		$('#chart3').highcharts(options3);
+	}
+}
+
+function Show(id) {
+	var e = document.getElementById(id); 		
+	e.style.display = 'block';
+}
+
+function Hide(id) {
+	var e = document.getElementById(id); 		
+	e.style.display = 'none';
+}
+
+function ShowHide() {
+ 	var e1 = document.getElementById("id_opslag");
+ 	opslag = e1.options[e1.selectedIndex].value
+ 	var e2 = document.getElementById("id_reken");
+ 	reken = e2.options[e2.selectedIndex].value
+
+ 	if (opslag == 'o') { 
+ 		// ondergrondse opslag: bassingrootte verbergen
+ 		Hide("div_id_bassin");
+ 	 	if (reken == 'p') {
+ 	 		// vaste perceelgrootte: oppervlakte opslag verbergen
+ 	 		Show("div_id_perceel");
+ 	 		Hide("div_id_oppervlakte");
+ 	 	}
+ 	 	else { 
+ 	 		// vaste opslaggrootte, varierende perceelsgrootte
+ 	 		Show("div_id_oppervlakte");
+ 	 		Hide("div_id_perceel");
+ 	 	}
+ 	}
+ 	else {
+ 		// bassin, oppervlakte ondergrondse opslag verbergen
+ 		Hide("div_id_oppervlakte");
+ 		if (reken == 'p') {
+ 	 		// vaste perceelgrootte: volume bassin verbergen
+ 	 		Show("div_id_perceel");
+ 	 		Hide("div_id_bassin");
+ 		}
+ 		else {
+ 			// vaste bassingrootte
+ 	 		Show("div_id_bassin");
+ 	 		Hide("div_id_perceel");
+ 		}
+ 	}
+}
+
+$(function() {
+	ShowHide();
+	
+ 	document.getElementById("id_opslag").onchange = function() {
+		ShowHide();
+	};
+ 	document.getElementById("id_reken").onchange = function() {
+		ShowHide();
+	};
+
+	{% if chart1 %} 
+		initCharts();
+	{% else %}
+		initMap();
+	{% endif %}
+});
+
+function goBack() {
+	window.history.back();
+}
+
+</script>
+{% endblock %}/* 	margin: 64px; */
+/* 	padding: 64px; */
+
+{% block content %}
+<div class = "container-fluid fill">
+<div class = "row-fluid fill">
+<div class = "col-md-3 fill">
+<form action="" method="post">
+{% csrf_token %}
+	{{ form|as_bootstrap }}
+	<div class="form-actions">
+	     <button type="submit" class="btn btn-primary">Berekenen</button>
+	</div>
+</form>
+<!-- {% if chart1 %}<br/><button class="btn btn-primary" onclick="goBack();">Terug naar kaart</button>{% endif %} -->
+{% if chart1 %}<br/><a href="/scenario3" class="btn btn-primary">Naar kaart</a>{% endif %}
+</div>
+
+{% if chart1 %}
+<div class="row-fluid">
+<div class="col-md-4"><div id="chart1" class="chart"></div><br/></div>
+<div class="col-md-4"><div id="chart3" class="chart"></div><br/></div>
+</div>
+<div class="row-fluid">
+<div class="col-md-8"><div id="chart4" class="chart">
+<h3>Watergift</h3>
+De groene stippellijn toont de optimale watergift die nodig is voor het gewas uitgedrukt in mm per jaar.
+De gele lijn toont de beschikbare watergift die vanuit het bassin kan worden gegeven uitgedrukt in mm per jaar. 
+<h3>Opbrengst</h3>
+De gele lijn toont de opbrengst van de situatie met maatregel uitgedrukt in euro’s per hectare.
+<br><br>
+<i><small>De uitkomsten van de tool zijn gemiddelde waarden over 44 jaar bepaald uit KNMI gegevens van het jaar 1965 tot en met 2008. De gegevens voor de opbrengsten zijn gemiddelde waardes gebaseerd  op de HELP- tabellen en getallen van Het LEI.</small></i>
+</div>
+<br/>
+</div>
+</div>
+{% else %}
+<div class = "col-md-9 fill">
+<div id="map" class="bigmap fill" title="Klik op de kaart om grondsoort, waterkwaliteit en hydrologisch systeem
+(kwel of infiltratie en weerstand deklaag) op te zoeken"></div>
+<div id="locatie"></div>
+<div id="matrix"></div>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock %}
