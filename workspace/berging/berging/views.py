@@ -11,7 +11,7 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template.loader import render_to_string
 from django.template import RequestContext
 from django.http import HttpResponse
-from forms import ScenarioForm,Scenario2Form
+from forms import ScenarioForm,Scenario2Form,Scenario3Form
 from models import Matrix, Gift, Scenario
 from django.conf import settings
 from django.contrib.gis.geos import Point
@@ -266,6 +266,174 @@ def scenario2(request):
             form = Scenario2Form()
 
     return render(request, 'scenario2.html', {'form': form,
+            'chart1': chart1,
+            'chart2': chart2,
+            'chart3': chart3},
+            context_instance = RequestContext(request))
+
+def waterchart3(scenario):
+    if scenario.reken == 'o':
+        if scenario.opslag == 'o': # ondergronds
+            subtitle = 'Oppervlakte ondergrondse opslag = %g Ha' % scenario.oppervlakte 
+        else:
+            subtitle = 'Volume bassin = %g m3' % scenario.bassin 
+    else:
+        subtitle = 'Oppervlakte perceel = %g Ha' % scenario.perceel
+    options = {
+        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+        'title': {'text': 'Watergift'},
+        'subtitle':{'text': subtitle},
+        'xAxis': {'title': {'enabled': True},
+                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
+        'tooltip': {'valueSuffix': ' mm',
+                    'shared': True,
+                    'valueDecimals': 1,
+#                    'pointFormat': '{series.name}: <b>{point.y:.1f} mm </b><br/>',
+                    'crosshairs': [True,True],}, 
+        'yAxis': [],
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
+        'plotOptions': {'line': {'marker': {'enabled': False}}},            
+        'credits': {'enabled': False},
+        }
+
+    options['yAxis'].append({'alignTicks': False, 'min': 0, 'title': {'text': 'mm'},})
+    
+    tekort = scenario.data['tekort']
+    vraag = scenario.data['vraag']
+
+    beschikbaarheid = vraag - tekort
+    
+    x = vraag.index.values.astype('f8')
+    
+    if scenario.reken == 'p':
+        if scenario.opslag == 'o':
+            options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
+            options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+        else:
+            options['xAxis']['title']['text'] = 'Volume bassin (m3)'
+            options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
+    else:
+        options['xAxis']['title']['text'] = 'Oppervlakte perceel (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+
+
+    options['series'] = [
+                         {'name': 'Watergift','type': 'line','data': zip(x,beschikbaarheid.values)},
+                         {'name': 'Watervraag','type': 'line','data': zip(x,vraag.values), 'dashStyle': 'Dot'},
+                         ]
+    return json.dumps(options)
+
+def opbrengstchart3(scenario):
+    if scenario.reken == 'o':
+        if scenario.opslag == 'o':
+            subtitle = 'Oppervlakte ondergrondse opslag = %g Ha' % scenario.oppervlakte 
+        else:
+            subtitle = 'Volume bassin = %g m3' % scenario.bassin 
+    else:
+        subtitle = 'Oppervlakte perceel = %g Ha' % scenario.perceel
+
+    options = {
+        'chart': {'type': 'line', 'animation': False, 'zoomType': 'x'},
+        'title': {'text': 'Opbrengst'},
+        'subtitle':{'text': subtitle},
+        'xAxis': {'title': {'enabled': True},
+                  'labels': {'formatter': None} }, # formatter wordt aangepast in template
+        'tooltip': {'valueSuffix': ' euro/Ha',
+                    'shared': True,
+                    'valueDecimals': 0,
+                    'crosshairs': [True,True],}, 
+        'yAxis': [],
+        'legend': {'enabled': True},#, 'layout': 'vertical', 'align': 'right', 'verticalAlign': 'top', 'y': 50},
+        'plotOptions': {'line': {'marker': {'enabled': False}}},            
+        'credits': {'enabled': False},
+        }
+
+    options['yAxis'].append({'alignTicks': False, 'title': {'text': 'euro/Ha'}, 'labels':{'formatter': None}})
+    
+    opbrengst = scenario.data['opbrengst']
+
+    x = opbrengst.index.values.astype('f8')
+
+    if scenario.reken == 'p':
+        if scenario.opslag == 'o':
+            options['xAxis']['title']['text'] = 'Oppervlakte (Ha)'
+            options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+        else:
+            options['xAxis']['title']['text'] = 'Volume bassin (m3)'
+            options['tooltip']['headerFormat'] = 'Volume: <b>{point.key} m3 </b><br/>'
+    else:
+        options['xAxis']['title']['text'] = 'Oppervlakte perceel (Ha)'
+        options['tooltip']['headerFormat'] = 'Oppervlakte: <b>{point.key} Ha </b><br/>'
+
+    options['series'] = [
+                         {'name': 'Opbrengst','type': 'line','data': zip(x,opbrengst.values)},
+                         ]
+    return json.dumps(options)
+
+def getseries3(scenario, matrix):
+    ''' Haal tijdreeks op uit matrix (neem rij of kolom)'''
+    df = matrix.data
+    drow = (matrix.rijmax - matrix.rijmin) / (df.shape[0]-1)
+    dcol = (matrix.kolmax - matrix.kolmin) / (df.shape[1]-1)
+
+    if scenario.reken == 'o': # opslag vast, perceelsgrootte varieert
+        labels = df.columns
+        if scenario.opslag == 'o': # ondergronds
+            index = (scenario.oppervlakte - matrix.rijmin) / drow
+        else: # bassin
+            index = (scenario.bassin/25000 - matrix.rijmin) / drow
+        data = df.iloc[int(index)].values
+        series = pd.Series(data,index=labels,name=matrix.code)
+    else: # perceel vast
+        labels = df.index
+        index = (scenario.perceel - matrix.kolmin) / dcol 
+        data = df[df.columns[int(index)]].values
+        series = pd.Series(data,index=labels,name=matrix.code)
+    return series
+
+def getdata3(scenario):
+    ''' Haal alle tijdreeksen op voor een scenario '''
+
+    #watertekort
+    code1 = scenario.matrix_code()
+    matrix1 = get_object_or_404(Matrix,code=code1)
+    tekort = getseries3(scenario, matrix1)
+
+    #watervraag (constant)
+    gift = get_object_or_404(Gift,gewas=scenario.gewas,grondsoort=scenario.grondsoort)
+    vraag = pd.Series(data=np.ones(tekort.shape[0])*gift.gift, index=tekort.index)
+    
+    #verdamping: eact/epot
+    code2 = 'op' + code1
+    matrix2 = get_object_or_404(Matrix,code=code2)
+    verdamping = getseries3(scenario, matrix2)
+    
+    #opbrengst in euros
+    opbrengst = matrix2.maxopbrengst - (1.0-verdamping) * 100.0 * matrix2.factor
+    
+    scenario.data = pd.DataFrame({
+                                  'tekort': tekort, 
+                                  'vraag':vraag, 
+                                  'verdamping':verdamping, 
+                                  'opbrengst': opbrengst, 
+                                  })
+    return scenario.data
+
+def scenario3(request):
+    chart1, chart2, chart3 = (None,None,None)
+    if request.method == 'POST':
+        form = Scenario3Form(request.POST)
+        if form.is_valid():
+            scenario = form.save(commit=False)
+            request.session['scenario'] = scenario.id
+            getdata3(scenario)
+            chart1 = waterchart3(scenario)
+            chart3 = opbrengstchart3(scenario)
+                
+    else:
+            form = Scenario3Form()
+
+    return render(request, 'scenario3.html', {'form': form,
             'chart1': chart1,
             'chart2': chart2,
             'chart3': chart3},

@@ -5,7 +5,7 @@ Created on Sep 1, 2014
 '''
 from django import forms
 from django.forms.widgets import RadioSelect
-from .models import Scenario, Scenario2, Matrix
+from .models import Scenario, Scenario2, Scenario3, Matrix
 
 class ScenarioForm(forms.ModelForm):
     class Meta:
@@ -45,6 +45,54 @@ class ScenarioForm(forms.ModelForm):
             
         return d
     
+class Scenario3Form(forms.ModelForm):
+    class Meta:
+        model = Scenario3
+        fields = ['gewas',  'irrigatie', 'grondsoort', 'kwaliteit', 'kwel', 'weerstand', 'opslag', 'reken', 'perceel', 'oppervlakte', 'bassin']
+        
+    # django < 1.7
+    def add_error(self, field, msg):
+        self._errors[field] = self.error_class([msg])
+        del self.cleaned_data[field]
+        
+    def clean(self):
+        d = self.cleaned_data;
+        code = d['gewas']
+        if d['opslag'] == 'o':
+            code += 'o' # else bassin
+        else:
+            code += d['irrigatie']
+        code += d['grondsoort']+d['kwaliteit']+d['weerstand']+d['kwel']
+        try:
+            matrix = Matrix.objects.get(code=code)
+            opbrengst_matrix = Matrix.objects.get(code='op'+code)
+        except:
+            raise forms.ValidationError('Geen berekeningsresultaten beschikbaar voor deze combinatie van invoergegevens',code='invalid')
+        
+        if d['reken'] == 'p':
+            # rekenen met vaste perceelsgrootte
+            grootte = d['perceel']
+            if grootte > matrix.rijmax:
+                self.add_error('perceel','Maximum oppervlakte perceel is %g Ha' % (matrix.rijmax))
+            elif grootte < matrix.rijmin:
+                self.add_error('perceel','Minimum oppervlakte perceel is %g Ha' % (matrix.rijmin))
+        else:
+            # rekenen met vast opslag
+            if d['opslag'] == 'b':
+                grootte = d['bassin'] / 25000
+                if grootte > matrix.kolmax:
+                    self.add_error('bassin','Maximum volume is %g m3' % matrix.kolmax * 25000)
+                elif grootte < matrix.kolmin:
+                    self.add_error('bassin','Minimum volume is %g m3' % matrix.kolmin * 25000)
+            else:
+                grootte = d['oppervlakte']
+                if grootte > matrix.kolmax:
+                    self.add_error('oppervlakte','Maximum oppervlakte is %g Ha' % matrix.kolmax)
+                elif grootte < matrix.kolmin:
+                    self.add_error('oppervlakte','Minimum oppervlakte is %g Ha' % matrix.kolmin)
+                
+        return d
+
 class Scenario2Form(forms.ModelForm):
     class Meta:
         model = Scenario2

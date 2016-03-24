@@ -73,6 +73,46 @@ class Scenario2(models.Model):
     def matrix_code(self):
         ''' bepaal matrix code adhv gemaakte keuzes'''
         return self.gewas+self.irrigatie+self.grondsoort+self.kwaliteit+self.weerstand+self.kwel
+
+GEWAS3= (('t', 'tulp'), ('n','narcis'),('a', 'aardappel'), ('m', 'mais'), ('g', 'graan'))
+GROND3 = (('k','klei'),('z','zand'),('v','veen'),)
+KWEL3 = (('k', 'kwel'),)
+ZOUT3=(('s','zout'),)
+WDEK3=(('h', 'hoog'),)
+IRRI3=(('d','druppelbevloeiing'),)
+OPSLAG3 = (('b','bassin'),('o','ondergronds'))
+REKEN3 = (('p','vaste perceelsgrootte, varierende opslag'),('o','vaste opslag, varierende perceelsgrootte'))
+
+class Scenario3(models.Model):
+    naam = models.CharField(max_length=100,default='scenario')
+    gewas = models.CharField(max_length=1,choices=GEWAS3,default='t',verbose_name='gewas')
+    irrigatie = models.CharField(max_length=1,choices=IRRI3,default='d',verbose_name='methode van watergift')
+    grondsoort = models.CharField(max_length=1,choices=GROND3,default='z',verbose_name='grondsoort')
+    kwaliteit = models.CharField(max_length=1,choices=ZOUT3,default='s',verbose_name='waterkwaliteit')
+    kwel=models.CharField(max_length=1,choices=KWEL3,default='k',verbose_name='kwel of infiltratie')
+    weerstand=models.CharField(max_length=1,choices=WDEK3,default='h',verbose_name='weerstand deklaag')
+    opslag = models.CharField(max_length=1,choices=OPSLAG3,default='o',verbose_name='opslag van water')
+    reken = models.CharField(max_length=1,choices=REKEN3,default='o',verbose_name='berekeningsmethode')
+    perceel = models.FloatField(default=5, verbose_name='oppervlakte perceel', help_text = 'oppervlakte perceel in hectare')
+    oppervlakte = models.FloatField(default=5, verbose_name='oppervlakte opslag', help_text = 'oppervlakte ondergrondse opslag in hectare')
+    bassin = models.FloatField(default=5000, verbose_name='volume bassin', help_text = 'volume bassin in m3')
+    lon = models.FloatField(null=True,blank=True)
+    lat = models.FloatField(null=True,blank=True)
+    #adres = models.CharField(max_length=256,null=True,blank=True)
+    user = models.ForeignKey(User,null=True,blank=True)
+
+    def __unicode__(self):
+        return self.matrix_code()
+
+    def matrix_code(self):
+        ''' bepaal matrix code adhv gemaakte keuzes'''
+        code = self.gewas
+        if self.opslag == 'o':
+            code += 'o'
+        else:
+            code +=self.irrigatie
+        code += self.grondsoort+self.kwaliteit+self.weerstand+self.kwel
+        return code
             
 class Matrix(models.Model):
     code = models.CharField(max_length=10, unique=True)
