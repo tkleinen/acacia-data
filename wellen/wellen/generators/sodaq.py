@@ -59,8 +59,14 @@ class ECSensor(GenericCSV):
             data.drop('None', inplace = True)
             data.index = pd.to_datetime(data.index)
         data.dropna(how='all', inplace=True)
+        data['EC25'] = 1e6 / data['EC'] * (1.0 - 0.02 * (data['temp']-25.0)) 
         return data
 
+    def get_parameters(self, f):
+        params = super(ECSensor, self).get_parameters(f)
+        params['EC25'] = {'description': 'EC 25oC', 'unit': 'uS/cm' }
+        return params
+        
 if __name__ == '__main__' :
     gen = ECSensor()
     result = gen.download(url='http://vps01.m2m4all.com/EC/Wellen/82f82cac5d1f58ae')
