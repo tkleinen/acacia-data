@@ -436,9 +436,41 @@ class Datasource(models.Model, DatasourceMixin):
                 slicer = (date <= stop)
             if slicer is not None:
                 data = data[slicer]
+            if self.calibrationdata_set:
+                self.calibrate(data)
             return data.sort()
         return data
 
+    def calibrate_value(self, value, sensor, calib):
+        ''' return calibrated sensor data 
+            sensor is iterable with sorted sensor values            
+            calib is iterable with corresponding calibration values            
+        '''
+        n = len(sensor) # number of calibration points
+        for i,d in enumerate(sensor):
+            if value < d:
+                break
+        i = max(1,min(i,n-1))
+        s1 = sensor[i-1]
+        s2 = sensor[i]
+        ds = s2-s1
+        c1 = calib[i-1]
+        c2 = calib[i]
+        dc = c2-c1
+        # TODO: CHECK THIS FORMULA!!!
+        return c1 + (value - s1) * (dc / ds) 
+    
+    def calibrate(self,data):
+        for name in data.columns:
+            par = self.parameter_set.get(name=name)
+            caldata = self.calibrationdata_set.filter(parameter=par).order_by('sensor_value')
+            if caldata.count()>1:
+                caldata = [(d.sensor_value, d.calib_value) for d in caldata]
+                x,y = zip(*caldata)
+                sensdata = data[name]
+                for index,value in sensdata.iteritems():
+                    sensdata[index] = self.calibrate_value(value, x, y)
+                    
     def to_csv(self):
         io = StringIO.StringIO()
         df = self.get_data()
@@ -456,6 +488,11 @@ class Datasource(models.Model, DatasourceMixin):
         count = self.sourcefiles.count()
         return count if count>0 else None
     filecount.short_description = 'files'
+
+    def calibcount(self):
+        count = self.calibrationdata_set.count()
+        return count if count>0 else None
+    calibcount.short_description = 'IJkpunten'
 
     def seriescount(self):
         count = sum([p.seriescount() for p in self.parameter_set.all()])
@@ -1520,3 +1557,21 @@ class TabPage(models.Model):
         verbose_name = 'Tabblad'
         verbose_name_plural = 'Tabbladen'
         
+class CalibrationData(models.Model):
+    datasource = models.ForeignKey(Datasource)
+    parameter = models.ForeignKey(Parameter)
+    sensor_value = models.FloatField(verbose_name = 'meetwaarde')
+    calib_value = models.FloatField(verbose_name='ijkwaarde')
+    
+    def calibrate(self):
+        pass
+    
+    class Meta:
+        verbose_name = 'IJkpunt'        
+        verbose_name_plural = 'IJkset'
+        
+if __name__ == '__main__':
+    ds = Datasource.objects.get(pk=72)
+    data = ds.get_data()
+    print data['EC25']
+    
