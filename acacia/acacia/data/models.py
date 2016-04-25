@@ -34,7 +34,10 @@ def aware(d,tz=None):
                     return timezone.make_aware(d, tz)            
                 except:
     #                 pytz.NonExistentTimeError, pytz.AmbiguousTimeError: # CET/CEST transition?
-                    return timezone.make_aware(d, pytz.utc)            
+                    try:
+                        return timezone.make_aware(d, pytz.utc)
+                    except:
+                        pass            
     return d
 
 class DatasourceMixin:
