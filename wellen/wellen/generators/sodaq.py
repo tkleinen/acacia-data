@@ -59,6 +59,7 @@ class ECSensor(GenericCSV):
             data.drop('None', inplace = True)
             data.index = pd.to_datetime(data.index)
         data.dropna(how='all', inplace=True)
+        # add column with EC at 25 oC
         data['EC25'] = 1e6 / data['EC'] * (1.0 - 0.02 * (data['temp']-25.0)) 
         return data
 
