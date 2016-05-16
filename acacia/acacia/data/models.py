@@ -440,7 +440,7 @@ class Datasource(models.Model, DatasourceMixin):
             if slicer is not None:
                 data = data[slicer]
             if self.calibrationdata_set:
-                self.calibrate(data)
+                data = self.calibrate(data)
             return data.sort()
         return data
 
@@ -460,20 +460,21 @@ class Datasource(models.Model, DatasourceMixin):
         c1 = calib[i-1]
         c2 = calib[i]
         dc = c2-c1
-        # TODO: CHECK THIS FORMULA!!!
         return c1 + (value - s1) * (dc / ds) 
     
     def calibrate(self,data):
         for name in data.columns:
             par = self.parameter_set.get(name=name)
             caldata = self.calibrationdata_set.filter(parameter=par).order_by('sensor_value')
-            if caldata.count()>1:
+            if caldata:
                 caldata = [(d.sensor_value, d.calib_value) for d in caldata]
                 x,y = zip(*caldata)
                 sensdata = data[name]
+                sensdata.is_copy = False
                 for index,value in sensdata.iteritems():
                     sensdata[index] = self.calibrate_value(value, x, y)
-                    
+        return data
+                
     def to_csv(self):
         io = StringIO.StringIO()
         df = self.get_data()
@@ -1565,9 +1566,6 @@ class CalibrationData(models.Model):
     parameter = models.ForeignKey(Parameter)
     sensor_value = models.FloatField(verbose_name = 'meetwaarde')
     calib_value = models.FloatField(verbose_name='ijkwaarde')
-    
-    def calibrate(self):
-        pass
     
     class Meta:
         verbose_name = 'IJkpunt'        
