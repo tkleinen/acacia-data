@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+{% block options %}
+<script>
+	var options = {};
+</script>
+{% endblock %}
+{% block init %}
+<script>
+$(function () {
+	$('#container').highcharts(options);
+});
+</script>
+{% endblock %}
+</head>
+<body>
+<div id="container" style="height: 300px; width: 400px;"></div>
+</body>
+</html>

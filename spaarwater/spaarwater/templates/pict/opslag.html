@@ -1,0 +1,36 @@
+{% extends "pict/pict.html" %}
+{% block options %}
+<script>
+var options = {
+	chart: {
+	    type: 'column'
+	},
+	credits : {
+	    enabled: false
+	},
+	title: {
+	    text: ''
+	},
+	xAxis: {
+		categories: ['Opvang', 'Afvoer']
+	},
+	yAxis: {
+		title: {text: 'm³'},
+        labels: {
+            formatter: function () {
+                return Highcharts.numberFormat(this.value, 0,'','');
+            }
+        }		
+	},
+	legend: {
+		enabled: false
+	},
+	series: [{
+	    name: '{{locatie}}',
+		colorByPoint: true,
+		pointWidth: 100,
+		data:[{{opvang}},{{afvoer}}]
+	}]
+};
+</script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "pict/pict.html" %}
+{% block options %}
+<script>
+var options = {
+	chart: {
+	    type: 'pie'
+	},
+	credits : {
+	    enabled: false
+	},
+	title: {
+	    text: ''
+	},
+	plotOptions: {
+	    pie: {
+	        innerSize: '10%',
+	        dataLabels: {format: '<strong>{point.name}</strong><br/><i>{y:.0f} m³</i>'}
+	    }
+	},
+	series: [{
+	    name: 'Volume',
+	    data: [{
+	        name: 'Infiltratie',
+	        y: {{infiltratie}}
+	    }, {
+	        name: 'Onttrekking',
+	        y: {{onttrekking}}
+	    }]
+	}]
+};
+</script>
+{% endblock %}

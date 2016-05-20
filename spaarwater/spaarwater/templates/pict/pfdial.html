@@ -1,0 +1,97 @@
+{% extends 'pict/pict.html' %}
+{% block options %}
+<script>
+var options = {
+	chart: {
+	    type: 'gauge',
+	    animation: true
+	},
+	
+	credits: {enabled: false},
+	
+	title: {text: 'pF dripperceel'},
+	
+	pane: {
+	    center: ['50%', '50%'],
+	    size: '100%',
+	    startAngle: -110,
+	    endAngle: 110,
+	    background: {
+	        backgroundColor: (Highcharts.theme && Highcharts.theme.background2) || '#EEE',
+	        innerRadius: '60%',
+	        outerRadius: '100%',
+	        shape: 'arc'
+	    }
+	},
+	
+	tooltip: {
+	    enabled: false
+	},
+	
+	// the value axis
+	yAxis: {
+	    stops: [
+	        [0.1, '#55BF3B'], // green
+	        [0.5, '#DDDF0D'], // yellow
+	        [0.9, '#DF5353'] // red
+	    ],
+	    lineWidth: 0,
+	    minorTickInterval: null,
+	    tickPixelInterval: 400,
+	    tickWidth: 0,
+	    min: 0,
+	    max: 5,
+	    labels: {
+	        y: 16
+	    },
+	    plotBands: [{
+	        from: 0,
+	        to: 2.5,
+	        innerRadius: 80,
+	        outerRadius: 112,
+	        color: 'blue'
+	    }, {
+	        from: 2.5,
+	        to: 3.4,
+	        innerRadius: 80,
+	        outerRadius: 112,
+	        color: 'green'
+	    }, {
+	        from: 3.4,
+	        to: 4.2,
+	        innerRadius: 80,
+	        outerRadius: 112,
+	        color: 'orange'
+	    }, {
+	        from: 4.2,
+	        to: 5.0,
+	        innerRadius: 80,
+	        outerRadius: 112,
+	        color: 'red'
+	    }]
+	},
+	
+	plotOptions: {
+	    gauge: {
+	    	dial: {
+	    		
+	    	},
+	        dataLabels: {
+	            y: 20,
+	            borderWidth: 0,
+	            useHTML: true
+	        }
+	    }
+	},
+	series: [{
+		animation: {duration: 800},
+	    name: 'pF',
+	    data: [{{pfdrip}}],
+	    dataLabels: {
+	        format: '<div style="text-align:center"><span style="font-size:25px;color:black">{y:,.2f}</span><br/>'
+	    },
+	}]
+	
+};
+</script>
+{% endblock %}

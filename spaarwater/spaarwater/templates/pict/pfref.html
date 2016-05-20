@@ -1,0 +1,8 @@
+{% extends 'pict/pfdrip.html' %}
+{% block options %}
+{{ block.super }}
+<script>
+	options.title.text = 'pF referentie';
+	options.series[0].data = [{{pfref}}];
+</script>
+{% endblock %}

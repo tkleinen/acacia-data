@@ -6,7 +6,7 @@ Created on Oct 4, 2014
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView
 
-from acacia.data.models import Project, TabGroup
+from acacia.data.models import Project, MeetLocatie, TabGroup, KeyFigure
 from acacia.data.views import ProjectDetailView
 
 class HomeView(ProjectDetailView):
@@ -32,3 +32,18 @@ class DashGroupView(TemplateView):
             context['page'] = int(page)
             context['dashboard'] = dashboards[page-1]
         return context    
+
+class OverviewView(TemplateView):
+    template_name = 'overview.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super(OverviewView,self).get_context_data(**kwargs)
+        pk = context.get('pk',1)
+        locatie = get_object_or_404(MeetLocatie,pk=pk)
+        context['locatie'] = locatie
+        keys = KeyFigure.objects.filter(locatie=locatie)
+        for key in keys:
+            context[key.name] = key.value
+        return context    
+    
+    

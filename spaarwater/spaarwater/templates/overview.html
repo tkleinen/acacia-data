@@ -1,0 +1,63 @@
+{% extends 'bootbase.html' %}
+{% block title %}{%if title %} {{title}} {%else%} Overzicht {{locatie.name}}{%endif%}{% endblock title %}
+{% block content %}
+<div class="container-fluid">
+<h2>{{locatie}}</h2>
+<div class="row row-fluid">
+<div class="col-md-6">
+<table class="table table-striped">
+<thead>
+<tr>
+<th>kental</th>
+<th>waarde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Opvang</td>
+<td>{{opvang|floatformat:0|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>Infiltratie</td>
+<td>{{infiltratie|floatformat:0|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>Afvoer naar sloot</td>
+<td>{{afvoer|floatformat:0|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>Onttrekking</td>
+<td>{{onttrekking|floatformat:0|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>Irrigatie (drip)</td>
+<td>{{drip|floatformat:0|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>pF drip</td>
+<td>{{pfdrip|floatformat:2|default:'onbekend'}}</td>
+</tr>
+<tr>
+<td>pF referentie</td>
+<td>{{pfref|floatformat:2|default:'onbekend'}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="row row-fluid">
+<div class="col-md-3">
+<iframe src="/infiltratie/{{locatie.id}}" frameborder=0 scrolling="no" width="100%" height="300"></iframe>
+</div>
+<div class="col-md-3">
+<iframe src="/opslag/{{locatie.id}}" frameborder=0 scrolling="no" width="100%" height="300"></iframe>
+</div>
+<div class="col-md-3">
+<iframe src="/pfdrip/{{locatie.id}}" frameborder=0 scrolling="no" width="100%" height="300"></iframe>
+</div>
+<div class="col-md-3">
+<iframe src="/pfref/{{locatie.id}}" frameborder=0 scrolling="no" width="100%" height="300"></iframe>
+</div>
+</div>
+</div>
+{% endblock %}

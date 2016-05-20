@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'south',
     'registration',
+    'smart_selects',
     'acacia',
     'acacia.data',
     'acacia.data.knmi',
