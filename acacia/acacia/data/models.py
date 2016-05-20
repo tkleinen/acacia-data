@@ -365,6 +365,7 @@ class Datasource(models.Model, DatasourceMixin):
             try:
                 try:
                     params.update(gen.get_parameters(sourcefile.file))
+                    sourcefile.file.close()
                 except Exception as e:
                     logger.exception('Cannot update parameters for sourcefile %s: %s' % (sourcefile, e))
             except Exception as e:
@@ -1147,7 +1148,7 @@ class Series(PolymorphicModel,DatasourceMixin):
         points = self.filter_points(**kwargs)
         dates = [dp.date for dp in points]
         values = [dp.value for dp in points]
-        return pd.Series(values,index=dates,name=self.name)
+        return pd.Series(values,index=dates,name=self.name).sort_index()
     
     def to_csv(self, **kwargs):
         ser = self.to_pandas(**kwargs)
@@ -1570,7 +1571,59 @@ class CalibrationData(models.Model):
     class Meta:
         verbose_name = 'IJkpunt'        
         verbose_name_plural = 'IJkset'
-        
+
+from smart_selects.db_fields import ChainedManyToManyField
+
+class KeyFigure(models.Model):
+    ''' Net zoiets als een Formula, maar dan met een scalar als resultaat'''
+    locatie = models.ForeignKey(MeetLocatie)
+    name = models.CharField(max_length=200, verbose_name = 'naam')
+    description = models.TextField(blank=True, null = True, verbose_name = 'omschrijving')
+    #variables = models.ManyToManyField(Variable,verbose_name = 'variabelen')
+    variables = ChainedManyToManyField(Variable,verbose_name = 'variabelen',
+            chained_field = locatie,
+            chained_model_field = 'locatie')
+    formula = models.TextField(blank=True,null=True,verbose_name = 'berekening')
+    last_update = models.DateTimeField(auto_now = True, verbose_name = 'bijgewerkt')
+    startDate = models.DateField(blank=True, null=True)
+    stopDate = models.DateField(blank=True, null=True)
+    value = models.FloatField(blank=True, null=True, verbose_name = 'waarde')
+    
+    def __unicode__(self):
+        return self.name
+
+    def get_variables(self):
+        variables = {var.name: var.series.to_pandas() for var in self.variables.all()}
+        df = pd.DataFrame(variables)
+        start = max([v.index.min() for v in variables.values()])
+        stop = min([v.index.max() for v in variables.values()])
+        if self.startDate:
+            start = self.startDate
+        if self.stopDate:
+            stop = self.stopDate
+        df = df[start:stop]
+        df = df.interpolate(method='time')
+        return df.to_dict('series')
+
+    def get_value(self):
+        variables = self.get_variables()
+        result = eval(self.formula, globals(), variables)
+        if isinstance(result, pd.DataFrame):
+            result = result[0]
+        elif isinstance(result, pd.Series):
+            result.name = self.name
+        return result
+    
+    def update(self):
+        self.value = self.get_value()
+        self.save(update_fields=['value'])
+        return self.value
+
+    class Meta:
+        verbose_name = 'Kental'        
+        verbose_name_plural = 'Kentallen'
+        unique_together = ('locatie', 'name')
+
 if __name__ == '__main__':
     ds = Datasource.objects.get(pk=72)
     data = ds.get_data()
