@@ -1,7 +1,7 @@
 import os
 from .models import Project, ProjectLocatie, MeetLocatie, Datasource, SourceFile, Generator
 from .models import Parameter, Series, DataPoint, Chart, ChartSeries, Dashboard, DashboardChart, TabGroup, TabPage
-from .models import Variable, Formula, Webcam, Notification, ManualSeries, Grid, CalibrationData
+from .models import Variable, Formula, Webcam, Notification, ManualSeries, Grid, CalibrationData, KeyFigure
 
 from django.shortcuts import render, redirect
 from django.contrib import admin
@@ -539,7 +539,16 @@ class NotificationAdmin(admin.ModelAdmin):
         level = request.POST.get('level')
         queryset.update(level=level)
     set_level.short_description='Niveau aanpassen'
-        
+
+from actions import update_kental
+class KeyFigureAdmin(admin.ModelAdmin):
+    actions = [update_kental]
+    model = KeyFigure
+    exclude = ('value', )
+    filter_horizontal = ('variables',)
+    list_filter = ('locatie', )
+    list_display = ('name','locatie', 'value', 'last_update')
+    
 admin.site.register(Project, ProjectAdmin, Media = Media)
 admin.site.register(ProjectLocatie, ProjectLocatieAdmin, Media = Media)
 admin.site.register(MeetLocatie, MeetLocatieAdmin, Media = Media)
@@ -557,3 +566,4 @@ admin.site.register(Webcam, WebcamAdmin)
 admin.site.register(Notification, NotificationAdmin)
 admin.site.register(Grid, GridAdmin)
 admin.site.register(CalibrationData, CalibrationAdmin)
+admin.site.register(KeyFigure, KeyFigureAdmin)
