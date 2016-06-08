@@ -142,8 +142,11 @@ def conv119(x):
         '''Calculate dielectric permittivity of soil pore water (Decagon)'''
         Ep = 80.3 - 0.37 * (temp - 20.0)
         ''' Dielectric permittivity (Eb0) dry soil (Hilhorst, 2000)'''
-        Eb0 = 4.1 
-        ECp = (Ep * EC)/(Ea - Eb0)
+        Eb0 = 4.1
+        if Ea == Eb0:
+            ECp = np.nan
+        else:
+            ECp = (Ep * EC)/(Ea - Eb0)
     return [vwc, temp, EC, vwcp, ECp]
 
 def conv116(x):
