@@ -1418,7 +1418,7 @@ class Grid(Chart):
     rowheight = models.FloatField(default=1,verbose_name='rijhoogte')
     ymin = models.FloatField(default=0,verbose_name='y-minimum')
     entity = models.CharField(default='Weerstand', max_length=50, verbose_name='grootheid')
-    unit = models.CharField(max_length=20,default='Ωm',blank=True,verbose_name='eenheid')
+    unit = models.CharField(max_length=20,default='ohmm',blank=True,verbose_name='eenheid')
     zmin = models.FloatField(null=True,blank=True,verbose_name='z-minimum')
     zmax = models.FloatField(null=True,blank=True,verbose_name='z-maximum')
     scale = models.FloatField(default=1.0,verbose_name='verschalingsfactor')
