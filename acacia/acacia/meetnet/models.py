@@ -193,8 +193,8 @@ class Screen(models.Model):
         return None if last is None else last.logger
         
     def __unicode__(self):
-        #return '%s/%03d' % (self.well.nitg, self.nr)
-        return '%s/%03d' % (self.well, self.nr)
+        return '%s/%03d' % (self.well.nitg, self.nr)
+        #return '%s/%03d' % (self.well, self.nr)
 
     def get_absolute_url(self):
         return reverse('screen-detail', args=[self.id])
@@ -301,19 +301,19 @@ class Channel(models.Model):
         verbose_name_plural = 'Kanalen'
 
 # Series that can be edited manually
-class ManualSeries(Series):
-    locatie = models.ForeignKey(MeetLocatie)
-     
-    def meetlocatie(self):
-        return self.locatie
-
-    def __unicode__(self):
-        return self.name
- 
-    def get_series_data(self,data,start=None):
-        return self.to_pandas(start=start)
-     
-    class Meta:
-        verbose_name = 'Handmatige reeks'
-        verbose_name_plural = 'Handmatige reeksen'
-         
+# class ManualSeries(Series):
+#     locatie = models.ForeignKey(MeetLocatie, related_name='MeetnetManualSeries')
+#      
+#     def meetlocatie(self):
+#         return self.locatie
+# 
+#     def __unicode__(self):
+#         return self.name
+#  
+#     def get_series_data(self,data,start=None):
+#         return self.to_pandas(start=start)
+#      
+#     class Meta:
+#         verbose_name = 'Handmatige reeks'
+#         verbose_name_plural = 'Handmatige reeksen'
+#          
