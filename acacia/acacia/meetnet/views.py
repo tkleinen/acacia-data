@@ -125,8 +125,8 @@ class WellChartView(TemplateView):
             }
         series = []
         xydata = []
-        start = datetime.datetime(2014,1,1)
-        stop = datetime.datetime(2015,1,1)
+        start = datetime.datetime(2013,1,1)
+        stop = datetime.datetime(2016,1,1)
         for screen in well.screen_set.all():
             name = unicode(screen)
             data = screen.to_pandas(ref='nap')[start:stop]

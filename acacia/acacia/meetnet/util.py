@@ -41,12 +41,13 @@ def chart_for_screen(screen):
 def chart_for_well(well):
     fig=plt.figure(figsize=(15,5))
     ax=fig.gca()
-    datemin=datetime.datetime(2014,1,1)
-    datemax=datetime.datetime(2015,1,1)
+    datemin=datetime.datetime(2013,1,1)
+    datemax=datetime.datetime(2016,1,1)
     ax.set_xlim(datemin, datemax)
     plt.grid(linestyle='-', color='0.9')
     count = 0
     y = []
+    x = []
     for screen in well.screen_set.all():
         data = screen.get_levels('nap')
         if len(data)>0:
@@ -58,7 +59,7 @@ def chart_for_well(well):
         if len(hand)>0:
             x,y = zip(*hand)
             plt.plot_date(x, y, 'ro', label='handpeiling')
-            
+    x = [datemin,datemax]
     y = [screen.well.maaiveld] * len(x)
     plt.plot_date(x, y, '-', label='maaiveld')
 
@@ -92,7 +93,14 @@ def recomp(screen,series,baros={},tz=pytz.FixedOffset(60)):
 
     seriesdata = None
     for logpos in screen.loggerpos_set.all().order_by('start_date'):
-        if logpos.refpnt is None or logpos.depth is None or logpos.baro is None:
+        if logpos.refpnt is None:
+            print 'Geen referentiepunt voor', screen
+            continue
+        if logpos.depth is None:
+            print 'Geen kabellengte voor', logpos, logpos.start_date
+            continue
+        if logpos.baro is None:
+            print 'Geen luchtdruk voor', logpos, logpos.start_date
             continue
         if seriesdata is  None:
             meteo = logpos.baro.meetlocatie().name
