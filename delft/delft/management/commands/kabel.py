@@ -38,16 +38,19 @@ class Command(BaseCommand):
                             depth = float(depth)
                         else:
                             depth = 0
-                        date = datetime.datetime.strptime(datumtijd,'%Y-%m-%d %H:%M:%S')
+                        date = datetime.datetime.strptime(datumtijd,'%d-%m-%Y %H:%M')
                         date = date.replace(tzinfo=CET)
                         date = date.date()
-
+                        found = False
                         for lp in screen.loggerpos_set.all():
                             start = lp.start_date.date()
-                            if (abs(start - date).days < 2) or (date.year == 2013 and start.year == 2013): 
+                            if (abs(start - date).days < 2) or (date.year < 2013 and start.year < 2013):
+                                found = True
+                                print NITG, filt,datumtijd, depth
                                 lp.depth = depth
                                 lp.save()
-                                    
+                        if not found:
+                            print 'NOT FOUND:', NITG, filt,datumtijd, depth
                     except Well.DoesNotExist:
                         print 'Well %s not found' % NITG
                     except Screen.DoesNotExist:

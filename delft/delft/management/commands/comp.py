@@ -19,12 +19,17 @@ class Command(BaseCommand):
         user = User.objects.get(username='theo')
         known_baros = {}
         tz = pytz.FixedOffset(60)#Nederlandse wintertijd
-        #for well in Well.objects.all():
-        for well in Well.objects.exclude(name=F('nitg')):
+        for well in Well.objects.all():
+        #for well in Well.objects.exclude(name=F('nitg')):
             for screen in well.screen_set.all():
                 print screen
                 name = '%s COMP' % screen
                 series, created = Series.objects.get_or_create(name=name,user=user)
+                try:
+                    series.mlocatie = MeetLocatie.objects.get(name=unicode(screen))
+                    series.save()
+                except:
+                    pass
                 util.recomp(screen, series, known_baros, tz)   
                              
                 #maak/update grafiek
@@ -32,8 +37,8 @@ class Command(BaseCommand):
                             'title': unicode(screen),
                             'user': user, 
                             'percount': 0, 
-                            'start':datetime.datetime(2014,1,1), 
-                            'stop': datetime.datetime(2015,1,1),
+                            'start':datetime.datetime(2013,1,1), 
+                            'stop': datetime.datetime(2015,12,31),
                             })
                 chart.series.get_or_create(series=series, defaults={'label' : 'm tov NAP'})
                 # handpeilingen toevoegen (als beschikbaar)

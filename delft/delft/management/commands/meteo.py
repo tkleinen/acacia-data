@@ -65,6 +65,7 @@ def luchtdruk(loc,user):
             series.replace()
             print series, 'created'
     except Parameter.DoesNotExist:
+        print 'Parameter P not found in datasource', ds.name
         # not pressure found in knmi file??
         pass
         
@@ -74,10 +75,12 @@ def luchtdruk(loc,user):
         w = Well.objects.get(nitg=loc.name)
         for s in w.screen_set.all():
             for logpos in s.loggerpos_set.all():
-                logpos.baro = series
-                logpos.save()
-                print logpos, 'updated'
+                if logpos.baro != series:
+                    logpos.baro = series
+                    logpos.save()
+                    print logpos, logpos.start_date, 'updated'
     except Well.DoesNotExist:
+        print 'Well not found:', loc.name
         pass
     
 class Command(BaseCommand):
