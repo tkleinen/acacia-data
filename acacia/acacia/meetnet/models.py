@@ -190,7 +190,7 @@ class Screen(models.Model):
         
     def last_logger(self):
         last = self.loggerpos_set.all().order_by('start_date').last()
-        return None if last is None else last.logger
+        return last
         
     def __unicode__(self):
         return '%s/%03d' % (self.well.nitg, self.nr)
