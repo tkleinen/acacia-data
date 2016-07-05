@@ -117,6 +117,7 @@ def recomp(screen,series,baros={},tz=pytz.FixedOffset(60)):
             data = mon.get_data()['PRESSURE']
             data = series.do_postprocess(data).tz_localize(tz)
             data = data - baro
+            data = data[data>10] # 10 cm water at least!
             data.dropna(inplace=True)
             data = data / 100 + (logpos.refpnt - logpos.depth)
             if seriesdata is None:
