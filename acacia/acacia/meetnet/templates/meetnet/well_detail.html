@@ -89,7 +89,7 @@ a img {
 	<tr>
     {% with s.stats as stats %}
 		<td>{{s.nr}}</td>
-		<td>{{s.last_logger|default:''}}</td>
+		<td>{{s.last_logger.logger|default:''}}</td>
 		<td>{{s.last_logger.depth}}</td>
 		<td>{{s.top}}</td>
 		<td>{{s.bottom}}</td>
