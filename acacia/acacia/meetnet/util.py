@@ -10,6 +10,7 @@ from matplotlib import rcParams
 from StringIO import StringIO
 from acacia.data.models import DataPoint
 import math, pytz
+import pandas as pd
 
 rcParams['font.family'] = 'sans-serif'
 rcParams['font.size'] = '8'
@@ -94,13 +95,13 @@ def recomp(screen,series,baros={},tz=pytz.FixedOffset(60)):
     seriesdata = None
     for logpos in screen.loggerpos_set.all().order_by('start_date'):
         if logpos.refpnt is None:
-            print 'Geen referentiepunt voor', screen
+            logger.error('Geen referentiepunt voor %s' % screen)
             continue
         if logpos.depth is None:
-            print 'Geen kabellengte voor', logpos, logpos.start_date
+            logger.error('Geen kabellengte voor {pos}: {date}'.format(pos=logpos, date=logpos.start_date))
             continue
         if logpos.baro is None:
-            print 'Geen luchtdruk voor', logpos, logpos.start_date
+            logger.error('Geen luchtdruk voor {pos}: {date}'.format(pos=logpos, date=logpos.start_date))
             continue
         if seriesdata is  None:
             meteo = logpos.baro.meetlocatie().name
@@ -116,9 +117,13 @@ def recomp(screen,series,baros={},tz=pytz.FixedOffset(60)):
             print ' ', logpos.logger, mon
             data = mon.get_data()['PRESSURE']
             data = series.do_postprocess(data).tz_localize(tz)
-            data = data - baro
-            data = data[data>10] # 10 cm water at least!
+            
+            left,right=data.align(baro)
+            data = data - right.interpolate(method='time')
+            
+            #data = data[data>10] # 10 cm water at least!
             data.dropna(inplace=True)
+            
             data = data / 100 + (logpos.refpnt - logpos.depth)
             if seriesdata is None:
                 seriesdata = data
