@@ -4,7 +4,7 @@ Created on Jun 1, 2014
 @author: theo
 '''
 from .models import Network, Well, Photo, Screen, Datalogger, LoggerPos, LoggerDatasource, MonFile, Channel
-from acacia.data.admin import DatasourceAdmin, SourceFileAdmin, SeriesAdmin
+from acacia.data.admin import DatasourceAdmin, SourceFileAdmin
 from acacia.data.models import DataPoint
 from django.conf import settings
 from django.contrib import admin
@@ -57,13 +57,19 @@ class DataloggerAdmin(admin.ModelAdmin):
     search_fields = ('serial',)
     list_filter = ('model',)
 
+class MonfileInline(admin.TabularInline):
+    model = MonFile
+    extra=0
+
 class LoggerPosAdmin(admin.ModelAdmin):
     model = LoggerPos
+    inlines = [MonfileInline]
     list_display = ('logger', 'screen', 'start_date', 'end_date', 'refpnt', 'depth', 'baro', 'remarks')
     search_fields = ('logger__serial','screen__well__name')
     
 class LoggerInline(admin.TabularInline):
     model = LoggerPos
+
     
 class LoggerDatasourceAdmin(DatasourceAdmin):
     pass
