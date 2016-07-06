@@ -42,7 +42,7 @@ make_screencharts.short_description = "Grafieken vernieuwen van geselecteerde fi
 def recomp_screens(modeladmin, request, queryset):
     for screen in queryset:
         name = '%s COMP' % unicode(screen)
-        series, created = Series.objects.get_or_create(name=name,user=request.user)
+        series, created = Series.objects.get_or_create(name=name,defaults={'user': request.user})
         recomp(screen, series)
 recomp_screens.short_description = "Gecompenseerde tijdreeksen opnieuw aanmaken voor geselecteerde filters"
         
