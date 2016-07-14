@@ -18,10 +18,10 @@ class Command(BaseCommand):
             logger.datasource = ''
             logger.info('***UPDATE OF KEYFIGURES STARTED***')
             for k in KeyFigure.objects.all():
-                oldvalue = k.value
-                newvalue = k.update()
+                oldvalue = float(k.value)
+                newvalue = float(k.update())
                 if oldvalue != newvalue:
-                    logger.debug('Keyfigure {loc): {name} updated to {value}'.format(name=k.name,loc=k.locatie,value=newvalue))
+                    logger.debug('Keyfigure {loc}: {name} updated to {value}'.format(name=k.name,loc=k.locatie,value=newvalue))
                 else:
-                    logger.debug('Keyfigure {loc): {name} not changed'.format(name=k.name,loc=k.locatie))
+                    logger.debug('Keyfigure {loc}: {name} not changed'.format(name=k.name,loc=k.locatie))
             logger.info('***UPDATE OF KEYFIGURES COMPLETED***')
