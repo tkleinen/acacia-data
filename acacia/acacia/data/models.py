@@ -1620,7 +1620,7 @@ class KeyFigure(models.Model):
     
     def update(self):
         self.value = self.get_value()
-        self.save(update_fields=['value'])
+        self.save()
         return self.value
 
     class Meta:
