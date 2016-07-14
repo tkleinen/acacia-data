@@ -24,7 +24,7 @@ class Command(BaseCommand):
             for screen in well.screen_set.all():
                 print screen
                 name = '%s COMP' % screen
-                series, created = Series.objects.get_or_create(name=name,default={'user':user})
+                series, created = Series.objects.get_or_create(name=name,defaults={'user':user})
                 try:
                     series.mlocatie = MeetLocatie.objects.get(name=unicode(screen))
                     series.save()
