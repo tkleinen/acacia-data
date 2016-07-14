@@ -3,7 +3,7 @@ Created on Jun 3, 2014
 
 @author: theo
 '''
-from .models import Well, Screen
+from acacia.meetnet.models import Well, Screen
 import logging, datetime
 import matplotlib.pyplot as plt
 from matplotlib import rcParams
@@ -53,6 +53,10 @@ def chart_for_well(well):
         data = screen.get_levels('nap')
         if len(data)>0:
             x,y = zip(*data)
+            # resample to hour frequency (gaps representing missing data) 
+            s = pd.Series(y,index=x).asfreq('H')
+            y = s.tolist()
+            x = list(s.index)
             plt.plot_date(x, y, '-', label=screen)
             count += 1
 
@@ -121,7 +125,7 @@ def recomp(screen,series,baros={},tz=pytz.FixedOffset(60)):
             left,right=data.align(baro)
             data = data - right.interpolate(method='time')
             
-            #data = data[data>10] # 10 cm water at least!
+            data = data[data>50] # 50 cm water at least!
             data.dropna(inplace=True)
             
             data = data / 100 + (logpos.refpnt - logpos.depth)
