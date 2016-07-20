@@ -8,16 +8,15 @@ class Command(BaseCommand):
     args = ''
     help = 'Export all series'
         
-    fldr = '/media/sf_F_DRIVE/projdirs/Zuid-Holland/validatie/export'
+    fldr = './export'
 
     def handle(self, *args, **options):
         for s in Series.objects.all():
-            loc = s.meetlocatie()
-            if loc is None:
-                name = slugify(s.name)
-            else:
-                loc = s.parameter
-                name = slugify(unicode(loc)) 
+            if s.parameter:
+                name = unicode(s.parameter)
+            else: 
+                name = s.name
+            name = slugify(name)
             fname = os.path.join(self.fldr,name) + '.csv'
             print fname
             with open(fname,'w') as f:
