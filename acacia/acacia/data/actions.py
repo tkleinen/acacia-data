@@ -75,6 +75,24 @@ def download_series(modeladmin, request, queryset):
     for d in ds:
         d.download()
 download_series.short_description = 'Bronbestanden van geselecteerde tijdreeksen downloaden'
+
+from zipfile import ZipFile
+import StringIO
+from django.http import HttpResponse
+from django.utils.text import slugify
+
+def download_series_csv(modeladmin, request, queryset):
+    io = StringIO.StringIO()
+    zf = ZipFile(io,'w')
+    for series in queryset:
+        filename = slugify(series.name) + '.csv'
+        csv = series.to_csv()
+        zf.writestr(filename,csv)
+    zf.close()
+    resp = HttpResponse(io.getvalue(), content_type = "application/x-zip-compressed")
+    resp['Content-Disposition'] = 'attachment; filename=series.zip'
+    return resp
+download_series_csv.short_description = 'Geselecteerde tijdreeksen downloaden als csv bestand'
     
 def refresh_series(modeladmin, request, queryset):
     for s in Series.objects.get_real_instances(queryset):
