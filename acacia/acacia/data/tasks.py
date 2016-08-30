@@ -55,3 +55,4 @@ def longjob(pk):
         current_task.update_state(state='PROGRESS', meta = {'progress': (i*100.0) / 20})
     current_task.update_state(state='PROGRESS', meta = {'progress': 100})
     return 'all done'
+
