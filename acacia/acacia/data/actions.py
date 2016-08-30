@@ -76,10 +76,48 @@ def download_series(modeladmin, request, queryset):
         d.download()
 download_series.short_description = 'Bronbestanden van geselecteerde tijdreeksen downloaden'
 
+#TODO: convert to celery
+from django.utils.text import slugify
+from django.conf import settings
+from django.core.mail import send_mail
+import os,tempfile
 from zipfile import ZipFile
+from threading import Thread
+
+def email_series_zip(request, queryset, zf):
+    url = request.build_absolute_uri(settings.EXPORT_URL+os.path.basename(zf.filename))
+    logger.debug('Preparing zip file %s' % url)
+    for series in queryset:
+        filename = slugify(series.name) + '.csv'
+        logger.debug('adding %s' % filename)
+        csv = series.to_csv()
+        zf.writestr(filename,csv)
+    zf.close()
+
+    logger.debug('Done, sending email with link to %s (%s)' % (request.user.username, request.user.email))
+    
+    success = send_mail(subject='Timeseries available for download',
+              message='Dear {user},\n\nYour time series are ready and can be downloaded from {url}\n\nKind regards,\nAcacia Water'.format(user=request.user.username, url=url),
+              from_email = 'noreply@acaciadata.com',
+              recipient_list=[request.user.email,])
+    if success == 0:
+        logger.error('Failed to send email')
+    else:
+        logger.debug('Email sent')
+
+def download_series_zip(modeladmin, request, queryset):
+    if not os.path.exists(settings.EXPORT_ROOT):
+        os.mkdir(settings.EXPORT_ROOT)
+    tmp = tempfile.NamedTemporaryFile(mode='w', suffix='.zip', dir=settings.EXPORT_ROOT, delete=False)
+    zipfile = ZipFile(tmp,'w')
+    series = list(queryset)
+    t = Thread(target=email_series_zip, args=(request,series,zipfile))
+    t.start()
+    
+download_series_zip.short_description = 'Geselecteerde tijdreeksen converteren naar csv en link naaar zip bestand emailen'
+    
 import StringIO
 from django.http import HttpResponse
-from django.utils.text import slugify
 
 def download_series_csv(modeladmin, request, queryset):
     io = StringIO.StringIO()
